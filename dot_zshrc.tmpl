@@ -1,0 +1,73 @@
+MACOS_IS_DARK=$([[ $(defaults read -g AppleInterfaceStyle 2>&1) == "Dark" ]] && echo "yes" || echo "no")
+
+## ---------------------------------------------------------------------------------------------------------------------
+
+export EDITOR="nvim"
+export OPENAI_API_KEY="{{ (keepassxcAttribute "OPENAI" "API_KEY") }}"
+
+# https://webostv.developer.lge.com/develop/tools/cli-installation
+export LG_WEBOS_TV_SDK_HOME="$HOME/stv-tools/webos-sdk"
+export WEBOS_CLI_TV="$LG_WEBOS_TV_SDK_HOME/bin"
+
+# https://github.com/ohmyzsh/ohmyzsh/wiki/Settings#zsh
+export ZSH="$HOME/.config/oh-my-zsh"
+
+# https://github.com/catppuccin/fzf?tab=readme-ov-file#usage
+export FZF_DEFAULT_OPTS=$([[ $MACOS_IS_DARK == "yes" ]] && echo " \
+--color=bg+:#414559,bg:#303446,spinner:#f2d5cf,hl:#e78284 \
+--color=fg:#c6d0f5,header:#e78284,info:#ca9ee6,pointer:#f2d5cf \
+--color=marker:#f2d5cf,fg+:#c6d0f5,prompt:#ca9ee6,hl+:#e78284" || echo " \
+--color=bg+:#ccd0da,bg:#eff1f5,spinner:#dc8a78,hl:#d20f39 \
+--color=fg:#4c4f69,header:#d20f39,info:#8839ef,pointer:#dc8a78 \
+--color=marker:#dc8a78,fg+:#4c4f69,prompt:#8839ef,hl+:#d20f39")
+
+export FZF_CTRL_T_OPTS="
+  --preview 'bat -n --color=always {}'
+  --preview-window 'noborder'
+  --bind 'ctrl-/:change-preview-window(hidden|)'
+"
+
+export PATH="$WEBOS_CLI_TV:$PATH"
+
+## ---------------------------------------------------------------------------------------------------------------------
+
+# https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins
+plugins=(
+	git
+	git-flow-avh
+	zsh-interactive-cd
+	zsh-syntax-highlighting
+	zsh-autosuggestions
+)
+
+# https://docs.brew.sh/Shell-Completion#configuring-completions-in-bash
+if type brew &>/dev/null
+then
+	FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+
+	autoload -Uz compinit
+	compinit
+fi
+
+## ---------------------------------------------------------------------------------------------------------------------
+	
+function brew() {
+  command brew "$@" 
+
+  if [[ $* =~ "upgrade" ]] || [[ $* =~ "update" ]] || [[ $* =~ "outdated" ]]; then
+    sketchybar --trigger brew_update
+  fi
+}
+
+## ---------------------------------------------------------------------------------------------------------------------
+
+# https://spaceship-prompt.sh/getting-started/#Example
+source $(brew --prefix)/opt/spaceship/spaceship.zsh
+
+# https://asdf-vm.com/guide/getting-started.html#_3-install-asdf
+. $(brew --prefix)/opt/asdf/libexec/asdf.sh
+
+# https://github.com/junegunn/fzf?tab=readme-ov-file#using-homebrew
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+source $ZSH/oh-my-zsh.sh

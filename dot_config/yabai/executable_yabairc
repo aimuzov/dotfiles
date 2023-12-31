@@ -1,0 +1,100 @@
+#!/usr/bin/env sh
+
+sudo yabai --load-sa
+
+# ----------------------------------------------------------------------------------------------------------------------
+
+yabai -m signal --add event=dock_did_restart	action="sudo yabai --load-sa"
+yabai -m signal --add event=window_focused		action="sketchybar --trigger window_focus"
+yabai -m signal --add event=window_created		action="sketchybar --trigger windows_on_spaces"
+yabai -m signal --add event=window_destroyed	action="sketchybar --trigger windows_on_spaces"
+
+# ----------------------------------------------------------------------------------------------------------------------
+
+yabai -m config external_bar				all:0:38
+
+yabai -m config mouse_follows_focus			on 
+yabai -m config focus_follows_mouse			off 
+
+yabai -m config window_zoom_persist			off
+yabai -m config window_placement			second_child
+yabai -m config window_topmost				off
+
+yabai -m config window_opacity on
+yabai -m config window_opacity_duration		0.125
+yabai -m config active_window_opacity		1.0
+yabai -m config normal_window_opacity		0.85
+yabai -m config window_animation_duration	0
+
+yabai -m config insert_feedback_color		0xff9dd274
+yabai -m config split_ratio					0.5
+yabai -m config auto_balance				off
+yabai -m config auto_padding				on
+yabai -m config layout						bsp
+
+yabai -m config mouse_modifier				shift
+yabai -m config mouse_action1				move
+yabai -m config mouse_action2				resize
+yabai -m config mouse_drop_action			swap
+
+yabai -m config top_padding					8
+yabai -m config bottom_padding				8
+yabai -m config left_padding				8
+yabai -m config right_padding				8
+yabai -m config window_gap					10
+
+# ----------------------------------------------------------------------------------------------------------------------
+
+function space_destroy_amount {
+	for idx in $(yabai -m query --spaces | jq ".[].index | select(. > $1)" | sort -nr); do
+		yabai -m space --destroy "$idx"
+	done
+}
+
+function space_create {
+	local idx="$1"
+	local name="$2"
+	local space=$(yabai -m query --spaces --space "$idx")
+
+	if [ -z "$space" ]; then
+		yabai -m space --create
+	fi
+
+	yabai -m space "$idx" --label "$name"
+}
+
+space_destroy_amount 6
+
+space_create 1 social 
+space_create 2 web
+space_create 3 system 
+space_create 4 asd
+space_create 5 media
+space_create 6 other
+
+# ----------------------------------------------------------------------------------------------------------------------
+
+# yabai -m rule --add app="^(Telegram|Slack|WhatsApp)$" space=^1
+# yabai -m rule --add app="^WezTerm$" space=^2
+# yabai -m rule --add app="^Google Chrome$" space=^3
+# yabai -m rule --add app="^Steam Helper$" space=6
+# yabai -m rule --add app="^Dota 2$" space=6
+# yabai -m rule --add app="^(NetNewsWire|Mail)$" space=^5
+# yabai -m rule --add app="^Яндекс Музыка$" space=10
+
+# ----------------------------------------------------------------------------------------------------------------------
+
+yabai -m rule --add manage=off app!="^(\
+Chrome|\
+Finder|\
+Slack|\
+Telegram|\
+WezTerm\
+)$"
+
+yabai -m rule --add manage=off app="^Finder$" title="(Copy|Connect|Move|Info|Pref|Finder Settings)"
+
+# ----------------------------------------------------------------------------------------------------------------------
+
+yabai -m rule --add app="^(Яндекс Музыка)$" space=^5
+yabai -m rule --add app="^(Steam|Discord)$" space=^7

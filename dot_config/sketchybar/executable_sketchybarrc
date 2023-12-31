@@ -1,0 +1,71 @@
+#!/bin/bash
+
+source "$CONFIG_DIR/colors.sh"
+source "$CONFIG_DIR/icons.sh"
+
+ITEM_DIR="$CONFIG_DIR/items"
+PLUGIN_DIR="$CONFIG_DIR/plugins"
+
+FONT="SF Pro"
+PADDINGS=3
+
+HELPER=git.felix.helper
+killall helper
+(cd $CONFIG_DIR/helper && make)
+$CONFIG_DIR/helper/helper $HELPER >/dev/null 2>&1 &
+
+bar=(
+	height=40
+	color=$BAR_COLOR
+	border_width=2
+	border_color=$BAR_BORDER_COLOR
+	shadow=off
+	position=bottom
+	sticky=on
+	padding_right=10
+	padding_left=10
+	y_offset=-1
+	margin=-2
+	topmost=window
+)
+
+sketchybar --bar "${bar[@]}"
+
+# Setting up default values
+defaults=(
+	updates=when_shown
+	icon.font="$FONT:Bold:14.0"
+	icon.color=$ICON_COLOR
+	icon.padding_left=$PADDINGS
+	icon.padding_right=$PADDINGS
+	label.font="$FONT:Semibold:13.0"
+	label.color=$LABEL_COLOR
+	label.padding_left=$PADDINGS
+	label.padding_right=$PADDINGS
+	padding_right=$PADDINGS
+	padding_left=$PADDINGS
+	background.height=26
+	background.corner_radius=9
+	background.border_width=1
+	popup.background.shadow.drawing=on
+)
+
+sketchybar --default "${defaults[@]}"
+
+# Left
+source "$ITEM_DIR/spaces.sh"
+source "$ITEM_DIR/yabai.sh"
+source "$ITEM_DIR/front_app.sh"
+
+# Center
+source "$ITEM_DIR/media.sh"
+
+# Right
+source "$ITEM_DIR/calendar.sh"
+source "$ITEM_DIR/battery.sh"
+source "$ITEM_DIR/brew.sh"
+source "$ITEM_DIR/cpu.sh"
+source "$ITEM_DIR/svim.sh"
+
+sketchybar --hotload on
+sketchybar --update

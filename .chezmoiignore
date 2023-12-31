@@ -1,0 +1,7 @@
+./.config/oh-my-zsh/cache/*
+./.config/sketchybar/helper/helper
+.gitignore
+node_modules
+package-lock.json
+package.json
+README.md

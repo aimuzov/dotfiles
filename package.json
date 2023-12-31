@@ -1,0 +1,45 @@
+{
+  "name": "dotfiles",
+  "version": "0.0.1",
+  "description": "My MacOS configuration files.",
+  "scripts": {
+    "commit": "git cz"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aimuzov/dotfiles.git"
+  },
+  "keywords": [
+    "zsh",
+    "borders",
+    "brew",
+    "chezmoi",
+    "dotfiles",
+    "karabiner",
+    "lazygit",
+    "nvim",
+    "sketchybar",
+    "skhd",
+    "svim",
+    "wezterm",
+    "yabai"
+  ],
+  "author": "",
+  "private": true,
+  "bugs": {
+    "url": "https://github.com/aimuzov/dotfiles/issues"
+  },
+  "homepage": "https://github.com/aimuzov/dotfiles#readme",
+  "devDependencies": {
+    "@commitlint/config-conventional": "18.4.4",
+    "commitizen": "4.3.0",
+    "commitlint": "18.4.4",
+    "cz-git": "1.8.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-git",
+      "czConfig": "./.commitlintrc.js"
+    }
+  }
+}
