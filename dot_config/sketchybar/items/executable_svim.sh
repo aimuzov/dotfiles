@@ -3,7 +3,8 @@
 svim=(
 	script="$PLUGIN_DIR/svim.sh"
 	icon=$INSERT_MODE
-	icon.font.size=20
+	icon.font.size=26
+	icon.padding_right=13
 	updates=on
 	drawing=off
 )
