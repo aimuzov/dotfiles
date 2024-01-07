@@ -1,11 +1,11 @@
 #!/bin/bash
 
 battery=(
-	script="$PLUGIN_DIR/battery.sh"
 	label.drawing=on
+	label.padding_left=6
+	script="$PLUGIN_DIR/battery.sh"
 	update_freq=120
 	updates=on
-	label.padding_left=6
 )
 
 sketchybar --add item battery right \

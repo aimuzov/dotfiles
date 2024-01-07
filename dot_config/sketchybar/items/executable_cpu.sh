@@ -1,42 +1,43 @@
 #!/bin/bash
 
 cpu_top=(
+	icon.drawing=off
 	label.font="$FONT:Semibold:7"
 	label=CPU
-	icon.drawing=off
+	padding_right=12
 	width=0
-	padding_right=8
 	y_offset=6
 )
 
 cpu_percent=(
 	label.font="$FONT:Heavy:12"
 	label=CPU
-	y_offset=-6
-	padding_right=8
-	width=40
-	update_freq=4
 	mach_helper="$HELPER"
+	padding_right=10
+	update_freq=4
+	width=40
+	y_offset=-6
 )
 
 cpu_sys=(
-	width=0
+	background.color=$TRANSPARENT
+	background.drawing=on
+	background.height=30
 	graph.color=$RED
 	graph.fill_color=$RED
-	label.drawing=off
 	icon.drawing=off
-	background.height=30
-	background.drawing=on
-	background.color=$TRANSPARENT
+	label.drawing=off
+	padding_right=12
+	width=0
 )
 
 cpu_user=(
-	graph.color=$BLUE
-	label.drawing=off
-	icon.drawing=off
-	background.height=30
-	background.drawing=on
 	background.color=$TRANSPARENT
+	background.drawing=on
+	background.height=30
+	graph.color=$BLUE
+	icon.drawing=off
+	label.drawing=off
 )
 
 sketchybar --add item cpu.top right \

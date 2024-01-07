@@ -1,8 +1,10 @@
 #!/bin/bash
 
 yabai=(
-	script="$PLUGIN_DIR/yabai.sh"
 	display=active
+	icon.width=0
+	label.width=0
+	script="$PLUGIN_DIR/yabai.sh"
 )
 
 sketchybar --add event window_focus \

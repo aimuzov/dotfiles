@@ -1,12 +1,12 @@
 #!/bin/bash
 
 svim=(
-	script="$PLUGIN_DIR/svim.sh"
-	icon=$INSERT_MODE
+	drawing=off
 	icon.font.size=26
 	icon.padding_right=13
+	icon=$INSERT_MODE
+	script="$PLUGIN_DIR/svim.sh"
 	updates=on
-	drawing=off
 )
 
 sketchybar --add event svim_update \
