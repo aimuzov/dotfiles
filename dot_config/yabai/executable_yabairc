@@ -63,38 +63,46 @@ function space_create {
 	yabai -m space "$idx" --label "$name"
 }
 
-space_destroy_amount 6
+space_destroy_amount 10
 
-space_create 1 social 
-space_create 2 web
-space_create 3 system 
-space_create 4 asd
-space_create 5 media
-space_create 6 other
+space_create 1 term
+space_create 2 browser
+space_create 3 reflection
+space_create 4 design
+space_create 5 explorer
+space_create 6 games
+space_create 7 other
+space_create 8 media
+space_create 9 calls
+space_create 10 social
 
 # ----------------------------------------------------------------------------------------------------------------------
 
-# yabai -m rule --add app="^(Telegram|Slack|WhatsApp)$" space=^1
-# yabai -m rule --add app="^WezTerm$" space=^2
-# yabai -m rule --add app="^Google Chrome$" space=^3
-# yabai -m rule --add app="^Steam Helper$" space=6
-# yabai -m rule --add app="^Dota 2$" space=6
-# yabai -m rule --add app="^(NetNewsWire|Mail)$" space=^5
-# yabai -m rule --add app="^Яндекс Музыка$" space=10
+yabai -m rule --add space=term			app="^(WezTerm)$"
+yabai -m rule --add space=browser		app="^(Google Chrome)$"
+yabai -m rule --add space=reflection	app="^(Mail|NetNewsWire|Things)$"
+yabai -m rule --add space=design		app="^(Figma|Miro)$"
+yabai -m rule --add space=explorer		app="^(Finder)$"
+yabai -m rule --add space=games			app="^(Steam Helper|Dota 2)$"
+yabai -m rule --add space=media			app="^(Яндекс Музыка|Photos)$"
+yabai -m rule --add space=calls			app="^(zoom.us|Толк)$"
+yabai -m rule --add space=social		app="^(Telegram|Slack|Discord|WhatsApp)$"
 
 # ----------------------------------------------------------------------------------------------------------------------
 
 yabai -m rule --add manage=off app!="^(\
-Chrome|\
+Figma|\
 Finder|\
+Google Chrome|\
+Mail|\
+Miro|\
+NetNewsWire|\
 Slack|\
 Telegram|\
-WezTerm\
+Things|\
+WezTerm|\
+zoom.us|\
+Толк\
 )$"
 
 yabai -m rule --add manage=off app="^Finder$" title="(Copy|Connect|Move|Info|Pref|Finder Settings)"
-
-# ----------------------------------------------------------------------------------------------------------------------
-
-yabai -m rule --add app="^(Яндекс Музыка)$" space=^5
-yabai -m rule --add app="^(Steam|Discord)$" space=^7
