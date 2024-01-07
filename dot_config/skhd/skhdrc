@@ -18,10 +18,7 @@ shift + alt - j : yabai -m window --warp south
 shift + alt - k : yabai -m window --warp north
 shift + alt - l : yabai -m window --warp east
 shift + alt - h : yabai -m window --warp west
-
-
-alt - a : yabai -m display --focus prev
-alt - s : yabai -m display --focus next
+shift + alt - n : yabai -m window --display recent; yabai -m window --focus recent
 
 shift + alt - r : yabai -m space --rotate 270
 shift + alt - y : yabai -m space --mirror y-axis
@@ -29,4 +26,4 @@ shift + alt - x : yabai -m space --mirror x-axis
 
 shift + alt - f : yabai -m window --toggle float --grid 8:8:1:1:6:6; sketchybar --trigger window_focus
 shift + alt - m : yabai -m window --toggle zoom-fullscreen; sketchybar --trigger window_focus
-shift + alt - e : yabai -m space --balance; 
+shift + alt - e : yabai -m space --balance
