@@ -8,6 +8,7 @@ const scopes = [
   "lazygit",
   "nvim",
   "other",
+  "raycast",
   "shell",
   "sketchybar",
   "skhd",
