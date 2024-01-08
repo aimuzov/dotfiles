@@ -22,9 +22,9 @@ export FZF_DEFAULT_OPTS=$([[ $MACOS_IS_DARK == "yes" ]] && echo " \
 --color=marker:#dc8a78,fg+:#4c4f69,prompt:#8839ef,hl+:#d20f39")
 
 export FZF_CTRL_T_OPTS="
-  --preview 'bat -n --color=always {}'
-  --preview-window 'noborder'
-  --bind 'ctrl-/:change-preview-window(hidden|)'
+	--preview 'bat -n --color=always {}'
+	--preview-window 'noborder'
+	--bind 'ctrl-/:change-preview-window(hidden|)'
 "
 
 export PATH="$WEBOS_CLI_TV:$PATH"
@@ -41,8 +41,7 @@ plugins=(
 )
 
 # https://docs.brew.sh/Shell-Completion#configuring-completions-in-bash
-if type brew &>/dev/null
-then
+if type brew &>/dev/null; then
 	FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 
 	autoload -Uz compinit
@@ -50,13 +49,13 @@ then
 fi
 
 ## ---------------------------------------------------------------------------------------------------------------------
-	
-function brew() {
-  command brew "$@" 
 
-  if [[ $* =~ "upgrade" ]] || [[ $* =~ "update" ]] || [[ $* =~ "outdated" ]]; then
-    sketchybar --trigger brew_update
-  fi
+function brew() {
+	command brew "$@"
+
+	if [[ $* =~ "upgrade" ]] || [[ $* =~ "update" ]] || [[ $* =~ "outdated" ]]; then
+		sketchybar --trigger brew_update
+	fi
 }
 
 ## ---------------------------------------------------------------------------------------------------------------------
