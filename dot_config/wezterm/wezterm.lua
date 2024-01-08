@@ -38,6 +38,7 @@ return {
 	hide_tab_bar_if_only_one_tab = true,
 	tab_bar_at_bottom = true,
 	use_fancy_tab_bar = false,
+	use_ime = true,
 
 	cursor_blink_rate = 0,
 	default_cursor_style = "SteadyBar",
@@ -49,17 +50,7 @@ return {
 
 	keys = {
 		{ key = "р", mods = "CTRL", action = wezterm.action.SendString("\x08") },
-		{ key = "Р", action = wezterm.action.SendString("H") },
-		{ key = "Д", action = wezterm.action.SendString("L") },
-		{
-			key = "h",
-			mods = "CTRL|SHIFT",
-			action = wezterm.action.DisableDefaultAssignment,
-		},
-		{
-			key = "k",
-			mods = "CTRL|SHIFT",
-			action = wezterm.action.DisableDefaultAssignment,
-		},
+		{ key = "h", mods = "CTRL|SHIFT", action = wezterm.action.DisableDefaultAssignment },
+		{ key = "k", mods = "CTRL|SHIFT", action = wezterm.action.DisableDefaultAssignment },
 	},
 }
