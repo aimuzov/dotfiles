@@ -52,7 +52,7 @@ vim.api.nvim_create_autocmd("User", {
 	callback = function(event)
 		if lazy_util.has("alpha-nvim") then
 			local fallback_name = vim.api.nvim_buf_get_name(event.buf)
-			local fallback_ft = vim.api.nvim_buf_get_option(event.buf, "filetype")
+			local fallback_ft = vim.api.nvim_get_option_value("filetype", { buf = event.buf })
 			local fallback_on_empty = fallback_name == "" and fallback_ft == ""
 
 			if fallback_on_empty then

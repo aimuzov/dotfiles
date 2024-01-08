@@ -115,14 +115,14 @@ return {
 			{
 				"<leader>bd",
 				function()
-					local buf_id = vim.fn.bufnr()
-					local buf_filetype = vim.api.nvim_buf_get_option(buf_id, "filetype")
+					local buf = vim.fn.bufnr()
+					local buf_filetype = vim.api.nvim_get_option_value("filetype", { buf = buf })
 
 					if buf_filetype == "alpha" then
 						return
 					end
 
-					buffer_delete(buf_id)
+					buffer_delete(buf)
 				end,
 				desc = "Delete buffer",
 			},
