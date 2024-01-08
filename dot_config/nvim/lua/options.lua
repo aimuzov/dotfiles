@@ -14,7 +14,7 @@ local langmap = vim.fn.join({
 }, ",")
 
 local options = {
-	autochdir = true,
+	autochdir = false,
 	swapfile = false,
 	backup = true,
 	backupdir = vim.fn.getenv("HOME") .. "/.local/state/nvim/backup/",
