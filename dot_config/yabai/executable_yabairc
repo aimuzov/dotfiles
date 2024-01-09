@@ -1,5 +1,6 @@
 #!/usr/bin/env sh
 
+# https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)#configure-scripting-addition
 sudo yabai --load-sa
 
 # ----------------------------------------------------------------------------------------------------------------------
