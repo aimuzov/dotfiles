@@ -17,7 +17,7 @@ $CONFIG_DIR/helper/helper $HELPER >/dev/null 2>&1 &
 bar=(
 	height=40
 	color=$BAR_COLOR
-	border_width=2
+	border_width=1
 	border_color=$BAR_BORDER_COLOR
 	shadow=off
 	position=bottom
@@ -31,7 +31,6 @@ bar=(
 
 sketchybar --bar "${bar[@]}"
 
-# Setting up default values
 defaults=(
 	updates=when_shown
 	icon.font="$FONT:Bold:14.0"

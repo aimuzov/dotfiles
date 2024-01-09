@@ -9,14 +9,16 @@ for i in "${!SPACE_ICONS[@]}"; do
 
 	space=(
 		background.color=$BACKGROUND_1
-		icon.highlight_color=$RED
-		icon.padding_left=10
-		icon.padding_right=10
+		icon.color=$GREY
+		icon.highlight_color=$WHITE
+		icon.padding_left=6
+		icon.padding_right=0
+		icon.width=16
 		icon="${SPACE_ICONS[i]}"
 		label.color=$GREY
 		label.font="sketchybar-app-font:Regular:16.0"
 		label.highlight_color=$WHITE
-		label.padding_right=20
+		label.padding_right=16
 		label.y_offset=-1
 		padding_left=2
 		padding_right=2
