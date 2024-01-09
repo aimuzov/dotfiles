@@ -8,25 +8,30 @@ window_state() {
 	STACK_INDEX=$(echo "$WINDOW" | jq '.["stack-index"]')
 
 	COLOR=$BAR_BORDER_COLOR
+	COLOR_BG=$BAR_COLOR
 	ICON=""
 
 	if [ "$(echo "$WINDOW" | jq '.["is-floating"]')" = "true" ]; then
 		ICON+=$YABAI_FLOAT
 		COLOR=$RED
+		COLOR_BG=$RED_BG
 	elif [ "$(echo "$WINDOW" | jq '.["has-fullscreen-zoom"]')" = "true" ]; then
 		ICON+=$YABAI_FULLSCREEN_ZOOM
 		COLOR=$GREEN
+		COLOR_BG=$GREEN_BG
 	elif [ "$(echo "$WINDOW" | jq '.["has-parent-zoom"]')" = "true" ]; then
 		ICON+=$YABAI_PARENT_ZOOM
 		COLOR=$BLUE
+		COLOR_BG=$BLUE_BG
 	elif [[ $STACK_INDEX -gt 0 ]]; then
 		LAST_STACK_INDEX=$(yabai -m query --windows --window stack.last | jq '.["stack-index"]')
 		ICON+=$YABAI_STACK
 		LABEL="$(printf "[%s/%s]" "$STACK_INDEX" "$LAST_STACK_INDEX")"
 		COLOR=$MAGENTA
+		COLOR_BG=$MAGENTA_BG
 	fi
 
-	args=(--bar border_color=$COLOR --animate sin 10 --set $NAME icon.color=$COLOR)
+	args=(--bar color=$COLOR_BG border_color=$COLOR --animate sin 10 --set $NAME icon.color=$COLOR)
 
 	[ -z "$LABEL" ] && args+=(label.width=0) ||
 		args+=(label="$LABEL" label.width=40)
