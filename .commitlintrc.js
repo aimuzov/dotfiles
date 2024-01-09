@@ -4,6 +4,7 @@ const scopes = [
   "chezmoi",
   "git",
   "gitconfig",
+  "install-script",
   "karabiner",
   "lazygit",
   "nvim",
