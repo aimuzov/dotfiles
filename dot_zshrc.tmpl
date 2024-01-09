@@ -50,25 +50,6 @@ fi
 
 ## ---------------------------------------------------------------------------------------------------------------------
 
-function brew() {
-	command brew "$@"
-
-	if [[ $* =~ "upgrade" ]] || [[ $* =~ "update" ]] || [[ $* =~ "outdated" ]]; then
-		sketchybar --trigger brew_update
-	fi
-}
-
-function nvim-update() {
-	echo "[nvim] updating lazy plugins..."
-	command nvim --headless "+Lazy! update" +qa
-	echo "[nvim] lazy plugins updated..."
-
-	command chezmoi add "$HOME/.config/nvim/lazy-lock.json"
-	echo "[chezmoi] lazy-lock applied..."
-}
-
-## ---------------------------------------------------------------------------------------------------------------------
-
 # https://spaceship-prompt.sh/getting-started/#Example
 source $(brew --prefix)/opt/spaceship/spaceship.zsh
 
