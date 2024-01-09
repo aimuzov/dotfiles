@@ -30,6 +30,22 @@ vim.api.nvim_create_autocmd("User", {
 })
 
 vim.api.nvim_create_autocmd("User", {
+	pattern = "LazyUpdate",
+	callback = function()
+		local handle = io.popen("chezmoi add ~/.config/nvim/lazy-lock.json 2>&1", "r")
+		local result_raw = handle ~= nil and handle:read("*a")
+		local result_safety = result_raw:gsub("[\n\r]", "")
+		local message = result_safety == "" and "[chezmoi] lazy-lock.json applied" or "[chezmoi] " .. result_safety
+
+		vim.print(message)
+
+		if handle ~= nil then
+			handle:close()
+		end
+	end,
+})
+
+vim.api.nvim_create_autocmd("User", {
 	pattern = "BDeletePre*",
 	callback = function()
 		if lazy_util.has("satellite.nvim") then
