@@ -3,19 +3,13 @@
 source "$CONFIG_DIR/colors.sh"
 
 COUNT="$(brew outdated | wc -l | tr -d ' ')"
-COLOR=$RED
+COLOR=$WHITE
 
 case "$COUNT" in
-2[0-9])
-	COLOR=$ORANGE
-	;;
-[1-9])
-	COLOR=$YELLOW
-	;;
-0)
-	COLOR=$GREEN
-	COUNT=
-	;;
+1[0-9]) COLOR=$ORANGE ;;
+[1-9]) COLOR=$YELLOW ;;
+0) COUNT="" ;;
+*) COLOR=$RED ;;
 esac
 
-sketchybar --set $NAME label=$COUNT icon.color=$COLOR
+sketchybar --set $NAME label="$COUNT" icon.color="$COLOR"

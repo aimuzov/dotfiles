@@ -17,7 +17,6 @@ LABEL="${PERCENTAGE}%"
 case ${PERCENTAGE} in
 9[0-9] | 100)
 	ICON=$BATTERY_100
-	COLOR=$GREEN
 	LABEL=""
 	;;
 [6-8][0-9])
