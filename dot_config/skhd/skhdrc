@@ -13,13 +13,12 @@ alt - 7 : yabai -m space --focus 7
 alt - 8 : yabai -m space --focus 8
 alt - 9 : yabai -m space --focus 9
 alt - 0 : yabai -m space --focus 10
-alt - n : yabai -m space --display next || yabai -m space --display first
 
 alt + shift - j : yabai -m window --warp south 
 alt + shift - k : yabai -m window --warp north
 alt + shift - h : yabai -m window --warp west || (yabai -m window --space prev; yabai -m space --focus prev)
 alt + shift - l : yabai -m window --warp east || (yabai -m window --space next; yabai -m space --focus next)
-alt + shift - n : yabai -m window --display recent; yabai -m window --focus recent
+alt + shift - d : yabai -m window --display recent; yabai -m window --focus recent
 
 alt + shift - r : yabai -m space --rotate 270
 alt + shift - y : yabai -m space --mirror y-axis
@@ -27,4 +26,12 @@ alt + shift - x : yabai -m space --mirror x-axis
 
 alt + shift - f : yabai -m window --toggle float --grid 8:8:1:1:6:6; sketchybar --trigger window_focus
 alt + shift - m : yabai -m window --toggle zoom-fullscreen; sketchybar --trigger window_focus
+alt + shift - p : yabai -m window --toggle zoom-parent; sketchybar --trigger window_focus
 alt + shift - e : yabai -m space --balance
+
+alt + shift - left : yabai -m window  west --stack $(yabai -m query --windows --window | jq -r '.id') && sketchybar --trigger window_focus
+alt + shift - down : yabai -m window south --stack $(yabai -m query --windows --window | jq -r '.id') && sketchybar --trigger window_focus
+alt + shift - up : yabai -m window north --stack $(yabai -m query --windows --window | jq -r '.id') && sketchybar --trigger window_focus
+alt + shift - right : yabai -m window east --stack $(yabai -m query --windows --window | jq -r '.id') && sketchybar --trigger window_focus
+alt + shift - 0x21 : yabai -m window --focus stack.prev
+alt + shift - 0x1E : yabai -m window --focus stack.next

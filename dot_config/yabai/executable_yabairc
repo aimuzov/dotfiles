@@ -10,6 +10,11 @@ yabai -m signal --add event=window_focused		action="sketchybar --trigger window_
 yabai -m signal --add event=window_created		action="sketchybar --trigger windows_on_spaces"
 yabai -m signal --add event=window_destroyed	action="sketchybar --trigger windows_on_spaces"
 
+yabai -m signal --add event=window_focused				action='yabai -m window $YABAI_WINDOW_ID --insert stack'
+yabai -m signal --add event=application_front_switched	action='yabai -m window --insert stack'
+yabai -m signal --add event=application_terminated		action='yabai -m window --insert stack'
+yabai -m signal --add event=window_destroyed			action='yabai -m window --insert stack'
+
 # ----------------------------------------------------------------------------------------------------------------------
 
 yabai -m config external_bar				all:0:38
@@ -27,7 +32,7 @@ yabai -m config active_window_opacity		1.0
 yabai -m config normal_window_opacity		0.85
 yabai -m config window_animation_duration	0
 
-yabai -m config insert_feedback_color		0xff9dd274
+yabai -m config insert_feedback_color		0x00FFFFFF
 yabai -m config split_ratio					0.5
 yabai -m config auto_balance				off
 yabai -m config auto_padding				on
