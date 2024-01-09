@@ -51,15 +51,14 @@ defaults=(
 
 sketchybar --default "${defaults[@]}"
 
-# Left
 source "$ITEM_DIR/spaces.sh"
 source "$ITEM_DIR/yabai.sh"
 source "$ITEM_DIR/front_app.sh"
 
-# Right
 source "$ITEM_DIR/calendar.sh"
 source "$ITEM_DIR/battery.sh"
 source "$ITEM_DIR/brew.sh"
+source "$ITEM_DIR/keyboard_layout.sh"
 source "$ITEM_DIR/cpu.sh"
 source "$ITEM_DIR/media.sh"
 source "$ITEM_DIR/svim.sh"
