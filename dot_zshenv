@@ -15,3 +15,13 @@ function nvim-update() {
 	command chezmoi add "$HOME/.config/nvim/lazy-lock.json"
 	echo "[chezmoi] lazy-lock applied..."
 }
+
+function restart-vm() {
+	command yabai --restart-service
+	command skhd --restart-service
+	command brew services restart borders
+	command brew services restart svim
+	command brew services restart sketchybar
+
+	echo "vm is restarted"
+}
