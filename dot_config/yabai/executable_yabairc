@@ -46,6 +46,18 @@ yabai -m config window_gap					10
 
 # ----------------------------------------------------------------------------------------------------------------------
 
+function display_index_get() {
+	local cond=$([[ "$1" == "1" ]] && echo "!=" || echo "==")
+	local retina_uuid="37D8832A-2D66-02CA-B9F7-8F30A301B230"
+	local index=$(yabai -m query --displays | jq "first(.[] | select(.uuid $cond \"$retina_uuid\") | .index)")
+
+	if [ -z "$index" ]; then
+		echo "1"
+	else
+		echo $index
+	fi
+}
+
 function space_destroy_amount {
 	for idx in $(yabai -m query --spaces | jq ".[].index | select(. > $1)" | sort -nr); do
 		yabai -m space --destroy "$idx"
@@ -53,29 +65,30 @@ function space_destroy_amount {
 }
 
 function space_create {
-	local idx="$1"
-	local name="$2"
-	local space=$(yabai -m query --spaces --space "$idx")
+	local display=$(display_index_get $1)
+	local idx=$2
+	local name=$3
+	local space=$(yabai -m query --spaces | jq "first(.[] | select(.index == $idx) | .index)")
 
 	if [ -z "$space" ]; then
 		yabai -m space --create
 	fi
 
-	yabai -m space "$idx" --label "$name"
+	yabai -m space "$idx" --label "$name" --display "$display"
 }
 
 space_destroy_amount 10
 
-space_create 1 term
-space_create 2 browser
-space_create 3 reflection
-space_create 4 design
-space_create 5 explorer
-space_create 6 games
-space_create 7 other
-space_create 8 media
-space_create 9 calls
-space_create 10 social
+space_create 1 1 term
+space_create 1 2 browser
+space_create 1 3 reflection
+space_create 1 4 design
+space_create 1 5 explorer
+space_create 1 6 games
+space_create 2 7 other
+space_create 2 8 media
+space_create 2 9 calls
+space_create 2 10 social
 
 # ----------------------------------------------------------------------------------------------------------------------
 
