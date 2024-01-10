@@ -121,7 +121,8 @@ Telegram|\
 Things|\
 WezTerm|\
 zoom.us|\
-Толк\
+Толк|\
+Яндекс Музыка\
 )$"
 
 yabai -m rule --add manage=off app="^Finder$" title="(Copy|Connect|Move|Info|Pref|Finder Settings)"
