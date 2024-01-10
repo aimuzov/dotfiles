@@ -31,6 +31,7 @@ return {
 
 	font = wezterm.font_with_fallback({ "JetBrainsMono NFM", "Noto Emoji" }),
 
+	adjust_window_size_when_changing_font_size = false,
 	line_height = 1.3,
 	font_size = 14,
 
@@ -38,7 +39,6 @@ return {
 	hide_tab_bar_if_only_one_tab = true,
 	tab_bar_at_bottom = true,
 	use_fancy_tab_bar = false,
-	use_ime = true,
 
 	cursor_blink_rate = 0,
 	default_cursor_style = "SteadyBar",
@@ -46,7 +46,8 @@ return {
 	window_decorations = "RESIZE",
 	window_padding = { left = 0, right = 0, top = "0.25cell", bottom = 0 },
 
-	debug_key_events = true,
+	debug_key_events = false,
+	use_ime = true,
 
 	keys = {
 		{ key = "р", mods = "CTRL", action = wezterm.action.SendString("\x08") },
