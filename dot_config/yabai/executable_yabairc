@@ -112,6 +112,7 @@ yabai -m rule --add space=social		app="^(Telegram|Slack|Discord|WhatsApp)$"
 yabai -m rule --add manage=off app!="^(\
 Figma|\
 Finder|\
+Calendar|\
 Google Chrome|\
 Mail|\
 Miro|\
@@ -126,4 +127,5 @@ zoom.us|\
 )$"
 
 yabai -m rule --add manage=off app="^Finder$" title="(Copy|Connect|Move|Info|Pref|Finder Settings)"
+yabai -m rule --add manage=off app="^Slack$" title="^Huddle"
 yabai -m rule --add manage=off app="^Things$" title="(Quick Entry)"
