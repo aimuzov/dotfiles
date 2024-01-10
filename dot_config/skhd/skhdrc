@@ -35,3 +35,7 @@ alt + shift - up : yabai -m window north --stack $(yabai -m query --windows --wi
 alt + shift - right : yabai -m window east --stack $(yabai -m query --windows --window | jq -r '.id') && sketchybar --trigger window_focus
 alt + shift - 0x21 : yabai -m window --focus stack.prev
 alt + shift - 0x1E : yabai -m window --focus stack.next
+
+.blacklist [
+    "Dota 2"
+]
