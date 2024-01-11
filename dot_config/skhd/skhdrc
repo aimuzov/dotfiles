@@ -1,7 +1,4 @@
-alt - h : yabai -m window --focus west || yabai -m display --focus west
-alt - j : yabai -m window --focus south || yabai -m display --focus south
-alt - k : yabai -m window --focus north || yabai -m display --focus north
-alt - l : yabai -m window --focus east || yabai -m display --focus east
+# -- Space focusing ----------------------------------------------------------------------------------------------------
 
 alt - 1 : yabai -m space --focus 1
 alt - 2 : yabai -m space --focus 2
@@ -14,10 +11,27 @@ alt - 8 : yabai -m space --focus 8
 alt - 9 : yabai -m space --focus 9
 alt - 0 : yabai -m space --focus 10
 
-alt + ctrl - h : yabai -m window --resize right:-20:0 2> /dev/null || yabai -m window --resize left:-20:0 2> /dev/null
-alt + ctrl - j : yabai -m window --resize bottom:0:20 2> /dev/null || yabai -m window --resize top:0:20 2> /dev/null
-alt + ctrl - k : yabai -m window --resize bottom:0:-20 2> /dev/null || yabai -m window --resize top:0:-20 2> /dev/null
-alt + ctrl - l : yabai -m window --resize right:20:0 2> /dev/null || yabai -m window --resize left:20:0 2> /dev/null
+# -- Space layout rotating ---------------------------------------------------------------------------------------------------
+
+alt + shift - r : yabai -m space --rotate 270
+alt + shift - y : yabai -m space --mirror y-axis
+alt + shift - x : yabai -m space --mirror x-axis
+
+# -- Window focusing ---------------------------------------------------------------------------------------------------
+
+alt - h : yabai -m window --focus west	|| yabai -m display --focus west
+alt - j : yabai -m window --focus south	|| yabai -m display --focus south
+alt - k : yabai -m window --focus north	|| yabai -m display --focus north
+alt - l : yabai -m window --focus east	|| yabai -m display --focus east
+
+# -- Window resizing ---------------------------------------------------------------------------------------------------
+
+alt + ctrl - h : yabai -m window --resize right:-20:0 	|| yabai -m window --resize left:-20:0
+alt + ctrl - j : yabai -m window --resize bottom:0:20 	|| yabai -m window --resize top:0:20
+alt + ctrl - k : yabai -m window --resize bottom:0:-20 	|| yabai -m window --resize top:0:-20
+alt + ctrl - l : yabai -m window --resize right:20:0 	|| yabai -m window --resize left:20:0
+
+# -- Window warping ----------------------------------------------------------------------------------------------------
 
 alt + shift - j : yabai -m window --warp south 
 alt + shift - k : yabai -m window --warp north
@@ -25,22 +39,24 @@ alt + shift - h : yabai -m window --warp west || (yabai -m window --space prev; 
 alt + shift - l : yabai -m window --warp east || (yabai -m window --space next; yabai -m space --focus next)
 alt + shift - d : yabai -m window --display recent; yabai -m window --focus recent
 
-alt + shift - r : yabai -m space --rotate 270
-alt + shift - y : yabai -m space --mirror y-axis
-alt + shift - x : yabai -m space --mirror x-axis
+# -- Window stacking ---------------------------------------------------------------------------------------------------
+
+alt + shift - left	: yabai -m window  west --stack $(yabai -m query --windows --window | jq -r '.id') && sketchybar --trigger window_focus
+alt + shift - down	: yabai -m window south --stack $(yabai -m query --windows --window | jq -r '.id') && sketchybar --trigger window_focus
+alt + shift - up	: yabai -m window north --stack $(yabai -m query --windows --window | jq -r '.id') && sketchybar --trigger window_focus
+alt + shift - right	: yabai -m window east --stack $(yabai -m query --windows --window | jq -r '.id') && sketchybar --trigger window_focus
+alt + shift - 0x21	: yabai -m window --focus stack.prev
+alt + shift - 0x1E	: yabai -m window --focus stack.next
+
+# -- Window toggling ---------------------------------------------------------------------------------------------------
 
 alt + shift - f : yabai -m window --toggle float --grid 8:8:1:1:6:6; sketchybar --trigger window_focus
 alt + shift - m : yabai -m window --toggle zoom-fullscreen; sketchybar --trigger window_focus
 alt + shift - p : yabai -m window --toggle zoom-parent; sketchybar --trigger window_focus
 alt + shift - e : yabai -m space --balance
 
-alt + shift - left : yabai -m window  west --stack $(yabai -m query --windows --window | jq -r '.id') && sketchybar --trigger window_focus
-alt + shift - down : yabai -m window south --stack $(yabai -m query --windows --window | jq -r '.id') && sketchybar --trigger window_focus
-alt + shift - up : yabai -m window north --stack $(yabai -m query --windows --window | jq -r '.id') && sketchybar --trigger window_focus
-alt + shift - right : yabai -m window east --stack $(yabai -m query --windows --window | jq -r '.id') && sketchybar --trigger window_focus
-alt + shift - 0x21 : yabai -m window --focus stack.prev
-alt + shift - 0x1E : yabai -m window --focus stack.next
+# -- App blacklist -----------------------------------------------------------------------------------------------------
 
 .blacklist [
-    "Dota 2"
+    "Dota 2" # yes i fuck your mom 
 ]
