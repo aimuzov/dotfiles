@@ -1,63 +1,44 @@
-#!/usr/bin/env sh
+#!/usr/bin/env zsh
 
 # https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)#configure-scripting-addition
 sudo yabai --load-sa
 
 # -- Events ------------------------------------------------------------------------------------------------------------
 
-yabai -m signal --add event=dock_did_restart	action="sudo yabai --load-sa"
-yabai -m signal --add event=window_focused		action="sketchybar --trigger window_focus"
-yabai -m signal --add event=window_created		action="sketchybar --trigger windows_on_spaces"
-yabai -m signal --add event=window_destroyed	action="sketchybar --trigger windows_on_spaces"
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+yabai -m signal --add event=window_focused action="sketchybar --trigger window_focus"
+yabai -m signal --add event=window_created action="sketchybar --trigger windows_on_spaces"
+yabai -m signal --add event=window_destroyed action="sketchybar --trigger windows_on_spaces"
 
 # -- Config ------------------------------------------------------------------------------------------------------------
 
-yabai -m config external_bar				all:0:38
-yabai -m config debug_output				off
-
-yabai -m config mouse_follows_focus			on 
-yabai -m config focus_follows_mouse			off 
-
-yabai -m config window_zoom_persist			off
-yabai -m config window_placement			second_child
-yabai -m config window_topmost				off
-
-yabai -m config window_shadow				off
-yabai -m config window_opacity				on
-yabai -m config window_opacity_duration		0.15
-yabai -m config active_window_opacity		1.0
-yabai -m config normal_window_opacity		0.95
-
-yabai -m config insert_feedback_color		0x00ffffff
-yabai -m config split_ratio					0.55
-yabai -m config auto_balance				off
-yabai -m config auto_padding				on
-yabai -m config layout						bsp
-
-yabai -m config mouse_modifier				fn
-yabai -m config mouse_action1				move
-yabai -m config mouse_action2				resize
-yabai -m config mouse_drop_action			swap
-
-yabai -m config top_padding					8
-yabai -m config bottom_padding				8
-yabai -m config left_padding				8
-yabai -m config right_padding				8
-yabai -m config window_gap					8
+yabai -m config \
+	external_bar all:0:38 \
+	debug_output off \
+	mouse_follows_focus on \
+	focus_follows_mouse off \
+	window_zoom_persist off \
+	window_placement second_childwindow_topmost offwindow_shadow off \
+	window_opacity on \
+	window_opacity_duration 0.15 \
+	active_window_opacity 1.0 \
+	normal_window_opacity 0.95 \
+	insert_feedback_color 0x00ffffff \
+	split_ratio 0.55 \
+	auto_balance off \
+	auto_padding on \
+	layout bsp \
+	mouse_modifier fn \
+	mouse_action1 move \
+	mouse_action2 resize \
+	mouse_drop_action swap \
+	top_padding 8 \
+	bottom_padding 8 \
+	left_padding 8 \
+	right_padding 8 \
+	window_gap 8
 
 # -- Space preparing ---------------------------------------------------------------------------------------------------
-
-function display_index_get() {
-	local cond=$([[ "$1" == "1" ]] && echo "!=" || echo "==")
-	local retina_uuid="37D8832A-2D66-02CA-B9F7-8F30A301B230"
-	local index=$(yabai -m query --displays | jq "first(.[] | select(.uuid $cond \"$retina_uuid\") | .index)")
-
-	if [ -z "$index" ]; then
-		echo "1"
-	else
-		echo $index
-	fi
-}
 
 function space_destroy_amount {
 	for idx in $(yabai -m query --spaces | jq ".[].index | select(. > $1)" | sort -nr); do
@@ -93,15 +74,15 @@ space_create 2 10 social
 
 # -- Assigning windows in spaces ---------------------------------------------------------------------------------------
 
-yabai -m rule --add space=term			app="^(WezTerm)$"
-yabai -m rule --add space=browser		app="^(Google Chrome)$"
-yabai -m rule --add space=reflection	app="^(Mail|NetNewsWire|Things)$"
-yabai -m rule --add space=design		app="^(Figma|Miro)$"
-yabai -m rule --add space=explorer		app="^(Finder)$"
-yabai -m rule --add space=games			app="^(Steam Helper|Dota 2)$"
-yabai -m rule --add space=media			app="^(Яндекс Музыка|Photos)$"
-yabai -m rule --add space=calls			app="^(zoom.us|Толк)$"
-yabai -m rule --add space=social		app="^(Telegram|Slack|Discord|WhatsApp)$"
+yabai -m rule --add space=term app="^(WezTerm)$"
+yabai -m rule --add space=browser app="^(Google Chrome)$"
+yabai -m rule --add space=reflection app="^(Mail|NetNewsWire|Things)$"
+yabai -m rule --add space=design app="^(Figma|Miro)$"
+yabai -m rule --add space=explorer app="^(Finder)$"
+yabai -m rule --add space=games app="^(Steam Helper|Dota 2)$"
+yabai -m rule --add space=media app="^(Яндекс Музыка|Photos)$"
+yabai -m rule --add space=calls app="^(zoom.us|Толк)$"
+yabai -m rule --add space=social app="^(Telegram|Slack|Discord|WhatsApp)$"
 
 # -- Layout managing ---------------------------------------------------------------------------------------------------
 
