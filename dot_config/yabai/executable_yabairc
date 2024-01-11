@@ -19,6 +19,7 @@ yabai -m signal --add event=window_destroyed			action="yabai -m window --insert 
 # -- Config ------------------------------------------------------------------------------------------------------------
 
 yabai -m config external_bar				all:0:38
+yabai -m config debug_output				off
 
 yabai -m config mouse_follows_focus			on 
 yabai -m config focus_follows_mouse			off 
