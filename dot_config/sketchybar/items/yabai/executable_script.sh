@@ -1,8 +1,10 @@
-#!/bin/bash
+ICON_STACK=􀏭
+ICON_FULLSCREEN_ZOOM=􀏜
+ICON_PARENT_ZOOM=􀥃
+ICON_FLOAT=􀢌
 
 window_state() {
 	source "$CONFIG_DIR/colors.sh"
-	source "$CONFIG_DIR/icons.sh"
 
 	WINDOW=$(yabai -m query --windows --window)
 	STACK_INDEX=$(echo "$WINDOW" | jq '.["stack-index"]')
@@ -12,20 +14,20 @@ window_state() {
 	ICON=""
 
 	if [ "$(echo "$WINDOW" | jq '.["is-floating"]')" = "true" ]; then
-		ICON+=$YABAI_FLOAT
+		ICON+=$ICON_FLOAT
 		COLOR=$RED
 		COLOR_BG=$RED_BG
 	elif [ "$(echo "$WINDOW" | jq '.["has-fullscreen-zoom"]')" = "true" ]; then
-		ICON+=$YABAI_FULLSCREEN_ZOOM
+		ICON+=$ICON_FULLSCREEN_ZOOM
 		COLOR=$GREEN
 		COLOR_BG=$GREEN_BG
 	elif [ "$(echo "$WINDOW" | jq '.["has-parent-zoom"]')" = "true" ]; then
-		ICON+=$YABAI_PARENT_ZOOM
+		ICON+=$ICON_PARENT_ZOOM
 		COLOR=$BLUE
 		COLOR_BG=$BLUE_BG
 	elif [[ $STACK_INDEX -gt 0 ]]; then
 		LAST_STACK_INDEX=$(yabai -m query --windows --window stack.last | jq '.["stack-index"]')
-		ICON+=$YABAI_STACK
+		ICON+=$ICON_STACK
 		LABEL="$(printf "[%s/%s]" "$STACK_INDEX" "$LAST_STACK_INDEX")"
 		COLOR=$MAGENTA
 		COLOR_BG=$MAGENTA_BG
@@ -48,10 +50,6 @@ mouse_clicked() {
 }
 
 case "$SENDER" in
-"mouse.clicked")
-	mouse_clicked
-	;;
-"window_focus")
-	window_state
-	;;
+"mouse.clicked") mouse_clicked ;;
+"window_focus") window_state ;;
 esac

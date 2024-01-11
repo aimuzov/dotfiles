@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env sh
 
 export BLACK=0xff181926
 export WHITE=0xffcad3f5

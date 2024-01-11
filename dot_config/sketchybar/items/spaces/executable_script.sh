@@ -1,5 +1,3 @@
-#!/bin/bash
-
 update() {
 	source "$CONFIG_DIR/colors.sh"
 	COLOR=$BACKGROUND_1
@@ -37,10 +35,6 @@ mouse_clicked() {
 }
 
 case "$SENDER" in
-"mouse.clicked")
-	mouse_clicked
-	;;
-*)
-	update
-	;;
+"mouse.clicked") mouse_clicked ;;
+*) update ;;
 esac

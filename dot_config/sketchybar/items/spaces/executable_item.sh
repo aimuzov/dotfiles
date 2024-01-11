@@ -1,9 +1,8 @@
-#!/bin/bash
-
-SPACE_ICONS=("1" "2" "3" "4" "5" "6" "7" "8" "9" "10" "11" "12")
+SPACE_ICONS=("1" "2" "3" "4" "5" "6" "7" "8" "9" "10")
 
 sid=0
 spaces=()
+
 for i in "${!SPACE_ICONS[@]}"; do
 	sid=$(($i + 1))
 
@@ -22,7 +21,7 @@ for i in "${!SPACE_ICONS[@]}"; do
 		label.y_offset=-1
 		padding_left=2
 		padding_right=2
-		script="$PLUGIN_DIR/space.sh"
+		script="$CONFIG_DIR/items/spaces/script.sh"
 		space=$sid
 	)
 
@@ -35,12 +34,13 @@ space_creator=(
 	click_script='yabai -m space --create'
 	display=active
 	icon.color=$WHITE
-	icon.font="$FONT:Heavy:12.0"
+	icon.font.style="Heavy"
+	icon.font.size=12
 	icon=􀆊
 	label.drawing=off
 	padding_left=8
 	padding_right=8
-	script="$PLUGIN_DIR/space_windows.sh"
+	script="$CONFIG_DIR/items/spaces/script_create.sh"
 )
 
 sketchybar --add item space_creator left \

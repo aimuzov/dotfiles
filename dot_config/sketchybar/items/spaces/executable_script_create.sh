@@ -1,6 +1,4 @@
-#!/bin/bash
-
-if [ "$SENDER" = "space_windows_change" ]; then
+update() {
 	args=(--animate sin 10)
 
 	space="$(echo "$INFO" | jq -r '.space')"
@@ -9,7 +7,7 @@ if [ "$SENDER" = "space_windows_change" ]; then
 	icon_strip=" "
 	if [ "${apps}" != "" ]; then
 		while read -r app; do
-			icon_strip+=" $($CONFIG_DIR/plugins/icon_map.sh "$app")"
+			icon_strip+=" $($CONFIG_DIR/items/spaces/icons_map.sh "$app")"
 		done <<<"${apps}"
 	else
 		icon_strip=""
@@ -17,4 +15,8 @@ if [ "$SENDER" = "space_windows_change" ]; then
 	args+=(--set space.$space label="$icon_strip")
 
 	sketchybar -m "${args[@]}"
-fi
+}
+
+case "$SENDER" in
+"space_windows_change") update ;;
+esac
