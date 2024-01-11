@@ -19,10 +19,16 @@ alt + shift - x : yabai -m space --mirror x-axis
 
 # -- Window focusing ---------------------------------------------------------------------------------------------------
 
-alt - h : yabai -m window --focus west	|| yabai -m display --focus west
+alt - h :	yabai -m window --focus west || \
+			(yabai -m display --focus west && yabai -m window --focus last) || \
+			(yabai -m display --focus $(display_index_get 1) && yabai -m window --focus last)
+
+alt - l :	yabai -m window --focus east || \
+			(yabai -m display --focus east && yabai -m window --focus first) || \
+			(yabai -m display --focus $(display_index_get 2) && yabai -m window --focus first)
+
 alt - j : yabai -m window --focus south	|| yabai -m display --focus south
 alt - k : yabai -m window --focus north	|| yabai -m display --focus north
-alt - l : yabai -m window --focus east	|| yabai -m display --focus east
 
 # -- Window resizing ---------------------------------------------------------------------------------------------------
 
