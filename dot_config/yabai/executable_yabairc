@@ -3,7 +3,7 @@
 # https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)#configure-scripting-addition
 sudo yabai --load-sa
 
-# ----------------------------------------------------------------------------------------------------------------------
+# -- Events ------------------------------------------------------------------------------------------------------------
 
 yabai -m signal --add event=dock_did_restart	action="sudo yabai --load-sa"
 yabai -m signal --add event=window_focused		action="sketchybar --trigger window_focus"
@@ -15,7 +15,7 @@ yabai -m signal --add event=window_destroyed	action="sketchybar --trigger window
 # yabai -m signal --add event=application_terminated		action='yabai -m window --insert stack'
 # yabai -m signal --add event=window_destroyed			action='yabai -m window --insert stack'
 
-# ----------------------------------------------------------------------------------------------------------------------
+# -- Config ------------------------------------------------------------------------------------------------------------
 
 yabai -m config external_bar				all:0:38
 
@@ -49,7 +49,7 @@ yabai -m config left_padding				10
 yabai -m config right_padding				10
 yabai -m config window_gap					10
 
-# ----------------------------------------------------------------------------------------------------------------------
+# -- Space preparing ---------------------------------------------------------------------------------------------------
 
 function display_index_get() {
 	local cond=$([[ "$1" == "1" ]] && echo "!=" || echo "==")
@@ -95,7 +95,7 @@ space_create 2 8 media
 space_create 2 9 calls
 space_create 2 10 social
 
-# ----------------------------------------------------------------------------------------------------------------------
+# -- Assigning windows in spaces ---------------------------------------------------------------------------------------
 
 yabai -m rule --add space=term			app="^(WezTerm)$"
 yabai -m rule --add space=browser		app="^(Google Chrome)$"
@@ -107,7 +107,7 @@ yabai -m rule --add space=media			app="^(Яндекс Музыка|Photos)$"
 yabai -m rule --add space=calls			app="^(zoom.us|Толк)$"
 yabai -m rule --add space=social		app="^(Telegram|Slack|Discord|WhatsApp)$"
 
-# ----------------------------------------------------------------------------------------------------------------------
+# -- Layout managing ---------------------------------------------------------------------------------------------------
 
 yabai -m rule --add manage=off app!="^(\
 Figma|\
