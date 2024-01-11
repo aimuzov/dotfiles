@@ -1,3 +1,20 @@
+local override_lazy_keys_to_string = function()
+	local Keys = require("lazy.core.handler.keys")
+	local to_string_original = Keys.to_string
+
+	Keys.to_string = function(keys)
+		local result_raw = to_string_original(keys)
+		local result_pretty = result_raw
+			:gsub("<leader>", "󱁐")
+			:gsub("%(v%)", "󰬝")
+			:gsub("%(i%)", "󰬐")
+			:gsub("%(x%)", "󰬟")
+			:gsub("%(t%)", "󰬛")
+
+		return result_pretty
+	end
+end
+
 local override_lazy_open = function()
 	local Util = require("lazyvim.util")
 	local open_original = Util.terminal.open
@@ -72,6 +89,7 @@ local remove_context_actions = function()
 	vim.cmd.aunmenu({ "PopUp.-1-" })
 end
 
+override_lazy_keys_to_string()
 override_lazy_open()
 override_lazy_lualine_pretty_path()
 remove_context_actions()

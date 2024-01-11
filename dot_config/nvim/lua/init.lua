@@ -15,7 +15,12 @@ local opts = {
 	checker = { enabled = true, notify = false },
 	change_detection = { enabled = false },
 	diff = { cmd = "diffview.nvim" },
-	ui = { border = "rounded", title = "  󱎦  󰫮  󰬇  󰬆  " },
+	ui = {
+		border = "rounded",
+		title = "  󱎦  󰫮  󰬇  󰬆  ",
+		size = { width = 0.85, height = 0.8 },
+		icons = { lazy = "", keys = "󰥻" },
+	},
 	performance = { rtp = { disabled_plugins = { "gzip", "tarPlugin", "tohtml", "tutor", "zipPlugin" } } },
 }
 
