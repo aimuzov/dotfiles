@@ -10,7 +10,7 @@ function display_index_get() {
 	fi
 }
 
-function yabai-sudoers() {
+function yabai_sudoers() {
 	# https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)#configure-scripting-addition
 	echo "aimuzov ALL=(root) NOPASSWD: sha256:$(shasum -a 256 $(which yabai)) --load-sa" | pbcopy
 	command sudo visudo -f /private/etc/sudoers.d/yabai
@@ -25,7 +25,7 @@ function brew() {
 	fi
 }
 
-function nvim-update() {
+function nvim_update() {
 	echo "[nvim] updating lazy plugins..."
 	command nvim --headless "+Lazy! update" +qa
 	echo "[nvim] lazy plugins updated..."
@@ -34,7 +34,7 @@ function nvim-update() {
 	echo "[chezmoi] lazy-lock applied..."
 }
 
-function restart-vm() {
+function restart_vm() {
 	command yabai --restart-service
 	command skhd --restart-service
 	command brew services restart borders
