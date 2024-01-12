@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-options=(
+config=(
 	style=round
 	width=8.0
 	hidpi=on
@@ -9,4 +9,4 @@ options=(
 	blacklist="Steam Helper,dota2"
 )
 
-borders "${options[@]}"
+borders "${config[@]}"
