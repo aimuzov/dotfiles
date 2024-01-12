@@ -1,4 +1,5 @@
 #!/usr/bin/env zsh
+# vi: ft=sh
 
 # https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)#configure-scripting-addition
 sudo yabai --load-sa
@@ -76,7 +77,7 @@ space_create 2 10 social
 
 yabai -m rule --add space=term app="^(WezTerm)$"
 yabai -m rule --add space=browser app="^(Google Chrome)$"
-yabai -m rule --add space=reflection app="^(Mail|NetNewsWire|Things)$"
+yabai -m rule --add space=reflection app="^(Calendar|Mail|NetNewsWire|Things)$"
 yabai -m rule --add space=design app="^(Figma|Miro)$"
 yabai -m rule --add space=explorer app="^(Finder)$"
 yabai -m rule --add space=games app="^(Steam Helper|Dota 2)$"
