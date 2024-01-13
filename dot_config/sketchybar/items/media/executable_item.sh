@@ -2,7 +2,6 @@ NAME="media"
 
 config=(
 	script="$CONFIG_DIR/items/$NAME/script.sh"
-	click_script="echo '$NAME' >~/.local/share/chezmoi/dot_config/sketchybar/items/media/test.txt"
 	icon.background.drawing=on
 	icon.background.image=media.artwork
 	icon.background.image.corner_radius=14
