@@ -1,5 +1,20 @@
 #!/bin/zsh
 
+# Close any open System Preferences panes,
+# to prevent them from overriding
+# settings we’re about to change
+osascript -e 'tell application "System Preferences" to quit'
+
+# Ask for the administrator password upfront
+sudo -v
+
+# Keep-alive: update existing `sudo` time stamp until `.macos` has finished
+while true; do
+	sudo -n true
+	sleep 60
+	kill -0 "$$" || exit
+done 2>/dev/null &
+
 # ----------------------------------------------------------------------------------------------------------------------
 
 echo "Installing commandline tools..."
@@ -17,6 +32,21 @@ brew bundle install --global
 # ----------------------------------------------------------------------------------------------------------------------
 
 echo "Changing macOS defaults..." # https://macos-defaults.com/
+
+sudo nvram SystemAudioVolume=" "
+sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName
+
+defaults write NSGlobalDomain "AppleKeyboardUIMode" -int "3"
+defaults write NSGlobalDomain "AppleLanguages" -array "en" "ru"
+defaults write NSGlobalDomain "ApplePressAndHoldEnabled" -bool "false"
+defaults write NSGlobalDomain "InitialKeyRepeat" -int "10"
+defaults write NSGlobalDomain "KeyRepeat" -int "1"
+defaults write NSGlobalDomain "NSAutomaticCapitalizationEnabled" -bool "false"
+defaults write NSGlobalDomain "NSAutomaticDashSubstitutionEnabled" -bool "false"
+defaults write NSGlobalDomain "NSAutomaticPeriodSubstitutionEnabled" -bool "false"
+defaults write NSGlobalDomain "NSAutomaticQuoteSubstitutionEnabled" -bool "false"
+defaults write NSGlobalDomain "NSAutomaticSpellingCorrectionEnabled" -bool "false"
+defaults write NSGlobalDomain "NSDocumentSaveNewDocumentsToCloud" -bool "false"
 
 defaults write com.apple.dock "autohide" -bool "true"
 defaults write com.apple.dock "mineffect" -string "suck"
@@ -42,17 +72,24 @@ defaults write com.apple.finder "ShowRemovableMediaOnDesktop" -bool "false"
 defaults write com.apple.finder "_FXSortFoldersFirst" -bool "true"
 defaults write com.apple.finder "_FXSortFoldersFirstOnDesktop" -bool "true"
 defaults write com.apple.universalaccess "showWindowTitlebarIcons" -bool "true"
-defaults write NSGlobalDomain "NSDocumentSaveNewDocumentsToCloud" -bool "false"
 killall "Finder"
 
 defaults write com.apple.ActivityMonitor "UpdatePeriod" -int "2"
 defaults write com.apple.ActivityMonitor "IconType" -int "2"
 killall "Activity Monitor"
 
-defaults write com.apple.screencapture "disable-shadow" -bool true
+defaults write com.apple.screencapture "disable-shadow" -bool "true"
 defaults write com.apple.screencapture "location" -string "$HOME/temp/screenshots"
 defaults write com.apple.screencapture "type" -string "png"
 
-defaults write com.apple.menuextra.clock IsAnalog -bool true && killall SystemUIServer
+defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int "40"
+defaults write com.apple.menuextra.clock "IsAnalog" -bool "true" && killall SystemUIServer
 defaults write com.apple.LaunchServices "LSQuarantine" -bool "false"
 defaults write com.apple.spaces "spans-displays" -bool "false"
+
+defaults write com.apple.frameworks.diskimages "skip-verify" -bool "true"
+defaults write com.apple.frameworks.diskimages "skip-verify-locked" -bool "true"
+defaults write com.apple.frameworks.diskimages "skip-verify-remote" -bool "true"
+
+defaults write com.apple.mail "AddressesIncludeNameOnPasteboard" -bool "false"
+defaults write com.apple.mail "NSUserKeyEquivalents" -dict-add "Send" "@\U21a9"
