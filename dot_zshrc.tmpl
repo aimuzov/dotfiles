@@ -13,6 +13,8 @@ export OPENAI_API_KEY="{{ (keepassxcAttribute "OPENAI" "API_KEY") }}"
 export LG_WEBOS_TV_SDK_HOME="$HOME/stv-tools/webos-sdk"
 export WEBOS_CLI_TV="$LG_WEBOS_TV_SDK_HOME/bin"
 
+export BAT_THEME=$([[ $MACOS_IS_DARK == "yes" ]] && echo "Catppuccin-frappe" || echo "Catppuccin-latte")
+
 # https://github.com/ohmyzsh/ohmyzsh/wiki/Settings#zsh
 export ZSH="$HOME/.config/oh-my-zsh"
 

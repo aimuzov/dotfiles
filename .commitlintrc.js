@@ -1,4 +1,5 @@
 const scopes = [
+  "bat",
   "borders",
   "brew",
   "chezmoi",
