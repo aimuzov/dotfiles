@@ -70,4 +70,10 @@ source $(brew --prefix)/opt/spaceship/spaceship.zsh
 # https://github.com/junegunn/fzf?tab=readme-ov-file#using-homebrew
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+if [[ $MACOS_IS_DARK == "yes" ]]; then
+	source "$ZSH/custom/plugins/zsh-syntax-highlighting/themes/frappe.zsh"
+else
+	source "$ZSH/custom/plugins/zsh-syntax-highlighting/themes/latte.zsh"
+fi
+
 source $ZSH/oh-my-zsh.sh
