@@ -6,6 +6,9 @@ SAVEHIST=$HISTSIZE
 
 DISABLE_AUTO_UPDATE="true"
 
+# https://wezfurlong.org/wezterm/faq.html#pasting-or-entering-unicode-in-zsh-looks-broken
+setopt COMBINING_CHARS
+
 ## ---------------------------------------------------------------------------------------------------------------------
 
 export EDITOR="nvim"
