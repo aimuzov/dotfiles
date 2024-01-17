@@ -88,9 +88,9 @@ yabai -m rule --add space=social app="^(Telegram|Slack|Discord|WhatsApp)$"
 # -- Layout managing ---------------------------------------------------------------------------------------------------
 
 yabai -m rule --add manage=off app!="^(\
+Calendar|\
 Figma|\
 Finder|\
-Calendar|\
 Google Chrome|\
 Mail|\
 Miro|\
@@ -100,6 +100,7 @@ Telegram|\
 Things|\
 WezTerm|\
 WhatsApp|\
+Yandex|\
 zoom.us|\
 Толк|\
 Яндекс Музыка\
