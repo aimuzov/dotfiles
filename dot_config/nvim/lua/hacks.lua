@@ -20,7 +20,7 @@ local override_lazy_open = function()
 	local open_original = Util.terminal.open
 
 	Util.terminal.open = function(cmd, opts)
-		if cmd[1] == "lazygit" then
+		if cmd ~= nil and cmd[1] == "lazygit" then
 			local UtilOther = require("util.other")
 			local theme = UtilOther.is_os_theme_dark() and "dark" or "light"
 			local cfg_dir = vim.fn.getenv("HOME") .. "/.config/lazygit"
