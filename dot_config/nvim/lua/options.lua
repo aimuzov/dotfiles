@@ -58,5 +58,3 @@ for opt_name, opt_value in pairs(options) do
 		vim.notify("Option " .. opt_name .. " is not supported", vim.log.levels.WARN)
 	end
 end
-
-vim.diagnostic.config({ float = { border = "rounded" } })

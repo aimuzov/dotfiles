@@ -89,7 +89,24 @@ local remove_context_actions = function()
 	vim.cmd.aunmenu({ "PopUp.-1-" })
 end
 
+local diagnostic_config_setup = function()
+	local icons = require("lazyvim.config").icons
+
+	vim.diagnostic.config({
+		float = { border = "rounded" },
+		signs = {
+			text = {
+				[vim.diagnostic.severity.ERROR] = icons.diagnostics.Error,
+				[vim.diagnostic.severity.HINT] = icons.diagnostics.Hint,
+				[vim.diagnostic.severity.INFO] = icons.diagnostics.Info,
+				[vim.diagnostic.severity.WARN] = icons.diagnostics.Warn,
+			},
+		},
+	})
+end
+
 override_lazy_keys_to_string()
 override_lazy_open()
 override_lazy_lualine_pretty_path()
 remove_context_actions()
+diagnostic_config_setup()
