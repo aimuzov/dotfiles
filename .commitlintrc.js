@@ -1,4 +1,5 @@
 const scopes = [
+  "asdf",
   "bat",
   "borders",
   "brew",

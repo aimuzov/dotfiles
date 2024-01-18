@@ -31,6 +31,14 @@ brew bundle install --global
 
 # ----------------------------------------------------------------------------------------------------------------------
 
+echo "Setupping asdf..."
+
+asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+asdf install nodejs latest
+asdf global nodejs latest
+
+# ----------------------------------------------------------------------------------------------------------------------
+
 echo "Changing macOS defaults..." # https://macos-defaults.com/
 
 sudo nvram SystemAudioVolume=" "
