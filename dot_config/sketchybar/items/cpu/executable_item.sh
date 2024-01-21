@@ -22,23 +22,23 @@ cpu_percent=(
 cpu_sys=(
 	background.color=$TRANSPARENT
 	background.drawing=on
-	background.height=30
-	graph.color=$RED
-	graph.fill_color=$RED
+	background.height=40
+	graph.color=$WHITE
+	graph.fill_color=$WHITE
 	icon.drawing=off
 	label.drawing=off
-	padding_right=8
+	padding_right=6
 	width=0
 )
 
 cpu_user=(
-	padding_left=15
 	background.color=$TRANSPARENT
 	background.drawing=on
-	background.height=30
+	background.height=40
 	graph.color=$BLUE
 	icon.drawing=off
 	label.drawing=off
+	padding_right=6
 )
 
 sketchybar --add item cpu.top right \
