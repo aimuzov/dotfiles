@@ -1,5 +1,3 @@
-local lazy_util = require("lazyvim.util")
-local current_line_blame = nil
 local diagnostic_is_disabled = false
 
 return {
@@ -11,7 +9,7 @@ return {
 				alpha = 0.35,
 			},
 
-			context = 20,
+			context = 40,
 		},
 	},
 
@@ -43,21 +41,13 @@ return {
 
 				vim.diagnostic.disable()
 
-				if lazy_util.has("indent-blankline.nvim") then
+				if vim.fn.exists(":IBLDisable") > 0 then
 					vim.cmd("IBLDisable")
 				end
 
-				if lazy_util.has("satellite.nvim") then
+				if vim.fn.exists(":SatelliteDisable") > 0 then
 					vim.cmd("SatelliteDisable")
 				end
-
-				-- if lazy_util.has("gitsigns.nvim") then
-				-- 	current_line_blame = require("gitsigns.config").config.current_line_blame
-				--
-				-- 	if current_line_blame then
-				-- 		vim.cmd("Gitsigns toggle_current_line_blame")
-				-- 	end
-				-- end
 			end,
 
 			on_close = function()
@@ -65,18 +55,12 @@ return {
 					vim.diagnostic.enable()
 				end
 
-				if lazy_util.has("indent-blankline.nvim") then
+				if vim.fn.exists(":IBLEnable") > 0 then
 					vim.cmd("IBLEnable")
 				end
 
-				if lazy_util.has("satellite.nvim") then
+				if vim.fn.exists(":SatelliteDisable") > 0 then
 					vim.cmd("SatelliteDisable")
-				end
-
-				if lazy_util.has("gitsigns.nvim") then
-					if current_line_blame then
-						require("gitsigns.actions").toggle_current_line_blame(nil)
-					end
 				end
 			end,
 		},

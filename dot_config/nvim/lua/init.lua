@@ -11,7 +11,7 @@ local opts = {
 		{ import = "plugins.ui.panels" },
 	},
 	install = { colorscheme = { colorscheme } },
-	defaults = { lazy = false, version = false, optional = true },
+	defaults = { lazy = true, version = false },
 	checker = { enabled = true, notify = false },
 	change_detection = { enabled = false },
 	diff = { cmd = "diffview.nvim" },
