@@ -18,7 +18,18 @@ return {
 		},
 
 		opts = {
-			defaults = { layout_strategy = "vertical" },
+			defaults = {
+				layout_strategy = "vertical",
+				mappings = {
+					i = {
+						["<c-h>"] = function()
+							local action_state = require("telescope.actions.state")
+							local line = action_state.get_current_line()
+							require("lazyvim.util").telescope("find_files", { hidden = true, default_text = line })()
+						end,
+					},
+				},
+			},
 			pickers = {
 				find_files = { theme = "dropdown", previewer = true },
 				git_files = { theme = "dropdown", previewer = true },
