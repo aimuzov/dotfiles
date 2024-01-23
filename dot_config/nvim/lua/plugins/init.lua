@@ -1,11 +1,13 @@
 local plugins_enabled = {
 	"akinsho/git-conflict.nvim",
 	"akinsho/toggleterm.nvim",
+	"Almo7aya/openingh.nvim",
 	"antosha417/nvim-lsp-file-operations",
 	"famiu/bufdelete.nvim",
 	"folke/edgy.nvim",
 	"folke/twilight.nvim",
 	"folke/zen-mode.nvim",
+	"harrisoncramer/gitlab.nvim",
 	"jackMort/ChatGPT.nvim",
 	"kkoomen/vim-doge",
 	"lewis6991/satellite.nvim",
