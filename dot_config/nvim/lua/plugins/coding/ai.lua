@@ -1,7 +1,6 @@
 return {
 	{
 		"jackMort/ChatGPT.nvim",
-		event = "VeryLazy",
 		optional = true,
 		config = true,
 
@@ -35,6 +34,7 @@ return {
 				opts = { defaults = { ["<leader>p"] = { name = "+chatgpt" } } },
 			},
 		},
+
 		keys = {
 			-- stylua: ignore start
 			{ "<leader>pc", "<cmd>ChatGPT<cr>", desc = "ChatGPT", mode = { "n", "v" } },

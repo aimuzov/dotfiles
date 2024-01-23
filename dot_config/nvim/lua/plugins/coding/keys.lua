@@ -39,7 +39,6 @@ return {
 	{
 		"Wansmer/langmapper.nvim",
 		priority = 1,
-		lazy = false,
 		opts = {
 			default_layout = [[ABCDEFGHIJKLMNOPQRSTUVWXYZ<>:"{}~abcdefghijklmnopqrstuvwxyz,.;'[]`]],
 
@@ -56,10 +55,5 @@ return {
 			lm.setup(opts)
 			lm.hack_get_keymap()
 		end,
-	},
-
-	{
-		"sudormrfbin/cheatsheet.nvim",
-		optional = true,
 	},
 }

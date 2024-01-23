@@ -1,7 +1,6 @@
 return {
 	{
 		"lewis6991/satellite.nvim",
-		lazy = false,
 		optional = true,
 		opts = {
 			current_only = false,

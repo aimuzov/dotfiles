@@ -2,6 +2,9 @@ return {
 	{
 		"mg979/vim-visual-multi",
 		optional = true,
+		keys = {
+			{ "<c-n>", function() end, mode = { "v", "n" } },
+		},
 	},
 
 	{
@@ -16,7 +19,11 @@ return {
 		dependencies = { "nvim-treesitter" },
 		opts = {
 			highlight_node_at_cursor = { ms = 250 },
-			use_default_keymaps = true,
+			use_default_keymaps = false,
+		},
+		keys = {
+			{ "<c-,>", [[<cmd>lua require('sibling-swap').swap_with_left()<cr>]] },
+			{ "<c-.>", [[<cmd>lua require('sibling-swap').swap_with_right()<cr>]] },
 		},
 	},
 
@@ -31,27 +38,35 @@ return {
 		branch = "harpoon2",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		config = function(_, opts)
-			local harpoon = require("harpoon")
-
-			harpoon:setup(opts)
-
-			vim.keymap.set("n", "<c-e>", function()
-				harpoon.ui:toggle_quick_menu(harpoon:list(), {
-					border = "rounded",
-					title = "",
-					ui_max_width = 80,
-				})
-			end, { desc = "Open harpoon window" })
-
-			vim.keymap.set("n", "<leader>fa", function()
-				harpoon:list():append()
-			end, { desc = "Append file to harpoon list" })
-
-			for i = 1, 5, 1 do
-				vim.keymap.set("n", "<c-" .. i .. ">", function()
-					harpoon:list():select(i)
-				end)
-			end
+			require("harpoon"):setup(opts)
 		end,
+
+		keys = {
+			{
+				"<c-e>",
+				function()
+					local harpoon = require("harpoon")
+					harpoon.ui:toggle_quick_menu(harpoon:list(), {
+						border = "rounded",
+						title = "",
+						ui_max_width = 80,
+					})
+				end,
+				desc = "Open harpoon window",
+				mode = { "n" },
+			},
+
+			{
+				"<leader>fa",
+				[[lua require("harpoon"):list():append()]],
+				desc = "Append file to harpoon list",
+			},
+
+			{ "<c-1>", [[<cmd>lua require("harpoon"):list():select(1)<cr>]], desc = "Harpooning 1" },
+			{ "<c-2>", [[<cmd>lua require("harpoon"):list():select(2)<cr>]], desc = "Harpooning 2" },
+			{ "<c-3>", [[<cmd>lua require("harpoon"):list():select(3)<cr>]], desc = "Harpooning 3" },
+			{ "<c-4>", [[<cmd>lua require("harpoon"):list():select(4)<cr>]], desc = "Harpooning 4" },
+			{ "<c-5>", [[<cmd>lua require("harpoon"):list():select(5)<cr>]], desc = "Harpooning 5" },
+		},
 	},
 }

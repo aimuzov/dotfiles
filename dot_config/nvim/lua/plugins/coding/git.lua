@@ -14,12 +14,6 @@ return {
 	},
 
 	{
-		"fredeeb/tardis.nvim",
-		optional = true,
-		config = true,
-	},
-
-	{
 		"lewis6991/gitsigns.nvim",
 		optional = true,
 		opts = {

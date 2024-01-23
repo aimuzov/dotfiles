@@ -6,7 +6,6 @@ local plugins_enabled = {
 	"folke/edgy.nvim",
 	"folke/twilight.nvim",
 	"folke/zen-mode.nvim",
-	"fredeeb/tardis.nvim",
 	"jackMort/ChatGPT.nvim",
 	"kkoomen/vim-doge",
 	"lewis6991/satellite.nvim",
@@ -18,7 +17,6 @@ local plugins_enabled = {
 	"s1n7ax/nvim-window-picker",
 	"shumphrey/fugitive-gitlab.vim",
 	"sindrets/diffview.nvim",
-	"sudormrfbin/cheatsheet.nvim",
 	"tiagovla/scope.nvim",
 	"tpope/vim-fugitive",
 	"Wansmer/langmapper.nvim",
@@ -31,6 +29,7 @@ local plugins_enabled = {
 local plugins_disabled = {
 	"echasnovski/mini.bufremove",
 	"echasnovski/mini.indentscope",
+	"folke/tokyonight.nvim",
 }
 
 local plugins = {}
