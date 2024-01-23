@@ -37,6 +37,11 @@ asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
 asdf install nodejs latest
 asdf global nodejs latest
 
+asdf plugin-add python
+asdf install python latest
+asdf global python latest
+asdf reshim python
+
 # ----------------------------------------------------------------------------------------------------------------------
 
 echo "Changing macOS defaults..." # https://macos-defaults.com/
