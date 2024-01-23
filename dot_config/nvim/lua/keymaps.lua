@@ -10,11 +10,6 @@ vim.keymap.set({ "n" }, "<c-d>", "<c-d>zz")
 vim.keymap.set({ "n" }, "<c-b>", "<c-b>zz")
 vim.keymap.set({ "n" }, "<c-f>", "<c-f>zz")
 
-vim.keymap.set({ "n", "v" }, "y", [["+y]])
-vim.keymap.set({ "n", "v" }, "p", [["+p]])
-vim.keymap.set({ "v" }, "p", [["_dp]])
-vim.keymap.set({ "n", "v" }, "c", [["+c]])
-vim.keymap.set({ "n", "v" }, "x", [["+x]])
 vim.keymap.set({ "n", "v" }, "d", [["_d]])
 vim.keymap.set({ "n", "v" }, "D", [["_D]])
 
