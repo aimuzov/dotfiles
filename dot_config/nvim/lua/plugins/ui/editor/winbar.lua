@@ -29,6 +29,7 @@ return {
 				"dapui_stacks",
 				"dapui_watches",
 				"DiffviewFiles",
+				"gitlab",
 				"neo-tree",
 				"neotest-summary",
 				"noice",

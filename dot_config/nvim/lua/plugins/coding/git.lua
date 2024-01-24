@@ -56,6 +56,17 @@ return {
 			require("gitlab.server").build(true)
 		end,
 
+		opts = {
+			discussion_tree = {
+				auto_open = false,
+				position = "bottom",
+			},
+
+			merge = {
+				squash = true,
+			},
+		},
+
 		keys = {
 			{ "<leader>glr", [[<cmd>lua require("gitlab").review()<cr>]], desc = "review" },
 			{ "<leader>gls", [[<cmd>lua require("gitlab").summary()<cr>]], desc = "summary" },
