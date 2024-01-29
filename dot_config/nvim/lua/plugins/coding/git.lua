@@ -57,6 +57,7 @@ return {
 		end,
 
 		opts = {
+			attachment_dir = vim.fn.getenv("HOME") .. "/temp/screenshots",
 			discussion_tree = {
 				auto_open = false,
 				position = "bottom",
