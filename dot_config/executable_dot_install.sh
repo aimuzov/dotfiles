@@ -29,6 +29,8 @@ echo "Installing Brew..."
 brew analytics off
 brew bundle install --global
 
+/usr/bin/env zsh -c "wezterm_update_icon"
+
 # ----------------------------------------------------------------------------------------------------------------------
 
 echo "Setupping asdf..."

@@ -43,3 +43,8 @@ function restart_vm() {
 
 	echo "vm is restarted"
 }
+
+function wezterm_update_icon() {
+	cd ~/.config/wezterm/icon
+	command make install
+}
