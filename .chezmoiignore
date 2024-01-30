@@ -1,6 +1,7 @@
 ./.config/bat/themes
 ./.config/sketchybar/helper/helper
 ./.oh-my-zsh/cache/*
+.DS_Store
 .gitignore
 node_modules
 package-lock.json
