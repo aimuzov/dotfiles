@@ -29,7 +29,10 @@ return {
 		["Catppuccin Latte Extended"] = scheme_extend("Catppuccin Latte"),
 	},
 
-	font = wezterm.font_with_fallback({ "JetBrainsMono NFM", "Noto Emoji" }),
+	font = wezterm.font_with_fallback({
+		{ family = "JetBrainsMono NFM", weight = "Medium" },
+		"Noto Emoji",
+	}),
 
 	adjust_window_size_when_changing_font_size = false,
 	line_height = 1.3,
