@@ -107,7 +107,6 @@ zoom.us|\
 )$"
 
 yabai -m rule --add manage=off app="^Finder$" title="(Copy|Connect|Move|Info|Pref|Finder Settings)"
-yabai -m rule --add manage=off app="^Slack$" title="^Huddle"
 yabai -m rule --add manage=off app="^Things$" title="(Quick Entry)"
 
 yabai -m rule --add layer=below app="^(Steam Helper)$"
