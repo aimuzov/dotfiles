@@ -58,7 +58,7 @@ return {
 
 			{
 				"<leader>fa",
-				[[lua require("harpoon"):list():append()]],
+				[[<cmd>lua require("harpoon"):list():append()<cr>]],
 				desc = "Append file to harpoon list",
 			},
 
