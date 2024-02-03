@@ -75,7 +75,7 @@ space_create 2 10 social
 
 # -- Assigning windows in spaces ---------------------------------------------------------------------------------------
 
-yabai -m rule --add space=term app="^(WezTerm)$"
+yabai -m rule --add space=term app="^(WezTerm|VSCodium)$"
 yabai -m rule --add space=browser app="^(Google Chrome)$"
 yabai -m rule --add space=reflection app="^(Calendar|Mail|NetNewsWire|Things)$"
 yabai -m rule --add space=design app="^(Figma|Miro)$"
@@ -98,6 +98,7 @@ NetNewsWire|\
 Slack|\
 Telegram|\
 Things|\
+VSCodium|\
 WezTerm|\
 WhatsApp|\
 Yandex|\
