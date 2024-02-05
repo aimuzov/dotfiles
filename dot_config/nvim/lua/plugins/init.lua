@@ -16,7 +16,6 @@ local plugins_enabled = {
 	"mxsdev/nvim-dap-vscode-js",
 	"olrtg/nvim-emmet",
 	"piersolenski/wtf.nvim",
-	"s1n7ax/nvim-window-picker",
 	"shumphrey/fugitive-gitlab.vim",
 	"sindrets/diffview.nvim",
 	"tiagovla/scope.nvim",
