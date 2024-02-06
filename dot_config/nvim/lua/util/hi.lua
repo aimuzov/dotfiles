@@ -162,8 +162,11 @@ local highlights_override_hack = function()
 	local c = util_other.get_palette()
 
 	update_hl("AlphaFooter", { fg = c.palette.surface1, italic = false })
-	update_hl("AlphaShortcut", { fg = c.palette.surface1, bg = c.palette.mantle })
-	update_hl("AlphaShortcutBorder", { fg = c.palette.surface1 })
+	update_hl("AlphaShortcutBorder", { fg = util_other.blend_color(c.palette.base, c.palette.surface1, 50) })
+	update_hl("AlphaShortcut", {
+		fg = util_other.blend_color(c.palette.base, c.palette.surface1, 50),
+		bg = util_other.blend_color(c.palette.base, c.palette.mantle, 50),
+	})
 
 	update_hl("IblIndent", { fg = c.is_dark and c.palette.surface0 or c.palette.crust })
 	update_hl("IblScope", { fg = c.is_dark and c.palette.surface2 or c.palette.surface1 })
