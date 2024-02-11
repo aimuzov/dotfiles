@@ -1,9 +1,22 @@
 return {
 	{
-		"mg979/vim-visual-multi",
+		"brenton-leighton/multiple-cursors.nvim",
+		branch = "feat_add_cursor_to_next_match",
 		optional = true,
+		opts = {
+			pre_hook = function()
+				vim.opt.cursorline = false
+				vim.g.minipairs_disable = true
+				vim.cmd("NoMatchParen")
+			end,
+			post_hook = function()
+				vim.opt.cursorline = true
+				vim.g.minipairs_disable = false
+				vim.cmd("DoMatchParen")
+			end,
+		},
 		keys = {
-			{ "<c-n>", function() end, mode = { "v", "n" } },
+			{ "<c-n>", "<cmd>MultipleCursorsAddNextMatch<cr>", mode = { "n", "x" } },
 		},
 	},
 
