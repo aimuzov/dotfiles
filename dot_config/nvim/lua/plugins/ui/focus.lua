@@ -37,8 +37,11 @@ return {
 			},
 
 			on_open = function(win)
-				diagnostic_is_disabled = vim.diagnostic.is_disabled(win)
+				local bufnr = vim.fn.winbufnr(win)
 
+				diagnostic_is_disabled = vim.diagnostic.is_disabled(bufnr)
+
+				vim.keymap.set("n", "q", "<cmd>close<cr>", { silent = true })
 				vim.diagnostic.disable()
 
 				if vim.fn.exists(":IBLDisable") > 0 then
@@ -51,6 +54,8 @@ return {
 			end,
 
 			on_close = function()
+				vim.keymap.del("n", "q", { silent = true })
+
 				if not diagnostic_is_disabled then
 					vim.diagnostic.enable()
 				end
