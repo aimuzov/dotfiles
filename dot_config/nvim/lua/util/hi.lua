@@ -1,7 +1,7 @@
 local util_other = require("util.other")
 
 local function update_hl(group, value)
-	local is_ok, hl_def = pcall(vim.api.nvim_get_hl_by_name, group, { create = true })
+	local is_ok, hl_def = pcall(vim.api.nvim_get_hl, group, { create = true })
 
 	if hl_def[true] or not is_ok then
 		hl_def = value
