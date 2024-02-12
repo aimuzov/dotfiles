@@ -5,10 +5,7 @@ return {
 		"folke/twilight.nvim",
 		optional = true,
 		opts = {
-			dimming = {
-				alpha = 0.35,
-			},
-
+			dimming = { alpha = 0.35 },
 			context = 40,
 		},
 	},
@@ -30,9 +27,9 @@ return {
 			},
 
 			plugins = {
-				options = { enabled = true, laststatus = 0 },
-				kitty = { enabled = false },
 				gitsigns = { enabled = true },
+				kitty = { enabled = false },
+				options = { enabled = true, laststatus = 0 },
 				wezterm = { enabled = true, font = "+2" },
 			},
 
