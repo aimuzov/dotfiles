@@ -33,6 +33,7 @@ return {
 				options = { enabled = true, laststatus = 0 },
 				kitty = { enabled = false },
 				gitsigns = { enabled = true },
+				wezterm = { enabled = true, font = "+2" },
 			},
 
 			on_open = function(win)
