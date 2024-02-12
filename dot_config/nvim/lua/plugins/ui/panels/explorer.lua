@@ -1,4 +1,4 @@
-local parent_or_close = function(state)
+local node_close_or_goto_parent = function(state)
 	local node = state.tree:get_node()
 
 	if (node.type == "directory" or node:has_children()) and node:is_expanded() then
@@ -8,7 +8,7 @@ local parent_or_close = function(state)
 	end
 end
 
-local child_or_open = function(state)
+local node_open_or_file_open = function(state)
 	local node = state.tree:get_node()
 
 	if node.type == "directory" or node:has_children() then
@@ -209,8 +209,8 @@ return {
 			},
 
 			commands = {
-				child_or_open = child_or_open,
-				parent_or_close = parent_or_close,
+				node_open_or_file_open = node_open_or_file_open,
+				node_close_or_goto_parent = node_close_or_goto_parent,
 				copy_selector = copy_selector,
 				system_open = system_open,
 			},
@@ -218,8 +218,8 @@ return {
 			window = {
 				mappings = {
 					["<space>"] = false,
-					["h"] = "parent_or_close",
-					["l"] = "child_or_open",
+					["h"] = "node_close_or_goto_parent",
+					["l"] = "node_open_or_file_open",
 					["Y"] = "copy_selector",
 					["O"] = "system_open",
 					["<s-h>"] = "prev_source",
