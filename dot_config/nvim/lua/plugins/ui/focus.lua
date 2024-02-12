@@ -30,6 +30,7 @@ return {
 				gitsigns = { enabled = true },
 				kitty = { enabled = false },
 				options = { enabled = true, laststatus = 0 },
+				twilight = { enabled = false },
 				wezterm = { enabled = true, font = "+2" },
 			},
 
