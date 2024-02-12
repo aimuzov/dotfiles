@@ -153,6 +153,7 @@ local highlights_override = function()
 	update_hl("Visual", { bg = c.is_dark and c.palette.surface1 or util_other.blend_color(c.palette.base, c.palette.crust, 60), bold = false, })
 	update_hl("WhichKeyFloat", { bg = c.palette.mantle })
 	update_hl("Whitespace", { fg = c.palette.base })
+	update_hl("ZenBg", { bg = c.palette.mantle })
 
 	highlights_override_start_logo_anim()
 	highlights_override_lualine()
