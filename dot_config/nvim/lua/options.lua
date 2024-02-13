@@ -47,6 +47,7 @@ local options = {
 		foldclose = "",
 	},
 
+	spelllang = "",
 	langmap = langmap,
 }
 
