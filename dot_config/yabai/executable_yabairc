@@ -19,7 +19,9 @@ yabai -m config \
 	mouse_follows_focus on \
 	focus_follows_mouse off \
 	window_zoom_persist off \
-	window_placement second_childwindow_topmost offwindow_shadow off \
+	window_placement second_child \
+	window_topmost off \
+	window_shadow off \
 	window_opacity on \
 	window_opacity_duration 0.15 \
 	active_window_opacity 1.0 \
