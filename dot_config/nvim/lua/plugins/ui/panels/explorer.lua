@@ -1,3 +1,15 @@
+local remove_substring = function(str, substr)
+	local startIndex, endIndex = string.find(str, substr)
+
+	if startIndex and endIndex then
+		local prefix = string.sub(str, 1, startIndex - 1)
+		local suffix = string.sub(str, endIndex + 1)
+		return prefix .. suffix
+	end
+
+	return str
+end
+
 local node_close_or_goto_parent = function(state)
 	local node = state.tree:get_node()
 
@@ -48,6 +60,7 @@ local copy_selector = function(state)
 			})
 		end
 	end
+
 	vim.api.nvim_echo(messages, false, {})
 
 	local result = results[vim.fn.getcharstr()]
@@ -68,7 +81,7 @@ end
 local delete = function(state)
 	local inputs = require("neo-tree.ui.inputs")
 	local path = state.tree:get_node().path
-	local path_relative = require("util.other").remove_substring(path, vim.fn.getcwd() .. "/")
+	local path_relative = remove_substring(path, vim.fn.getcwd() .. "/")
 	local msg = 'Confirm delete "' .. path_relative .. '"'
 
 	inputs.confirm(msg, function(confirmed)

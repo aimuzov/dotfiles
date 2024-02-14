@@ -1,4 +1,4 @@
-local override_lazy_keys_to_string = function()
+local function lazyvim_override_keys_to_string()
 	local Keys = require("lazy.core.handler.keys")
 	local to_string_original = Keys.to_string
 
@@ -15,18 +15,17 @@ local override_lazy_keys_to_string = function()
 	end
 end
 
-local override_lazy_open = function()
-	local Util = require("lazyvim.util")
-	local open_original = Util.terminal.open
+local function lazyvim_override_open_terminal()
+	local LazyvimUtil = require("lazyvim.util")
+	local open_original = LazyvimUtil.terminal.open
 
-	Util.terminal.open = function(cmd, opts)
+	LazyvimUtil.terminal.open = function(cmd, opts)
 		if cmd ~= nil and cmd[1] == "lazygit" then
-			local UtilOther = require("util.other")
-			local theme = UtilOther.is_os_theme_dark() and "dark" or "light"
+			local theme = require("util").os_theme_is_dark() and "dark" or "light"
 			local cfg_dir = vim.fn.getenv("HOME") .. "/.config/lazygit"
 
 			open_original({ "lazygit" }, {
-				cwd = Util.root.get(),
+				cwd = LazyvimUtil.root.get(),
 				border = "none",
 				env = { ["LG_CONFIG_FILE"] = cfg_dir .. "/config.yml," .. cfg_dir .. "/theme-" .. theme .. ".yml" },
 				zindex = 60,
@@ -43,10 +42,10 @@ local override_lazy_open = function()
 	end
 end
 
-local override_lazy_lualine_pretty_path = function()
-	local Util = require("lazyvim.util")
+local function lazyvim_override_lualine_pretty_path()
+	local LazyvimUtil = require("lazyvim.util")
 
-	Util.lualine.pretty_path = function(opts)
+	LazyvimUtil.lualine.pretty_path = function(opts)
 		opts = vim.tbl_extend("force", {
 			relative = "cwd",
 			modified_hl = "Constant",
@@ -59,8 +58,8 @@ local override_lazy_lualine_pretty_path = function()
 				return ""
 			end
 
-			local root = Util.root.get({ normalize = true })
-			local cwd = Util.root.cwd()
+			local root = LazyvimUtil.root.get({ normalize = true })
+			local cwd = LazyvimUtil.root.cwd()
 
 			if opts.relative == "cwd" and path:find(cwd, 1, true) == 1 then
 				path = path:sub(#cwd + 2)
@@ -68,7 +67,7 @@ local override_lazy_lualine_pretty_path = function()
 				path = path:sub(#root + 2)
 			end
 
-			local sep = "󰿟" -- package.config:sub(1, 1)
+			local sep = "󰿟"
 			local parts = vim.split(path, "[\\/]")
 
 			if #parts > 4 then
@@ -76,7 +75,7 @@ local override_lazy_lualine_pretty_path = function()
 			end
 
 			if opts.modified_hl and vim.bo.modified then
-				parts[#parts] = Util.lualine.format(self, parts[#parts], opts.modified_hl)
+				parts[#parts] = LazyvimUtil.lualine.format(self, parts[#parts], opts.modified_hl)
 			end
 
 			return table.concat(parts, sep)
@@ -84,18 +83,18 @@ local override_lazy_lualine_pretty_path = function()
 	end
 end
 
-local override_gitsign_hunk_preview = function()
+local function lazyvim_override_gitsign_hunk_preview()
 	local gs = require("gitsigns")
 
 	gs.preview_hunk_inline = gs.preview_hunk
 end
 
-local remove_context_actions = function()
+local function mouse_remove_context_actions()
 	vim.cmd.aunmenu({ "PopUp.How-to\\ disable\\ mouse" })
 	vim.cmd.aunmenu({ "PopUp.-1-" })
 end
 
-local diagnostic_config_setup = function()
+local function diagnostic_config_setup()
 	local icons = require("lazyvim.config").icons
 
 	vim.diagnostic.config({
@@ -111,9 +110,9 @@ local diagnostic_config_setup = function()
 	})
 end
 
-override_lazy_keys_to_string()
-override_lazy_open()
-override_lazy_lualine_pretty_path()
-override_gitsign_hunk_preview()
-remove_context_actions()
+lazyvim_override_keys_to_string()
+lazyvim_override_open_terminal()
+lazyvim_override_lualine_pretty_path()
+lazyvim_override_gitsign_hunk_preview()
+mouse_remove_context_actions()
 diagnostic_config_setup()

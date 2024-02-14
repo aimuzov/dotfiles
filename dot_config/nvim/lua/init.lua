@@ -1,4 +1,4 @@
-local colorscheme = require("util.other").get_colorscheme()
+local colorscheme = require("util").colorscheme_get_name()
 
 local opts = {
 	spec = {

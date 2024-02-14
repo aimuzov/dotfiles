@@ -24,9 +24,7 @@ return {
 		optional = true,
 		dependencies = { "stevearc/aerial.nvim" },
 		opts = function(_, opts)
-			local utils = require("lualine.utils.mode")
-
-			opts.options.theme = "catppuccin"
+			opts.options.theme = require("util").lualine_theme_create()
 
 			opts.options.refresh = {
 				statusline = 5000,
@@ -35,7 +33,7 @@ return {
 			}
 
 			opts.options.component_separators = { left = "", right = "" }
-			opts.options.section_separators = { left = "▒░", right = "░▒" }
+			opts.options.section_separators = { left = "", right = "" }
 			opts.options.disabled_filetypes.statusline = {}
 
 			require("lualine.extensions.lazy").sections.lualine_a = {
@@ -52,7 +50,7 @@ return {
 			opts.sections.lualine_a = {
 				{
 					function()
-						local mode_name_upper = utils.get_mode()
+						local mode_name_upper = require("lualine.utils.mode").get_mode()
 						local mode_name_lower = mode_name_upper:lower()
 						local mode_icon_raw = mode_icon_map[mode_name_upper]
 						local mode_icon_safety = mode_icon_raw == nil and "" or mode_icon_raw

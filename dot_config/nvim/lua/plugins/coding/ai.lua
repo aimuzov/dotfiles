@@ -5,7 +5,7 @@ return {
 		config = true,
 
 		opts = {
-			actions_paths = { "~/.config/nvim/util/chatgpt-actions.json" },
+			actions_paths = { "~/.config/nvim/misc/chatgpt-actions.json" },
 			chat = {
 				loading_text = "",
 				question_sign = "",

@@ -6,7 +6,7 @@ local function header_colorize(header)
 			type = "text",
 			val = chars,
 			opts = {
-				hl = "StartLogo" .. i,
+				hl = "AlphaHeader" .. i,
 				position = "center",
 			},
 		}
@@ -135,6 +135,12 @@ return {
 					button("p", "󰫽", "  Projects", "<cmd>Telescope projects<cr>")
 				)
 			end
+
+			vim.api.nvim_create_autocmd("User", {
+				once = true,
+				pattern = "AlphaReady",
+				callback = require("util").alpha_header_animate,
+			})
 
 			return opts
 		end,
