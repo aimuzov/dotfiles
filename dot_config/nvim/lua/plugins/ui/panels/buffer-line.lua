@@ -54,7 +54,7 @@ return {
 				separator_style = { "▏", "" },
 				left_trunc_marker = "",
 				right_trunc_marker = "",
-				modified_icon = "",
+				modified_icon = "",
 				close_icon = "󰅖",
 				offsets = {
 					{ filetype = "neo-tree", separator = false, text = "" },
