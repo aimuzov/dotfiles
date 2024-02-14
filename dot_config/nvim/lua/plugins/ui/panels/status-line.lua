@@ -29,7 +29,7 @@ return {
 			opts.options.theme = "catppuccin"
 
 			opts.options.component_separators = { left = "", right = "" }
-			opts.options.section_separators = { left = "", right = "" }
+			opts.options.section_separators = { left = "▒░", right = "░▒" }
 			opts.options.disabled_filetypes.statusline = {}
 
 			require("lualine.extensions.lazy").sections.lualine_a = {
@@ -77,6 +77,7 @@ return {
 			}
 
 			opts.sections.lualine_z = {}
+			opts.sections.lualine_x[1].color = nil
 
 			return opts
 		end,
