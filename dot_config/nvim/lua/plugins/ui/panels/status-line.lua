@@ -28,6 +28,12 @@ return {
 
 			opts.options.theme = "catppuccin"
 
+			opts.options.refresh = {
+				statusline = 5000,
+				tabline = 5000,
+				winbar = 5000,
+			}
+
 			opts.options.component_separators = { left = "", right = "" }
 			opts.options.section_separators = { left = "▒░", right = "░▒" }
 			opts.options.disabled_filetypes.statusline = {}
