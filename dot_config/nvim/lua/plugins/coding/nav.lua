@@ -1,7 +1,6 @@
 return {
 	{
 		"brenton-leighton/multiple-cursors.nvim",
-		branch = "feat_add_cursor_to_next_match",
 		optional = true,
 		opts = {
 			pre_hook = function()
@@ -16,7 +15,7 @@ return {
 			end,
 		},
 		keys = {
-			{ "<c-n>", "<cmd>MultipleCursorsAddNextMatch<cr>", mode = { "n", "x" } },
+			{ "<c-n>", "<cmd>MultipleCursorsAddJumpNextMatch<cr>", mode = { "n", "x" } },
 		},
 	},
 
