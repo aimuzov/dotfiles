@@ -18,6 +18,7 @@ const scopes = [
   "skhd",
   "spaceship",
   "svim",
+  "vscodium",
   "wezterm",
   "yabai",
   "zsh",

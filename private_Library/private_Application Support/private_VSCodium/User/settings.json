@@ -1,0 +1,19 @@
+{
+  "breadcrumbs.filePath": "last",
+  "editor.accessibilitySupport": "off",
+  "editor.fontFamily": "JetBrainsMono NFM",
+  "editor.fontSize": 12,
+  "editor.lineHeight": 22,
+  "editor.minimap.enabled": false,
+  "extensions.experimental.affinity": { "asvetliakov.vscode-neovim": 1 },
+  "window.autoDetectColorScheme": true,
+  "window.commandCenter": false,
+  "window.density.editorTabHeight": "compact",
+  "window.zoomLevel": 1,
+  "workbench.activityBar.location": "hidden",
+  "workbench.colorTheme": "Catppuccin Latte",
+  "workbench.layoutControl.enabled": false,
+  "workbench.preferredDarkColorTheme": "Catppuccin Frappé",
+  "workbench.preferredLightColorTheme": "Catppuccin Latte",
+  "workbench.startupEditor": "none"
+}
