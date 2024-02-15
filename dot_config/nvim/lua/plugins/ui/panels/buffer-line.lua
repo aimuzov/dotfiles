@@ -20,24 +20,30 @@ local buffer_delete = function(bufnr, force)
 end
 
 local buf_move_create = function(dir)
-	local cmd = dir == "next" and "BufferLineMoveNext" or "BufferLineMovePrev"
-	local char = dir == "next" and "]" or "["
+	local cmd_next = "BufferLineMoveNext"
+	local cmd_prev = "BufferLineMovePrev"
 
 	return function()
-		vim.cmd(cmd)
+		local M = {}
 
-		local function repeat_me()
-			local char_current = vim.fn.getcharstr()
+		function M.buf_move(dir_next)
+			vim.cmd(dir_next == "next" and cmd_next or cmd_prev)
+			M.buf_move_repeat()
+		end
 
-			if char_current == char then
-				vim.cmd(cmd)
-				repeat_me()
+		function M.buf_move_repeat()
+			local char = vim.fn.getcharstr()
+
+			if char == "]" then
+				M.buf_move("next")
+			elseif char == "[" then
+				M.buf_move("prev")
 			elseif char ~= nil then
 				vim.api.nvim_feedkeys(vim.keycode(char), "m", true)
 			end
 		end
 
-		repeat_me()
+		M.buf_move(dir)
 	end
 end
 
