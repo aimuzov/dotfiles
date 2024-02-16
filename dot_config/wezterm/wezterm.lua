@@ -86,4 +86,25 @@ return {
 		{ key = "h", mods = "CTRL|SHIFT", action = wezterm.action.DisableDefaultAssignment },
 		{ key = "k", mods = "CTRL|SHIFT", action = wezterm.action.DisableDefaultAssignment },
 	},
+
+	-- https://github.com/wez/wezterm/issues/119#issuecomment-1206593847
+	mouse_bindings = {
+		{
+			event = { Up = { streak = 1, button = "Left" } },
+			mods = "NONE",
+			action = wezterm.action.CompleteSelection("PrimarySelection"),
+		},
+
+		{
+			event = { Up = { streak = 1, button = "Left" } },
+			mods = "CTRL",
+			action = wezterm.action.OpenLinkAtMouseCursor,
+		},
+
+		{
+			event = { Down = { streak = 1, button = "Left" } },
+			mods = "CTRL",
+			action = wezterm.action.Nop,
+		},
+	},
 }
