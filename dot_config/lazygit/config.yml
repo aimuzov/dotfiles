@@ -13,7 +13,7 @@ git:
     colorArg: always
     pager: diff-so-fancy
 customCommands:
-  - key: "<c-c>"
+  - key: "C"
     command: "npm run commit"
     description: "commit with commitizen"
     context: "files"
