@@ -1,1 +1,1 @@
-export SHELL = "/bin/zsh"
+export SHELL="/bin/zsh"
