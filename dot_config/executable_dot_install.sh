@@ -46,6 +46,13 @@ asdf reshim python
 
 # ----------------------------------------------------------------------------------------------------------------------
 
+echo "Setupping theme switcher..."
+
+/usr/bin/env zsh -c "cd $HOME/Library/ThemeSwitcher && swift build --configuration release"
+launchctl load -w $HOME/Library/LaunchAgents/io.aimuzov.theme-switcher.plist
+
+# ----------------------------------------------------------------------------------------------------------------------
+
 echo "Changing macOS defaults..." # https://macos-defaults.com/
 
 sudo nvram SystemAudioVolume=" "
