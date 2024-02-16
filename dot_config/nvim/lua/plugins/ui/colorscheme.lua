@@ -89,7 +89,7 @@ return {
 						TreesitterContextLineNumber = { bg = c.base or c.base },
 						TroubleCount = { bg = "none" },
 						TroubleNormal = { bg = c.base },
-						VertSplit = { fg = c.mantle },
+						WinSeparator = { fg = color_blend(c.base, c.crust, 40) },
 						Visual = { style = {} },
 						WhichKeyFloat = { bg = c.mantle },
 						Whitespace = { fg = c.base },

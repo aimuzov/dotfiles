@@ -42,9 +42,18 @@ local options = {
 	fillchars = {
 		diff = " ",
 		eob = " ",
+
 		fold = " ",
 		foldopen = "",
 		foldclose = "",
+
+		horiz = "━",
+		horizup = "┻",
+		horizdown = "┳",
+		vert = "┃",
+		vertleft = "┫",
+		vertright = "┣",
+		verthoriz = "╋",
 	},
 
 	spelllang = "",
