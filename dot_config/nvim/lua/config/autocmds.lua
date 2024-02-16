@@ -6,29 +6,30 @@ vim.api.nvim_create_autocmd("Signal", {
 })
 
 vim.api.nvim_create_autocmd("ColorScheme", {
-	callback = function()
+	callback = vim.schedule_wrap(function()
 		require("lualine").setup({ options = { theme = Util.lualine_theme_create() } })
 		require("nvim-web-devicons").set_up_highlights(true)
-		vim.cmd([[Lazy reload bufferline.nvim indent-blankline.nvim]])
-	end,
+
+		vim.schedule(function()
+			vim.cmd([[Lazy reload bufferline.nvim indent-blankline.nvim]])
+		end)
+	end),
 })
 
 vim.api.nvim_create_autocmd("User", {
 	pattern = "LazyUpdate",
-	callback = function()
-		vim.schedule(function()
-			local handle = io.popen("chezmoi add ~/.config/nvim/lazy-lock.json 2>&1", "r")
-			local result_raw = handle ~= nil and handle:read("*a")
-			local result_safety = result_raw:gsub("[\n\r]", "")
-			local message = result_safety == "" and "[chezmoi] lazy-lock.json applied" or "[chezmoi] " .. result_safety
+	callback = vim.schedule_wrap(function()
+		local handle = io.popen("chezmoi add ~/.config/nvim/lazy-lock.json 2>&1", "r")
+		local result_raw = handle ~= nil and handle:read("*a")
+		local result_safety = result_raw:gsub("[\n\r]", "")
+		local message = result_safety == "" and "[chezmoi] lazy-lock.json applied" or "[chezmoi] " .. result_safety
 
-			vim.print(message)
+		vim.print(message)
 
-			if handle ~= nil then
-				handle:close()
-			end
-		end)
-	end,
+		if handle ~= nil then
+			handle:close()
+		end
+	end),
 })
 
 vim.api.nvim_create_autocmd("User", {
