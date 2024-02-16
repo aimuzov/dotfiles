@@ -27,7 +27,7 @@ return {
 						AlphaFooter = { fg = c.surface1, style = {} },
 						AlphaShortcutBorder = { fg = color_blend(c.base, c.surface1, 50) },
 						-- stylua: ignore
-						AlphaShortcut = { bg = color_blend(c.base, c.mantle, 50), fg = color_blend(c.base, c.surface1, 50) },
+						AlphaShortcut = { bg = color_blend(c.base, c.crust, 50), fg = color_blend(c.base, c.surface1, 50) },
 						BufferLineFill = { bg = c.mantle },
 						BufferLineIndicatorVisible = { bg = c.mantle },
 						BufferLineModifiedVisible = { bg = c.mantle, fg = c.surface0 },
