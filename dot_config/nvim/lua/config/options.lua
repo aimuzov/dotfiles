@@ -43,9 +43,7 @@ local options = {
 		diff = " ",
 		eob = " ",
 
-		fold = " ",
-		foldopen = "",
-		foldclose = "",
+		fold = "╌",
 
 		horiz = "━",
 		horizup = "┻",

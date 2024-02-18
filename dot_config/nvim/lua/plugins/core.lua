@@ -22,6 +22,7 @@ return {
 		opts = {
 			colorscheme = colorscheme,
 			kind_filter = kind_filter,
+			icons = { misc = { dots = "" } },
 		},
 	},
 }
