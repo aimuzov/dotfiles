@@ -128,14 +128,6 @@ return {
 				)
 			end
 
-			if lazy_util.has("project.nvim") then
-				table.insert(
-					opts.section.buttons.val,
-					#opts.section.buttons.val - 1,
-					button("p", "󰫽", "  Projects", "<cmd>Telescope projects<cr>")
-				)
-			end
-
 			vim.api.nvim_create_autocmd("User", {
 				once = true,
 				pattern = "AlphaReady",
