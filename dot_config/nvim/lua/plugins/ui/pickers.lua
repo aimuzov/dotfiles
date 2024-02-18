@@ -2,19 +2,9 @@ return {
 	{
 		"nvim-telescope/telescope.nvim",
 		dependencies = {
-			{
-				"nvim-telescope/telescope-fzf-native.nvim",
-				build = "make",
-				config = function()
-					require("telescope").load_extension("fzf")
-				end,
-			},
-			{
-				"tiagovla/scope.nvim",
-				init = function()
-					require("telescope").load_extension("scope")
-				end,
-			},
+			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+			{ "nvim-telescope/telescope-file-browser.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
+			{ "tiagovla/scope.nvim" },
 		},
 
 		opts = {
@@ -30,6 +20,7 @@ return {
 					},
 				},
 			},
+
 			pickers = {
 				find_files = { theme = "dropdown", previewer = true },
 				git_files = { theme = "dropdown", previewer = true },
@@ -59,12 +50,30 @@ return {
 					end,
 				},
 			},
+
+			extensions = {
+				file_browser = {
+					theme = "dropdown",
+					path = "%:p:h",
+					select_buffer = true,
+					display_stat = { size = true, date = true },
+				},
+			},
 		},
 
 		keys = {
 			{ "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers (per tab)" },
 			{ "<leader>fB", "<cmd>Telescope scope buffers theme=dropdown<cr>", desc = "Buffers (all)" },
+			{ "<leader>fd", "<cmd>Telescope file_browser<cr>", desc = "Buffers (all)" },
 		},
+
+		config = function(_, opts)
+			require("telescope").setup(opts)
+
+			require("telescope").load_extension("fzf")
+			require("telescope").load_extension("file_browser")
+			require("telescope").load_extension("scope")
+		end,
 	},
 
 	{
