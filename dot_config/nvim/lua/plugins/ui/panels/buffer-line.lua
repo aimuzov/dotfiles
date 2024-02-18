@@ -75,7 +75,7 @@ return {
 				custom_filter = function(buf)
 					local ft = vim.bo[buf].filetype
 
-					if ft == "" or ft == "alpha" then
+					if ft == "alpha" then
 						return false
 					end
 
