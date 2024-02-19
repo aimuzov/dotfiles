@@ -1,6 +1,7 @@
 local plugins_enabled = {
 	"akinsho/git-conflict.nvim",
 	"akinsho/toggleterm.nvim",
+	"alker0/chezmoi.vim",
 	"Almo7aya/openingh.nvim",
 	"antosha417/nvim-lsp-file-operations",
 	"brenton-leighton/multiple-cursors.nvim",
