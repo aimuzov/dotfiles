@@ -4,7 +4,8 @@ show() {
 		--set '/cpu.*/' drawing=off \
 		--set brew drawing=off \
 		--set battery label.drawing=off \
-		--set datetime icon.drawing=off
+		--set datetime icon.drawing=off \
+		--set space_creator icon.drawing=off
 }
 
 hide() {
@@ -13,7 +14,8 @@ hide() {
 		--set '/cpu.*/' drawing=on \
 		--set brew drawing=on \
 		--set battery label.drawing=on \
-		--set datetime icon.drawing=on
+		--set datetime icon.drawing=on \
+		--set space_creator icon.drawing=on
 }
 
 if [ "$1" = "on" ]; then
