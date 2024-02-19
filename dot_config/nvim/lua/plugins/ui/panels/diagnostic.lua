@@ -15,8 +15,9 @@ return {
 
 	{
 		"neovim/nvim-lspconfig",
+		event = "LazyFile",
 		opts = {
-			diagnostic = {
+			diagnostics = {
 				float = { border = "rounded" },
 			},
 		},
