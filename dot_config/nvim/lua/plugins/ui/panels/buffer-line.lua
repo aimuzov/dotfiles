@@ -1,49 +1,80 @@
-local buffer_delete = function(bufnr, force)
-	local buf_delete = require("bufdelete").bufdelete
-	local buf_modified = vim.api.nvim_get_option_value("modified", { buf = bufnr })
+local buffer_delete = function(buffer_number, force)
+	local bufdelete = require("bufdelete").bufdelete
+	local buffer_modified = vim.api.nvim_get_option_value("modified", { buf = buffer_number })
 
-	if force or not buf_modified then
-		buf_delete(bufnr, force)
+	if force or not buffer_modified then
+		bufdelete(buffer_number, force)
 		return
 	end
 
-	local buf_name = vim.api.nvim_buf_get_name(bufnr)
+	local buf_name = vim.api.nvim_buf_get_name(buffer_number)
 	local message = buf_name == "" and "Save changes" or ("Save changes to %q?"):format(buf_name)
 	local choice = vim.fn.confirm(message, "&Yep\n&Nop")
 
 	if choice == 1 then -- Yes
 		vim.cmd.write()
-		buf_delete(bufnr)
+		bufdelete(buffer_number)
 	elseif choice == 2 then -- No
-		buf_delete(bufnr, true)
+		bufdelete(buffer_number, true)
 	end
 end
 
-local buf_move_create = function(dir)
+local buffer_delete_create = function(force)
+	return function()
+		local M = {}
+
+		function M.buffer_delete(buffer_number, force)
+			local buffer_filetype = vim.api.nvim_get_option_value("filetype", { buf = buffer_number })
+
+			if buffer_filetype ~= "alpha" then
+				buffer_delete(buffer_number, force)
+				vim.cmd([[redraw!]])
+			end
+
+			M.buffer_delete_repeat()
+		end
+
+		function M.buffer_delete_repeat()
+			local char = vim.fn.getcharstr()
+
+			if char == "d" then
+				M.buffer_delete(vim.fn.bufnr())
+			elseif char == "D" then
+				M.buffer_delete(vim.fn.bufnr(), true)
+			elseif char ~= nil then
+				vim.api.nvim_feedkeys(vim.keycode(char), "m", true)
+			end
+		end
+
+		M.buffer_delete(force)
+	end
+end
+
+local buffer_move_create = function(dir)
 	local cmd_next = "BufferLineMoveNext"
 	local cmd_prev = "BufferLineMovePrev"
 
 	return function()
 		local M = {}
 
-		function M.buf_move(dir_next)
+		function M.buffer_move(dir_next)
 			vim.cmd(dir_next == "next" and cmd_next or cmd_prev)
-			M.buf_move_repeat()
+			M.buffer_move_repeat()
 		end
 
-		function M.buf_move_repeat()
+		function M.buffer_move_repeat()
 			local char = vim.fn.getcharstr()
 
 			if char == "]" then
-				M.buf_move("next")
+				M.buffer_move("next")
 			elseif char == "[" then
-				M.buf_move("prev")
+				M.buffer_move("prev")
 			elseif char ~= nil then
 				vim.api.nvim_feedkeys(vim.keycode(char), "m", true)
 			end
 		end
 
-		M.buf_move(dir)
+		M.buffer_move(dir)
 	end
 end
 
@@ -117,30 +148,10 @@ return {
 		},
 
 		keys = {
-			{
-				"<leader>bd",
-				function()
-					local buf = vim.fn.bufnr()
-					local buf_filetype = vim.api.nvim_get_option_value("filetype", { buf = buf })
-
-					if buf_filetype == "alpha" then
-						return
-					end
-
-					buffer_delete(buf)
-				end,
-				desc = "Delete buffer",
-			},
-			{
-				"<leader>bD",
-				function()
-					local buf_id = vim.fn.bufnr()
-					buffer_delete(buf_id, true)
-				end,
-				desc = "Delete buffer (force)",
-			},
-			{ "<leader>bm[", buf_move_create("prev"), desc = "Move buffer (prev)" },
-			{ "<leader>bm]", buf_move_create("next"), desc = "Move buffer (next)" },
+			{ "<leader>bd", buffer_delete_create(), desc = "Delete buffer" },
+			{ "<leader>bD", buffer_delete_create(true), desc = "Delete buffer (force)" },
+			{ "<leader>bm[", buffer_move_create("prev"), desc = "Move buffer (prev)" },
+			{ "<leader>bm]", buffer_move_create("next"), desc = "Move buffer (next)" },
 		},
 	},
 
