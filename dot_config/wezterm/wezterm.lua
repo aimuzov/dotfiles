@@ -64,8 +64,8 @@ return {
 	}),
 
 	adjust_window_size_when_changing_font_size = false,
-	line_height = 1.3,
-	font_size = 14,
+	line_height = 1.35,
+	font_size = 15,
 
 	show_new_tab_button_in_tab_bar = false,
 	hide_tab_bar_if_only_one_tab = true,
