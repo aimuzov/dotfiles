@@ -9,6 +9,8 @@ return {
 		"folke/noice.nvim",
 		optional = true,
 		opts = {
+			presets = { bottom_search = false },
+
 			format = {
 				spinner = {
 					name = "triangle",
