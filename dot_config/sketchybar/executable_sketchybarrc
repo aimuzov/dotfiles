@@ -19,7 +19,7 @@ bar=(
 	sticky=on
 	padding_right=8
 	padding_left=8
-	topmost=window
+	topmost=off
 )
 
 sketchybar --bar "${bar[@]}"
