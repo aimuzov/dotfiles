@@ -11,7 +11,7 @@ killall helper
 $CONFIG_DIR/helper/helper $HELPER >/dev/null 2>&1 &
 
 bar=(
-	height=40
+	height=38
 	color=$BAR_COLOR
 	border_color=$BAR_BORDER_COLOR
 	shadow=off
