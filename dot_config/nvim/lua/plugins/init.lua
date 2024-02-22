@@ -17,6 +17,7 @@ local plugins_enabled = {
 	"mxsdev/nvim-dap-vscode-js",
 	"olrtg/nvim-emmet",
 	"piersolenski/wtf.nvim",
+	"rest-nvim/rest.nvim",
 	"shumphrey/fugitive-gitlab.vim",
 	"sindrets/diffview.nvim",
 	"tiagovla/scope.nvim",
