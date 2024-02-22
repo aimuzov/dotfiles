@@ -83,7 +83,7 @@ return {
 						NoiceFormatEvent = { fg = c.overlay1 },
 						NoiceFormatKind = { fg = c.overlay0 },
 						NoiceLspProgressTitle = { fg = c.overlay0 },
-						NoicePopup = { link = "NormalFloat" },
+						NoicePopup = { link = "CmpDocFloat" },
 						NonText = { fg = c.base },
 						NormalFloat = { bg = c.base },
 						TreesitterContext = { bg = c.base, blend = 10 },
