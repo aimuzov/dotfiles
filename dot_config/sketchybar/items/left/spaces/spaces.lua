@@ -51,11 +51,13 @@ for i = 1, 10, 1 do
 		local bg_color = ENV.SELECTED == "true" and colors.bg2 or colors.bg1
 		local text_color = ENV.SELECTED == "true" and colors.white or colors.grey
 
-		space:set({
-			icon = { highlight = ENV.SELECTED, color = text_color },
-			label = { highlight = ENV.SELECTED, highlight_color = text_color },
-			background = { color = bg_color },
-		})
+		sbar.animate("sin", 10, function()
+			space:set({
+				icon = { highlight = ENV.SELECTED, color = text_color },
+				label = { highlight = ENV.SELECTED, highlight_color = text_color },
+				background = { color = bg_color },
+			})
+		end)
 	end)
 
 	space:subscribe("mouse.entered", function(ENV)
