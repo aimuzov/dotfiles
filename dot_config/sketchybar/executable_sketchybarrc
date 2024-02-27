@@ -1,62 +1,14 @@
-#!/usr/bin/env sh
+#!/usr/bin/env lua
 
-source "$CONFIG_DIR/colors.sh"
+-- stylua: ignore
+os.execute( "[ ! -d $HOME/.local/share/sketchybar_lua/ ] && (git clone https://github.com/FelixKratz/SbarLua.git /tmp/SbarLua && cd /tmp/SbarLua/ && make install && rm -rf /tmp/SbarLua/)")
+package.cpath = package.cpath .. ";/Users/" .. os.getenv("USER") .. "/.local/share/sketchybar_lua/?.so"
 
-FONT="SF Pro"
-PADDINGS=3
+local sbar = require("sketchybar")
 
-HELPER=git.felix.helper
-killall helper
-(cd $CONFIG_DIR/helper && make)
-$CONFIG_DIR/helper/helper $HELPER >/dev/null 2>&1 &
+sbar.begin_config()
+require("init")
+sbar.hotload(true)
+sbar.end_config()
 
-bar=(
-	height=38
-	color=$BAR_COLOR
-	border_color=$BAR_BORDER_COLOR
-	shadow=off
-	position=bottom
-	sticky=on
-	padding_right=8
-	padding_left=8
-	topmost=off
-)
-
-sketchybar --bar "${bar[@]}"
-
-defaults=(
-	background.border_width=1
-	background.corner_radius=9
-	background.height=26
-
-	padding_left=$PADDINGS
-	padding_right=$PADDINGS
-	updates=when_shown
-
-	icon.color=$ICON_COLOR
-	icon.font="$FONT:Bold:14.0"
-	icon.padding_left=$PADDINGS
-	icon.padding_right=$PADDINGS
-
-	label.color=$LABEL_COLOR
-	label.font="$FONT:Semibold:13.0"
-	label.padding_left=$PADDINGS
-	label.padding_right=$PADDINGS
-)
-
-sketchybar --default "${defaults[@]}"
-
-source "$CONFIG_DIR/items/spaces/item.sh"
-source "$CONFIG_DIR/items/yabai/item.sh"
-source "$CONFIG_DIR/items/front_app/item.sh"
-
-source "$CONFIG_DIR/items/datetime/item.sh"
-source "$CONFIG_DIR/items/battery/item.sh"
-source "$CONFIG_DIR/items/brew/item.sh"
-source "$CONFIG_DIR/items/keyboard_layout/item.sh"
-source "$CONFIG_DIR/items/cpu/item.sh"
-source "$CONFIG_DIR/items/media/item.sh"
-source "$CONFIG_DIR/items/svim/item.sh"
-
-sketchybar --hotload on
-sketchybar --update
+sbar.event_loop()

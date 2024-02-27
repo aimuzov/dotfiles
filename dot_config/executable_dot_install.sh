@@ -53,6 +53,10 @@ launchctl load -w $HOME/Library/LaunchAgents/io.aimuzov.theme-switcher.plist
 
 # ----------------------------------------------------------------------------------------------------------------------
 
+(git clone https://github.com/FelixKratz/SbarLua.git /tmp/SbarLua && cd /tmp/SbarLua/ && make install && rm -rf /tmp/SbarLua/)
+
+# ----------------------------------------------------------------------------------------------------------------------
+
 echo "Changing macOS defaults..." # https://macos-defaults.com/
 
 sudo nvram SystemAudioVolume=" "

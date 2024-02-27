@@ -21,7 +21,6 @@ function brew() {
 
 	if [[ $* =~ "upgrade" ]] || [[ $* =~ "update" ]] || [[ $* =~ "outdated" ]]; then
 		command sketchybar --trigger brew_update
-		echo "brew upgrade is finished"
 	fi
 }
 
