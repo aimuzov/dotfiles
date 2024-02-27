@@ -25,9 +25,7 @@ local function update(ENV)
 		label.color = colors.red
 	end
 
-	sbar.animate("sin", 10, function()
-		cpu:set({ label = label })
-	end)
+	cpu:set({ label = label })
 end
 
 cpu:subscribe({ "forced", "cpu_update" }, update)
