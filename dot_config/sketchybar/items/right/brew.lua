@@ -16,7 +16,7 @@ local brew = sbar.add("item", {
 })
 
 local function action()
-	os.execute([[wezterm start -- zsh -c "brew upgrade"']])
+	sbar.exec([[wezterm start -- zsh -c "brew upgrade"]])
 end
 
 local function update()
@@ -41,7 +41,7 @@ local function update()
 	end)
 end
 
-brew:subscribe("mouse.clicked", action)
 brew:subscribe({ "forced", "routine", "brew_update", "update" }, update)
+brew:subscribe("mouse.clicked", action)
 
 return brew

@@ -75,11 +75,6 @@ local function update()
 	end)
 end
 
-local function action()
-	--
-end
-
 yabai:subscribe("window_focus", update)
-yabai:subscribe("mouse.clicked", action)
 
 return yabai

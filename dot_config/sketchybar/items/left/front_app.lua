@@ -13,7 +13,7 @@ local function update(env)
 end
 
 local function action()
-	os.execute("open -a 'Mission Control'")
+	sbar.exec("open -a 'Mission Control'")
 end
 
 front_app:subscribe("front_app_switched", update)
