@@ -6,8 +6,9 @@ return {
 		optional = true,
 		opts = {
 			formatters_by_ft = {
-				["svelte"] = { prettier_list, "stylelint" },
+				["c"] = { "clang_format" },
 				["css"] = { prettier_list, "stylelint" },
+				["svelte"] = { prettier_list, "stylelint" },
 				["typescript"] = { prettier_list, "lsp" },
 				["zsh"] = { "shfmt" },
 			},
