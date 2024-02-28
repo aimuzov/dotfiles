@@ -86,9 +86,9 @@ return {
 			options = {
 				always_show_bufferline = true,
 				truncate_names = false,
-				indicator = { icon = "▌", style = "icon" },
+				indicator = { icon = "▎", style = "icon" },
 				sort_by = "relative_directory",
-				separator_style = { "▏", "" },
+				separator_style = { "", " " },
 				left_trunc_marker = "",
 				right_trunc_marker = "",
 				modified_icon = "",
