@@ -42,7 +42,7 @@ for i = 1, 10, 1 do
 				corner_radius = 9,
 				border_width = 5,
 				border_color = colors.green,
-				scale = 0.10,
+				scale = 0.02,
 			},
 		},
 	})
@@ -61,11 +61,15 @@ for i = 1, 10, 1 do
 	end)
 
 	space:subscribe("mouse.entered", function(ENV)
-		space_preview:set({ background = { image = "space." .. ENV.SID } })
-		space:set({ popup = { drawing = true } })
+		sbar.animate("sin", 10, function()
+			space:set({ popup = { drawing = true } })
+			space_preview:set({ background = { image = "space." .. ENV.SID } })
+			space_preview:set({ background = { image = { scale = 0.08 } } })
+		end)
 	end)
 
 	space:subscribe("mouse.exited", function()
+		space_preview:set({ background = { image = { scale = 0.02 } } })
 		space:set({ popup = { drawing = false } })
 	end)
 
