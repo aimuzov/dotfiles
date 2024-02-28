@@ -64,7 +64,7 @@ return {
 	}),
 
 	adjust_window_size_when_changing_font_size = false,
-	line_height = 1.35,
+	line_height = 1.4,
 	font_size = 15,
 
 	show_new_tab_button_in_tab_bar = false,
@@ -76,7 +76,7 @@ return {
 	default_cursor_style = "SteadyBar",
 
 	window_decorations = "RESIZE",
-	window_padding = { left = 0, right = 0, top = "0.25cell", bottom = 0 },
+	window_padding = { left = 0, right = 0, top = 0, bottom = 0 },
 	window_background_opacity = 0.9,
 	macos_window_background_blur = 20,
 
