@@ -16,13 +16,17 @@ return {
 	{
 		"lewis6991/gitsigns.nvim",
 		optional = true,
-		opts = {
-			preview_config = {
-				border = "rounded",
-				row = 1,
-				col = 1,
-			},
-		},
+		opts = function(_, opts)
+			local on_attach_orig = opts.on_attach
+			local on_attach_modified = function(buffer)
+				-- stylua: ignore
+				vim.keymap.set("n", "<leader>ghP", require("gitsigns").preview_hunk, { buffer = buffer, desc = "Preview Hunk" })
+				on_attach_orig(buffer)
+			end
+
+			opts.on_attach = on_attach_modified
+			opts.preview_config = { border = "rounded", row = 1, col = 1 }
+		end,
 	},
 
 	{

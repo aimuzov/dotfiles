@@ -83,12 +83,6 @@ local function lazyvim_override_lualine_pretty_path()
 	end
 end
 
-local function lazyvim_override_gitsign_hunk_preview()
-	local gs = require("gitsigns")
-
-	gs.preview_hunk_inline = gs.preview_hunk
-end
-
 local function mouse_remove_context_actions()
 	vim.cmd.aunmenu({ "PopUp.How-to\\ disable\\ mouse" })
 	vim.cmd.aunmenu({ "PopUp.-1-" })
@@ -97,5 +91,4 @@ end
 lazyvim_override_keys_to_string()
 lazyvim_override_open_terminal()
 lazyvim_override_lualine_pretty_path()
-lazyvim_override_gitsign_hunk_preview()
 mouse_remove_context_actions()
