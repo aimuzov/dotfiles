@@ -9,10 +9,6 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 	callback = vim.schedule_wrap(function()
 		require("lualine").setup({ options = { theme = Util.lualine_theme_create() } })
 		require("nvim-web-devicons").set_up_highlights(true)
-
-		vim.schedule(function()
-			vim.cmd([[Lazy reload bufferline.nvim indent-blankline.nvim]])
-		end)
 	end),
 })
 

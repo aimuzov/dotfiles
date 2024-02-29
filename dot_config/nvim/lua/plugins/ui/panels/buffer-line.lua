@@ -78,6 +78,49 @@ local buffer_move_create = function(dir)
 	end
 end
 
+local hls_create = function(c)
+	local hls = {
+		buffer = { bg = c.mantle },
+		fill = { bg = c.mantle },
+		modified = { bg = c.mantle },
+		pick = { bg = c.mantle },
+		trunc_marker = { bg = c.mantle },
+
+		modified_visible = { fg = c.peach },
+		separator = { fg = c.base },
+		tab_selected = { fg = c.text, style = { "bold" } },
+		tab_separator = { fg = c.mantle, bg = c.mantle },
+		tab_separator_selected = { fg = c.base, bg = c.base },
+	}
+
+	-- stylua: ignore start
+	local items = {
+		"buffer", "close_button", "diagnostic", "error", "error",
+		"error_diagnostic", "hint", "indicator", "info", "info_diagnostic",
+		"modified", "numbers", "pick", "warning", "warning_diagnostic",
+
+	}
+	-- stylua: ignore end
+
+	for _, item in ipairs(items) do
+		local key_selected = item .. "_selected"
+		local key_visible = item .. "_visible"
+
+		if not hls[key_selected] then
+			hls[key_selected] = {}
+		end
+
+		if not hls[key_visible] then
+			hls[key_visible] = {}
+		end
+
+		hls[key_selected].bg = c.base
+		hls[key_visible].bg = c.base
+	end
+
+	return hls
+end
+
 return {
 	{
 		"akinsho/bufferline.nvim",
@@ -87,7 +130,6 @@ return {
 				always_show_bufferline = true,
 				truncate_names = false,
 				indicator = { icon = "▎", style = "icon" },
-				sort_by = "relative_directory",
 				separator_style = { "", " " },
 				left_trunc_marker = "",
 				right_trunc_marker = "",
@@ -116,13 +158,20 @@ return {
 		},
 
 		config = function(_, opts)
+			local c = require("util").colors_get
 			local catppuccin_bufferline = require("catppuccin.groups.integrations.bufferline")
 			local bufferline_groups = require("bufferline.groups")
 
 			table.insert(opts.options.groups, bufferline_groups.builtin.pinned:with({ icon = "" }))
 			table.insert(opts.options.groups, bufferline_groups.builtin.ungrouped)
 
-			opts.highlights = catppuccin_bufferline.get()
+			opts.highlights = catppuccin_bufferline.get({
+				styles = { "bold" },
+				custom = {
+					frappe = hls_create(c("frappe")),
+					latte = hls_create(c("latte")),
+				},
+			})
 			require("bufferline").setup(opts)
 		end,
 

@@ -47,8 +47,8 @@ function M.colorscheme_change()
 	vim.cmd.colorscheme(M.colorscheme_get_name())
 end
 
-function M.colors_get()
-	return require("catppuccin.palettes").get_palette()
+function M.colors_get(flavor)
+	return require("catppuccin.palettes").get_palette(flavor)
 end
 
 function M.lualine_theme_create()
