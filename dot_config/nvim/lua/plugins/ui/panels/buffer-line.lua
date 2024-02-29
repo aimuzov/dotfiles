@@ -80,12 +80,12 @@ end
 
 local hls_create = function(c)
 	local hls = {
-		buffer = { bg = c.mantle },
 		fill = { bg = c.mantle },
 		modified = { bg = c.mantle },
 		pick = { bg = c.mantle },
 		trunc_marker = { bg = c.mantle },
 
+		buffer_visible = { fg = c.subtext0 },
 		modified_visible = { fg = c.peach },
 		separator = { fg = c.base },
 		tab_selected = { fg = c.text, style = { "bold" } },
@@ -95,10 +95,9 @@ local hls_create = function(c)
 
 	-- stylua: ignore start
 	local items = {
-		"buffer", "close_button", "diagnostic", "error", "error",
-		"error_diagnostic", "hint", "indicator", "info", "info_diagnostic",
-		"modified", "numbers", "pick", "warning", "warning_diagnostic",
-
+		"buffer", "close_button", "diagnostic", "error", "error_diagnostic",
+		"hint", "indicator", "info", "info_diagnostic", "modified",
+		"numbers", "pick", "warning", "warning_diagnostic",
 	}
 	-- stylua: ignore end
 
@@ -106,11 +105,11 @@ local hls_create = function(c)
 		local key_selected = item .. "_selected"
 		local key_visible = item .. "_visible"
 
-		if not hls[key_selected] then
+		if hls[key_selected] == nil then
 			hls[key_selected] = {}
 		end
 
-		if not hls[key_visible] then
+		if hls[key_visible] == nil then
 			hls[key_visible] = {}
 		end
 
