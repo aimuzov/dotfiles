@@ -12,7 +12,7 @@ local media = sbar.add("item", {
 media:subscribe("media_change", function(env)
 	local is_playing = env.INFO.state == "playing"
 	local color = is_playing and colors.white or colors.grey
-	local drawing = whitelist[env.INFO.app] and env.INFO.artist ~= ""
+	local drawing = whitelist[env.INFO.app] == true and env.INFO.artist ~= ""
 
 	local label = {
 		string = env.INFO.artist .. " / " .. env.INFO.title,
