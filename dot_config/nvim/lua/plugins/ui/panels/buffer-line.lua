@@ -87,7 +87,7 @@ local hls_create = function(c)
 
 		buffer_visible = { fg = c.subtext0 },
 		modified_visible = { fg = c.peach },
-		separator = { fg = c.base },
+		separator = { fg = c.menlo },
 		tab_selected = { fg = c.text, style = { "bold" } },
 		tab_separator = { fg = c.mantle, bg = c.mantle },
 		tab_separator_selected = { fg = c.base, bg = c.base },
@@ -129,7 +129,7 @@ return {
 				always_show_bufferline = true,
 				truncate_names = false,
 				indicator = { icon = "▎", style = "icon" },
-				separator_style = { "", " " },
+				separator_style = "thin",
 				left_trunc_marker = "",
 				right_trunc_marker = "",
 				modified_icon = "",
