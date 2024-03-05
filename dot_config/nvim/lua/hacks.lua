@@ -31,7 +31,7 @@ local function lazyvim_override_open_terminal()
 				zindex = 60,
 				size = { height = 1, width = 1 },
 				esc_esc = false,
-				margin = { top = 1, bottom = 1 },
+				margin = { top = 0, bottom = 1 },
 				ctrl_hjkl = false,
 			})
 
