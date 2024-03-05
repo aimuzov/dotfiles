@@ -24,7 +24,7 @@ local function update()
 	local brew_info = assert(file:read("a"))
 	local count = tonumber(brew_info)
 	local icon = { color = colors.white }
-	local label = { string = tostring(count), color = colors.white }
+	local label = { string = tostring(count), color = colors.white, drawing = true }
 
 	if count == 0 then
 		label.drawing = false
