@@ -4,6 +4,7 @@ os:
 gui:
   nerdFontsVersion: "3"
   border: "rounded"
+  expandFocusedSidePanel: true
   showBottomLine: false
   commandLogSize: 3
   showCommandLog: false
