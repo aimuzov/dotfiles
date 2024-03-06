@@ -1,5 +1,6 @@
 os:
-  openLink: "bash -C ${HOME}/.config/lazygit/scripts/chrome_open_url.sh {{link}}"
+  # https://github.com/jesseduffield/lazygit/issues/3064
+  openLink: open -n "$(echo {{link}} | sed 's/%2F/\//g')"
 gui:
   nerdFontsVersion: "3"
   border: "rounded"
