@@ -66,3 +66,6 @@ for opt_name, opt_value in pairs(options) do
 		vim.notify("Option " .. opt_name .. " is not supported", vim.log.levels.WARN)
 	end
 end
+
+vim.cmd.aunmenu({ "PopUp.How-to\\ disable\\ mouse" })
+vim.cmd.aunmenu({ "PopUp.-1-" })
