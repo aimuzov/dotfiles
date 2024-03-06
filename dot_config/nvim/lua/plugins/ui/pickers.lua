@@ -1,4 +1,5 @@
 local nvim_cfg_src_path = vim.fn.getenv("DOTFILES_SRC_PATH") .. "/dot_config/nvim"
+
 local function show_hidden()
 	local action_state = require("telescope.actions.state")
 	local line = action_state.get_current_line()
@@ -26,6 +27,7 @@ return {
 		dependencies = {
 			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 			{ "nvim-telescope/telescope-file-browser.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
+			{ "nvim-telescope/telescope-live-grep-args.nvim" },
 			{ "tiagovla/scope.nvim" },
 		},
 
@@ -85,6 +87,8 @@ return {
 			{ "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers (per tab)" },
 			{ "<leader>fB", "<cmd>Telescope scope buffers theme=dropdown<cr>", desc = "Buffers (all)" },
 			{ "<leader>fd", "<cmd>Telescope file_browser<cr>", desc = "Buffers (all)" },
+			-- stylua: ignore
+			{ "<leader>sg", [[<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<cr>]], desc = "Grep (with args)" },
 		},
 
 		config = function(_, opts)
@@ -93,6 +97,7 @@ return {
 			require("telescope").load_extension("fzf")
 			require("telescope").load_extension("file_browser")
 			require("telescope").load_extension("scope")
+			require("telescope").load_extension("live_grep_args")
 		end,
 	},
 
