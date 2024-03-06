@@ -116,5 +116,17 @@ return {
 			kind_filter = kind_filter,
 			icons = { misc = { dots = "" } },
 		},
+		keys = {
+			{
+				"<leader>fc",
+				function()
+					require("lazyvim.util").telescope(
+						"find_files",
+						{ cwd = vim.fn.getenv("DOTFILES_SRC_PATH") .. "/dot_config/nvim" }
+					)
+				end,
+				desc = "Find Config File",
+			},
+		},
 	},
 }

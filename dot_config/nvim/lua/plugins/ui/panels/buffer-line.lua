@@ -87,6 +87,7 @@ local hls_create = function(c)
 
 		buffer_visible = { fg = c.subtext0 },
 		modified_visible = { fg = c.peach },
+		duplicate_visible = { bg = c.base },
 		separator = { fg = c.menlo },
 		tab_selected = { fg = c.text, style = { "bold" } },
 		tab_separator = { fg = c.mantle, bg = c.mantle },
