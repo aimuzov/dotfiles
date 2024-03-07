@@ -4,6 +4,7 @@ return {
 		optional = true,
 		opts = {
 			current_only = false,
+			zindex = 30,
 			excluded_filetypes = {
 				"alpha",
 				"neo-tree",
@@ -11,6 +12,7 @@ return {
 				"aerial",
 				"noice",
 				"chatgpt-input",
+				"neo-tree-preview",
 			},
 		},
 	},
