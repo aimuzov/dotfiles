@@ -1,5 +1,3 @@
-local nvim_cfg_src_path = vim.fn.getenv("DOTFILES_SRC_PATH") .. "/dot_config/nvim"
-
 local function show_hidden()
 	local action_state = require("telescope.actions.state")
 	local line = action_state.get_current_line()
@@ -83,12 +81,19 @@ return {
 		},
 
 		keys = {
-			{ "<leader>fc", "<cmd>Telescope find_files cwd=" .. nvim_cfg_src_path .. "<cr>", desc = "Find cfg file" },
 			{ "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers (per tab)" },
 			{ "<leader>fB", "<cmd>Telescope scope buffers theme=dropdown<cr>", desc = "Buffers (all)" },
 			{ "<leader>fd", "<cmd>Telescope file_browser<cr>", desc = "Buffers (all)" },
-			-- stylua: ignore
-			{ "<leader>sg", [[<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<cr>]], desc = "Grep (with args)" },
+			{
+				"<leader>fc",
+				"<cmd>Telescope find_files cwd=" .. vim.fn.getenv("DOTFILES_SRC_PATH") .. "<cr>",
+				desc = "Find dotfile",
+			},
+			{
+				"<leader>sg",
+				[[<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<cr>]],
+				desc = "Grep (with args)",
+			},
 		},
 
 		config = function(_, opts)
