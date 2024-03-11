@@ -10,9 +10,6 @@ vim.keymap.set({ "n" }, "<c-d>", "<c-d>zz")
 vim.keymap.set({ "n" }, "<c-b>", "<c-b>zz")
 vim.keymap.set({ "n" }, "<c-f>", "<c-f>zz")
 
-vim.keymap.set({ "n", "v" }, "d", [["_d]])
-vim.keymap.set({ "n", "v" }, "D", [["_D]])
-
 vim.keymap.set("n", "<leader>w\\", "<C-W>v", { desc = "Split window right" })
 vim.keymap.set("n", "<leader>\\", "<C-W>v", { desc = "Split window right" })
 
