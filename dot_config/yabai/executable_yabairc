@@ -89,7 +89,7 @@ yabai -m rule --add space=social app="^(Telegram|Slack|Discord|WhatsApp)$"
 
 # -- Layout managing ---------------------------------------------------------------------------------------------------
 
-yabai -m rule --add manage=off app!="^(\
+yabai -m rule --add manage=off layer=below app!="^(\
 Calendar|\
 Figma|\
 Finder|\
