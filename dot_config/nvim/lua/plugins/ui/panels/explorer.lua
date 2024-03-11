@@ -142,7 +142,6 @@ return {
 
 		opts = {
 			show_scrolled_off_parent_node = true,
-			enable_normal_mode_for_inputs = true,
 			use_popups_for_input = true,
 			popup_border_style = "rounded",
 
@@ -237,6 +236,15 @@ return {
 					["O"] = "system_open",
 					["<s-h>"] = "prev_source",
 					["<s-l>"] = "next_source",
+				},
+			},
+
+			event_handlers = {
+				{
+					event = "neo_tree_popup_input_ready",
+					handler = function()
+						vim.cmd("stopinsert")
+					end,
 				},
 			},
 		},
