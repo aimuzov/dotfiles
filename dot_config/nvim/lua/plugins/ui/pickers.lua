@@ -32,6 +32,11 @@ return {
 		opts = {
 			defaults = {
 				layout_strategy = "vertical",
+				layout_config = {
+					height = 0.95,
+					width = 0.8,
+					preview_cutoff = 20,
+				},
 				mappings = {
 					i = {
 						["<c-h>"] = show_hidden,
@@ -41,48 +46,33 @@ return {
 			},
 
 			pickers = {
-				find_files = { theme = "dropdown", previewer = true },
-				git_files = { theme = "dropdown", previewer = true },
-				oldfiles = { theme = "dropdown", previewer = true },
-				buffers = { theme = "dropdown", previewer = true },
-				highlights = { theme = "dropdown", previewer = true },
-
-				lsp_document_symbols = { theme = "dropdown", previewer = true },
-				lsp_dynamic_workspace_symbols = { theme = "dropdown", previewer = true },
-
 				lsp_references = {
-					theme = "dropdown",
-					previewer = true,
 					show_line = false,
 					path_display = { "smart" },
 					jump_type = "vsplit",
-				},
-
-				live_grep = {
-					theme = "dropdown",
-					path_display = { "tail" },
-					disable_coordinates = true,
-					layout_config = { width = 0.75, height = 0.25 },
-					previewer = true,
-					additional_args = function()
-						return { "--hidden" }
-					end,
 				},
 			},
 
 			extensions = {
 				file_browser = {
-					theme = "dropdown",
 					path = "%:p:h",
 					select_buffer = true,
 					display_stat = { size = true, date = true },
+				},
+
+				live_grep_args = {
+					path_display = { "smart" },
+					disable_coordinates = true,
+					additional_args = function()
+						return { "--hidden" }
+					end,
 				},
 			},
 		},
 
 		keys = {
 			{ "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers (per tab)" },
-			{ "<leader>fB", "<cmd>Telescope scope buffers theme=dropdown<cr>", desc = "Buffers (all)" },
+			{ "<leader>fB", "<cmd>Telescope scope buffers<cr>", desc = "Buffers (all)" },
 			{ "<leader>fd", "<cmd>Telescope file_browser<cr>", desc = "Buffers (all)" },
 			{
 				"<leader>fc",
