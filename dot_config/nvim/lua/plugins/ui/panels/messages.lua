@@ -11,6 +11,18 @@ return {
 		opts = {
 			presets = { bottom_search = false },
 
+			cmdline = {
+				opts = {
+					win_options = {
+						winhighlight = {
+							Normal = "NormalFloat",
+							FloatBorder = "FloatBorder",
+							FloatTitle = "FloatTitle",
+						},
+					},
+				},
+			},
+
 			format = {
 				spinner = {
 					name = "triangle",
