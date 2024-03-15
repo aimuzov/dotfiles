@@ -89,7 +89,7 @@ yabai -m rule --add space=social app="^(Telegram|Slack|Discord|WhatsApp)$"
 
 # -- Layout managing ---------------------------------------------------------------------------------------------------
 
-yabai -m rule --add manage=off layer=below app!="^(\
+yabai -m rule --add manage=off app!="^(\
 Calendar|\
 Figma|\
 Finder|\
@@ -111,7 +111,5 @@ zoom.us|\
 
 yabai -m rule --add app="^Google Chrome$" title="localhost" mouse_follows_focus=off
 yabai -m rule --add app="^Slack$" title="Huddle*" space=calls
-yabai -m rule --add manage=off app="^Finder$" title="(Copy|Connect|Move|Info|Pref|Finder Settings)"
-yabai -m rule --add manage=off app="^Things$" title="(Quick Entry)"
-
-yabai -m rule --add layer=below app="^(Steam Helper)$"
+yabai -m rule --add app="^Finder$" title="(Copy|Connect|Move|Info|Pref|Finder Settings)" manage=off
+yabai -m rule --add app="^Things$" title="(Quick Entry)" manage=off
