@@ -1,6 +1,14 @@
 return {
 	{
+		"rcarriga/nvim-dap-ui",
+		opts = {
+			floating = { border = "rounded" },
+		},
+	},
+
+	{
 		"mfussenegger/nvim-dap",
+		optional = true,
 		dependencies = {
 			"rcarriga/nvim-dap-ui",
 			"mxsdev/nvim-dap-vscode-js",
@@ -59,7 +67,6 @@ return {
 				}
 			end
 
-			require("dapui").setup()
 			local dap, dapui = require("dap"), require("dapui")
 
 			local sign = vim.fn.sign_define
@@ -74,11 +81,5 @@ return {
 			dap.listeners.before.event_terminated["dapui_config"] = dapui.close
 			dap.listeners.before.event_exited["dapui_config"] = dapui.close
 		end,
-		keys = {
-			{ "<F5>", [[<cmd>lua require("dap").continue()<cr>]] },
-			{ "<F10>", [[<cmd>lua require("dap").step_over()<cr>]] },
-			{ "<F11>", [[<cmd>lua require("dap").step_into()<cr>]] },
-			{ "<F12>", [[<cmd>lua require("dap").step_out()<cr>]] },
-		},
 	},
 }
