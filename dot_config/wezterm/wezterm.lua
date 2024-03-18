@@ -61,6 +61,7 @@ return {
 	font = wezterm.font_with_fallback({
 		{ family = "JetBrainsMono NFM", weight = "Medium" },
 		"Noto Emoji",
+		"SF Pro",
 	}),
 
 	adjust_window_size_when_changing_font_size = false,
