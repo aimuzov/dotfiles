@@ -51,6 +51,10 @@ return {
 					path_display = { "smart" },
 					jump_type = "vsplit",
 				},
+
+				lsp_definitions = {
+					jump_type = "vsplit",
+				},
 			},
 
 			extensions = {
