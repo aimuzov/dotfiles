@@ -45,18 +45,6 @@ return {
 				},
 			},
 
-			pickers = {
-				lsp_references = {
-					show_line = false,
-					path_display = { "smart" },
-					jump_type = "vsplit",
-				},
-
-				lsp_definitions = {
-					jump_type = "vsplit",
-				},
-			},
-
 			extensions = {
 				file_browser = {
 					path = "%:p:h",
