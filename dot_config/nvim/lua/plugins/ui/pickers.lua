@@ -97,4 +97,34 @@ return {
 			},
 		},
 	},
+
+	{
+		"dnlhc/glance.nvim",
+		optional = true,
+
+		opts = {
+			theme = { enable = false },
+			border = {
+				enable = true,
+				top_char = "▁",
+				bottom_char = "▔",
+			},
+			hooks = {
+				before_open = function(results, open, jump)
+					if #results == 1 then
+						jump(results[1])
+					else
+						open(results)
+					end
+				end,
+			},
+		},
+
+		keys = {
+			{ "<leader>gd", "<CMD>Glance definitions<CR>", desc = "" },
+			{ "<leader>gr", "<CMD>Glance references<CR>", desc = "" },
+			{ "<leader>gy", "<CMD>Glance type_definitions<CR>", desc = "" },
+			{ "<leader>gm", "<CMD>Glance implementations<CR>", desc = "" },
+		},
+	},
 }

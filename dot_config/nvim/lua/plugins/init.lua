@@ -5,6 +5,7 @@ local plugins_enabled = {
 	"Almo7aya/openingh.nvim",
 	"antosha417/nvim-lsp-file-operations",
 	"brenton-leighton/multiple-cursors.nvim",
+	"dnlhc/glance.nvim",
 	"famiu/bufdelete.nvim",
 	"folke/edgy.nvim",
 	"folke/twilight.nvim",
