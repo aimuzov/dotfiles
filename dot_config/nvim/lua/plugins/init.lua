@@ -18,7 +18,6 @@ local plugins_enabled = {
 	"mxsdev/nvim-dap-vscode-js",
 	"olrtg/nvim-emmet",
 	"piersolenski/wtf.nvim",
-	"rest-nvim/rest.nvim",
 	"shumphrey/fugitive-gitlab.vim",
 	"sindrets/diffview.nvim",
 	"tiagovla/scope.nvim",
@@ -31,6 +30,7 @@ local plugins_enabled = {
 }
 
 local plugins_disabled = {
+	"rest-nvim/rest.nvim",
 	"echasnovski/mini.bufremove",
 	"echasnovski/mini.indentscope",
 	"folke/tokyonight.nvim",
