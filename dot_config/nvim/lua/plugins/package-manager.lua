@@ -22,13 +22,11 @@ return {
 		opts = { ui = { border = "rounded", width = 0.7, height = 0.7 } },
 	},
 	{
-		"williamboman/mason-lspconfig.nvim",
-		optional = true,
-		opts = { ensure_installed = ensure_installed },
-	},
-	{
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 		optional = true,
-		opts = { ensure_installed = ensure_installed, auto_update = true, start_delay = 500 },
+		opts = {
+			ensure_installed = ensure_installed,
+			auto_update = true,
+		},
 	},
 }
