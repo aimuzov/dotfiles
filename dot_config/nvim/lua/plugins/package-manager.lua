@@ -22,11 +22,25 @@ return {
 		opts = { ui = { border = "rounded", width = 0.7, height = 0.7 } },
 	},
 	{
+		"williamboman/mason-lspconfig.nvim",
+		dependencies = { "williamboman/mason.nvim" },
+		optional = true,
+	},
+	{
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 		optional = true,
+		dependencies = {
+			"williamboman/mason.nvim",
+			"williamboman/mason-lspconfig.nvim",
+		},
 		opts = {
 			ensure_installed = ensure_installed,
 			auto_update = true,
 		},
+	},
+	{
+		"neovim/nvim-lspconfig",
+		dependencies = { "WhoIsSethDaniel/mason-tool-installer.nvim" },
+		optional = true,
 	},
 }
