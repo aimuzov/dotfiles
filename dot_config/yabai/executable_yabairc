@@ -113,3 +113,5 @@ yabai -m rule --add app="^Google Chrome$" title="localhost" mouse_follows_focus=
 yabai -m rule --add app="^Slack$" title="Huddle*" space=calls
 yabai -m rule --add app="^Finder$" title="(Copy|Connect|Move|Info|Pref|Finder Settings)" manage=off
 yabai -m rule --add app="^Things$" title="(Quick Entry)" manage=off
+
+yabai -m rule --apply
