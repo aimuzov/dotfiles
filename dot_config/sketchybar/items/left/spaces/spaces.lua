@@ -1,7 +1,7 @@
 local sbar = require("sketchybar")
 local colors = require("config").colors
 
-local app_icons = require("items.left.spaces.app_icons")
+local icon_map = require("items.left.spaces.icon_map")
 
 local spaces = {}
 
@@ -99,8 +99,8 @@ space_creator:subscribe("space_windows_change", function(env)
 
 	for app in pairs(env.INFO.apps) do
 		no_app = false
-		local lookup = app_icons[app]
-		local icon = ((lookup == nil) and app_icons["default"] or lookup)
+		local lookup = icon_map[app]
+		local icon = ((lookup == nil) and icon_map["default"] or lookup)
 		icon_line = icon_line .. icon .. " "
 	end
 
