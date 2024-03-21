@@ -8,7 +8,7 @@
 	program = gpg
 [alias]
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-	dlog = "!f() { GIT_EXTERNAL_DIFF=difft git log -p --ext-diff; }; f"
+	dlog = "!f() { GIT_EXTERNAL_DIFF=difft git log -p --ext-diff $@; }; f"
 	dft = difftool
 [init]
 	defaultBranch = main
@@ -46,8 +46,7 @@
 	stripLeadingSymbols = true
 	useUnicodeRuler = true
 [diff]
-	tool = difft
-	external = difft
+	tool = difftastic
 [difftool]
 	prompt = false
 [difftool "difftastic"]
