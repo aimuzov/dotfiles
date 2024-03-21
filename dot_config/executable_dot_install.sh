@@ -47,13 +47,14 @@ asdf reshim python
 # ----------------------------------------------------------------------------------------------------------------------
 
 echo "Setupping theme switcher..."
-
 /usr/bin/env zsh -c "cd $HOME/Library/ThemeSwitcher && swift build --configuration release"
 launchctl load -w $HOME/Library/LaunchAgents/io.aimuzov.theme-switcher.plist
 
-# ----------------------------------------------------------------------------------------------------------------------
-
+echo "Setupping sketchybar..."
 (git clone https://github.com/FelixKratz/SbarLua.git /tmp/SbarLua && cd /tmp/SbarLua/ && make install && rm -rf /tmp/SbarLua/)
+
+echo "Installing workflows scripts..."
+/usr/bin/env zsh -c $HOME/.bin/workflows/install_workflows.zsh
 
 # ----------------------------------------------------------------------------------------------------------------------
 
