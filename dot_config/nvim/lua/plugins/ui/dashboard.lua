@@ -84,8 +84,6 @@ return {
 		"goolord/alpha-nvim",
 		optional = true,
 		opts = function(_, opts)
-			local lazy_util = require("lazyvim.util")
-
 			opts.section = section
 			opts.opts = {
 				layout = {
@@ -99,7 +97,7 @@ return {
 				},
 			}
 
-			if lazy_util.has("telescope.nvim") then
+			if LazyVim.has("telescope.nvim") then
 				table.insert(
 					opts.section.buttons.val,
 					#opts.section.buttons.val - 1,
@@ -119,7 +117,7 @@ return {
 				)
 			end
 
-			if lazy_util.has("persistence.nvim") then
+			if LazyVim.has("persistence.nvim") then
 				table.insert(
 					opts.section.buttons.val,
 					#opts.section.buttons.val - 1,

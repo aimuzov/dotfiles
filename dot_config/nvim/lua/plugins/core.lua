@@ -1,16 +1,15 @@
 local colorscheme = require("util").colorscheme_get_name()
 
 local function override_terminal_open()
-	local LazyvimUtil = require("lazyvim.util")
-	local open_original = LazyvimUtil.terminal.open
+	local open_original = LazyVim.terminal.open
 
-	LazyvimUtil.terminal.open = function(cmd, opts)
+	LazyVim.terminal.open = function(cmd, opts)
 		if cmd ~= nil and cmd[1] == "lazygit" then
 			local theme = require("util").os_theme_is_dark() and "dark" or "light"
 			local cfg_dir = vim.fn.getenv("HOME") .. "/.config/lazygit"
 
 			open_original({ "lazygit" }, {
-				cwd = LazyvimUtil.root.get(),
+				cwd = LazyVim.root.get(),
 				border = "none",
 				env = { ["LG_CONFIG_FILE"] = cfg_dir .. "/config.yml," .. cfg_dir .. "/theme-" .. theme .. ".yml" },
 				zindex = 60,

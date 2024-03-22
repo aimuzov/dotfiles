@@ -14,7 +14,7 @@ return {
 				},
 
 				{
-					require("lazyvim.util").lualine.pretty_path(),
+					LazyVim.lualine.pretty_path(),
 					color = { bg = "none", gui = "bold" },
 				},
 			}

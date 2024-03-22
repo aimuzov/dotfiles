@@ -1,7 +1,7 @@
 local function show_hidden()
 	local action_state = require("telescope.actions.state")
 	local line = action_state.get_current_line()
-	require("lazyvim.util").telescope("find_files", { hidden = true, default_text = line })()
+	LazyVim.telescope("find_files", { hidden = true, default_text = line })()
 end
 
 local function open_selected(prompt_bufnr)

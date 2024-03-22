@@ -1,4 +1,3 @@
-local LazyvimUtil = require("lazyvim.util")
 local Util = require("util")
 
 vim.api.nvim_create_autocmd("Signal", {
@@ -31,7 +30,7 @@ vim.api.nvim_create_autocmd("User", {
 vim.api.nvim_create_autocmd("User", {
 	pattern = "BDeletePre*",
 	callback = function()
-		if LazyvimUtil.has("satellite.nvim") then
+		if LazyVim.has("satellite.nvim") then
 			require("satellite.view").disable()
 		end
 	end,
@@ -40,7 +39,7 @@ vim.api.nvim_create_autocmd("User", {
 vim.api.nvim_create_autocmd("User", {
 	pattern = "BDeletePost*",
 	callback = function()
-		if LazyvimUtil.has("satellite.nvim") then
+		if LazyVim.has("satellite.nvim") then
 			require("satellite.view").enable()
 		end
 	end,
@@ -49,7 +48,7 @@ vim.api.nvim_create_autocmd("User", {
 vim.api.nvim_create_autocmd("User", {
 	pattern = "BDeletePost*",
 	callback = function(event)
-		if LazyvimUtil.has("alpha-nvim") then
+		if LazyVim.has("alpha-nvim") then
 			local fallback_name = vim.api.nvim_buf_get_name(event.buf)
 			local fallback_ft = vim.api.nvim_get_option_value("filetype", { buf = event.buf })
 			local fallback_on_empty = fallback_name == "" and fallback_ft == ""
@@ -69,7 +68,7 @@ vim.api.nvim_create_autocmd("TabNewEntered", {
 			event.file == ""
 			and vim.bo[event.buf].buftype == ""
 			and not vim.bo[event.buf].modified
-			and LazyvimUtil.has("alpha-nvim")
+			and LazyVim.has("alpha-nvim")
 		then
 			vim.schedule(require("alpha").start)
 		end
