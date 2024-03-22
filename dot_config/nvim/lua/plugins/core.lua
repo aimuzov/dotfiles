@@ -44,9 +44,7 @@ local function override_keys_to_string()
 end
 
 local function override_lualine_pretty_path()
-	local LazyvimUtil = require("lazyvim.util")
-
-	LazyvimUtil.lualine.pretty_path = function(opts)
+	LazyVim.lualine.pretty_path = function(opts)
 		opts = vim.tbl_extend("force", {
 			relative = "cwd",
 			modified_hl = "Constant",
@@ -59,8 +57,8 @@ local function override_lualine_pretty_path()
 				return ""
 			end
 
-			local root = LazyvimUtil.root.get({ normalize = true })
-			local cwd = LazyvimUtil.root.cwd()
+			local root = LazyVim.root.get({ normalize = true })
+			local cwd = LazyVim.root.cwd()
 
 			if opts.relative == "cwd" and path:find(cwd, 1, true) == 1 then
 				path = path:sub(#cwd + 2)
@@ -76,7 +74,7 @@ local function override_lualine_pretty_path()
 			end
 
 			if opts.modified_hl and vim.bo.modified then
-				parts[#parts] = LazyvimUtil.lualine.format(self, parts[#parts], opts.modified_hl)
+				parts[#parts] = LazyVim.lualine.format(self, parts[#parts], opts.modified_hl)
 			end
 
 			return table.concat(parts, sep)
