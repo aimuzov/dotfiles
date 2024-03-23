@@ -38,7 +38,7 @@ return {
 		optional = true,
 		dependencies = { "nvim-treesitter" },
 		opts = {
-			highlight_node_at_cursor = { ms = 250 },
+			highlight_node_at_cursor = { hl_opts = { link = "Search" } },
 			use_default_keymaps = false,
 		},
 		keys = {
