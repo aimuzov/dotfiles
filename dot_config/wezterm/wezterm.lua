@@ -72,6 +72,8 @@ return {
 	hide_tab_bar_if_only_one_tab = true,
 	tab_bar_at_bottom = true,
 	use_fancy_tab_bar = false,
+	cursor_thickness = "50%",
+	underline_thickness = "250%",
 
 	cursor_blink_rate = 0,
 	default_cursor_style = "SteadyBar",
