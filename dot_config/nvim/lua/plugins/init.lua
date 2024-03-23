@@ -22,6 +22,8 @@ local plugins_enabled = {
 	"sindrets/diffview.nvim",
 	"tiagovla/scope.nvim",
 	"tpope/vim-fugitive",
+	"vhyrro/luarocks.nvim",
+	"rest-nvim/rest.nvim",
 	"Wansmer/langmapper.nvim",
 	"Wansmer/sibling-swap.nvim",
 	"Wansmer/symbol-usage.nvim",
@@ -30,7 +32,6 @@ local plugins_enabled = {
 }
 
 local plugins_disabled = {
-	"rest-nvim/rest.nvim",
 	"echasnovski/mini.bufremove",
 	"echasnovski/mini.indentscope",
 	"folke/tokyonight.nvim",
