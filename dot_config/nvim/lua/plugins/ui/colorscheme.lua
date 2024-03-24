@@ -101,7 +101,7 @@ return {
 						TelescopeSelection = { link = "Visual" },
 						TelescopeTitle = { link = "FloatTitle" },
 						TreesitterContext = { bg = c.base, blend = 10 },
-						TreesitterContextBottom = { fg = c.surface2, blend = 0, style = { "underline" } },
+						TreesitterContextBottom = { fg = c_blend(c.base, c.text, 15), blend = 0 },
 						TreesitterContextLineNumber = { bg = c.base or c.base },
 						TroubleCount = { bg = "none" },
 						TroubleNormal = { link = "NormalFloat" },
