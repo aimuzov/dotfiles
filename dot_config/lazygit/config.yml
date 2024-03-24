@@ -11,7 +11,7 @@ gui:
 git:
   branchLogCmd: "git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=medium --oneline {{branchName}} --"
   paging:
-    externalDiffCommand: difft --display=inline --syntax-highlight=off
+    externalDiffCommand: difft --display=inline
 customCommands:
   - key: "C"
     command: "npm run commit"
