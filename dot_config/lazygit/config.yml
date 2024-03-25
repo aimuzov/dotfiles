@@ -9,7 +9,7 @@ gui:
   commandLogSize: 3
   showCommandLog: false
 git:
-  branchLogCmd: "git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=medium --oneline {{branchName}} --"
+  branchLogCmd: "git lg {{branchName}} --"
   paging:
     externalDiffCommand: difft --display=inline
 customCommands:
