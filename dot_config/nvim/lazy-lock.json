@@ -29,7 +29,6 @@
   "langmapper.nvim": { "branch": "main", "commit": "9d98285b2e45d1c392c6a03e7adedde97d2aa71a" },
   "lazy.nvim": { "branch": "main", "commit": "af6afefbb46ab29a8a1db69536b04290a9403876" },
   "lualine.nvim": { "branch": "master", "commit": "b5e8bb642138f787a2c1c5aedc2a78cb2cebbd67" },
-  "luarocks.nvim": { "branch": "main", "commit": "fddde875c618523bc3eb42aa8200fb10e21f232b" },
   "mason-lspconfig.nvim": { "branch": "main", "commit": "9dfcf2036c223920826140f0151d929a43f9eceb" },
   "mason-nvim-dap.nvim": { "branch": "main", "commit": "67210c0e775adec55de9826b038e8b62de554afc" },
   "mason-tool-installer.nvim": { "branch": "main", "commit": "1212fb6082b7177dde17ea65e429e027835aeb40" },
