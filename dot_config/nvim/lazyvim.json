@@ -1,19 +1,19 @@
 {
   "extras": [
+    "lazyvim.plugins.extras.dap.core",
+    "lazyvim.plugins.extras.test.core",
     "lazyvim.plugins.extras.coding.native_snippets",
     "lazyvim.plugins.extras.coding.yanky",
-    "lazyvim.plugins.extras.dap.core",
-    "lazyvim.plugins.extras.editor.aerial",
     "lazyvim.plugins.extras.formatting.prettier",
     "lazyvim.plugins.extras.lang.clangd",
     "lazyvim.plugins.extras.lang.json",
     "lazyvim.plugins.extras.lang.typescript",
     "lazyvim.plugins.extras.linting.eslint",
-    "lazyvim.plugins.extras.test.core",
-    "lazyvim.plugins.extras.ui.alpha"
+    "lazyvim.plugins.extras.ui.alpha",
+    "lazyvim.plugins.extras.editor.aerial"
   ],
   "news": {
-    "NEWS.md": "2123"
+    "NEWS.md": "2850"
   },
   "version": 3
 }
