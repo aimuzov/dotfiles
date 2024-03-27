@@ -19,7 +19,7 @@ return {
 	{
 		"williamboman/mason.nvim",
 		optional = true,
-		opts = { ui = { border = "rounded", width = 0.7, height = 0.7 } },
+		opts = { ui = { border = "rounded", width = 0.6, height = 0.7 } },
 	},
 	{
 		"williamboman/mason-lspconfig.nvim",

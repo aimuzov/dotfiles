@@ -1,25 +1,30 @@
 local colorscheme = require("util").colorscheme_get_name()
 
 local function override_terminal_open()
+	vim.g.lazygit_config = false
+
 	local open_original = LazyVim.terminal.open
 
 	LazyVim.terminal.open = function(cmd, opts)
+		opts = vim.tbl_deep_extend("force", opts or {}, {
+			backdrop = 100,
+			esc_esc = false,
+			ctrl_hjkl = false,
+			size = { width = 0.83, height = 0.72 },
+			margin = { top = 1, bottom = 0 },
+			zindex = 60,
+		})
+
 		if cmd ~= nil and cmd[1] == "lazygit" then
 			local theme = require("util").os_theme_is_dark() and "dark" or "light"
 			local cfg_dir = vim.fn.getenv("HOME") .. "/.config/lazygit"
 
-			open_original({ "lazygit" }, {
-				cwd = LazyVim.root.get(),
+			opts = vim.tbl_deep_extend("force", opts or {}, {
 				border = "none",
 				env = { ["LG_CONFIG_FILE"] = cfg_dir .. "/config.yml," .. cfg_dir .. "/theme-" .. theme .. ".yml" },
-				zindex = 60,
 				size = { height = 1, width = 1 },
-				esc_esc = false,
 				margin = { top = 0, bottom = 1 },
-				ctrl_hjkl = false,
 			})
-
-			return
 		end
 
 		open_original(cmd, opts)

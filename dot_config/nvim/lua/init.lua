@@ -17,9 +17,10 @@ local opts = {
 	diff = { cmd = "diffview.nvim" },
 	ui = {
 		border = "rounded",
+		backdrop = 100,
 		title = "  󱎦  󰫮  󰬇  󰬆  ",
-		size = { width = 0.85, height = 0.8 },
-		icons = { lazy = "", keys = "󰥻" },
+		size = { width = 0.86, height = 0.72 },
+		icons = { lazy = "(H) ", keys = "󰥻" },
 	},
 	performance = { rtp = { disabled_plugins = { "gzip", "tarPlugin", "tohtml", "tutor", "zipPlugin" } } },
 }
