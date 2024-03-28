@@ -1,3 +1,5 @@
+# vi: ft=zsh
+
 MACOS_IS_DARK=$([[ $(defaults read -g AppleInterfaceStyle 2>&1) == "Dark" ]] && echo "yes" || echo "no")
 
 HISTFILE="$HOME/.zsh_history"
