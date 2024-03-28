@@ -23,8 +23,6 @@ return {
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "stevearc/aerial.nvim" },
 		opts = function(_, opts)
-			opts.options.theme = require("util").lualine_theme_create()
-
 			opts.options.refresh = {
 				statusline = 5000,
 				tabline = 5000,

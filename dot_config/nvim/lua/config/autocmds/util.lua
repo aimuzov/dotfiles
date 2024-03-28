@@ -6,10 +6,6 @@ function M.colorscheme_update()
 end
 
 function M.plugins_setup()
-	if LazyVim.has("lualine.nvim") then
-		require("lualine").setup({ options = { theme = Util.lualine_theme_create() } })
-	end
-
 	if LazyVim.has("nvim-web-devicons") then
 		require("nvim-web-devicons").set_up_highlights(true)
 	end

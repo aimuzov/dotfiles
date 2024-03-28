@@ -78,49 +78,6 @@ local buffer_move_create = function(dir)
 	end
 end
 
-local hls_create = function(c)
-	local hls = {
-		fill = { bg = c.mantle },
-		modified = { bg = c.mantle },
-		pick = { bg = c.mantle },
-		trunc_marker = { bg = c.mantle },
-
-		buffer_visible = { fg = c.subtext0 },
-		modified_visible = { fg = c.peach },
-		duplicate_visible = { bg = c.base },
-		separator = { fg = c.menlo },
-		tab_selected = { fg = c.text, style = { "bold" } },
-		tab_separator = { fg = c.mantle, bg = c.mantle },
-		tab_separator_selected = { fg = c.base, bg = c.base },
-	}
-
-	-- stylua: ignore start
-	local items = {
-		"buffer", "close_button", "diagnostic", "error", "error_diagnostic",
-		"hint", "indicator", "info", "info_diagnostic", "modified",
-		"numbers", "pick", "warning", "warning_diagnostic",
-	}
-	-- stylua: ignore end
-
-	for _, item in ipairs(items) do
-		local key_selected = item .. "_selected"
-		local key_visible = item .. "_visible"
-
-		if hls[key_selected] == nil then
-			hls[key_selected] = {}
-		end
-
-		if hls[key_visible] == nil then
-			hls[key_visible] = {}
-		end
-
-		hls[key_selected].bg = c.base
-		hls[key_visible].bg = c.base
-	end
-
-	return hls
-end
-
 return {
 	{
 		"akinsho/bufferline.nvim",
@@ -156,27 +113,19 @@ return {
 			},
 		},
 
-		config = function(_, opts)
-			local c = require("util").colors_get
-			local catppuccin_bufferline = require("catppuccin.groups.integrations.bufferline")
+		keys = {
+			{ "<leader>bg", "<cmd>BufferLinePick<cr>", mode = { "n", "v", "t" }, desc = "Pick Buffer" },
+		},
+	},
+
+	{
+		"akinsho/bufferline.nvim",
+		opts = function(_, opts)
 			local bufferline_groups = require("bufferline.groups")
 
 			table.insert(opts.options.groups, bufferline_groups.builtin.pinned:with({ icon = "" }))
 			table.insert(opts.options.groups, bufferline_groups.builtin.ungrouped)
-
-			opts.highlights = catppuccin_bufferline.get({
-				styles = { "bold" },
-				custom = {
-					frappe = hls_create(c("frappe")),
-					latte = hls_create(c("latte")),
-				},
-			})
-			require("bufferline").setup(opts)
 		end,
-
-		keys = {
-			{ "<leader>bg", "<cmd>BufferLinePick<cr>", mode = { "n", "v", "t" }, desc = "Pick Buffer" },
-		},
 	},
 
 	{

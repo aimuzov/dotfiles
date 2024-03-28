@@ -41,6 +41,29 @@ function nvim_update() {
 	echo "[chezmoi] lazy-lock applied..."
 }
 
+# https://github.com/neovim/neovim/issues/15083#issuecomment-1987041311
+function nvim_disable_builtin_colorschemes() {
+	local base_path="/opt/homebrew/Caskroom/neovim-nightly"
+
+	for dir in $(ls $base_path); do
+		if [ -d "$base_path/$dir/nvim-macos/share/nvim/runtime/colors" ]; then
+			local dir_path="$base_path/$dir/nvim-macos/share/nvim/runtime/colors"
+
+			cd "$dir_path"
+
+			for file in *.vim; do
+				if [ "$file" != "default.vim" ]; then
+					mv "$file" "${file%.vim}.vim.disabled"
+				fi
+			done
+
+			echo "Done $dir_path:"
+
+			ls *.vim
+		fi
+	done
+}
+
 function restart_vm() {
 	command yabai --restart-service
 	command skhd --restart-service

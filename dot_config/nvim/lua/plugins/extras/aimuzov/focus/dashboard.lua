@@ -81,57 +81,47 @@ local section = {
 }
 
 return {
-	{
-		"goolord/alpha-nvim",
-		opts = function(_, opts)
-			opts.section = section
-			opts.opts = {
-				layout = {
-					{ type = "padding", val = 3 },
-					section.header,
-					buttons_wrap("▁▁▁▁▁"),
-					section.buttons,
-					buttons_wrap("▔▔▔▔▔"),
-					{ type = "padding", val = 1 },
-					section.footer,
-				},
-			}
+	"goolord/alpha-nvim",
+	opts = function(_, opts)
+		opts.section = section
+		opts.opts = {
+			layout = {
+				{ type = "padding", val = 3 },
+				section.header,
+				buttons_wrap("▁▁▁▁▁"),
+				section.buttons,
+				buttons_wrap("▔▔▔▔▔"),
+				{ type = "padding", val = 1 },
+				section.footer,
+			},
+		}
 
-			if LazyVim.has("telescope.nvim") then
-				table.insert(
-					opts.section.buttons.val,
-					#opts.section.buttons.val - 2,
-					button("f", "󰫳", "  Find file", "<cmd>Telescope find_files<cr>")
-				)
+		if LazyVim.has("telescope.nvim") then
+			table.insert(
+				opts.section.buttons.val,
+				#opts.section.buttons.val - 2,
+				button("f", "󰫳", "  Find file", "<cmd>Telescope find_files<cr>")
+			)
 
-				table.insert(
-					opts.section.buttons.val,
-					#opts.section.buttons.val - 2,
-					button("r", "󰫿", "  Recent files", "<cmd>Telescope oldfiles<cr>")
-				)
+			table.insert(
+				opts.section.buttons.val,
+				#opts.section.buttons.val - 2,
+				button("r", "󰫿", "  Recent files", "<cmd>Telescope oldfiles<cr>")
+			)
 
-				table.insert(
-					opts.section.buttons.val,
-					#opts.section.buttons.val - 2,
-					button("g", "󰫴", "  Find text", "<cmd>Telescope live_grep_args<cr>")
-				)
-			end
+			table.insert(
+				opts.section.buttons.val,
+				#opts.section.buttons.val - 2,
+				button("g", "󰫴", "  Find text", "<cmd>Telescope live_grep_args<cr>")
+			)
+		end
 
-			if LazyVim.has("persistence.nvim") then
-				table.insert(
-					opts.section.buttons.val,
-					#opts.section.buttons.val - 2,
-					button("s", "󰬀", "  Restore Session", [[<cmd>lua require("persistence").load()<cr>]])
-				)
-			end
-
-			vim.api.nvim_create_autocmd("User", {
-				once = true,
-				pattern = "AlphaReady",
-				callback = require("util").alpha_header_animate,
-			})
-
-			return opts
-		end,
-	},
+		if LazyVim.has("persistence.nvim") then
+			table.insert(
+				opts.section.buttons.val,
+				#opts.section.buttons.val - 2,
+				button("s", "󰬀", "  Restore Session", [[<cmd>lua require("persistence").load()<cr>]])
+			)
+		end
+	end,
 }

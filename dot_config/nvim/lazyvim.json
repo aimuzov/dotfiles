@@ -21,6 +21,7 @@
     "plugins.extras.aimuzov.coding.keys",
     "plugins.extras.aimuzov.coding.nav",
     "plugins.extras.aimuzov.coding.trackers",
+    "plugins.extras.aimuzov.colorschemes.catppuccin",
     "plugins.extras.aimuzov.dap.js",
     "plugins.extras.aimuzov.focus.dashboard",
     "plugins.extras.aimuzov.focus.zen-mode",
