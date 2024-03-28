@@ -89,7 +89,7 @@ local override_all = function(c)
 		TelescopeTitle = { link = "FloatTitle" },
 		TreesitterContext = { bg = c.base, blend = 10 },
 		TreesitterContextBottom = { fg = c_blend(c.base, c.text, 15), blend = 0 },
-		TreesitterContextLineNumber = { bg = c.base or c.base },
+		TreesitterContextLineNumber = { bg = c.base },
 		TroubleCount = { bg = "none" },
 		TroubleNormal = { link = "NormalFloat" },
 		Visual = { style = {} },
@@ -223,7 +223,6 @@ return {
 	{
 		"catppuccin/nvim",
 		name = "catppuccin",
-		priority = 1000,
 
 		opts = {
 			integrations = {

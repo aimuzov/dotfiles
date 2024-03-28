@@ -41,6 +41,7 @@ end
 
 function M.colorscheme_get_name()
 	return M.os_theme_is_dark() and "catppuccin-frappe" or "catppuccin-latte"
+	-- return M.os_theme_is_dark() and "tokyonight-storm" or "tokyonight-day"
 end
 
 function M.colors_get(flavor)
