@@ -113,10 +113,23 @@ return {
 		"LazyVim/LazyVim",
 		import = "lazyvim.plugins",
 		init = override,
+
+		dependencies = {
+			{
+				"folke/which-key.nvim",
+				opts = { defaults = { ["<leader>l"] = { name = "+lazy" } } },
+			},
+		},
+
 		opts = {
 			colorscheme = colorscheme,
 			kind_filter = kind_filter,
 			icons = { misc = { dots = "" } },
+		},
+
+		keys = {
+			{ "<leader>ll", "<cmd>Lazy<cr>", { desc = "Lazy" } },
+			{ "<leader>lx", "<cmd>LazyExtras<cr>", { desc = "Lazy extras" } },
 		},
 	},
 }

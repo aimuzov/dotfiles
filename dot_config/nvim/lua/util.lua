@@ -43,10 +43,6 @@ function M.colorscheme_get_name()
 	return M.os_theme_is_dark() and "catppuccin-frappe" or "catppuccin-latte"
 end
 
-function M.colorscheme_change()
-	vim.cmd.colorscheme(M.colorscheme_get_name())
-end
-
 function M.colors_get(flavor)
 	return require("catppuccin.palettes").get_palette(flavor)
 end

@@ -1,15 +1,7 @@
 local colorscheme = require("util").colorscheme_get_name()
 
 local opts = {
-	spec = {
-		{ import = "plugins" },
-		{ import = "plugins.coding" },
-		{ import = "plugins.lang" },
-		{ import = "plugins.linting" },
-		{ import = "plugins.ui" },
-		{ import = "plugins.ui.editor" },
-		{ import = "plugins.ui.panels" },
-	},
+	spec = { { import = "plugins" } },
 	install = { colorscheme = { colorscheme } },
 	defaults = { lazy = false, version = false },
 	checker = { enabled = true, notify = false },
