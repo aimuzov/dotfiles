@@ -54,7 +54,6 @@
     "plugins.extras.aimuzov.ui.panels.search",
     "plugins.extras.aimuzov.ui.panels.status-line",
     "plugins.extras.aimuzov.ui.panels.symbols",
-    "plugins.extras.aimuzov.ui.panels.terminal",
     "plugins.extras.aimuzov.ui.pickers",
     "plugins.extras.aimuzov.ui.style.popups.rounded",
     "plugins.extras.aimuzov.ui.style.popups.size"
@@ -64,4 +63,3 @@
   },
   "version": 3
 }
-

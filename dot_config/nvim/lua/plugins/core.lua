@@ -8,8 +8,6 @@ local function override_terminal_open()
 	LazyVim.terminal.open = function(cmd, opts)
 		opts = vim.tbl_deep_extend("force", opts or {}, {
 			backdrop = 100,
-			esc_esc = false,
-			ctrl_hjkl = false,
 			size = { width = 0.83, height = 0.72 },
 			margin = { top = 1, bottom = 0 },
 			zindex = 60,
