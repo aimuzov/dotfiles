@@ -64,15 +64,11 @@ return {
 
 	{
 		"ThePrimeagen/harpoon",
-		branch = "harpoon2",
-		dependencies = { "nvim-lua/plenary.nvim" },
-		config = function(_, opts)
-			require("harpoon"):setup(opts)
-		end,
+		optional = true,
 
 		keys = {
 			{
-				"<c-e>",
+				"<leader>h",
 				function()
 					local harpoon = require("harpoon")
 					harpoon.ui:toggle_quick_menu(harpoon:list(), {
@@ -81,21 +77,8 @@ return {
 						ui_max_width = 80,
 					})
 				end,
-				desc = "Open harpoon window",
-				mode = { "n" },
+				desc = "Harpoon Quick Menu",
 			},
-
-			{
-				"<leader>fa",
-				[[<cmd>lua require("harpoon"):list():append()<cr>]],
-				desc = "Append file to harpoon list",
-			},
-
-			{ "<c-1>", [[<cmd>lua require("harpoon"):list():select(1)<cr>]], desc = "Harpooning 1" },
-			{ "<c-2>", [[<cmd>lua require("harpoon"):list():select(2)<cr>]], desc = "Harpooning 2" },
-			{ "<c-3>", [[<cmd>lua require("harpoon"):list():select(3)<cr>]], desc = "Harpooning 3" },
-			{ "<c-4>", [[<cmd>lua require("harpoon"):list():select(4)<cr>]], desc = "Harpooning 4" },
-			{ "<c-5>", [[<cmd>lua require("harpoon"):list():select(5)<cr>]], desc = "Harpooning 5" },
 		},
 	},
 }
