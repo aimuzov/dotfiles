@@ -1,12 +1,30 @@
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
+		optional = true,
 
 		opts = function(_, opts)
 			if type(opts.ensure_installed) == "table" then
 				vim.list_extend(opts.ensure_installed, { "svelte" })
 			end
 		end,
+	},
+
+	{
+		"nvim-treesitter/nvim-treesitter-context",
+		optional = true,
+
+		opts = {
+			on_attach = function(buf)
+				local ft = vim.api.nvim_get_option_value("filetype", { buf = buf })
+
+				if ft == "" or ft == "svelte" then
+					return false
+				end
+
+				return true
+			end,
+		},
 	},
 
 	{

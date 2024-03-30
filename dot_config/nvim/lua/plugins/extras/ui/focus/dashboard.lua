@@ -82,6 +82,7 @@ local section = {
 
 return {
 	"goolord/alpha-nvim",
+
 	opts = function(_, opts)
 		opts.section = section
 		opts.opts = {

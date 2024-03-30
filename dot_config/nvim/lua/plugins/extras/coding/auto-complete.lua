@@ -53,7 +53,6 @@ return {
 				{ name = "codeium" },
 				{ name = "nvim_lsp" },
 				{ name = "nvim_lsp_signature_help" },
-				{ name = "luasnip", keyword_length = 1 },
 			}, {
 				{ name = "nvim_lua" },
 				{ name = "path" },

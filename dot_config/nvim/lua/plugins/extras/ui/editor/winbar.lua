@@ -1,18 +1,3 @@
-local winbar_filetype = {
-	{
-		"filetype",
-		icon_only = true,
-		separator = "",
-		padding = { left = 3, right = 1 },
-		color = { bg = "none" },
-	},
-
-	{
-		LazyVim.lualine.pretty_path(),
-		color = { bg = "none", gui = "bold" },
-	},
-}
-
 local disabled_filetypes = {
 	"aerial",
 	"alpha",
@@ -37,6 +22,21 @@ return {
 	"nvim-lualine/lualine.nvim",
 
 	opts = function(_, opts)
+		local winbar_filetype = {
+			{
+				"filetype",
+				icon_only = true,
+				separator = "",
+				padding = { left = 3, right = 1 },
+				color = { bg = "none" },
+			},
+
+			{
+				LazyVim.lualine.pretty_path(),
+				color = { bg = "none", gui = "bold" },
+			},
+		}
+
 		opts.options.disabled_filetypes.winbar = disabled_filetypes
 		opts.winbar = { lualine_c = winbar_filetype }
 		opts.inactive_winbar = { lualine_c = winbar_filetype }

@@ -81,6 +81,7 @@ end
 return {
 	{
 		"akinsho/bufferline.nvim",
+
 		opts = {
 			options = {
 				always_show_bufferline = true,
@@ -120,6 +121,7 @@ return {
 
 	{
 		"akinsho/bufferline.nvim",
+
 		opts = function(_, opts)
 			local bufferline_groups = require("bufferline.groups")
 
@@ -130,6 +132,7 @@ return {
 
 	{
 		"famiu/bufdelete.nvim",
+
 		dependencies = {
 			{
 				"akinsho/bufferline.nvim",

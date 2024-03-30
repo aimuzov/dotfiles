@@ -1,6 +1,28 @@
 return {
 	{
+		"Wansmer/langmapper.nvim",
+		priority = 1,
+		opts = {
+			default_layout = [[ABCDEFGHIJKLMNOPQRSTUVWXYZ<>:"{}~abcdefghijklmnopqrstuvwxyz,.;'[]`]],
+
+			layouts = {
+				ru = {
+					id = "com.apple.keylayout.Russian",
+					layout = "ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯБЮЖЭХЪËфисвуапршолдьтщзйкыегмцчнябюжэхъё",
+				},
+			},
+		},
+		config = function(_, opts)
+			local lm = require("langmapper")
+
+			lm.setup(opts)
+			lm.hack_get_keymap()
+		end,
+	},
+
+	{
 		"folke/which-key.nvim",
+		optional = true,
 		dependencies = { "Wansmer/langmapper.nvim" },
 
 		opts = function(_, opts)
@@ -31,27 +53,6 @@ return {
 
 			require("which-key").setup(opts)
 			require("which-key").register(opts.defaults)
-		end,
-	},
-
-	{
-		"Wansmer/langmapper.nvim",
-		priority = 1,
-		opts = {
-			default_layout = [[ABCDEFGHIJKLMNOPQRSTUVWXYZ<>:"{}~abcdefghijklmnopqrstuvwxyz,.;'[]`]],
-
-			layouts = {
-				ru = {
-					id = "com.apple.keylayout.Russian",
-					layout = "ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯБЮЖЭХЪËфисвуапршолдьтщзйкыегмцчнябюжэхъё",
-				},
-			},
-		},
-		config = function(_, opts)
-			local lm = require("langmapper")
-
-			lm.setup(opts)
-			lm.hack_get_keymap()
 		end,
 	},
 }
