@@ -12,7 +12,7 @@ function M.plugins_setup()
 end
 
 function M.chezmoi_update()
-	if not LazyVim.has("chezmoi.vim") then
+	if vim.fn.executable("chezmoi") ~= 1 then
 		return
 	end
 
