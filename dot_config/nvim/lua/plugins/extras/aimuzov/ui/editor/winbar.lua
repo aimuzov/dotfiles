@@ -29,7 +29,7 @@ local disabled_filetypes = {
 	"noice",
 	"qf",
 	"spectre_panel",
-	"toggleterm",
+	"lazyterm",
 	"Trouble",
 }
 
