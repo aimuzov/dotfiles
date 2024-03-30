@@ -21,6 +21,19 @@ return {
 				},
 			},
 
+			lsp = {
+
+				documentation = {
+					opts = {
+						win_options = {
+							winhighlight = {
+								NormalFloat = "CmpDocFloat",
+							},
+						},
+					},
+				},
+			},
+
 			format = {
 				spinner = {
 					name = "triangle",

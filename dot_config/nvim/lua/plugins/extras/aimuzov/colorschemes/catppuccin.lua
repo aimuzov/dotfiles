@@ -75,7 +75,7 @@ local override_all = function(c)
 		NoiceFormatEvent = { fg = c.overlay1 },
 		NoiceFormatKind = { fg = c.overlay0 },
 		NoiceLspProgressTitle = { fg = c.overlay0 },
-		NoicePopup = { link = "CmpDocFloat" },
+		NoicePopup = { link = "NormalFloat" },
 		NonText = { fg = c.base },
 		NormalFloat = { bg = c.base },
 		Pmenu = { bg = c_blend(c.crust, c.base, 50), blend = 15 },
