@@ -50,6 +50,7 @@ return {
 			}
 
 			opts.sources = cmp.config.sources({
+				{ name = "codeium" },
 				{ name = "nvim_lsp" },
 				{ name = "nvim_lsp_signature_help" },
 				{ name = "luasnip", keyword_length = 1 },
