@@ -5,7 +5,15 @@ return {
 			servers = {
 				lua_ls = {
 					settings = {
-						Lua = { workspace = { checkThirdParty = true } },
+						Lua = {
+							workspace = {
+								checkThirdParty = true,
+							},
+
+							diagnostics = {
+								globals = { "LazyVim" },
+							},
+						},
 					},
 				},
 			},
