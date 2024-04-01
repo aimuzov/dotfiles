@@ -1,5 +1,6 @@
 {
   "extras": [
+    "lazyvim.plugins.extras.coding.codeium",
     "lazyvim.plugins.extras.coding.native_snippets",
     "lazyvim.plugins.extras.coding.yanky",
     "lazyvim.plugins.extras.dap.core",
@@ -29,6 +30,7 @@
     "plugins.extras.hacks.lazy-pretty-keys",
     "plugins.extras.hacks.lazyvim-lualine-pretty-path",
     "plugins.extras.hacks.lazyvim-pretty-terminal-open",
+    "plugins.extras.hacks.lualine-pretty-extension-lazy",
     "plugins.extras.integrations.chezmoi",
     "plugins.extras.integrations.mason-tool-installer",
     "plugins.extras.lang.css",
@@ -66,6 +68,7 @@
     "plugins.extras.ui.panels.symbols",
     "plugins.extras.ui.pickers",
     "plugins.extras.ui.style.hunks.preview-in-popup",
+    "plugins.extras.ui.style.panels.sidebar-pretty-offset",
     "plugins.extras.ui.style.popups.rounded",
     "plugins.extras.ui.style.popups.size"
   ],
