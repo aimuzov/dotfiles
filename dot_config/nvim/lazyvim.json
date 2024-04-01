@@ -23,9 +23,9 @@
     "plugins.extras.dap.js",
     "plugins.extras.formatting",
     "plugins.extras.git.conflicts",
-    "plugins.extras.git.fugitive",
-    "plugins.extras.git.fugitive-gitlab",
-    "plugins.extras.git.github-links",
+    "plugins.extras.git.fugitive.base",
+    "plugins.extras.git.fugitive.providers.github",
+    "plugins.extras.git.fugitive.providers.gitlab",
     "plugins.extras.git.gitlab",
     "plugins.extras.hacks.lazy-pretty-keys",
     "plugins.extras.hacks.lazyvim-lualine-pretty-path",
@@ -83,3 +83,4 @@
   },
   "version": 3
 }
+
