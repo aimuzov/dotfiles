@@ -21,27 +21,11 @@ local mode_icon_map = {
 return {
 	{
 		"nvim-lualine/lualine.nvim",
-		dependencies = { "stevearc/aerial.nvim" },
-
-		opts = {
-			options = {
-				refresh = { statusline = 5000, tabline = 5000, winbar = 5000 },
-				component_separators = { left = "", right = "" },
-				section_separators = { left = "", right = "" },
-			},
-		},
-	},
-
-	{
-		"nvim-lualine/lualine.nvim",
-		dependencies = { "stevearc/aerial.nvim" },
 
 		opts = function(_, opts)
+			opts.options.component_separators = { left = "", right = "" }
+			opts.options.section_separators = { left = "", right = "" }
 			opts.options.disabled_filetypes.statusline = {}
-
-			table.insert(opts.extensions, "man")
-			table.insert(opts.extensions, "trouble")
-			table.insert(opts.extensions, "overseer")
 
 			opts.sections.lualine_a = {
 				{
@@ -57,7 +41,6 @@ return {
 			}
 
 			opts.sections.lualine_b = { { "branch", icon = "" } }
-			opts.sections.lualine_c = { { "aerial", sep = "  ", sep_icon = "", sep_highlight = "AerialGuide1" } }
 
 			opts.sections.lualine_y = {
 				{ "location", padding = { left = 1, right = 1 } },
@@ -81,5 +64,38 @@ return {
 
 			return opts
 		end,
+
+		config = function(_, opts)
+			opts.sections.lualine_c[5] = { "aerial", sep = "  ", sep_icon = "", sep_highlight = "AerialGuide1" }
+
+			opts.sections.lualine_c = {
+				opts.sections.lualine_c[1],
+				opts.sections.lualine_c[5],
+			}
+
+			require("lualine").setup(opts)
+		end,
+	},
+
+	{
+		"mason.nvim",
+		optional = true,
+		dependencies = {
+			"nvim-lualine/lualine.nvim",
+			opts = function(_, opts)
+				table.insert(opts.extensions, "mason")
+			end,
+		},
+	},
+
+	{
+		"tpope/vim-fugitive",
+		optional = true,
+		dependencies = {
+			"nvim-lualine/lualine.nvim",
+			opts = function(_, opts)
+				table.insert(opts.extensions, "fugitive")
+			end,
+		},
 	},
 }

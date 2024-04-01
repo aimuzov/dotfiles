@@ -8,13 +8,14 @@ local disabled_filetypes = {
 	"dapui_stacks",
 	"dapui_watches",
 	"DiffviewFiles",
+	"fugitive",
 	"gitlab",
+	"lazyterm",
 	"neo-tree",
 	"neotest-summary",
 	"noice",
 	"qf",
 	"spectre_panel",
-	"lazyterm",
 	"Trouble",
 }
 
