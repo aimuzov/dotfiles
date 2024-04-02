@@ -11,23 +11,6 @@ return {
 	},
 
 	{
-		"nvim-treesitter/nvim-treesitter-context",
-		optional = true,
-
-		opts = {
-			on_attach = function(buf)
-				local ft = vim.api.nvim_get_option_value("filetype", { buf = buf })
-
-				if ft == "" or ft == "svelte" then
-					return false
-				end
-
-				return true
-			end,
-		},
-	},
-
-	{
 		"neovim/nvim-lspconfig",
 		dependencies = { "hrsh7th/cmp-nvim-lsp" },
 		opts = {
