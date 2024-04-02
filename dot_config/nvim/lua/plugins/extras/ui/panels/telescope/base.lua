@@ -1,3 +1,6 @@
+local dotfiles_path = vim.fn.getenv("DOTFILES_SRC_PATH")
+dotfiles_path = dotfiles_path == vim.NIL and "" or dotfiles_path
+
 local function open_selected(prompt_bufnr)
 	local picker = require("telescope.actions.state").get_current_picker(prompt_bufnr)
 	local multi = picker:get_multi_selection()
@@ -33,7 +36,7 @@ return {
 	keys = {
 		{
 			"<leader>fc",
-			"<cmd>Telescope find_files cwd=" .. vim.fn.getenv("DOTFILES_SRC_PATH") .. "<cr>",
+			"<cmd>Telescope find_files cwd=" .. dotfiles_path .. "<cr>",
 			desc = "Find dotfile",
 		},
 	},
