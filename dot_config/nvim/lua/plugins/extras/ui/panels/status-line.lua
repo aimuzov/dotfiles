@@ -23,6 +23,9 @@ return {
 		"nvim-lualine/lualine.nvim",
 
 		opts = function(_, opts)
+			table.insert(opts.extensions, "fugitive")
+			table.insert(opts.extensions, "mason")
+
 			opts.options.component_separators = { left = "", right = "" }
 			opts.options.section_separators = { left = "", right = "" }
 			opts.options.disabled_filetypes.statusline = {}
@@ -60,42 +63,6 @@ return {
 			}
 
 			opts.sections.lualine_z = {}
-			opts.sections.lualine_x[1].color = nil
-
-			return opts
 		end,
-
-		config = function(_, opts)
-			opts.sections.lualine_c[5] = { "aerial", sep = "  ", sep_icon = "", sep_highlight = "AerialGuide1" }
-
-			opts.sections.lualine_c = {
-				opts.sections.lualine_c[1],
-				opts.sections.lualine_c[5],
-			}
-
-			require("lualine").setup(opts)
-		end,
-	},
-
-	{
-		"mason.nvim",
-		optional = true,
-		dependencies = {
-			"nvim-lualine/lualine.nvim",
-			opts = function(_, opts)
-				table.insert(opts.extensions, "mason")
-			end,
-		},
-	},
-
-	{
-		"tpope/vim-fugitive",
-		optional = true,
-		dependencies = {
-			"nvim-lualine/lualine.nvim",
-			opts = function(_, opts)
-				table.insert(opts.extensions, "fugitive")
-			end,
-		},
 	},
 }

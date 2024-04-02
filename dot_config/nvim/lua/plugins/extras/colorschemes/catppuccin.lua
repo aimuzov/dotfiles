@@ -192,6 +192,7 @@ local lualine_theme_create = function(c)
 			a = { bg = c_blend(c.mantle, color, 70), fg = c.mantle },
 			b = { bg = c_blend(c.mantle, color, 15), fg = color },
 			c = { bg = c_blend(c.base, c.mantle, 50), fg = mode == "inactive" and c.surface2 or c.text },
+			x = { bg = c_blend(c.base, c.mantle, 50), fg = c.surface2 },
 		}
 	end
 
@@ -268,7 +269,9 @@ return {
 		dependencies = { { "catppuccin/nvim", name = "catppuccin" } },
 		optional = true,
 
-		init = function()
+		opts = function(_, opts)
+			opts.options.theme = lualine_theme_create(require("util").colors_get())
+
 			vim.api.nvim_create_autocmd("ColorScheme", {
 				desc = "Setup lualine theme after colorscheme changed",
 				callback = vim.schedule_wrap(function()
@@ -278,14 +281,11 @@ return {
 				end),
 			})
 		end,
-
-		opts = function(_, opts)
-			opts.options.theme = lualine_theme_create(require("util").colors_get())
-		end,
 	},
 
 	{
 		"goolord/alpha-nvim",
+		dependencies = { { "catppuccin/nvim", name = "catppuccin" } },
 		optional = true,
 
 		init = function()
