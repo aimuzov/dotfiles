@@ -55,7 +55,8 @@ local copy_selector = function(state)
 
 	vim.api.nvim_echo(messages, false, {})
 
-	local result = results[vim.fn.getcharstr()]
+	local char = require("util").char_get()
+	local result = results[char]
 
 	if result and result.val and result.val ~= "" then
 		vim.notify("Copied: " .. result.val)

@@ -1,6 +1,6 @@
 require("boot")
 require("init")
 
-if package.preload["langmapper"] then
+if LazyVim.has("langmapper.nvim") then
 	require("langmapper").automapping()
 end

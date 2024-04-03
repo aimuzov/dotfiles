@@ -35,7 +35,7 @@ local buffer_delete_create = function(force)
 		end
 
 		function M.buffer_delete_repeat()
-			local char = vim.fn.getcharstr()
+			local char = require("util").char_get()
 
 			if char == "d" then
 				M.buffer_delete(vim.fn.bufnr())
@@ -63,7 +63,7 @@ local buffer_move_create = function(dir)
 		end
 
 		function M.buffer_move_repeat()
-			local char = vim.fn.getcharstr()
+			local char = require("util").char_get()
 
 			if char == "]" then
 				M.buffer_move("next")

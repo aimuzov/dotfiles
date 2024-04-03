@@ -48,4 +48,14 @@ function M.colors_get(flavor)
 	return require("catppuccin.palettes").get_palette(flavor)
 end
 
+function M.char_get()
+	local char = vim.fn.getcharstr()
+
+	if LazyVim.has("langmapper.nvim") then
+		char = require("langmapper.utils").translate_keycode(char, "default", "ru")
+	end
+
+	return char
+end
+
 return M
