@@ -26,8 +26,13 @@ return {
 				float = { border = "rounded" },
 			},
 		},
+	},
 
-		init = function()
+	{
+		"neovim/nvim-lspconfig",
+		optional = true,
+
+		opts = function()
 			require("lspconfig.ui.windows").default_options.border = "rounded"
 		end,
 	},
