@@ -1,0 +1,61 @@
+return {
+	{
+		"mxsdev/nvim-dap-vscode-js",
+
+		dependencies = {
+			{
+				"microsoft/vscode-js-debug",
+				version = "1.x",
+				build = "npm install && npx gulp vsDebugServerBundle && mv dist out",
+			},
+		},
+
+		opts = {
+			debugger_path = vim.fn.stdpath("data") .. "/lazy/vscode-js-debug",
+			adapters = { "pwa-chrome", "pwa-node" },
+		},
+	},
+
+	{
+		"mfussenegger/nvim-dap",
+		dependencies = { "rcarriga/nvim-dap-ui", "mxsdev/nvim-dap-vscode-js" },
+
+		opts = function()
+			for _, language in ipairs({ "typescript", "javascript", "svelte" }) do
+				require("dap").configurations[language] = {
+					{
+						type = "pwa-chrome",
+						name = "Launch Chrome to debug client",
+						request = "launch",
+						url = "http://localhost:8080",
+						sourceMaps = true,
+						webRoot = "${workspaceFolder}",
+						skipFiles = { "**/node_modules/**/*", "**/src/*" },
+					},
+
+					{
+						type = "pwa-node",
+						request = "attach",
+						processId = require("dap.utils").pick_process,
+						name = "Attach debugger to existing `node --inspect` process",
+						sourceMaps = true,
+						resolveSourceMapLocations = {
+							"${workspaceFolder}/**",
+							"!**/node_modules/**",
+						},
+						cwd = "${workspaceFolder}/src",
+						skipFiles = { "${workspaceFolder}/node_modules/**/*.js" },
+					},
+
+					language == "javascript" and {
+						type = "pwa-node",
+						request = "launch",
+						name = "Launch file in new node process",
+						program = "${file}",
+						cwd = "${workspaceFolder}",
+					} or nil,
+				}
+			end
+		end,
+	},
+}

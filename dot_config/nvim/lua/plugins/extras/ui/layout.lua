@@ -2,13 +2,36 @@ return {
 	{
 		"folke/edgy.nvim",
 		optional = true,
+		opts = function(_, opts)
+			table.insert(opts.bottom, { ft = "dap-repl" })
+		end,
+	},
+
+	{
+		"folke/edgy.nvim",
+		optional = true,
 
 		opts = {
 			animate = { enabled = false },
 			exit_when_last = true,
 			wo = { winbar = false },
+
+			options = {
+				left = { size = 40 },
+				right = { size = 40 },
+				bottom = { size = 10 },
+			},
+
 			left = {
-				{ ft = "neo-tree", size = { width = 40 } },
+				{ ft = "neo-tree" },
+				{ ft = "dapui_scopes" },
+				{ ft = "dapui_breakpoints" },
+				{ ft = "dapui_stacks" },
+				{ ft = "dapui_watches" },
+			},
+
+			right = {
+				{ ft = "neotest-summary" },
 			},
 
 			keys = {
@@ -26,6 +49,31 @@ return {
 			{ "<c-a-j>", "<cmd>resize -3<cr>", mode = { "n", "v", "t" }, desc = "Decrease window height" },
 			{ "<c-a-h>", "<cmd>vertical resize -3<cr>", mode = { "n", "v", "t" }, desc = "Decrease window width" },
 			{ "<c-a-l>", "<cmd>vertical resize +3<cr>", mode = { "n", "v", "t" }, desc = "Increase window width" },
+		},
+	},
+
+	{
+		"rcarriga/nvim-dap-ui",
+		optional = true,
+		opts = {
+			layouts = {
+				{
+					elements = {
+						{ id = "scopes", size = 0.25 },
+						{ id = "breakpoints", size = 0.25 },
+						{ id = "stacks", size = 0.25 },
+						{ id = "watches", size = 0.25 },
+					},
+					position = "left",
+					size = 40,
+				},
+
+				{
+					elements = { { id = "repl", size = 1 } },
+					position = "bottom",
+					size = 10,
+				},
+			},
 		},
 	},
 }
