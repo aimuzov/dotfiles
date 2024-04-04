@@ -73,7 +73,8 @@
     "plugins.extras.ui.style.hunks.preview-in-popup",
     "plugins.extras.ui.style.panels.sidebar-pretty-offset",
     "plugins.extras.ui.style.popups.rounded",
-    "plugins.extras.ui.style.popups.size"
+    "plugins.extras.ui.style.popups.size",
+    "plugins.extras.ui.style.windows.bolder-separators"
   ],
   "news": {
     "NEWS.md": "3314"

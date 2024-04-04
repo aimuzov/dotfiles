@@ -26,20 +26,7 @@ local options = {
 
 	showbreak = "↪",
 	listchars = { eol = "↩", space = "·", tab = "→ " },
-	fillchars = {
-		diff = " ",
-		eob = " ",
-
-		fold = "╌",
-
-		horiz = "━",
-		horizup = "┻",
-		horizdown = "┳",
-		vert = "┃",
-		vertleft = "┫",
-		vertright = "┣",
-		verthoriz = "╋",
-	},
+	fillchars = { diff = " ", eob = " ", fold = "╌" },
 
 	spelllang = "",
 	langmap = OptionsUtil.langmap_create(),
