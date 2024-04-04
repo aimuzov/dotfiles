@@ -7,4 +7,7 @@ return {
 		virtcolumn = "+1,120",
 		exclude = { filetypes = { "alpha" } },
 	},
+	init = function()
+		vim.opt.ruler = false
+	end,
 }

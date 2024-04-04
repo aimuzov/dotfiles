@@ -23,7 +23,6 @@ local options = {
 	ttimeoutlen = 0,
 
 	showmode = false,
-	ruler = false,
 
 	showbreak = "↪",
 	listchars = { eol = "↩", space = "·", tab = "→ " },
