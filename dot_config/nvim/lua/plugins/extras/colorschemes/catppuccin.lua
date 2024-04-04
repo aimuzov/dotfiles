@@ -24,7 +24,6 @@ local override_all = function(c)
 		DiffviewWinSeparator = { link = "NeoTreeWinSeparator" },
 		EdgyNormal = { link = "NormalFloat" },
 		EdgyTitle = { bg = c.mantle, fg = c.mantle },
-		EdgyWinSeparator = { link = "EdgyTitle" },
 		FlashPrompt = { bg = c.mantle },
 		FloatBorder = { fg = c_blend(c.base, c.lavender, 50) },
 		FloatTitle = { fg = c.lavender, style = { "bold" } },
