@@ -1,3 +1,5 @@
+# vi: ft=zsh
+
 function display_index_get() {
 	local cond=$([[ "$1" == "1" ]] && echo "!=" || echo "==")
 	local retina_uuid="37D8832A-2D66-02CA-B9F7-8F30A301B230"
