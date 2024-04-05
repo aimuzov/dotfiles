@@ -26,7 +26,6 @@
     "plugins.extras.git.fugitive.providers.gitlab",
     "plugins.extras.git.gitlab",
     "plugins.extras.hacks.lazy-pretty-keys",
-    "plugins.extras.hacks.lazyvim-fix-diagnostic-sign-define",
     "plugins.extras.hacks.lazyvim-lualine-pretty-path",
     "plugins.extras.hacks.lazyvim-pretty-terminal-open",
     "plugins.extras.hacks.lualine-pretty-extensions",
