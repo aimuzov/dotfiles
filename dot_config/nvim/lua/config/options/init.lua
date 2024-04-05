@@ -26,7 +26,7 @@ local options = {
 
 	showbreak = "↪",
 	listchars = { eol = "↩", space = "·", tab = "→ " },
-	fillchars = { diff = " ", eob = " ", fold = "╌" },
+	fillchars = { diff = " ", eob = " " },
 
 	spelllang = "",
 	langmap = OptionsUtil.langmap_create(),
