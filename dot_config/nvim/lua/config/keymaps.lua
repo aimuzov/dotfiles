@@ -7,11 +7,6 @@ vim.keymap.set({ "i" }, "<c-s-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move up"
 vim.keymap.set({ "v" }, "<c-s-k>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
 vim.keymap.set({ "v" }, "<c-s-j>", ":m '>+1<cr>gv=gv", { desc = "Move down" })
 
-vim.keymap.set({ "n" }, "<c-u>", "<c-u>zz")
-vim.keymap.set({ "n" }, "<c-d>", "<c-d>zz")
-vim.keymap.set({ "n" }, "<c-b>", "<c-b>zz")
-vim.keymap.set({ "n" }, "<c-f>", "<c-f>zz")
-
 vim.keymap.set("n", "<leader>w\\", "<C-W>v", { desc = "Split window right" })
 vim.keymap.set("n", "<leader>\\", "<C-W>v", { desc = "Split window right" })
 
