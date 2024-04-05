@@ -27,7 +27,7 @@ local override_all = function(c)
 		FlashPrompt = { bg = c.mantle },
 		FloatBorder = { fg = c_blend(c.base, c.lavender, 50) },
 		FloatTitle = { fg = c.lavender, style = { "bold" } },
-		Folded = { bg = c.base, fg = c.surface2 },
+		Folded = { bg = c_blend(c.base, c.crust, 20), fg = c.surface0 },
 		GlanceBorderTop = { bg = c.base, fg = c_blend(c.base, c.lavender, 30) },
 		GlanceFoldIcon = { link = "FoldColumn" },
 		GlanceListBorderBottom = { link = "GlanceBorderTop" },
