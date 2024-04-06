@@ -207,15 +207,17 @@ local alpha_header_animate = function()
 		vim.schedule(function()
 			local timer = vim.loop.new_timer()
 
-			timer:start(
-				i * 30,
-				0,
-				vim.schedule_wrap(function()
-					for j = 2, 7 do
-						vim.api.nvim_set_hl(0, "AlphaHeader" .. j, { fg = c_blend(c.base, colors[j - 1], i) })
-					end
-				end)
-			)
+			if timer ~= nil then
+				timer:start(
+					i * 30,
+					0,
+					vim.schedule_wrap(function()
+						for j = 2, 7 do
+							vim.api.nvim_set_hl(0, "AlphaHeader" .. j, { fg = c_blend(c.base, colors[j - 1], i) })
+						end
+					end)
+				)
+			end
 		end)
 	end
 end
