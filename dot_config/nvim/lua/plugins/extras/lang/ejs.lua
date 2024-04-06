@@ -7,7 +7,8 @@ return {
 				vim.list_extend(opts.ensure_installed, { "embedded_template" })
 			end
 
-			vim.treesitter.language.register("eruby", "ejs")
+			vim.treesitter.language.register("eruby", { "ejs" })
+			vim.filetype.add({ extension = { ejs = "eruby" } })
 		end,
 	},
 }
