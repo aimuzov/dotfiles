@@ -1,6 +1,6 @@
 # vi: ft=ruby
 
-tap "austinliuigi/brew-neovim-nightly", "https://github.com/austinliuigi/brew-neovim-nightly.git"
+tap "benjiwolff/homebrew-neovim-nightly"
 tap "daipeihust/tap"
 tap "felixkratz/formulae"
 tap "homebrew/bundle"
