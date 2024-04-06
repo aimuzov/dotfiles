@@ -52,4 +52,9 @@ return {
 			options = { theme = "tokyonight" },
 		},
 	},
+
+	{
+		"catppuccin/nvim",
+		enabled = false,
+	},
 }
