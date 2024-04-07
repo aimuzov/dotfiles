@@ -6,7 +6,6 @@
     "lazyvim.plugins.extras.editor.harpoon2",
     "lazyvim.plugins.extras.formatting.prettier",
     "lazyvim.plugins.extras.lang.json",
-    "lazyvim.plugins.extras.lang.typescript",
     "lazyvim.plugins.extras.linting.eslint",
     "lazyvim.plugins.extras.test.core",
     "lazyvim.plugins.extras.ui.alpha",
@@ -18,7 +17,6 @@
     "plugins.extras.coding.comments",
     "plugins.extras.coding.emmet",
     "plugins.extras.colorschemes.catppuccin",
-    "plugins.extras.dap.vscode-js",
     "plugins.extras.formatting",
     "plugins.extras.git.conflicts",
     "plugins.extras.git.fugitive.base",
@@ -35,6 +33,7 @@
     "plugins.extras.lang.ejs",
     "plugins.extras.lang.lua",
     "plugins.extras.lang.svelte",
+    "plugins.extras.lang.typescript",
     "plugins.extras.linting.cspell",
     "plugins.extras.linting.stylelint",
     "plugins.extras.nav.better-escape",
@@ -78,7 +77,7 @@
   ],
   "news": {
     "NEWS.md": "3314",
-    "doc/news.txt": "24879"
+    "doc/news.txt": "24921"
   },
   "version": 3
 }

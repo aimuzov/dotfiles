@@ -1,15 +1,12 @@
-local prettier_list = { "prettierd", "prettier" }
-
 return {
 	"stevearc/conform.nvim",
 	optional = true,
-	opts = {
-		formatters_by_ft = {
-			["c"] = { "clang_format" },
-			["css"] = { prettier_list, "stylelint" },
-			["svelte"] = { prettier_list, "stylelint" },
-			["typescript"] = { prettier_list, "lsp" },
-			["zsh"] = { "shfmt" },
-		},
-	},
+	opts = function(_, opts)
+		opts.formatters_by_ft["c"] = { "clang_format" }
+		opts.formatters_by_ft["svelte"] = { "prettier", "stylelint" }
+		opts.formatters_by_ft["zsh"] = { "shfmt" }
+
+		vim.list_extend(opts.formatters_by_ft["css"], { "stylelint" })
+		vim.list_extend(opts.formatters_by_ft["typescript"], { "lsp" })
+	end,
 }

@@ -58,4 +58,8 @@ function M.char_get()
 	return char
 end
 
+function M.extras_enabled(extras_name)
+	return vim.tbl_contains(LazyVim.config.json.data.extras, extras_name)
+end
+
 return M

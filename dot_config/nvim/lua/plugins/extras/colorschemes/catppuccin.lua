@@ -68,6 +68,7 @@ local override_all = function(c)
 		NeoTreeWinSeparator = { bg = c.base, fg = c.base },
 		NoiceCmdline = { bg = c.mantle },
 		NoiceCmdlinePopupBorder = { link = "FloatBorder" },
+		LspInlayHint = { bg = "none" },
 		NoiceScrollbar = { link = "NormalFloat" },
 		NoiceScrollbarThumb = { bg = c_blend(c.base, c.surface0, 50) },
 		NoicePopupmenuSelected = { link = "Visual" },

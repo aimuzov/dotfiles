@@ -1,21 +1,17 @@
+local filetypes = {
+	"css",
+	"eruby",
+	"html",
+	"javascript",
+	"javascriptreact",
+	"svelte",
+	"typescriptreact",
+}
+
 return {
 	{
 		"neovim/nvim-lspconfig",
-		opts = {
-			servers = {
-				emmet_language_server = {
-					filetypes = {
-						"css",
-						"eruby",
-						"html",
-						"javascript",
-						"javascriptreact",
-						"svelte",
-						"typescriptreact",
-					},
-				},
-			},
-		},
+		opts = { servers = { emmet_language_server = { filetypes = filetypes } } },
 	},
 
 	{
