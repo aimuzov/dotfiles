@@ -44,6 +44,10 @@ asdf install python latest
 asdf global python latest
 asdf reshim python
 
+asdf plugin add neovim
+asdf install neovim nightly
+asdf install neovim stable
+
 # ----------------------------------------------------------------------------------------------------------------------
 
 echo "Setupping theme switcher..."
