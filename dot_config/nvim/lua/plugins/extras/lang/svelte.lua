@@ -9,19 +9,21 @@ return {
 						vim.api.nvim_create_autocmd("BufWritePost", {
 							pattern = { "*.js", "*.ts" },
 							callback = function(ctx)
-								if client.name == "svelte" then
-									client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.file })
-								end
+								client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.match })
 							end,
 						})
 					end,
 				},
 			},
+
 			setup = {
 				svelte = function(_, opts)
 					local lspconfig = require("lspconfig")
-					local cmp_nvim_lsp = require("cmp_nvim_lsp")
-					local capabilities = cmp_nvim_lsp.default_capabilities()
+					local lsp_capabilities = vim.lsp.protocol.make_client_capabilities()
+					local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+					lsp_capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = true
+					lsp_capabilities.textDocument.completion = capabilities.textDocument.completion
 
 					opts.capabilities = capabilities
 					lspconfig.svelte.setup(opts)
