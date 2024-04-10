@@ -25,8 +25,6 @@ local override_all = function(c)
 		EdgyNormal = { link = "NormalFloat" },
 		EdgyTitle = { bg = c.mantle, fg = c.mantle },
 		FlashPrompt = { bg = c.mantle },
-		FloatBorder = { fg = c_blend(c.base, c.lavender, 50) },
-		FloatTitle = { fg = c.lavender, style = { "bold" } },
 		Folded = { bg = c_blend(c.base, c.crust, 20), fg = c.surface0 },
 		GlanceBorderTop = { bg = c.base, fg = c_blend(c.base, c.lavender, 30) },
 		GlanceFoldIcon = { link = "FoldColumn" },
@@ -104,6 +102,8 @@ end
 local override_dark = function(c)
 	return {
 		AerialGuide = { fg = c.surface0 },
+		FloatBorder = { fg = c_blend(c.base, c.lavender, 50) },
+		FloatTitle = { fg = c.lavender, style = { "bold" } },
 		GitSignsCurrentLineBlame = { fg = c.surface2 },
 		IlluminatedWordRead = { bg = c_blend(c.base, c.surface2, 25) },
 		IlluminatedWordText = { bg = c_blend(c.base, c.sapphire, 25) },
@@ -119,6 +119,8 @@ end
 local override_light = function(c)
 	return {
 		AerialGuide = { fg = c.crust },
+		FloatBorder = { fg = c_blend(c.base, c.text, 20) },
+		FloatTitle = { fg = c.lavender, style = { "bold" } },
 		GitSignsCurrentLineBlame = { fg = c.surface0 },
 		IlluminatedWordRead = { bg = c_blend(c.base, c.surface2, 20) },
 		IlluminatedWordText = { bg = c_blend(c.base, c.sapphire, 10) },
