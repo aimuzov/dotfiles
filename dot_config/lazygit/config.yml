@@ -1,3 +1,4 @@
+promptToReturnFromSubprocess: false
 os:
   # https://github.com/jesseduffield/lazygit/issues/3064
   openLink: open -n "$(echo {{link}} | sed 's/%2F/\//g')"
