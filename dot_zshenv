@@ -34,13 +34,25 @@ function brew_last_updated() {
 
 }
 
-function nvim_update() {
+function nvim_plugins_update() {
 	echo "[nvim] updating lazy plugins..."
 	command nvim --headless "+Lazy! update" +qa
 	echo "[nvim] lazy plugins updated..."
 
 	command chezmoi add "$HOME/.config/nvim/lazy-lock.json"
 	echo "[chezmoi] lazy-lock applied..."
+}
+
+function nvim_update_nightly() {
+	echo "\033[0;32m[asdf]\033[0m updating nvim..."
+	local version_current="$(nvim --version)"
+	command asdf uninstall neovim nightly
+	echo "\n\033[0;32m[asdf]\033[0m current nvim version uninstalled:"
+	echo "$version_current"
+	echo "\n\033[0;32m[asdf]\033[0m new version downloading..."
+	command asdf install neovim nightly
+	echo "\n\033[0;32m[asdf]\033[0m nvim updated:"
+	echo "$(nvim --version)"
 }
 
 # https://github.com/neovim/neovim/issues/15083#issuecomment-1987041311
