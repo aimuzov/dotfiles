@@ -12,7 +12,7 @@ gui:
 git:
   branchLogCmd: "git lg {{branchName}} --"
   paging:
-    externalDiffCommand: difft --display=inline
+    externalDiffCommand: difft
 customCommands:
   - key: "C"
     command: "npm run commit"
