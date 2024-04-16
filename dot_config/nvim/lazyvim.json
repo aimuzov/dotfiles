@@ -52,6 +52,7 @@
     "plugins.extras.ui.editor.scroll-bar",
     "plugins.extras.ui.editor.status-column",
     "plugins.extras.ui.editor.todo-comments",
+    "plugins.extras.ui.editor.visual-whitespace",
     "plugins.extras.ui.editor.winbar",
     "plugins.extras.ui.focus.dashboard",
     "plugins.extras.ui.focus.highlight",

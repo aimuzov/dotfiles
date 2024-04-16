@@ -74,7 +74,6 @@ local override_all = function(c)
 		NoiceFormatKind = { fg = c.overlay0 },
 		NoiceLspProgressTitle = { fg = c.overlay0 },
 		NoicePopup = { link = "NormalFloat" },
-		NonText = { fg = c.base },
 		NormalFloat = { bg = c.base },
 		Pmenu = { bg = c_blend(c.crust, c.base, 50), blend = 15 },
 		PmenuSbar = { bg = c_blend(c.crust, c.surface2, 30) },
@@ -113,6 +112,7 @@ local override_dark = function(c)
 		SpectreBorderCustom = { fg = c.surface0 },
 		SymbolUsageText = { fg = c.surface2 },
 		Visual = { bg = c_blend(c.base, c.surface2, 30) },
+		VisualWhitespace = { bg = c_blend(c.base, c.surface2, 30), fg = c.surface2 },
 	}
 end
 
@@ -130,6 +130,7 @@ local override_light = function(c)
 		SpectreBorderCustom = { fg = c.crust },
 		SymbolUsageText = { fg = c.surface0 },
 		Visual = { bg = c_blend(c.base, c.crust, 85) },
+		VisualWhitespace = { bg = c_blend(c.base, c.crust, 85), fg = c.surface2 },
 	}
 end
 
