@@ -57,23 +57,17 @@ function nvim_update_nightly() {
 
 # https://github.com/neovim/neovim/issues/15083#issuecomment-1987041311
 function nvim_disable_builtin_colorschemes() {
-	local base_path="/opt/homebrew/Caskroom/neovim-nightly"
+	local base_path="$HOME/.asdf/installs/neovim"
 
 	for dir in $(ls $base_path); do
-		if [ -d "$base_path/$dir/nvim-macos/share/nvim/runtime/colors" ]; then
-			local dir_path="$base_path/$dir/nvim-macos/share/nvim/runtime/colors"
+		if [ -d "$base_path/$dir/share/nvim/runtime/colors" ]; then
+			cd "$base_path/$dir/share/nvim/runtime/colors"
 
-			cd "$dir_path"
-
-			for file in *.vim; do
+			for file in (*.vim|*.lua); do
 				if [ "$file" != "default.vim" ]; then
-					mv "$file" "${file%.vim}.vim.disabled"
+					mv "$file" "${file}.disabled"
 				fi
 			done
-
-			echo "Done $dir_path:"
-
-			ls *.vim
 		fi
 	done
 }
