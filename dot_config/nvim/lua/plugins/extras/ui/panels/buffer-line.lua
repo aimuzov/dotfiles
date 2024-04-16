@@ -1,5 +1,9 @@
 local buffer_delete = function(buffer_number, force)
-	local bufdelete = require("bufdelete").bufdelete
+	if buffer_number == nil then
+		return
+	end
+
+	local bufdelete = require("mini.bufremove").delete
 	local buffer_modified = vim.api.nvim_get_option_value("modified", { buf = buffer_number })
 
 	if force or not buffer_modified then
@@ -46,7 +50,7 @@ local buffer_delete_create = function(force)
 			end
 		end
 
-		M.buffer_delete(force)
+		M.buffer_delete(vim.fn.bufnr(), force)
 	end
 end
 
@@ -132,7 +136,7 @@ return {
 	},
 
 	{
-		"famiu/bufdelete.nvim",
+		"echasnovski/mini.bufremove",
 
 		dependencies = {
 			{
@@ -154,7 +158,19 @@ return {
 		},
 	},
 
-	{ "echasnovski/mini.bufremove", enabled = false },
+	{
+		"echasnovski/mini.bufremove",
+		opts = function()
+			vim.api.nvim_create_autocmd("BufHidden", {
+				desc = "Delete [No Name] buffers",
+				callback = function(event)
+					if event.file == "" and vim.bo[event.buf].buftype == "" and not vim.bo[event.buf].modified then
+						require("mini.bufremove").delete(event.buf, true)
+					end
+				end,
+			})
+		end,
+	},
 
 	{
 		"tiagovla/scope.nvim",

@@ -80,6 +80,14 @@ local section = {
 	},
 }
 
+local function dashboard_launch_if_buffer_is_empty(event)
+	if event.file == "" and vim.bo[event.buf].buftype == "" and not vim.bo[event.buf].modified then
+		vim.schedule(function()
+			require("alpha").start()
+		end)
+	end
+end
+
 return {
 	"goolord/alpha-nvim",
 
@@ -124,5 +132,10 @@ return {
 				button("s", "󰬀", "  Restore Session", [[<cmd>lua require("persistence").load()<cr>]])
 			)
 		end
+
+		vim.api.nvim_create_autocmd("TabNewEntered", {
+			desc = "Open dashboard on tab new entered",
+			callback = vim.schedule_wrap(dashboard_launch_if_buffer_is_empty),
+		})
 	end,
 }

@@ -83,7 +83,7 @@ local delete = function(state)
 		end
 
 		vim.fn.system({ "trash", vim.fn.fnameescape(path) })
-		pcall(require("bufdelete").bufdelete, path, true)
+		pcall(require("mini.bufremove").delete, path, true)
 		require("neo-tree.sources.manager").refresh(state.name)
 	end)
 end
