@@ -1,3 +1,5 @@
+local size = { left = 40, right = 40, top = 10, bottom = 10 }
+
 return {
 	{
 		"folke/edgy.nvim",
@@ -11,6 +13,25 @@ return {
 					break
 				end
 			end
+
+			opts.keys = {
+				["<c-a-l>"] = function(win)
+					size[win.view.edgebar.pos] = win.width + 3
+					win:resize("width", 3)
+				end,
+				["<c-a-h>"] = function(win)
+					size[win.view.edgebar.pos] = win.width - 3
+					win:resize("width", -3)
+				end,
+				["<c-a-k>"] = function(win)
+					size[win.view.edgebar.pos] = win.height + 3
+					win:resize("height", 3)
+				end,
+				["<c-a-j>"] = function(win)
+					size[win.view.edgebar.pos] = win.height - 3
+					win:resize("height", -3)
+				end,
+			}
 		end,
 	},
 
@@ -21,12 +42,15 @@ return {
 		opts = {
 			animate = { enabled = false },
 			exit_when_last = true,
-			wo = { winbar = false },
+			wo = { winfixwidth = false, winbar = false },
 
 			options = {
-				left = { size = 40 },
-				right = { size = 40 },
-				bottom = { size = 10 },
+				-- stylua: ignore start
+				left =		{ size = function() return size.left end, },
+				right =		{ size = function() return size.right end, },
+				top =		{ size = function() return size.top end, },
+				bottom =	{ size = function() return size.bottom end, },
+				-- stylua: ignore end
 			},
 
 			left = {
@@ -39,15 +63,6 @@ return {
 
 			right = {
 				{ ft = "neotest-summary" },
-			},
-
-			keys = {
-				-- stylua: ignore start
-				["<c-a-l>"] = function(win) win:resize("width", 3) end,
-				["<c-a-h>"] = function(win) win:resize("width", -3) end,
-				["<c-a-k>"] = function(win) win:resize("height", 3) end,
-				["<c-a-j>"] = function(win) win:resize("height", -3) end,
-				-- stylua: ignore end
 			},
 		},
 
