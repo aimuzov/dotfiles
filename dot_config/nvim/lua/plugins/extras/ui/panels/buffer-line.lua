@@ -159,20 +159,6 @@ return {
 	},
 
 	{
-		"echasnovski/mini.bufremove",
-		opts = function()
-			vim.api.nvim_create_autocmd("BufHidden", {
-				desc = "Delete [No Name] buffers",
-				callback = function(event)
-					if event.file == "" and vim.bo[event.buf].buftype == "" and not vim.bo[event.buf].modified then
-						require("mini.bufremove").delete(event.buf, true)
-					end
-				end,
-			})
-		end,
-	},
-
-	{
 		"tiagovla/scope.nvim",
 		config = true,
 		keys = {

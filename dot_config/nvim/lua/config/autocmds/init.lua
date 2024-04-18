@@ -5,6 +5,11 @@ vim.api.nvim_create_autocmd("Signal", {
 	callback = vim.schedule_wrap(AutocmdsUtil.colorscheme_update),
 })
 
+vim.api.nvim_create_autocmd("BufHidden", {
+	desc = "Delete [No Name] buffers",
+	callback = vim.schedule_wrap(AutocmdsUtil.colorscheme_update),
+})
+
 vim.api.nvim_create_autocmd("ColorScheme", {
 	desc = "Setup plugins after colorscheme changed",
 	callback = vim.schedule_wrap(AutocmdsUtil.plugins_setup),

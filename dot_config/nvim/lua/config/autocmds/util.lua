@@ -29,15 +29,9 @@ function M.chezmoi_update()
 	end
 end
 
-function M.scroll_disable()
-	if LazyVim.has("satellite.nvim") then
-		require("satellite.view").disable()
-	end
-end
-
-function M.scroll_enable()
-	if LazyVim.has("satellite.nvim") then
-		require("satellite.view").enable()
+function M.buffers_noname_delete(event)
+	if event.file == "" and vim.bo[event.buf].buftype == "" and not vim.bo[event.buf].modified then
+		pcall(vim.api.nvim_buf_delete, event.buf, {})
 	end
 end
 
