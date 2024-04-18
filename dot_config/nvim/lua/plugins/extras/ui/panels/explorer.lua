@@ -242,6 +242,18 @@ return {
 	},
 
 	{
+		"nvim-neo-tree/neo-tree.nvim",
+
+		opts = function()
+			vim.api.nvim_create_autocmd({ "BufDelete", "BufNew" }, {
+				callback = vim.schedule_wrap(function()
+					require("neo-tree.sources.manager").refresh("buffers")
+				end),
+			})
+		end,
+	},
+
+	{
 		"antosha417/nvim-lsp-file-operations",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
