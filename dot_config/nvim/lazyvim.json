@@ -14,6 +14,8 @@
     "lazyvim.plugins.extras.vscode",
     "plugins.extras.ai.chat-gpt",
     "plugins.extras.ai.wtf",
+    "plugins.extras.buffers.remove",
+    "plugins.extras.buffers.scope",
     "plugins.extras.coding.auto-complete",
     "plugins.extras.coding.comments",
     "plugins.extras.coding.emmet",
