@@ -29,10 +29,4 @@ function M.chezmoi_update()
 	end
 end
 
-function M.buffers_noname_delete(event)
-	if event.file == "" and vim.bo[event.buf].buftype == "" and not vim.bo[event.buf].modified then
-		pcall(vim.api.nvim_buf_delete, event.buf, {})
-	end
-end
-
 return M
