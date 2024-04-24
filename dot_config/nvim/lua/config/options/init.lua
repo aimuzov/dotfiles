@@ -25,6 +25,7 @@ local options = {
 	showmode = false,
 
 	showbreak = "↪",
+	listchars = { eol = " ", space = "·", tab = "→ " },
 	fillchars = { diff = " ", eob = " " },
 
 	spelllang = "",
