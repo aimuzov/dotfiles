@@ -1,5 +1,3 @@
-local colorscheme = require("util").colorscheme_get_name()
-
 local kind_filter = {
 	-- stylua: ignore start
 	default = {
@@ -28,7 +26,6 @@ return {
 		},
 
 		opts = {
-			colorscheme = colorscheme,
 			kind_filter = kind_filter,
 			news = { lazyvim = true, neovim = true },
 		},
@@ -37,5 +34,12 @@ return {
 			{ "<leader>ll", "<cmd>Lazy<cr>", { desc = "Lazy" } },
 			{ "<leader>lx", "<cmd>LazyExtras<cr>", { desc = "Lazy extras" } },
 		},
+	},
+
+	{
+		"LazyVim/LazyVim",
+		opts = function(_, opts)
+			opts.colorscheme = require("util").colorscheme_get_name()
+		end,
 	},
 }

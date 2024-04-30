@@ -39,13 +39,41 @@ function M.os_theme_is_dark()
 	return os_theme_is_dark
 end
 
-function M.colorscheme_get_name()
-	return M.os_theme_is_dark() and "catppuccin-frappe" or "catppuccin-latte"
-	-- return M.os_theme_is_dark() and "tokyonight-storm" or "tokyonight-day"
+function M.colorscheme_get_household()
+	local colorschemes_available = {
+		catppuccin = { "catppuccin-frappe", "catppuccin-latte" },
+		tokyonight = { "tokyonight-storm", "tokyonight-day" },
+	}
+
+	local colorschemes_enabled = {}
+
+	for key, value in pairs(colorschemes_available) do
+		local success, result = pcall(M.extras_enabled, "plugins.extras.colorschemes." .. key)
+
+		if not success then
+			table.insert(colorschemes_enabled, colorschemes_available["catppuccin"])
+			break
+		end
+
+		if result then
+			table.insert(colorschemes_enabled, value)
+		end
+	end
+
+	if #colorschemes_enabled ~= 1 then
+		vim.schedule(function()
+			error("Unexpected behaviour: multiple active colorschemes")
+		end)
+	end
+
+	return colorschemes_enabled[1]
 end
 
-function M.colors_get(flavor)
-	return require("catppuccin.palettes").get_palette(flavor)
+function M.colorscheme_get_name()
+	local is_dark = M.os_theme_is_dark()
+	local colorscheme_household = M.colorscheme_get_household()
+
+	return is_dark and colorscheme_household[1] or colorscheme_household[2]
 end
 
 function M.char_get()

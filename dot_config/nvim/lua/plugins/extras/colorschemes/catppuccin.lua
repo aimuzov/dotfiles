@@ -1,5 +1,9 @@
 local c_blend = require("util").color_blend
 
+local colors_get = function(flavor)
+	return require("catppuccin.palettes").get_palette(flavor)
+end
+
 local override_all = function(c)
 	return {
 		AerialLine = { fg = "none", bg = c.crust },
@@ -203,7 +207,7 @@ local lualine_theme_create = function(c)
 end
 
 local alpha_header_animate = function()
-	local c = require("util").colors_get()
+	local c = colors_get()
 	local colors = { c.blue, c.sky, c.green, c.yellow, c.peach, c.red }
 	local limit = require("util").os_theme_is_dark() and 100 or 20
 
@@ -254,16 +258,15 @@ return {
 		optional = true,
 
 		opts = function(_, opts)
-			local c = require("util").colors_get
 			local catppuccin_bufferline = require("catppuccin.groups.integrations.bufferline")
 
 			opts.highlights = catppuccin_bufferline.get({
 				styles = { "bold" },
 				custom = {
-					frappe = override_bufferline_hls(c("frappe")),
-					macchiato = override_bufferline_hls(c("macchiato")),
-					mocha = override_bufferline_hls(c("mocha")),
-					latte = override_bufferline_hls(c("latte")),
+					frappe = override_bufferline_hls(colors_get("frappe")),
+					macchiato = override_bufferline_hls(colors_get("macchiato")),
+					mocha = override_bufferline_hls(colors_get("mocha")),
+					latte = override_bufferline_hls(colors_get("latte")),
 				},
 			})
 		end,
@@ -275,13 +278,13 @@ return {
 		optional = true,
 
 		opts = function(_, opts)
-			opts.options.theme = lualine_theme_create(require("util").colors_get())
+			opts.options.theme = lualine_theme_create(colors_get())
 
 			vim.api.nvim_create_autocmd("ColorScheme", {
 				desc = "Setup lualine theme after colorscheme changed",
 				callback = vim.schedule_wrap(function()
 					require("lualine").setup({
-						options = { theme = lualine_theme_create(require("util").colors_get()) },
+						options = { theme = lualine_theme_create(colors_get()) },
 					})
 				end),
 			})
