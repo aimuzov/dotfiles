@@ -31,7 +31,6 @@
     "plugins.extras.hacks.lazyvim-lualine-pretty-path",
     "plugins.extras.hacks.lazyvim-pretty-terminal-open",
     "plugins.extras.hacks.lualine-pretty-extensions",
-    "plugins.extras.integrations.chezmoi",
     "plugins.extras.integrations.mason-tool-installer",
     "plugins.extras.lang.css",
     "plugins.extras.lang.ejs",
