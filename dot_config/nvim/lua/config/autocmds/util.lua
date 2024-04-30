@@ -5,12 +5,6 @@ function M.colorscheme_update()
 	vim.cmd.colorscheme(Util.colorscheme_get_name())
 end
 
-function M.plugins_setup()
-	if LazyVim.has("nvim-web-devicons") then
-		require("nvim-web-devicons").set_up_highlights(true)
-	end
-end
-
 function M.chezmoi_update()
 	if vim.fn.executable("chezmoi") ~= 1 then
 		return
