@@ -12,15 +12,15 @@ local override_highlights = function(hl, c)
 	hl.AlphaHeader8 = { fg = c.fg }
 	hl.AlphaShortcut = { bg = c.bg, fg = c_blend(c.bg, c.fg, 20) }
 	hl.AlphaShortcutBorder = { fg = c_blend(c.bg, c.fg, 20) }
-	hl.NeoTreeFloatBorder = { link = "FloatBorder" }
-	hl.NeoTreeFloatNormal = { link = "NormalFloat" }
-	hl.NeoTreeFloatTitle = { link = "FloatTitle" }
-	hl.NeoTreeTabInactive = { fg = c.fg, bg = c.bg }
-	hl.NeoTreeTabActive = { fg = c.fg, bg = c_blend(c.bg, c.fg, 10) }
 	hl.BufferLineFill = { bg = c.bg_dark }
 	hl.EdgyTitle = { bg = c.bg_dark, fg = c.bg_dark }
 	hl.IblIndent = { fg = c_blend(c.bg, c.fg, 5) }
 	hl.IblScope = { fg = c_blend(c.bg, c.fg, 15) }
+	hl.NeoTreeFloatBorder = { link = "FloatBorder" }
+	hl.NeoTreeFloatNormal = { link = "NormalFloat" }
+	hl.NeoTreeFloatTitle = { link = "FloatTitle" }
+	hl.NeoTreeTabActive = { fg = c.fg, bg = c_blend(c.bg, c.fg, 10) }
+	hl.NeoTreeTabInactive = { fg = c.fg, bg = c.bg }
 	hl.NeoTreeTabSeparatorActive = { bg = c_blend(c.bg, c.fg, 10), fg = c.bg }
 	hl.NeoTreeTabSeparatorInactive = { bg = c.bg, fg = c.bg }
 	hl.NeoTreeWinSeparator = { bg = c.bg, fg = c.bg }
