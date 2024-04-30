@@ -18,6 +18,7 @@ local override_highlights = function(hl, c)
 	hl.NeoTreeTabInactive = { fg = c.fg, bg = c.bg }
 	hl.NeoTreeTabActive = { fg = c.fg, bg = c_blend(c.bg, c.fg, 10) }
 	hl.BufferLineFill = { bg = c.bg_dark }
+	hl.EdgyTitle = { bg = c.bg_dark, fg = c.bg_dark }
 	hl.IblIndent = { fg = c_blend(c.bg, c.fg, 5) }
 	hl.IblScope = { fg = c_blend(c.bg, c.fg, 15) }
 	hl.NeoTreeTabSeparatorActive = { bg = c_blend(c.bg, c.fg, 10), fg = c.bg }
@@ -26,6 +27,7 @@ local override_highlights = function(hl, c)
 	hl.TreesitterContext = { bg = c.bg, blend = 10 }
 	hl.TreesitterContextBottom = { fg = c_blend(c.bg, c.fg, 15), blend = 0, underline = true }
 	hl.TreesitterContextLineNumber = { bg = c.bg }
+	hl.VisualWhitespace = { link = "Visual" }
 end
 
 return {
