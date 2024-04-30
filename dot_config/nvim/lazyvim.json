@@ -45,6 +45,7 @@
     "plugins.extras.nav.search-labels",
     "plugins.extras.nav.sibling-swap",
     "plugins.extras.nav.treesitter-context",
+    "plugins.extras.optimizations.setup-devicons-after-colorscheme-changed",
     "plugins.extras.optimizations.stop-inactive-lsp",
     "plugins.extras.optimizations.stop-treesitter-on-large-js-files",
     "plugins.extras.test.jest",
