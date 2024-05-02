@@ -1,14 +1,14 @@
 {
   "extras": [
+    "lazyvim.plugins.extras.dap.core",
+    "lazyvim.plugins.extras.test.core",
     "lazyvim.plugins.extras.coding.native_snippets",
     "lazyvim.plugins.extras.coding.yanky",
-    "lazyvim.plugins.extras.dap.core",
     "lazyvim.plugins.extras.editor.harpoon2",
     "lazyvim.plugins.extras.formatting.prettier",
     "lazyvim.plugins.extras.lang.json",
     "lazyvim.plugins.extras.lang.typescript",
     "lazyvim.plugins.extras.linting.eslint",
-    "lazyvim.plugins.extras.test.core",
     "lazyvim.plugins.extras.ui.alpha",
     "lazyvim.plugins.extras.ui.edgy",
     "lazyvim.plugins.extras.vscode",
@@ -31,7 +31,6 @@
     "plugins.extras.hacks.lazyvim-lualine-pretty-path",
     "plugins.extras.hacks.lazyvim-pretty-terminal-open",
     "plugins.extras.hacks.lualine-pretty-extensions",
-    "plugins.extras.integrations.mason-tool-installer",
     "plugins.extras.lang.css",
     "plugins.extras.lang.ejs",
     "plugins.extras.lang.lua",
@@ -44,6 +43,7 @@
     "plugins.extras.nav.search-labels",
     "plugins.extras.nav.sibling-swap",
     "plugins.extras.nav.treesitter-context",
+    "plugins.extras.optimizations.mason-tool-installer",
     "plugins.extras.optimizations.setup-devicons-after-colorscheme-changed",
     "plugins.extras.optimizations.stop-inactive-lsp",
     "plugins.extras.optimizations.stop-treesitter-on-large-js-files",
@@ -57,7 +57,7 @@
     "plugins.extras.ui.editor.visual-whitespace",
     "plugins.extras.ui.editor.winbar",
     "plugins.extras.ui.focus.dashboard",
-    "plugins.extras.ui.focus.highlight",
+    "plugins.extras.ui.focus.highlight-tokens-on-hover",
     "plugins.extras.ui.focus.zen-mode",
     "plugins.extras.ui.layout",
     "plugins.extras.ui.panels.buffer-line",
@@ -81,7 +81,7 @@
   ],
   "news": {
     "NEWS.md": "3314",
-    "doc/news.txt": "27425"
+    "doc/news.txt": "27482"
   },
   "version": 3
 }
