@@ -43,6 +43,28 @@ function nvim_plugins_update() {
 	echo "[chezmoi] lazy-lock applied..."
 }
 
+# https://github.com/neovim/neovim/issues/15083#issuecomment-1987041311
+function nvim_disable_builtin_colorschemes() {
+	local base_path="$HOME/.asdf/installs/neovim"
+
+	for dir in $(ls $base_path); do
+		if [ -d "$base_path/$dir/share/nvim/runtime/colors" ]; then
+			local dir_prev="$(pwd)"
+			cd "$base_path/$dir/share/nvim/runtime/colors"
+
+			for file in *.vim; do
+				if [ "$file" != "default.vim" ]; then
+					mv "$file" "$file.disabled"
+				fi
+			done
+
+			mv "vim.lua" "vim.lua.disabled"
+
+			cd $dir_prev
+		fi
+	done
+}
+
 function nvim_update_nightly() {
 	echo "\033[0;32m[asdf]\033[0m updating nvim..."
 	local version_current="$(nvim --version)"
@@ -53,23 +75,8 @@ function nvim_update_nightly() {
 	command asdf install neovim nightly
 	echo "\n\033[0;32m[asdf]\033[0m nvim updated:"
 	echo "$(nvim --version)"
-}
-
-# https://github.com/neovim/neovim/issues/15083#issuecomment-1987041311
-function nvim_disable_builtin_colorschemes() {
-	local base_path="$HOME/.asdf/installs/neovim"
-
-	for dir in $(ls $base_path); do
-		if [ -d "$base_path/$dir/share/nvim/runtime/colors" ]; then
-			cd "$base_path/$dir/share/nvim/runtime/colors"
-
-			for file in (*.vim|*.lua); do
-				if [ "$file" != "default.vim" ]; then
-					mv "$file" "${file}.disabled"
-				fi
-			done
-		fi
-	done
+	nvim_disable_builtin_colorschemes
+	echo "\n\033[0;32m[zsh]\033[0m default colorscheme disabled"
 }
 
 function restart_vm() {
