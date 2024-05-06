@@ -7,5 +7,6 @@ require("items.center.svim")
 
 require("items.right.datetime")
 require("items.right.battery")
+require("items.right.nvim")
 require("items.right.brew")
 require("items.right.media")
