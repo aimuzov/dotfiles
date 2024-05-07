@@ -245,10 +245,15 @@ return {
 		"nvim-neo-tree/neo-tree.nvim",
 
 		opts = function()
-			vim.api.nvim_create_autocmd({ "BufDelete", "BufNew" }, {
-				callback = vim.schedule_wrap(function()
-					require("neo-tree.sources.manager").refresh("buffers")
-				end),
+			local renderer = require("neo-tree.ui.renderer")
+			local manager = require("neo-tree.sources.manager")
+
+			vim.api.nvim_create_autocmd({ "TermOpen", "TermClose" }, {
+				callback = function()
+					if renderer.window_exists(manager.get_state("buffers")) then
+						manager.refresh("buffers")
+					end
+				end,
 			})
 		end,
 	},
