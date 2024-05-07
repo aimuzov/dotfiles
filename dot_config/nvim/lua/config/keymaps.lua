@@ -9,6 +9,7 @@ vim.keymap.set({ "n" }, "<c-s-k>", "<cmd>m .-2<cr>==", { desc = "Move up" })
 vim.keymap.set({ "v" }, "<c-s-k>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
 
 vim.keymap.set({ "v" }, "<c-i>", "<cmd>'<,'>sort i<cr>", { desc = "Sort lines" })
+vim.keymap.set({ "n" }, "<c-/>", "<cmd>lua LazyVim.terminal()<cr>", { desc = "Terminal (cwd)" })
 
 vim.keymap.set({ "n" }, "<leader>\\", "<C-W>v", { desc = "Split window right" })
 vim.keymap.set({ "n" }, "<leader>w\\", "<C-W>v", { desc = "Split window right" })
