@@ -1,7 +1,11 @@
 return {
 	{
 		"rcarriga/nvim-notify",
-		opts = { render = "minimal", stages = "fade" },
+		opts = {
+			render = "minimal",
+			stages = "fade",
+			minimum_width = 40,
+		},
 	},
 
 	{
