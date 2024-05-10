@@ -26,6 +26,7 @@
     "plugins.extras.git.fugitive.providers.github",
     "plugins.extras.git.fugitive.providers.gitlab",
     "plugins.extras.git.gitlab",
+    "plugins.extras.git.remote-view",
     "plugins.extras.hacks.conform-stylelint-custom-syntax-for-svelte",
     "plugins.extras.hacks.lazy-pretty-keys",
     "plugins.extras.hacks.lazyvim-lualine-pretty-path",
