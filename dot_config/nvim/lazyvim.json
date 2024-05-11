@@ -1,14 +1,13 @@
 {
   "extras": [
-    "lazyvim.plugins.extras.dap.core",
-    "lazyvim.plugins.extras.test.core",
     "lazyvim.plugins.extras.coding.native_snippets",
     "lazyvim.plugins.extras.coding.yanky",
+    "lazyvim.plugins.extras.dap.core",
     "lazyvim.plugins.extras.editor.harpoon2",
     "lazyvim.plugins.extras.formatting.prettier",
     "lazyvim.plugins.extras.lang.json",
-    "lazyvim.plugins.extras.lang.typescript",
     "lazyvim.plugins.extras.linting.eslint",
+    "lazyvim.plugins.extras.test.core",
     "lazyvim.plugins.extras.ui.alpha",
     "lazyvim.plugins.extras.ui.edgy",
     "lazyvim.plugins.extras.vscode",
@@ -36,6 +35,7 @@
     "plugins.extras.lang.ejs",
     "plugins.extras.lang.lua",
     "plugins.extras.lang.svelte",
+    "plugins.extras.lang.typescript",
     "plugins.extras.linting.cspell",
     "plugins.extras.linting.stylelint",
     "plugins.extras.nav.better-escape",
@@ -82,7 +82,8 @@
   ],
   "news": {
     "NEWS.md": "3314",
-    "doc/news.txt": "24969"
+    "doc/news.txt": "25244"
   },
   "version": 3
 }
+
