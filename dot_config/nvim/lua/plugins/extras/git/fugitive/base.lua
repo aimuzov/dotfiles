@@ -2,7 +2,7 @@ return {
 	"tpope/vim-fugitive",
 
 	keys = {
-		{ "<leader>go", "<cmd>GBrowse<cr>", desc = "Open in browser", mode = { "n" } },
-		{ "<leader>go", "<cmd>'<,'>GBrowse<cr>", desc = "Open in browser", mode = { "v" } },
+		{ "go", "<cmd>GBrowse<cr>", desc = "Open (browser)", mode = { "n" } },
+		{ "go", "<cmd>'<,'>GBrowse<cr>", desc = "Open range (browser)", mode = { "v" } },
 	},
 }
