@@ -36,7 +36,7 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 		optional = true,
 		opts = function(_, opts)
-			vim.list_extend(opts.ensure_installed, { "svelte" })
+			vim.list_extend(opts.ensure_installed, { "svelte", "scss" })
 		end,
 	},
 }
