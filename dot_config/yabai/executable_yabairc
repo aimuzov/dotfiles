@@ -81,7 +81,7 @@ yabai -m rule --add space=term app="^(WezTerm|VSCodium)$"
 yabai -m rule --add space=browser app="^(Google Chrome)$"
 yabai -m rule --add space=reflection app="^(Calendar|Mail|NetNewsWire|Things)$"
 yabai -m rule --add space=design app="^(Figma|Miro)$"
-yabai -m rule --add space=explorer app="^(Finder)$"
+yabai -m rule --add space=explorer app="^(Finder|Cyberduck)$"
 yabai -m rule --add space=games app="^(Steam Helper|Dota 2)$"
 yabai -m rule --add space=media app="^(Яндекс Музыка|Photos)$"
 yabai -m rule --add space=calls app="^(zoom.us|Толк)$"
@@ -91,6 +91,7 @@ yabai -m rule --add space=social app="^(Telegram|Slack|Discord|WhatsApp)$"
 
 yabai -m rule --add manage=off app!="^(\
 Calendar|\
+Cyberduck|\
 Figma|\
 Finder|\
 Google Chrome|\
