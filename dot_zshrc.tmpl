@@ -28,6 +28,9 @@ export HOMEBREW_NO_ANALYTICS=1
 export LG_WEBOS_TV_SDK_HOME="$HOME/stv-tools/webos-sdk"
 export WEBOS_CLI_TV="$LG_WEBOS_TV_SDK_HOME/bin"
 
+export SAMSUNG_TIZEN_SDK_HOME="$HOME/stv-tools/tizen-studio"
+export TIZEN_CLI_TV="$SAMSUNG_TIZEN_SDK_HOME/tools/ide/bin"
+
 export BAT_THEME=$([[ $MACOS_IS_DARK == "yes" ]] && echo "Catppuccin-frappe" || echo "Catppuccin-latte")
 
 # https://github.com/ohmyzsh/ohmyzsh/wiki/Settings#zsh
@@ -55,7 +58,7 @@ export FZF_CTRL_T_OPTS="
 
 export XDG_CONFIG_HOME="$HOME/.config"
 export GOPATH="$HOME/Library/go"
-export PATH="node_modules/.bin:$WEBOS_CLI_TV:$GOPATH:$PATH"
+export PATH="node_modules/.bin:$WEBOS_CLI_TV:$TIZEN_CLI_TV:$GOPATH:$PATH"
 
 ## ---------------------------------------------------------------------------------------------------------------------
 
