@@ -2,8 +2,9 @@ return {
 	{
 		"lewis6991/satellite.nvim",
 		opts = {
-			current_only = false,
+			current_only = true,
 			zindex = 30,
+			handlers = { diagnostic = { enable = false } },
 			excluded_filetypes = {
 				"alpha",
 				"neo-tree",
