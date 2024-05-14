@@ -124,9 +124,7 @@ return {
 		keys = {
 			{
 				"<c-e>",
-				function()
-					require("neo-tree.command").execute({ toggle = true, dir = vim.loop.cwd() })
-				end,
+				[[<cmd>lua require("neo-tree.command").execute({ toggle = true, dir = LazyVim.root() })<cr>]],
 				mode = { "n", "v", "t" },
 				desc = "Toggle explorer",
 			},
