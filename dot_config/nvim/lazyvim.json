@@ -2,7 +2,8 @@
   "extras": [
     "lazyvim.plugins.extras.dap.core",
     "lazyvim.plugins.extras.test.core",
-    "lazyvim.plugins.extras.coding.native_snippets",
+    "lazyvim.plugins.extras.coding.mini-ai",
+    "lazyvim.plugins.extras.coding.mini-surround",
     "lazyvim.plugins.extras.coding.yanky",
     "lazyvim.plugins.extras.editor.harpoon2",
     "lazyvim.plugins.extras.formatting.prettier",
@@ -11,6 +12,7 @@
     "lazyvim.plugins.extras.linting.eslint",
     "lazyvim.plugins.extras.ui.alpha",
     "lazyvim.plugins.extras.ui.edgy",
+    "lazyvim.plugins.extras.ui.treesitter-context",
     "lazyvim.plugins.extras.vscode",
     "plugins.extras.ai.chat-gpt",
     "plugins.extras.ai.wtf",
@@ -81,8 +83,8 @@
     "plugins.extras.ui.style.windows.bolder-separators"
   ],
   "news": {
-    "NEWS.md": "3314",
-    "doc/news.txt": "24388"
+    "NEWS.md": "4578",
+    "doc/news.txt": "24447"
   },
   "version": 3
 }
