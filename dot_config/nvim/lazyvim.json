@@ -7,13 +7,13 @@
     "lazyvim.plugins.extras.editor.harpoon2",
     "lazyvim.plugins.extras.formatting.prettier",
     "lazyvim.plugins.extras.lang.json",
+    "lazyvim.plugins.extras.lang.markdown",
     "lazyvim.plugins.extras.lang.typescript",
     "lazyvim.plugins.extras.linting.eslint",
     "lazyvim.plugins.extras.test.core",
     "lazyvim.plugins.extras.ui.alpha",
     "lazyvim.plugins.extras.ui.edgy",
     "lazyvim.plugins.extras.ui.treesitter-context",
-    "lazyvim.plugins.extras.ui.treesitter-rewrite",
     "lazyvim.plugins.extras.vscode",
     "plugins.extras.ai.chat-gpt",
     "plugins.extras.ai.wtf",
@@ -48,6 +48,7 @@
     "plugins.extras.nav.sibling-swap",
     "plugins.extras.nav.treesitter-context",
     "plugins.extras.optimizations.auto-update-third-party-tools",
+    "plugins.extras.optimizations.disable-markdown-preview",
     "plugins.extras.optimizations.setup-devicons-after-colorscheme-changed",
     "plugins.extras.optimizations.stop-inactive-lsp",
     "plugins.extras.optimizations.stop-treesitter-on-large-js-files",
@@ -84,7 +85,7 @@
     "plugins.extras.ui.style.windows.bolder-separators"
   ],
   "news": {
-    "NEWS.md": "4828",
+    "NEWS.md": "4885",
     "doc/news.txt": "24447"
   },
   "version": 3
