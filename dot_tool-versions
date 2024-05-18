@@ -1,3 +1,3 @@
 nodejs 20.12.2
 python 3.12.2
-neovim ref:27fb62988e922c2739035f477f93cc052a4fee1e # https://github.com/richin13/asdf-neovim/issues/21
+neovim stable

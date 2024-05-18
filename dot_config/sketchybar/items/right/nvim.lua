@@ -1,5 +1,6 @@
 local sbar = require("sketchybar")
 local colors = require("config").colors
+local tag = "nightly"
 
 local nvim = sbar.add("item", {
 	icon = {
@@ -14,16 +15,16 @@ local nvim = sbar.add("item", {
 })
 
 local function action()
-	sbar.exec([[wezterm start -- zsh -c "nvim_update_nightly"]])
+	sbar.exec('wezterm start -- zsh -c "nvim_update ' .. tag .. '"')
 end
 
 local function update()
-	-- stylua: ignore
-	local version_next_file = assert(io.popen([[gh api --method GET /repos/neovim/neovim/releases | jq -r 'map(select(.tag_name == "nightly"))[0] | .body | capture("```\n(?<version>NVIM(.*))\n```\n\n"; "m") | .version']]))
+	-- stylua: ignore start
+	local version_next_file = assert(io.popen([[gh api --method GET /repos/neovim/neovim/releases | jq -r 'map(select(.tag_name == "]]..tag..[["))[0] | .body | capture("```\n(?<version>NVIM(.*))\n```\n\n"; "m") | .version']]))
 	local version_next_result = assert(version_next_file:read("a"))
-
-	local version_current_file = assert(io.popen([[$(asdf where neovim)/bin/nvim --version | sed -e '4d']]))
+	local version_current_file = assert(io.popen([[$(asdf where neovim ]]..tag..[[)/bin/nvim --version | sed -e '4d']]))
 	local version_current_result = assert(version_current_file:read("a"))
+	-- stylua: ignore end
 
 	local icon = { color = colors.white }
 
