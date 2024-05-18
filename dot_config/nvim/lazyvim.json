@@ -76,6 +76,7 @@
     "plugins.extras.ui.panels.telescope.extensions.fzf-native",
     "plugins.extras.ui.panels.telescope.extensions.live-grep-agrs",
     "plugins.extras.ui.panels.telescope.extensions.scope",
+    "plugins.extras.ui.style.hunks.highlight-words",
     "plugins.extras.ui.style.hunks.preview-in-popup",
     "plugins.extras.ui.style.panels.sidebar-pretty-offset",
     "plugins.extras.ui.style.popups.rounded",
