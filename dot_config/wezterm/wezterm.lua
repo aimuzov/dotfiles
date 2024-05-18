@@ -74,7 +74,7 @@ return {
 	tab_max_width = 24,
 	use_fancy_tab_bar = false,
 	cursor_thickness = "50%",
-	underline_thickness = "250%",
+	underline_thickness = "300%",
 
 	cursor_blink_rate = 0,
 	default_cursor_style = "SteadyBar",
