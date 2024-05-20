@@ -1,5 +1,8 @@
 vim.keymap.set({ "n", "v" }, "d", [["_d]])
 
+vim.keymap.set({ "n" }, "vig", "ggVG", { desc = "Select all" })
+vim.keymap.set({ "n" }, "yig", "ggyG", { desc = "Yank all" })
+
 vim.keymap.set({ "i" }, "<c-s-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move down" })
 vim.keymap.set({ "n" }, "<c-s-j>", "<cmd>m .+1<cr>==", { desc = "Move down" })
 vim.keymap.set({ "v" }, "<c-s-j>", ":m '>+1<cr>gv=gv", { desc = "Move down" })
