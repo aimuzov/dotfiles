@@ -76,16 +76,6 @@ function M.colorscheme_get_name()
 	return is_dark and colorscheme_household[1] or colorscheme_household[2]
 end
 
-function M.char_get()
-	local char = vim.fn.getcharstr()
-
-	if LazyVim.has("langmapper.nvim") then
-		char = require("langmapper.utils").translate_keycode(char, "default", "ru")
-	end
-
-	return char
-end
-
 function M.extras_enabled(extras_name)
 	return vim.tbl_contains(LazyVim.config.json.data.extras, extras_name)
 end
