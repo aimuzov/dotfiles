@@ -3,6 +3,7 @@ return {
 		"Wansmer/langmapper.nvim",
 		priority = 1,
 		lazy = false,
+
 		opts = {
 			default_layout = [[ABCDEFGHIJKLMNOPQRSTUVWXYZ<>:"{}~abcdefghijklmnopqrstuvwxyz,.;'[]`]],
 
@@ -13,6 +14,7 @@ return {
 				},
 			},
 		},
+
 		config = function(_, opts)
 			local lm = require("langmapper")
 

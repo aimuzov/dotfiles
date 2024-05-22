@@ -4,8 +4,10 @@ dotfiles_path = dotfiles_path == vim.NIL and "" or dotfiles_path
 local function open_selected(prompt_bufnr)
 	local picker = require("telescope.actions.state").get_current_picker(prompt_bufnr)
 	local multi = picker:get_multi_selection()
+
 	if not vim.tbl_isempty(multi) then
 		require("telescope.actions").close(prompt_bufnr)
+
 		for _, j in pairs(multi) do
 			if j.path ~= nil then
 				vim.cmd(string.format("%s %s", "edit", j.path))
