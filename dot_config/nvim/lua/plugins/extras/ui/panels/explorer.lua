@@ -109,7 +109,7 @@ local delete_visual = function(state, selected_nodes)
 		end
 
 		for _, node in ipairs(selected_nodes) do
-			pcall(require("bufdelete").bufdelete, node.path, true)
+			pcall(require("mini.bufremove").delete, node.path, true)
 			vim.fn.system({ "trash", vim.fn.fnameescape(node.path) })
 		end
 
