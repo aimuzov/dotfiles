@@ -117,6 +117,17 @@ local delete_visual = function(state, selected_nodes)
 	end)
 end
 
+local open_nofocus = function(state)
+	local node = state.tree:get_node()
+
+	if require("neo-tree.utils").is_expandable(node) then
+		state.commands["toggle_node"](state)
+	else
+		state.commands["open"](state)
+		vim.cmd("Neotree reveal")
+	end
+end
+
 return {
 	{
 		"nvim-neo-tree/neo-tree.nvim",
@@ -214,11 +225,13 @@ return {
 				node_close_or_goto_parent = node_close_or_goto_parent,
 				copy_selector = copy_selector,
 				system_open = system_open,
+				open_nofocus = open_nofocus,
 			},
 
 			window = {
 				mappings = {
 					["<space>"] = false,
+					["<cr>"] = "open_nofocus",
 					["h"] = "node_close_or_goto_parent",
 					["l"] = "node_open_or_file_open",
 					["Y"] = "copy_selector",
