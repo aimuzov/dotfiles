@@ -33,7 +33,7 @@ return {
 
 				local gdev_path = vim.fn.stdpath("cache") .. "/git-dev"
 				local is_gdev = vim.startswith(vim.fn.expand("%:p"), gdev_path)
-				local opener = is_gdev and vim.bo.liletype == "markdown" and require("git-dev").open or vim.ui.open
+				local opener = is_gdev and vim.bo.filetype == "markdown" and require("git-dev").open or vim.ui.open
 
 				opener(url)
 			end,
