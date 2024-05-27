@@ -17,7 +17,7 @@
   "friendly-snippets": { "branch": "main", "commit": "dd2fd1281d4b22e7b4a5bfafa3e142d958e251f2" },
   "fugitive-gitlab.vim": { "branch": "master", "commit": "e8dd4c9dfe8ce43503dd81286d4e80f65a978e71" },
   "garbage-day.nvim": { "branch": "main", "commit": "dcadabd7e5f371c827d59d84b7fd63d9893370ac" },
-  "git-conflict.nvim": { "branch": "main", "commit": "01de0773769b8de0d105ae82a2defff24d80acd9" },
+  "git-conflict.nvim": { "branch": "main", "commit": "5a8b94276bbd9c18ecb0763061b101217cecba9d" },
   "git-dev.nvim": { "branch": "master", "commit": "1ed7a367e4ae79abe1da393b5d49bacee6d3a24c" },
   "gitlab.nvim": { "branch": "main", "commit": "816b87cf917c2e6775eed709ba900448aad22cf3" },
   "gitsigns.nvim": { "branch": "main", "commit": "cdfcd9d39d23c46ae9a040de2c6a8b8bf868746e" },
