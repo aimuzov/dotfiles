@@ -13,6 +13,14 @@ local opts = {
 		title = "  󱎦  󰫮  󰬇  󰬆  ",
 		size = { width = 0.9, height = 0.8 },
 		icons = { lazy = "(H) ", keys = "󰥻" },
+
+		custom_keys = {
+			["gx"] = {
+				-- stylua: ignore
+				function(plugin) vim.cmd(":!open " .. plugin.url:gsub("%.git", "") .. "/issues/" .. vim.fn.expand("<cword>")) end,
+				desc = "Open issue or pull request under cursor",
+			},
+		},
 	},
 	performance = { rtp = { disabled_plugins = { "gzip", "tarPlugin", "tohtml", "tutor", "zipPlugin" } } },
 }
