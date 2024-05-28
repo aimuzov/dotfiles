@@ -82,6 +82,8 @@
     "plugins.extras.ui.style.panels.sidebar-pretty-offset",
     "plugins.extras.ui.style.popups.rounded",
     "plugins.extras.ui.style.popups.size",
+    "plugins.extras.ui.style.terminal.disable-line-numbers",
+    "plugins.extras.ui.style.terminal.start-insert-on-open",
     "plugins.extras.ui.style.windows.bolder-separators"
   ],
   "news": {
