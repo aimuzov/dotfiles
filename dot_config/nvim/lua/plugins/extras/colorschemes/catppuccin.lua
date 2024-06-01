@@ -98,6 +98,7 @@ local override_all = function(c)
 		TreesitterContext = { bg = c.base, blend = 10 },
 		TreesitterContextBottom = { fg = c_blend(c.base, c.text, 15), blend = 0 },
 		TreesitterContextLineNumber = { bg = c.base },
+		StatusLine = { bg = c_blend(c.base, c.mantle, 50) },
 		TroubleCount = { bg = "none" },
 		TroubleNormal = { link = "NormalFloat" },
 		Visual = { style = {} },

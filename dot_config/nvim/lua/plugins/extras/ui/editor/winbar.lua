@@ -16,7 +16,7 @@ local disabled_filetypes = {
 	"noice",
 	"qf",
 	"spectre_panel",
-	"Trouble",
+	"trouble",
 }
 
 return {
