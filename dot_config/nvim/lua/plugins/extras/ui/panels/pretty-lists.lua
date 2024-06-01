@@ -1,7 +1,8 @@
 return {
 	{
 		"folke/trouble.nvim",
-		opts = { auto_close = false },
+		opts = { focus = true },
+
 		keys = {
 			{
 				"gR",
