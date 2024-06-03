@@ -22,6 +22,8 @@ return {
 			for key, _ in pairs(require("lspconfig.configs")) do
 				table.insert(opts.ensure_installed, key)
 			end
+
+			table.insert(opts.ensure_installed, "prettier")
 		end,
 	},
 }
