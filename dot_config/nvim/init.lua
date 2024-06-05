@@ -2,18 +2,19 @@ local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 local lazyurl = "https://github.com/folke/lazy.nvim.git"
 
 local lazyopts = {
-	dev = { path = "~/projects/github/aimuzov", patterns = { "LazyVimEnhanced" } },
-
 	spec = {
-		{ "aimuzov/LazyVimEnhanced", config = true },
-		{ import = "lazyvimenhanced.plugins" },
-		{ import = "lazyvimenhanced.plugins.colorschemes.catppuccin" },
+		{ "aimuzov/LazyVimEnhanced", import = "lazyvimenhanced" },
+		{ import = "lazyvimenhanced.colorschemes.catppuccin" }, -- catppuccin | tokyonight
 	},
 
+	--------------------------------------------------------------------------------------------------------------------
+
+	dev = { path = "~/projects/github/aimuzov", patterns = { "LazyVimEnhanced" } },
 	install = { colorscheme = { "catppuccin", "tokyonight" } },
 	checker = { enabled = true, notify = false },
 	change_detection = { enabled = false },
 	diff = { cmd = "diffview.nvim" },
+
 	ui = {
 		backdrop = 100,
 		border = "rounded",
