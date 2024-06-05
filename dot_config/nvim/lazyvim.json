@@ -23,7 +23,6 @@
     "lazyvimenhanced.plugins.extras.coding.comments",
     "lazyvimenhanced.plugins.extras.coding.emmet",
     "lazyvimenhanced.plugins.extras.coding.filter-kind",
-    "lazyvimenhanced.plugins.extras.colorschemes.catppuccin",
     "lazyvimenhanced.plugins.extras.formatting",
     "lazyvimenhanced.plugins.extras.git.conflicts",
     "lazyvimenhanced.plugins.extras.git.fugitive.base",
@@ -100,3 +99,4 @@
   },
   "version": 6
 }
+

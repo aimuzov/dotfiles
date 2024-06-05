@@ -2,8 +2,13 @@ local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 local lazyurl = "https://github.com/folke/lazy.nvim.git"
 
 local lazyopts = {
-	spec = { "aimuzov/LazyVimEnhanced", import = "lazyvimenhanced.plugins", config = true },
 	dev = { path = "~/projects/github/aimuzov", patterns = { "LazyVimEnhanced" } },
+
+	spec = {
+		{ "aimuzov/LazyVimEnhanced", config = true },
+		{ import = "lazyvimenhanced.plugins" },
+		{ import = "lazyvimenhanced.plugins.colorschemes.catppuccin" },
+	},
 
 	checker = { enabled = true, notify = false },
 	change_detection = { enabled = false },
