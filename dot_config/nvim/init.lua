@@ -10,6 +10,7 @@ local lazyopts = {
 		{ import = "lazyvimenhanced.plugins.colorschemes.catppuccin" },
 	},
 
+	install = { colorscheme = { "catppuccin", "tokyonight" } },
 	checker = { enabled = true, notify = false },
 	change_detection = { enabled = false },
 	diff = { cmd = "diffview.nvim" },
