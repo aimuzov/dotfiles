@@ -3,13 +3,13 @@ local lazyurl = "https://github.com/folke/lazy.nvim.git"
 
 local lazyopts = {
 	spec = {
-		{ "aimuzov/LazyVimEnhanced", import = "lazyvimenhanced" },
-		{ import = "lazyvimenhanced.colorschemes.catppuccin" }, -- catppuccin | tokyonight
+		{ "aimuzov/LazyVimx", import = "lazyvimx.core" },
+		{ import = "lazyvimx.colorschemes.catppuccin" }, -- catppuccin | tokyonight
 	},
 
 	--------------------------------------------------------------------------------------------------------------------
 
-	dev = { path = "~/projects/github/aimuzov", patterns = { "LazyVimEnhanced" } },
+	dev = { path = "~/projects/github/aimuzov", patterns = { "LazyVimx" } },
 	install = { colorscheme = { "catppuccin", "tokyonight" } },
 	checker = { enabled = true, notify = false },
 	change_detection = { enabled = false },
