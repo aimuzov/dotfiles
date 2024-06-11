@@ -19,16 +19,7 @@ local lazyopts = {
 		backdrop = 100,
 		border = "rounded",
 		icons = { lazy = "(H) ", keys = "󰥻" },
-		size = { width = 0.9, height = 0.8 },
 		title = "  󱎦  󰫮  󰬇  󰬆  ",
-
-		custom_keys = {
-			["gx"] = {
-				-- stylua: ignore
-				function(plugin) vim.cmd(":!open " .. plugin.url:gsub("%.git", "") .. "/issues/" .. vim.fn.expand("<cword>")) end,
-				desc = "Open issue or pull request under cursor",
-			},
-		},
 	},
 }
 
