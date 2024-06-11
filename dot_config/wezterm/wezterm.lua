@@ -86,6 +86,7 @@ return {
 
 	debug_key_events = false,
 	use_ime = true,
+	enable_kitty_keyboard = true,
 
 	keys = {
 		{ key = "р", mods = "CTRL", action = wezterm.action.SendString("\x08") },
