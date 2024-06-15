@@ -88,6 +88,7 @@
     "lazyvimx.extras.ui.panels.search-and-replace",
     "lazyvimx.extras.ui.panels.status-line",
     "lazyvimx.extras.ui.panels.telescope.base",
+    "lazyvimx.extras.ui.panels.telescope.extensions.advanced-git-search",
     "lazyvimx.extras.ui.panels.telescope.extensions.file-browser",
     "lazyvimx.extras.ui.panels.telescope.extensions.fzf-native",
     "lazyvimx.extras.ui.panels.telescope.extensions.live-grep-agrs",
