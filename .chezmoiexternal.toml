@@ -1,45 +1,45 @@
 [".oh-my-zsh"]
-	type = "archive"
-	url = "https://github.com/ohmyzsh/ohmyzsh/archive/master.tar.gz"
-	exact = true
-	stripComponents = 1
-	refreshPeriod = "168h"
+type = "archive"
+url = "https://github.com/ohmyzsh/ohmyzsh/archive/master.tar.gz"
+exact = true
+stripComponents = 1
+refreshPeriod = "168h"
 [".oh-my-zsh/custom/plugins/zsh-syntax-highlighting"]
-	type = "archive"
-	url = "https://github.com/zsh-users/zsh-syntax-highlighting/archive/master.tar.gz"
-	exact = true
-	stripComponents = 1
-	refreshPeriod = "168h"
-[".oh-my-zsh/custom/plugins/zsh-syntax-highlighting/themes/frappe.zsh"]
-	type = "file"
-	url = "https://raw.githubusercontent.com/catppuccin/zsh-syntax-highlighting/main/themes/catppuccin_frappe-zsh-syntax-highlighting.zsh"
-	refreshPeriod = "168h"
+type = "archive"
+url = "https://github.com/zsh-users/zsh-syntax-highlighting/archive/master.tar.gz"
+exact = true
+stripComponents = 1
+refreshPeriod = "168h"
+[".oh-my-zsh/custom/plugins/zsh-syntax-highlighting/themes/macchiato.zsh"]
+type = "file"
+url = "https://raw.githubusercontent.com/catppuccin/zsh-syntax-highlighting/main/themes/catppuccin_macchiato-zsh-syntax-highlighting.zsh"
+refreshPeriod = "168h"
 [".oh-my-zsh/custom/plugins/zsh-syntax-highlighting/themes/latte.zsh"]
-	type = "file"
-	url = "https://raw.githubusercontent.com/catppuccin/zsh-syntax-highlighting/main/themes/catppuccin_latte-zsh-syntax-highlighting.zsh"
-	refreshPeriod = "168h"
+type = "file"
+url = "https://raw.githubusercontent.com/catppuccin/zsh-syntax-highlighting/main/themes/catppuccin_latte-zsh-syntax-highlighting.zsh"
+refreshPeriod = "168h"
 [".oh-my-zsh/custom/plugins/zsh-autosuggestions"]
-	type = "archive"
-	url = "https://github.com/zsh-users/zsh-autosuggestions/archive/master.tar.gz"
-	exact = true
-	stripComponents = 1
-	refreshPeriod = "168h"
+type = "archive"
+url = "https://github.com/zsh-users/zsh-autosuggestions/archive/master.tar.gz"
+exact = true
+stripComponents = 1
+refreshPeriod = "168h"
 [".config/bat/themes"]
-	type = "archive"
-	url = "https://github.com/catppuccin/bat/archive/master.tar.gz"
-	exact = true
-	stripComponents = 1
-	refreshPeriod = "168h"
-	include = ["*/*.tmTheme"]
+type = "archive"
+url = "https://github.com/catppuccin/bat/archive/master.tar.gz"
+exact = true
+stripComponents = 1
+refreshPeriod = "168h"
+include = ["*/*.tmTheme"]
 [".config/wezterm/icon"]
-	type = "archive"
-	url = "https://github.com/mikker/wezterm-icon/archive/master.tar.gz"
-	exact = true
-	stripComponents = 1
-	refreshPeriod = "168h"
+type = "archive"
+url = "https://github.com/mikker/wezterm-icon/archive/master.tar.gz"
+exact = true
+stripComponents = 1
+refreshPeriod = "168h"
 [".config/sketchybar-app-font"]
-	type = "archive"
-	url = "https://github.com/kvndrsslr/sketchybar-app-font/archive/master.tar.gz"
-	exact = true
-	stripComponents = 1
-	refreshPeriod = "168h"
+type = "archive"
+url = "https://github.com/kvndrsslr/sketchybar-app-font/archive/master.tar.gz"
+exact = true
+stripComponents = 1
+refreshPeriod = "168h"

@@ -31,7 +31,7 @@ export WEBOS_CLI_TV="$LG_WEBOS_TV_SDK_HOME/bin"
 export SAMSUNG_TIZEN_SDK_HOME="$HOME/stv-tools/tizen-studio"
 export TIZEN_CLI_TV="$SAMSUNG_TIZEN_SDK_HOME/tools/ide/bin"
 
-export BAT_THEME=$([[ $MACOS_IS_DARK == "yes" ]] && echo "Catppuccin-frappe" || echo "Catppuccin-latte")
+export BAT_THEME=$([[ $MACOS_IS_DARK == "yes" ]] && echo "Catppuccin-macchiato" || echo "Catppuccin-latte")
 
 # https://github.com/ohmyzsh/ohmyzsh/wiki/Settings#zsh
 export ZSH="$HOME/.oh-my-zsh"
@@ -39,9 +39,9 @@ export ZSH_COMPDUMP="$ZSH/cache/.zcompdump-$HOST"
 
 # https://github.com/catppuccin/fzf?tab=readme-ov-file#usage
 export FZF_DEFAULT_OPTS=$([[ $MACOS_IS_DARK == "yes" ]] && echo " \
---color=bg+:#414559,bg:#303446,spinner:#f2d5cf,hl:#e78284 \
---color=fg:#c6d0f5,header:#e78284,info:#ca9ee6,pointer:#f2d5cf \
---color=marker:#f2d5cf,fg+:#c6d0f5,prompt:#ca9ee6,hl+:#e78284" || echo " \
+--color=bg+:#363a4f,bg:#24273a,spinner:#f4dbd6,hl:#ed8796 \
+--color=fg:#cad3f5,header:#ed8796,info:#c6a0f6,pointer:#f4dbd6 \
+--color=marker:#f4dbd6,fg+:#cad3f5,prompt:#c6a0f6,hl+:#ed8796" || echo " \
 --color=bg+:#ccd0da,bg:#eff1f5,spinner:#dc8a78,hl:#d20f39 \
 --color=fg:#4c4f69,header:#d20f39,info:#8839ef,pointer:#dc8a78 \
 --color=marker:#dc8a78,fg+:#4c4f69,prompt:#8839ef,hl+:#d20f39")
@@ -103,7 +103,7 @@ source $(brew --prefix)/opt/spaceship/spaceship.zsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 if [[ $MACOS_IS_DARK == "yes" ]]; then
-	source "$ZSH/custom/plugins/zsh-syntax-highlighting/themes/frappe.zsh"
+	source "$ZSH/custom/plugins/zsh-syntax-highlighting/themes/macchiato.zsh"
 else
 	source "$ZSH/custom/plugins/zsh-syntax-highlighting/themes/latte.zsh"
 fi

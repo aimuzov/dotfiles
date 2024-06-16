@@ -1,10 +1,10 @@
 gui:
   theme:
     activeBorderColor:
-      - "#40a02b"
+      - "#71b565"
       - bold
     inactiveBorderColor:
-      - "#acb0be"
+      - "#ced0d9"
     optionsTextColor:
       - "#1e66f5"
     selectedLineBgColor:
@@ -19,3 +19,6 @@ gui:
       - "#4c4f69"
     searchingActiveBorderColor:
       - "#df8e1d"
+
+  authorColors:
+    "*": "#7287fd"

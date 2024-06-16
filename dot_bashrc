@@ -1,1 +1,3 @@
+# vi: ft=sh
+
 export SHELL="/bin/zsh"

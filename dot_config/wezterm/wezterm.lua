@@ -31,7 +31,7 @@ end)
 
 local scheme_by_os = function(appearance)
 	if appearance:find("Dark") then
-		return "Catppuccin Frappe Extended"
+		return "Catppuccin Macchiato Extended"
 	else
 		return "Catppuccin Latte Extended"
 	end
@@ -55,6 +55,7 @@ return {
 	color_scheme = scheme_by_os(wezterm.gui.get_appearance()),
 	color_schemes = {
 		["Catppuccin Frappe Extended"] = scheme_extend("Catppuccin Frappe"),
+		["Catppuccin Macchiato Extended"] = scheme_extend("Catppuccin Macchiato"),
 		["Catppuccin Latte Extended"] = scheme_extend("Catppuccin Latte"),
 	},
 
