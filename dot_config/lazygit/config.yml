@@ -10,7 +10,7 @@ gui:
   commandLogSize: 3
   showCommandLog: false
 git:
-  branchLogCmd: "git lg {{branchName}} --"
+  branchLogCmd: "git lg {{branchName}}"
   paging:
     externalDiffCommand: difft
 customCommands:
