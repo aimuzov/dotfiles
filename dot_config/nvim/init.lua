@@ -7,9 +7,6 @@ local lazyopts = {
 		{ import = "lazyvimx.colorschemes.catppuccin" }, -- catppuccin | tokyonight
 	},
 
-	--------------------------------------------------------------------------------------------------------------------
-
-	dev = { path = "~/projects/github/aimuzov", patterns = { "LazyVimx" } },
 	install = { colorscheme = { "catppuccin", "tokyonight" } },
 	checker = { enabled = true, notify = false },
 	change_detection = { enabled = false },
@@ -22,6 +19,13 @@ local lazyopts = {
 		title = "  󱎦  󰫮  󰬇  󰬆  ",
 	},
 }
+
+if vim.fn.isdirectory(vim.fn.getenv("HOME") .. "/projects/github/aimuzov/LazyVimx") ~= 0 then
+	lazyopts.dev = {
+		path = vim.fn.getenv("HOME") .. "/projects/github/aimuzov",
+		patterns = { "LazyVimx" },
+	}
+end
 
 if not vim.loop.fs_stat(lazypath) then
 	vim.fn.system({ "git", "clone", "--filter=blob:none", lazyurl, "--branch=stable", lazypath })
