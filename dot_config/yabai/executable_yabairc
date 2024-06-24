@@ -83,7 +83,7 @@ yabai -m rule --add space=reflection app="^(Calendar|Mail|NetNewsWire|Things)$"
 yabai -m rule --add space=design app="^(Figma|Miro)$"
 yabai -m rule --add space=explorer app="^(Finder|Cyberduck)$"
 yabai -m rule --add space=games app="^(Steam Helper|Dota 2)$"
-yabai -m rule --add space=media app="^(Яндекс Музыка|Photos)$"
+yabai -m rule --add space=media app="^(Yandex Music|Photos)$"
 yabai -m rule --add space=calls app="^(zoom.us|Толк)$"
 yabai -m rule --add space=social app="^(Telegram|Slack|Discord|WhatsApp)$"
 
@@ -107,7 +107,7 @@ WhatsApp|\
 Yandex|\
 zoom.us|\
 Толк|\
-Яндекс Музыка\
+Yandex Music\
 )$"
 
 yabai -m rule --add app="^Google Chrome$" title="localhost" mouse_follows_focus=off

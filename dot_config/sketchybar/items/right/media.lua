@@ -1,7 +1,7 @@
 local sbar = require("sketchybar")
 local colors = require("config").colors
 
-local whitelist = { ["Яндекс Музыка"] = true }
+local whitelist = { ["Yandex Music"] = true }
 
 local media = sbar.add("item", {
 	icon = { width = 20 },
