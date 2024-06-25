@@ -93,6 +93,7 @@
     "lazyvimx.extras.ui.panels.buffer-line",
     "lazyvimx.extras.ui.panels.diff-view",
     "lazyvimx.extras.ui.panels.explorer",
+    "lazyvimx.extras.ui.panels.key-helper",
     "lazyvimx.extras.ui.panels.lazy",
     "lazyvimx.extras.ui.panels.messages",
     "lazyvimx.extras.ui.panels.news",
