@@ -58,7 +58,9 @@ export FZF_CTRL_T_OPTS="
 
 export XDG_CONFIG_HOME="$HOME/.config"
 export GOPATH="$HOME/Library/go"
-export PATH="node_modules/.bin:$WEBOS_CLI_TV:$TIZEN_CLI_TV:$GOPATH:$PATH"
+export NODE_MODULES_PATH="node_modules/.bin"
+export BIN_PATH="$HOME/.bin"
+export PATH="$BIN_PATH:$NODE_MODULES_PATH:$WEBOS_CLI_TV:$TIZEN_CLI_TV:$GOPATH:$PATH"
 
 ## ---------------------------------------------------------------------------------------------------------------------
 
