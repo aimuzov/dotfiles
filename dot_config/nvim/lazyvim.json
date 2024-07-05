@@ -83,7 +83,6 @@
     "lazyvimx.extras.optimizations.auto-switch-colorscheme-on-signal",
     "lazyvimx.extras.optimizations.auto-update-third-party-tools",
     "lazyvimx.extras.optimizations.disable-markdown-preview",
-    "lazyvimx.extras.optimizations.setup-devicons-after-colorscheme-changed",
     "lazyvimx.extras.optimizations.stop-inactive-lsp",
     "lazyvimx.extras.optimizations.stop-treesitter-on-large-js-files",
     "lazyvimx.extras.test.jest",
