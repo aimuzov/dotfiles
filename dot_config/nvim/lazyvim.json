@@ -16,6 +16,7 @@
     "lazyvimx.extras.ai.wtf",
     "lazyvimx.extras.buffers.close.hidden",
     "lazyvimx.extras.buffers.close.inactive",
+    "lazyvimx.extras.buffers.close.source-deleted",
     "lazyvimx.extras.buffers.remove",
     "lazyvimx.extras.buffers.scope",
     "lazyvimx.extras.coding.auto-complete",
