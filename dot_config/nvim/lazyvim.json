@@ -119,6 +119,7 @@
     "lazyvimx.extras.ui.panels.telescope.extensions.scope",
     "lazyvimx.extras.ui.style.hunks.highlight-words",
     "lazyvimx.extras.ui.style.hunks.preview-in-popup",
+    "lazyvimx.extras.ui.style.icons.override",
     "lazyvimx.extras.ui.style.panels.bufferline-groups",
     "lazyvimx.extras.ui.style.panels.sidebar-pretty-offset",
     "lazyvimx.extras.ui.style.popups.rounded",
