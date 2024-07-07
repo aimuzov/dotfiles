@@ -24,13 +24,6 @@ export DOTFILES_SRC_PATH="$HOME/projects/github/aimuzov/dotfiles"
 export HOMEBREW_NO_ENV_HINTS=1
 export HOMEBREW_NO_ANALYTICS=1
 
-# https://webostv.developer.lge.com/develop/tools/cli-installation
-export LG_WEBOS_TV_SDK_HOME="$HOME/stv-tools/webos-sdk"
-export WEBOS_CLI_TV="$LG_WEBOS_TV_SDK_HOME/bin"
-
-export SAMSUNG_TIZEN_SDK_HOME="$HOME/stv-tools/tizen-studio"
-export TIZEN_CLI_TV="$SAMSUNG_TIZEN_SDK_HOME/tools/ide/bin"
-
 export BAT_THEME=$([[ $MACOS_IS_DARK == "yes" ]] && echo "Catppuccin-macchiato" || echo "Catppuccin-latte")
 
 # https://github.com/ohmyzsh/ohmyzsh/wiki/Settings#zsh
@@ -55,12 +48,6 @@ export FZF_CTRL_T_OPTS="
 	--preview-window 'noborder'
 	--bind 'ctrl-/:change-preview-window(hidden|)'
 "
-
-export XDG_CONFIG_HOME="$HOME/.config"
-export GOPATH="$HOME/Library/go"
-export NODE_MODULES_PATH="node_modules/.bin"
-export BIN_PATH="$HOME/.bin"
-export PATH="$BIN_PATH:$NODE_MODULES_PATH:$WEBOS_CLI_TV:$TIZEN_CLI_TV:$GOPATH:$PATH"
 
 ## ---------------------------------------------------------------------------------------------------------------------
 

@@ -1,0 +1,4 @@
+[tools]
+neovim = "nightly"
+node = "20"
+python = "3"

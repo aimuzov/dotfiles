@@ -9,6 +9,7 @@ const scopes = [
   "install-script",
   "karabiner",
   "lazygit",
+  "mise",
   "ngrok",
   "nvim",
   "other",

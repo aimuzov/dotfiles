@@ -29,24 +29,11 @@ echo "Installing Brew..."
 brew analytics off
 brew bundle install --global
 
-/usr/bin/env zsh -c "wezterm_update_icon"
-
 # ----------------------------------------------------------------------------------------------------------------------
 
-echo "Setupping asdf..."
+echo "Setupping mise..."
 
-asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
-asdf install nodejs latest
-asdf global nodejs latest
-
-asdf plugin-add python
-asdf install python latest
-asdf global python latest
-asdf reshim python
-
-asdf plugin add neovim
-asdf install neovim nightly
-asdf install neovim stable
+mise install
 
 # ----------------------------------------------------------------------------------------------------------------------
 
@@ -124,3 +111,7 @@ defaults write com.apple.frameworks.diskimages "skip-verify-remote" -bool "true"
 
 defaults write com.apple.mail "AddressesIncludeNameOnPasteboard" -bool "false"
 defaults write com.apple.mail "NSUserKeyEquivalents" -dict-add "Send" "@\U21a9"
+
+# ----------------------------------------------------------------------------------------------------------------------
+
+/usr/bin/env zsh -c "wezterm_update_icon"
