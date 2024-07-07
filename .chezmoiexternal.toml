@@ -24,6 +24,12 @@ url = "https://github.com/zsh-users/zsh-autosuggestions/archive/master.tar.gz"
 exact = true
 stripComponents = 1
 refreshPeriod = "168h"
+[".oh-my-zsh/custom/plugins/you-should-use"]
+type = "archive"
+url = "https://github.com/MichaelAquilina/zsh-you-should-use/archive/master.tar.gz"
+exact = true
+stripComponents = 1
+refreshPeriod = "168h"
 [".config/bat/themes"]
 type = "archive"
 url = "https://github.com/catppuccin/bat/archive/master.tar.gz"
