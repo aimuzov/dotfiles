@@ -31,11 +31,11 @@ function nvim_disable_builtin_colorschemes() {
 
 function nvim_update() {
 	local tag="$1"
-	local nvim_path="$(echo $(asdf where neovim $tag))"
+	local nvim_path="$(echo $(mise where neovim@$tag))"
 
 	if [[ "$nvim_path" == "Version not installed" ]]; then
 		echo "\n\033[0;93m[zsh]\033[0m nvim ($tag) not installed, fix it!"
-		command asdf install neovim $tag
+		command mise install neovim@$tag
 		nvim_update $tag
 		return
 	fi
@@ -46,15 +46,15 @@ function nvim_update() {
 		return
 	fi
 
-	echo "\033[0;94m[asdf]\033[0m updating nvim $tag..."
+	echo "\033[0;94m[mise]\033[0m updating nvim $tag..."
 	local version_current="$nvim_path/bin/nvim --version"
-	command asdf uninstall neovim $tag
-	echo "\n\033[0;94m[asdf]\033[0m current nvim version uninstalled:"
+	command mise uninstall neovim@$tag
+	echo "\n\033[0;94m[mise]\033[0m current nvim version uninstalled:"
 	echo $version_current
 
-	echo "\n\033[0;94m[asdf]\033[0m new version downloading..."
-	command asdf install neovim nightly
-	echo "\n\033[0;93m[asdf]\033[0m nvim updated:"
+	echo "\n\033[0;94m[mise]\033[0m new version downloading..."
+	command mise install neovim@$tag
+	echo "\n\033[0;93m[mise]\033[0m nvim updated:"
 	echo "$nvim_path/bin/nvim --version"
 
 	nvim_disable_builtin_colorschemes
