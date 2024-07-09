@@ -78,7 +78,7 @@ space_create 2 10 social
 # -- Assigning windows in spaces ---------------------------------------------------------------------------------------
 
 yabai -m rule --add space=term app="^(WezTerm|VSCodium)$"
-yabai -m rule --add space=browser app="^(Google Chrome)$"
+yabai -m rule --add space=browser app="^(Arc|Google Chrome)$"
 yabai -m rule --add space=reflection app="^(Calendar|Mail|NetNewsWire|Things)$"
 yabai -m rule --add space=design app="^(Figma|Miro)$"
 yabai -m rule --add space=explorer app="^(Finder|Cyberduck)$"
@@ -90,6 +90,7 @@ yabai -m rule --add space=social app="^(Telegram|Slack|Discord|WhatsApp)$"
 # -- Layout managing ---------------------------------------------------------------------------------------------------
 
 yabai -m rule --add manage=off app!="^(\
+Arc|\
 Calendar|\
 Cyberduck|\
 Figma|\
@@ -112,6 +113,7 @@ zoom.us|\
 
 yabai -m rule --add app="^Google Chrome$" title="localhost" mouse_follows_focus=off
 yabai -m rule --add app="^Slack$" title="Huddle*" space=calls
+yabai -m rule --add app="^Arc$" title="(Aleksey|General|Profiles|Max|Links|Shortcuts|Icon|Advanced)" manage=off
 yabai -m rule --add app="^Finder$" title="(Copy|Connect|Move|Info|Pref|Finder Settings)" manage=off
 yabai -m rule --add app="^Things$" title="(Quick Entry)" manage=off
 
