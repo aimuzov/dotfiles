@@ -1,6 +1,11 @@
 [manager]
 ratio = [2, 2, 4]
 
+[[manager.prepend_keymap]]
+on = ["F"]
+run = "plugin smart-filter"
+desc = "Smart filter"
+
 [opener]
 edit = [
 	{ run = 'nvr --remote-tab-wait +"setl bufhidden=wipe" "$@"', block = true },

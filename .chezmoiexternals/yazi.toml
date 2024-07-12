@@ -4,3 +4,12 @@ url = "https://github.com/yazi-rs/flavors/archive/master.tar.gz"
 exact = true
 stripComponents = 1
 refreshPeriod = "168h"
+include = ["*/catppuccin-latte.yazi/**", "*/catppuccin-macchiato.yazi/**"]
+
+[".config/yazi/plugins"]
+type = "archive"
+url = "https://github.com/yazi-rs/plugins/archive/master.tar.gz"
+exact = true
+stripComponents = 1
+refreshPeriod = "168h"
+include = ["*/full-border.yazi/**"]
