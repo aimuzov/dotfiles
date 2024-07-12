@@ -1,0 +1,47 @@
+{
+  "version": 3,
+  "teams": [
+    {
+      "url": "https://time.r1.team",
+      "name": "r1",
+      "order": 0,
+      "tabs": [
+        {
+          "name": "TAB_MESSAGING",
+          "order": 0,
+          "isOpen": true
+        },
+        {
+          "name": "TAB_FOCALBOARD",
+          "order": 1
+        },
+        {
+          "name": "TAB_PLAYBOOKS",
+          "order": 2
+        }
+      ],
+      "lastActiveTab": 0
+    }
+  ],
+  "showTrayIcon": true,
+  "trayIconTheme": "use_system",
+  "minimizeToTray": true,
+  "notifications": {
+    "flashWindow": 2,
+    "bounceIcon": true,
+    "bounceIconType": "informational"
+  },
+  "showUnreadBadge": true,
+  "useSpellChecker": true,
+  "enableHardwareAcceleration": true,
+  "autostart": true,
+  "hideOnStart": false,
+  "spellCheckerLocales": [],
+  "darkMode": false,
+  "lastActiveTeam": 0,
+  "downloadLocation": "/Users/aimuzov/temp/time",
+  "startInFullscreen": false,
+  "logLevel": "error",
+  "webappVersion": "v6.21.0-004",
+  "autoCheckForUpdates": true
+}
