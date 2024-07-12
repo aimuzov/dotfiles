@@ -1,6 +1,7 @@
 alias c="clear"
 alias ca="chezmoi apply"
 alias e="$EDITOR"
+alias ee="nvim_config_pick"
 alias eu="$EDITOR --headless '+Lazy! update' +qa && $EDITOR"
 alias ns="npm start"
 alias or="omz reload"

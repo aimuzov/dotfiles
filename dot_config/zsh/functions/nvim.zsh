@@ -7,6 +7,16 @@ function nvim_plugins_update() {
 	echo "[chezmoi] lazy-lock applied..."
 }
 
+function nvim_config_pick() {
+	local config=$(fd --max-depth 1 --glob '{nvim,nvim-*}' $XDG_CONFIG_HOME | fzf --prompt="Neovim Configs > " --height=~50% --layout=reverse --border --exit-0)
+
+	[[ -z $config ]] && echo "No config selected" && return
+
+	echo $(echo $config) $(mise which nvim) $@
+
+	NVIM_APPNAME=$(basename $config) $(mise which nvim) $@
+}
+
 # https://github.com/neovim/neovim/issues/15083#issuecomment-1987041311
 function nvim_disable_builtin_colorschemes() {
 	local base_path="$HOME/.local/share/mise/installs/neovim/"
