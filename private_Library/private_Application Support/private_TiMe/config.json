@@ -8,22 +8,22 @@
       "tabs": [
         {
           "name": "TAB_MESSAGING",
-          "order": 0,
+          "order": 2,
           "isOpen": true
         },
         {
           "name": "TAB_FOCALBOARD",
-          "order": 1
+          "order": 0
         },
         {
           "name": "TAB_PLAYBOOKS",
-          "order": 2
+          "order": 1
         }
       ],
       "lastActiveTab": 0
     }
   ],
-  "showTrayIcon": true,
+  "showTrayIcon": false,
   "trayIconTheme": "use_system",
   "minimizeToTray": true,
   "notifications": {
