@@ -46,6 +46,7 @@
     "lazyvimx.extras.keys.buffer.pick",
     "lazyvimx.extras.keys.buffer.switch",
     "lazyvimx.extras.keys.dap.chrome-keys-style",
+    "lazyvimx.extras.keys.files.find-by-yazi",
     "lazyvimx.extras.keys.files.find-dir-current",
     "lazyvimx.extras.keys.files.find-dir-cwd",
     "lazyvimx.extras.keys.git.gitlab",
