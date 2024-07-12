@@ -1,0 +1,6 @@
+[".config/yazi/flavors"]
+type = "archive"
+url = "https://github.com/yazi-rs/flavors/archive/master.tar.gz"
+exact = true
+stripComponents = 1
+refreshPeriod = "168h"

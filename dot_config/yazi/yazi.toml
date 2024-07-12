@@ -1,0 +1,7 @@
+[manager]
+ratio = [2, 2, 4]
+
+[opener]
+edit = [
+	{ run = 'nvr --remote-tab-wait +"setl bufhidden=wipe" "$@"', block = true },
+]

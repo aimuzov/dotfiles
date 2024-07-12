@@ -23,6 +23,7 @@ const scopes = [
   "vscodium",
   "wezterm",
   "yabai",
+  "yazi",
   "zsh",
 ];
 
