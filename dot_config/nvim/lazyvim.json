@@ -45,7 +45,6 @@
     "lazyvimx.extras.keys.dap.chrome-keys-style",
     "lazyvimx.extras.keys.files.find-by-yazi",
     "lazyvimx.extras.keys.files.find-dir-current",
-    "lazyvimx.extras.keys.files.find-dir-cwd",
     "lazyvimx.extras.keys.git.gitlab",
     "lazyvimx.extras.keys.git.open-in-browser",
     "lazyvimx.extras.keys.git.open-repo-temporarily-in-tab",
@@ -130,7 +129,7 @@
   ],
   "news": {
     "NEWS.md": "6077",
-    "doc/news.txt": "5506"
+    "doc/news.txt": "5633"
   },
   "version": 6
 }
