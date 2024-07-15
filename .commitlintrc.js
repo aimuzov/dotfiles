@@ -20,6 +20,7 @@ const scopes = [
   "spaceship",
   "svim",
   "them-switcher",
+  "time",
   "vscodium",
   "wezterm",
   "yabai",

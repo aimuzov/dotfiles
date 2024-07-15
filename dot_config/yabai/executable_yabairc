@@ -85,7 +85,7 @@ yabai -m rule --add space=explorer app="^(Finder|Cyberduck)$"
 yabai -m rule --add space=games app="^(Steam Helper|Dota 2)$"
 yabai -m rule --add space=media app="^(Yandex Music|Photos)$"
 yabai -m rule --add space=calls app="^(zoom.us|Толк)$"
-yabai -m rule --add space=social app="^(Telegram|Slack|Discord|WhatsApp)$"
+yabai -m rule --add space=social app="^(TiMe|Telegram|Slack|Discord|WhatsApp)$"
 
 # -- Layout managing ---------------------------------------------------------------------------------------------------
 
@@ -102,6 +102,7 @@ NetNewsWire|\
 Slack|\
 Telegram|\
 Things|\
+TiMe|\
 VSCodium|\
 WezTerm|\
 WhatsApp|\
