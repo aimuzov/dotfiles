@@ -1,7 +1,7 @@
 gui:
   theme:
     activeBorderColor:
-      - "#a6da95"
+      - "#8aadf4"
       - bold
     inactiveBorderColor:
       - "#6d7299"
