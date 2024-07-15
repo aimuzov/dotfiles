@@ -33,6 +33,7 @@
     "lazyvimx.extras.hacks.context-menu-clear",
     "lazyvimx.extras.hacks.langmapper-override-getcharstr",
     "lazyvimx.extras.hacks.lazy-pretty-keys",
+    "lazyvimx.extras.hacks.lazyvim-diagnostic-toggle",
     "lazyvimx.extras.hacks.lazyvim-lualine-pretty-path",
     "lazyvimx.extras.hacks.lazyvim-pretty-terminal-open",
     "lazyvimx.extras.hacks.lualine-pretty-extensions",
