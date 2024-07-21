@@ -59,7 +59,6 @@
     "lazyvimx.extras.keys.nav.go-to-context",
     "lazyvimx.extras.keys.register.d-blackholed",
     "lazyvimx.extras.keys.tab.rename",
-    "lazyvimx.extras.keys.terminal.go-to-file-under-cursor",
     "lazyvimx.extras.keys.terminal.open-cwd",
     "lazyvimx.extras.keys.window.open-dashboard",
     "lazyvimx.extras.keys.window.open-zen-mode",
@@ -129,7 +128,7 @@
     "lazyvimx.extras.ui.style.windows.bolder-separators"
   ],
   "news": {
-    "NEWS.md": "6077",
+    "NEWS.md": "6296",
     "doc/news.txt": "5633"
   },
   "version": 6
