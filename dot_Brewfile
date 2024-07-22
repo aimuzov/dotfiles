@@ -39,7 +39,7 @@ brew "rlwrap"
 brew "spaceship"
 brew "trash"
 brew "tree-sitter"
-brew "yazi"
+brew "yazi", args: ["HEAD"]
 brew "yt-dlp"
 brew "zsh"
 brew "daipeihust/tap/im-select"
