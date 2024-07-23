@@ -25,6 +25,7 @@ const scopes = [
   "wezterm",
   "yabai",
   "yazi",
+  "zed",
   "zsh",
 ];
 
