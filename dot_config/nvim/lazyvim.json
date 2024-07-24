@@ -82,6 +82,7 @@
     "lazyvimx.extras.optimizations.auto-switch-colorscheme-on-signal",
     "lazyvimx.extras.optimizations.auto-update-third-party-tools",
     "lazyvimx.extras.optimizations.disable-markdown-preview",
+    "lazyvimx.extras.optimizations.improve-your-keymap-skill",
     "lazyvimx.extras.optimizations.stop-inactive-lsp",
     "lazyvimx.extras.optimizations.stop-treesitter-on-large-js-files",
     "lazyvimx.extras.test.jest",
@@ -128,7 +129,7 @@
     "lazyvimx.extras.ui.style.windows.bolder-separators"
   ],
   "news": {
-    "NEWS.md": "6296",
+    "NEWS.md": "6520",
     "doc/news.txt": "5633"
   },
   "version": 6
