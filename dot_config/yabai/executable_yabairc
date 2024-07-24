@@ -16,7 +16,7 @@ yabai -m signal --add event=window_destroyed action="sketchybar --trigger window
 yabai -m config \
 	external_bar all:0:40 \
 	debug_output off \
-	mouse_follows_focus on \
+	mouse_follows_focus off \
 	focus_follows_mouse off \
 	window_zoom_persist off \
 	window_placement second_child \
@@ -85,7 +85,7 @@ yabai -m rule --add space=explorer app="^(Finder|Cyberduck)$"
 yabai -m rule --add space=games app="^(Steam Helper|Dota 2)$"
 yabai -m rule --add space=media app="^(Yandex Music|Photos)$"
 yabai -m rule --add space=calls app="^(zoom.us|Толк)$"
-yabai -m rule --add space=social app="^(TiMe|Telegram|Slack|Discord|WhatsApp)$"
+yabai -m rule --add space=social app="^(TiMe|Telegram|Discord|WhatsApp)$"
 
 # -- Layout managing ---------------------------------------------------------------------------------------------------
 
@@ -99,7 +99,6 @@ Google Chrome|\
 Mail|\
 Miro|\
 NetNewsWire|\
-Slack|\
 Telegram|\
 Things|\
 TiMe|\
@@ -112,8 +111,7 @@ zoom.us|\
 Толк\
 )$"
 
-yabai -m rule --add app="^Google Chrome$" title="localhost" mouse_follows_focus=off
-yabai -m rule --add app="^Slack$" title="Huddle*" space=calls
+yabai -m rule --add app="^TiMe$" title="(TiMe Desktop Settings)" manage=off
 yabai -m rule --add app="^Arc$" title="(Aleksey|General|Profiles|Max|Links|Shortcuts|Icon|Advanced)" manage=off
 yabai -m rule --add app="^Finder$" title="(Copy|Connect|Move|Info|Pref|Finder Settings)" manage=off
 yabai -m rule --add app="^Things$" title="(Quick Entry)" manage=off
