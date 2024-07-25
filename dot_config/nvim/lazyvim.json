@@ -50,6 +50,7 @@
     "lazyvimx.extras.keys.git.open-in-browser",
     "lazyvimx.extras.keys.git.open-repo-temporarily-in-tab",
     "lazyvimx.extras.keys.help.run-chtsh",
+    "lazyvimx.extras.keys.help.toggle-hardtime",
     "lazyvimx.extras.keys.lines.emmet-wrap-with-abbr",
     "lazyvimx.extras.keys.lines.move",
     "lazyvimx.extras.keys.lines.select-all",
