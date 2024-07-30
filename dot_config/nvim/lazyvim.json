@@ -40,6 +40,7 @@
     "lazyvimx.extras.keys.ai.chatgpt",
     "lazyvimx.extras.keys.ai.wtf",
     "lazyvimx.extras.keys.buffer.delete-faster",
+    "lazyvimx.extras.keys.buffer.focus-left-or-right",
     "lazyvimx.extras.keys.buffer.move-left-or-right",
     "lazyvimx.extras.keys.buffer.move-to-another-tab",
     "lazyvimx.extras.keys.buffer.pick",
@@ -122,7 +123,6 @@
     "lazyvimx.extras.ui.style.hunks.preview-in-popup",
     "lazyvimx.extras.ui.style.icons.override",
     "lazyvimx.extras.ui.style.panels.bufferline-groups",
-    "lazyvimx.extras.ui.style.panels.sidebar-pretty-offset",
     "lazyvimx.extras.ui.style.popups.rounded",
     "lazyvimx.extras.ui.style.popups.size",
     "lazyvimx.extras.ui.style.terminal.colorize-ansi-escape-sequences",
@@ -132,7 +132,7 @@
   ],
   "news": {
     "NEWS.md": "6520",
-    "doc/news.txt": "5633"
+    "doc/news.txt": "5859"
   },
   "version": 6
 }
