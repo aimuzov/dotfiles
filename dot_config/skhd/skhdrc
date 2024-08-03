@@ -41,8 +41,8 @@ alt + ctrl - right	: yabai -m window --resize right:20:0 	|| yabai -m window --r
 
 alt + shift - j : yabai -m window --warp south
 alt + shift - k : yabai -m window --warp north
-alt + shift - h : yabai -m window --warp west || (yabai -m window --space prev; yabai -m space --focus prev)
-alt + shift - l : yabai -m window --warp east || (yabai -m window --space next; yabai -m space --focus next)
+alt + shift - h : yabai -m window --warp west || (yabai -m window --space prev; yabai -m space --focus prev && yabai -m window --focus last)
+alt + shift - l : yabai -m window --warp east || (yabai -m window --space next; yabai -m space --focus next && yabai -m window --focus last; yabai -m window --warp first)
 alt + shift - d : yabai -m window --display recent; yabai -m window --focus recent
 
 # -- Window stacking ---------------------------------------------------------------------------------------------------
