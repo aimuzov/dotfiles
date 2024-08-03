@@ -3,9 +3,13 @@ neovim = ["stable", "nightly"]
 node = ["16", "20"]
 python = "3"
 ruby = "3.3"
+go = "latest"
 
 [plugins]
 neovim = "https://github.com/richin13/asdf-neovim"
 node = "https://github.com/asdf-vm/asdf-nodejs"
 python = "https://github.com/asdf-community/asdf-python"
 ruby = "https://github.com/asdf-vm/asdf-ruby"
+
+[settings]
+experimental = true
