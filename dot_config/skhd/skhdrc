@@ -56,7 +56,7 @@ alt + shift - 0x1E	: yabai -m window --focus stack.next
 
 # -- Window toggling ---------------------------------------------------------------------------------------------------
 
-alt + shift - f : yabai -m window --toggle float --grid 8:8:1:1:6:6; sketchybar --trigger window_focus
+alt + shift - f : yabai -m window --toggle float --grid 10:10:1:1:8:8; sketchybar --trigger window_focus
 alt + shift - m : yabai -m window --toggle zoom-fullscreen; sketchybar --trigger window_focus
 alt + shift - p : yabai -m window --toggle zoom-parent; sketchybar --trigger window_focus
 alt + shift - e : yabai -m space --balance
