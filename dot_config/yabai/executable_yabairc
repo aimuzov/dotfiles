@@ -111,7 +111,6 @@ zoom.us|\
 Толк\
 )$"
 
-yabai -m rule --add app="^TiMe$" title="(TiMe Desktop Settings)" manage=off
 yabai -m rule --add app="^Arc$" title="(Aleksey|General|Profiles|Max|Links|Shortcuts|Icon|Advanced)" manage=off
 yabai -m rule --add app="^Finder$" title="(Copy|Connect|Move|Info|Pref|Finder Settings)" manage=off
 yabai -m rule --add app="^Things$" title="(Quick Entry)" manage=off
