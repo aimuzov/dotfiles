@@ -5,6 +5,8 @@ python = "3"
 ruby = "3.3"
 go = "latest"
 rust = "stable"
+"cargo:yazi-fm" = "latest"
+"cargo:yazi-cli" = "latest"
 
 [plugins]
 neovim = "https://github.com/richin13/asdf-neovim"

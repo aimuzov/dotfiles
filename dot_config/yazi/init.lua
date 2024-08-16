@@ -1,4 +1,4 @@
-require("full-border"):setup()
+-- require("full-border"):setup()
 
 -- local old_manager_render = Manager.render
 --
