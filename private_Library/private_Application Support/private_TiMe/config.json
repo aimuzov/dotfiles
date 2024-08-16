@@ -42,6 +42,7 @@
   "downloadLocation": "/Users/aimuzov/temp/time",
   "startInFullscreen": false,
   "logLevel": "error",
-  "webappVersion": "v6.21.0-006",
+  "webappVersion": "v6.23.3-001",
   "autoCheckForUpdates": true
 }
+
