@@ -49,3 +49,10 @@ url = "https://github.com/wintermi/zsh-mise/archive/master.tar.gz"
 exact = true
 stripComponents = 1
 refreshPeriod = "168h"
+
+[".oh-my-zsh/custom/plugins/zsh-npm"]
+type = "archive"
+url = "https://github.com/zfben/zsh-npm/archive/master.tar.gz"
+exact = true
+stripComponents = 1
+refreshPeriod = "168h"
