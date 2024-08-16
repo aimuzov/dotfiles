@@ -6,6 +6,7 @@ plugins=(
 	git-flow-avh
 	you-should-use
 	zsh-autosuggestions
+	zsh-bat
 	zsh-interactive-cd
 	zsh-syntax-highlighting
 	zsh-vi-mode
