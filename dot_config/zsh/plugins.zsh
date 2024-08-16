@@ -8,6 +8,7 @@ plugins=(
 	zsh-autosuggestions
 	zsh-bat
 	zsh-interactive-cd
+	zsh-mise
 	zsh-syntax-highlighting
 	zsh-vi-mode
 )
