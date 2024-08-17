@@ -56,6 +56,7 @@
     "lazyvimx.extras.keys.lines.move",
     "lazyvimx.extras.keys.lines.select-all",
     "lazyvimx.extras.keys.lines.yank-all",
+    "lazyvimx.extras.keys.lsp.live-rename",
     "lazyvimx.extras.keys.lsp.restart",
     "lazyvimx.extras.keys.nav.add-cursor",
     "lazyvimx.extras.keys.nav.go-to-context",
@@ -136,3 +137,4 @@
   },
   "version": 6
 }
+
