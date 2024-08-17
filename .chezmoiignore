@@ -1,7 +1,7 @@
 ./.config/bat/themes
 ./.config/sketchybar/helper/helper
-./.oh-my-zsh/**/.DS_Store
-./.oh-my-zsh/cache
+./.oh-my-zsh
+./.oh-my-zsh/custom/plugins/zsh-mise/completions/_mise
 .DS_Store
 .gitignore
 node_modules
