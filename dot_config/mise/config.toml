@@ -5,6 +5,7 @@ python = "3"
 ruby = "3.3"
 go = "latest"
 rust = "stable"
+zoxide = "latest"
 "cargo:yazi-fm" = "latest"
 "cargo:yazi-cli" = "latest"
 
@@ -13,6 +14,7 @@ neovim = "https://github.com/richin13/asdf-neovim"
 node = "https://github.com/asdf-vm/asdf-nodejs"
 python = "https://github.com/asdf-community/asdf-python"
 ruby = "https://github.com/asdf-vm/asdf-ruby"
+zoxide = "https://github.com/nyrst/asdf-zoxide"
 
 [settings]
 experimental = true

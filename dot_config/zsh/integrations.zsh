@@ -9,3 +9,4 @@ source $ZSH_CONFIG_PATH/integrations/node.zsh
 source $ZSH_CONFIG_PATH/integrations/rust.zsh
 source $ZSH_CONFIG_PATH/integrations/spaceship.zsh
 source $ZSH_CONFIG_PATH/integrations/wezterm.zsh
+source $ZSH_CONFIG_PATH/integrations/zoxide.zsh
