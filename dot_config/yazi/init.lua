@@ -1,15 +1,48 @@
--- require("full-border"):setup()
+local flavor = os.getenv("MACOS_IS_DARK") == "yes" and "macchiato" or "latte"
+local catppuccin_theme = require("yatline-catppuccin"):setup(flavor)
 
--- local old_manager_render = Manager.render
---
--- function Manager:render(area)
--- 	return old_manager_render(self, ui.Rect({ x = area.x, y = area.y - 1, w = area.w, h = area.h + 2 }))
--- end
---
--- function Status:render()
--- 	return {}
--- end
---
--- function Header:render(area)
--- 	return {}
--- end
+catppuccin_theme.section_separator = { open = "", close = "" }
+catppuccin_theme.part_separator = { open = "", close = "" }
+
+require("yatline"):setup({
+	theme = catppuccin_theme,
+	show_background = true,
+
+	header_line = {
+		left = {
+			section_a = { { type = "line", custom = false, name = "tabs", params = { "left" } } },
+			section_b = { { type = "coloreds", custom = false, name = "githead" } },
+			section_c = {},
+		},
+		right = {
+			section_a = {},
+			section_b = {},
+			section_c = {},
+		},
+	},
+
+	status_line = {
+		left = {
+			section_a = { { type = "string", custom = false, name = "tab_mode" } },
+			section_b = { { type = "string", custom = false, name = "hovered_size" } },
+			section_c = {
+				{ type = "string", custom = false, name = "hovered_name" },
+				{ type = "coloreds", custom = false, name = "count" },
+			},
+		},
+		right = {
+			section_a = { { type = "string", custom = false, name = "cursor_position" } },
+			section_b = {},
+			section_c = {
+				{ type = "string", custom = false, name = "hovered_file_extension", params = { true } },
+				{ type = "coloreds", custom = false, name = "permissions" },
+			},
+		},
+	},
+})
+
+require("yatline-githead"):setup({
+	theme = catppuccin_theme,
+	branch_symbol = "",
+	branch_borders = "",
+})
