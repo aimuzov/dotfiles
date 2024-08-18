@@ -92,7 +92,11 @@
     "lazyvimx.extras.test.jest",
     "lazyvimx.extras.ui.editor.cursor-line",
     "lazyvimx.extras.ui.editor.indent-lines",
-    "lazyvimx.extras.ui.editor.inlay-hints",
+    "lazyvimx.extras.ui.editor.line-hints.blame",
+    "lazyvimx.extras.ui.editor.line-hints.colorizer",
+    "lazyvimx.extras.ui.editor.line-hints.diagnostic-lsp",
+    "lazyvimx.extras.ui.editor.line-hints.diagnostic-pretty",
+    "lazyvimx.extras.ui.editor.line-hints.symbol-usage",
     "lazyvimx.extras.ui.editor.ruler",
     "lazyvimx.extras.ui.editor.scroll-bar",
     "lazyvimx.extras.ui.editor.status-column",
@@ -133,8 +137,7 @@
   ],
   "news": {
     "NEWS.md": "6520",
-    "doc/news.txt": "6553"
+    "doc/news.txt": "24447"
   },
   "version": 6
 }
-
