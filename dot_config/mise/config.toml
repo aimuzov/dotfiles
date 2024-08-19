@@ -8,6 +8,8 @@ ruby = "3.3"
 rust = "stable"
 zoxide = "latest"
 "pipx:neovim-remote" = "latest"
+"cargo:eza" = "latest"
+"cargo:vivid" = "latest"
 # Пока чот не работает, ставлю через brew.
 # "cargo:yazi-fm" = "latest"
 # "cargo:yazi-cli" = "latest"

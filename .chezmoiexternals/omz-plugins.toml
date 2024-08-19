@@ -56,3 +56,10 @@ url = "https://github.com/zfben/zsh-npm/archive/master.tar.gz"
 exact = true
 stripComponents = 1
 refreshPeriod = "168h"
+
+[".oh-my-zsh/custom/plugins/zsh-eza"]
+type = "archive"
+url = "https://github.com/z-shell/zsh-eza/archive/master.tar.gz"
+exact = true
+stripComponents = 1
+refreshPeriod = "168h"

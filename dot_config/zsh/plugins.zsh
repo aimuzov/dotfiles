@@ -12,12 +12,14 @@ plugins=(
 	zsh-npm
 	zsh-syntax-highlighting
 	zsh-vi-mode
+	# какой-то особенный, должен идти после mise
+	# чтобы не руинить шелл.
+	zsh-eza
 )
 
 ## ---------------------------------------------------------------------------------------------------------------------
 
-THEME_NAME=$([[ $MACOS_IS_DARK == "yes" ]] && echo "macchiato" || echo "latte")
-source "$ZSH/custom/plugins/zsh-syntax-highlighting/themes/$THEME_NAME.zsh"
+source "$ZSH/custom/plugins/zsh-syntax-highlighting/themes/$CATPPUCCIN_FLAVOR.zsh"
 
 ## ---------------------------------------------------------------------------------------------------------------------
 
