@@ -124,10 +124,13 @@
     "lazyvimx.extras.ui.panels.telescope.extensions.fzf-native",
     "lazyvimx.extras.ui.panels.telescope.extensions.live-grep-agrs",
     "lazyvimx.extras.ui.panels.telescope.extensions.scope",
+    "lazyvimx.extras.ui.style.auto-complete.pretty-doc-border",
+    "lazyvimx.extras.ui.style.auto-complete.pretty-kind",
     "lazyvimx.extras.ui.style.hunks.highlight-words",
     "lazyvimx.extras.ui.style.hunks.preview-in-popup",
     "lazyvimx.extras.ui.style.icons.override",
-    "lazyvimx.extras.ui.style.panels.bufferline-groups",
+    "lazyvimx.extras.ui.style.panels.buffer-line.add-groups",
+    "lazyvimx.extras.ui.style.panels.buffer-line.hide-extension",
     "lazyvimx.extras.ui.style.popups.rounded",
     "lazyvimx.extras.ui.style.popups.size",
     "lazyvimx.extras.ui.style.terminal.colorize-ansi-escape-sequences",
@@ -137,7 +140,7 @@
   ],
   "news": {
     "NEWS.md": "6520",
-    "doc/news.txt": "6553"
+    "doc/news.txt": "6876"
   },
   "version": 6
 }
