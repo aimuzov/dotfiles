@@ -10,9 +10,8 @@ zoxide = "latest"
 "pipx:neovim-remote" = "latest"
 "cargo:eza" = "latest"
 "cargo:vivid" = "latest"
-# Пока чот не работает, ставлю через brew.
-# "cargo:yazi-fm" = "latest"
-# "cargo:yazi-cli" = "latest"
+"cargo:yazi-fm" = "latest"
+"cargo:yazi-cli" = "latest"
 
 [plugins]
 neovim = "https://github.com/richin13/asdf-neovim"
