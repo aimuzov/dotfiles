@@ -16,7 +16,6 @@ local lazyopts = {
 		backdrop = 100,
 		border = "rounded",
 		icons = { lazy = "(H) ", keys = "󰥻" },
-		title = "  󱎦  󰫮  󰬇  󰬆  ",
 	},
 }
 
