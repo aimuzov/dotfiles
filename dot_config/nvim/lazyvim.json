@@ -19,7 +19,6 @@
     "lazyvimx.extras.buffers.close.source-deleted",
     "lazyvimx.extras.buffers.remove",
     "lazyvimx.extras.buffers.scope",
-    "lazyvimx.extras.coding.auto-complete",
     "lazyvimx.extras.coding.comments",
     "lazyvimx.extras.coding.emmet",
     "lazyvimx.extras.coding.filter-kind",
@@ -144,3 +143,4 @@
   },
   "version": 6
 }
+
