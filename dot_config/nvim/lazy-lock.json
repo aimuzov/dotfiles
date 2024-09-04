@@ -80,7 +80,7 @@
   "satellite.nvim": { "branch": "main", "commit": "777ed56e1ef45ec808df701730b6597fc4fb0fbc" },
   "scope.nvim": { "branch": "main", "commit": "5e3f5ead970317b2f276d38dc031cb4bc5742cd4" },
   "sibling-swap.nvim": { "branch": "main", "commit": "269770df52114ed6f22321310538b4daf8973384" },
-  "smart-open.nvim": { "branch": "main", "commit": "87626ee8748b9bba22093adec7bb58c63e7214f0" },
+  "smart-open.nvim": { "branch": "main", "commit": "f4e39e9a1b05a6b82b1182a013677acc44b27abb" },
   "sqlite.lua": { "branch": "master", "commit": "d0ffd703b56d090d213b497ed4eb840495f14a11" },
   "symbol-usage.nvim": { "branch": "main", "commit": "2842380132e87d31853851be48760de6fb78bdbb" },
   "telescope-file-browser.nvim": { "branch": "master", "commit": "a46780830b576049c675680650f773bedfa8677a" },
