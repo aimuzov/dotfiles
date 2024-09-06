@@ -68,7 +68,6 @@
     "lazyvimx.extras.keys.window.resize",
     "lazyvimx.extras.keys.window.split",
     "lazyvimx.extras.keys.window.toggle-explorer",
-    "lazyvimx.extras.lang.clangd",
     "lazyvimx.extras.lang.css",
     "lazyvimx.extras.lang.ejs",
     "lazyvimx.extras.lang.lua",
@@ -141,7 +140,7 @@
   ],
   "news": {
     "NEWS.md": "6520",
-    "doc/news.txt": "7694"
+    "doc/news.txt": "7796"
   },
   "version": 6
 }
