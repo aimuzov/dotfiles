@@ -24,7 +24,8 @@ local lazydev_path = vim.fn.getenv("HOME") .. "/projects/lazy-dev"
 if vim.fn.isdirectory(lazydev_path) ~= 0 then
 	lazy_opts.dev = {
 		path = lazydev_path,
-		patterns = { "*" },
+		patterns = { "" },
+		fallback = true,
 	}
 end
 
