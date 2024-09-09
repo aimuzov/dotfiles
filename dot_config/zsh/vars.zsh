@@ -10,7 +10,6 @@ export ZSH_COMPDUMP="$ZSH/cache/.zcompdump-$HOST"
 ## ---------------------------------------------------------------------------------------------------------------------
 
 export ZSH_CONFIG_PATH="$XDG_CONFIG_HOME/zsh"
-export DOTFILES_SRC_PATH="$HOME/projects/github/aimuzov/dotfiles"
 
 ## ---------------------------------------------------------------------------------------------------------------------
 

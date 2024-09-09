@@ -4,9 +4,9 @@ function wezterm_update_icon() {
 }
 
 function sketchybar_update_icons() {
-	cd ~/.config/sketchybar-app-font
+	cd $XDG_CONFIG_HOME/sketchybar-app-font
 	command npm install
 	command npm run build:install
 	command cp dist/sketchybar-app-font.ttf $HOME/Library/Fonts/
-	command cp dist/icon_map.lua $DOTFILES_SRC_PATH/dot_config/sketchybar/items/left/spaces/
+	command cp dist/icon_map.lua $XDG_CONFIG_HOME/sketchybar/items/left/spaces/
 }

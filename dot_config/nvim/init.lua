@@ -1,10 +1,8 @@
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-local lazyurl = "https://github.com/folke/lazy.nvim.git"
-
-local lazyopts = {
+local lazy_opts = {
 	spec = {
 		{ "aimuzov/LazyVimx", import = "lazyvimx.core" },
-		{ import = "lazyvimx.colorschemes.catppuccin" }, -- catppuccin | tokyonight
+		{ import = "lazyvimx.colorschemes.catppuccin" },
+		-- { import = "lazyvimx.colorschemes.tokyonight" },
 	},
 
 	install = { colorscheme = { "catppuccin", "tokyonight" } },
@@ -19,16 +17,28 @@ local lazyopts = {
 	},
 }
 
-if vim.fn.isdirectory(vim.fn.getenv("HOME") .. "/projects/github/aimuzov/LazyVimx") ~= 0 then
-	lazyopts.dev = {
-		path = vim.fn.getenv("HOME") .. "/projects/github/aimuzov",
-		patterns = { "LazyVimx" },
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+local lazydev_path = vim.fn.getenv("HOME") .. "/projects/lazy-dev"
+
+if vim.fn.isdirectory(lazydev_path) ~= 0 then
+	lazy_opts.dev = {
+		path = lazydev_path,
+		patterns = { "*" },
 	}
 end
 
-if not vim.loop.fs_stat(lazypath) then
-	vim.fn.system({ "git", "clone", "--filter=blob:none", lazyurl, "--branch=stable", lazypath })
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+local lazy_path = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+local lazy_url = "https://github.com/folke/lazy.nvim.git"
+
+vim.opt.rtp:prepend(vim.env.LAZY or lazy_path)
+
+if not vim.loop.fs_stat(lazy_path) then
+	vim.fn.system({ "git", "clone", "--filter=blob:none", lazy_url, "--branch=stable", lazy_path })
 end
 
-vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
-require("lazy").setup(lazyopts)
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+require("lazy").setup(lazy_opts)
