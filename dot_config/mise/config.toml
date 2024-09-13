@@ -12,6 +12,7 @@ zoxide = "latest"
 "cargo:vivid" = "latest"
 "cargo:yazi-fm" = "latest"
 "cargo:yazi-cli" = "latest"
+"npm:@georgesg/arc-cli" = "latest"
 
 [plugins]
 neovim = "https://github.com/richin13/asdf-neovim"
