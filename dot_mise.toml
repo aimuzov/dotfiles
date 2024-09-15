@@ -1,5 +1,5 @@
 [tools]
-neovim = "nightly"
+neovim = "stable"
 node = "20"
 python = "3"
 ruby = "3.3"
