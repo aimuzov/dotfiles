@@ -93,6 +93,7 @@ return {
 		{ key = "р", mods = "CTRL", action = wezterm.action.SendString("\x08") },
 		{ key = "h", mods = "CTRL|SHIFT", action = wezterm.action.DisableDefaultAssignment },
 		{ key = "k", mods = "CTRL|SHIFT", action = wezterm.action.DisableDefaultAssignment },
+		{ key = "u", mods = "CTRL|SHIFT", action = wezterm.action.DisableDefaultAssignment },
 	},
 
 	-- https://github.com/wez/wezterm/issues/119#issuecomment-1206593847
