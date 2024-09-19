@@ -1,13 +1,17 @@
 #!/bin/zsh
 
-rm -rf ./temp
-mkdir temp
+local dir_prev="$(pwd)"
+
+cd "$HOME/.bin/workflows"
+
+rm -rf ./workflows_temp
+mkdir ./workflows_temp
 
 for filename in ./*.workflow; do
-	cp -R "$filename" ./temp/"$filename"
+	cp -R $filename ./workflows_temp/$filename
 done
 
-for filename in ./temp/*.workflow; do
+for filename in ./workflows_temp/*.workflow; do
 	open $filename
 	sleep 1
 	osascript -e 'tell application "System Events" to click button "Install" of window "Quick Action Installer" of process "Automator Installer"'
@@ -15,4 +19,6 @@ for filename in ./temp/*.workflow; do
 	osascript -e 'tell application "System Events" to click button "Done" of window "Quick Action Installer" of process "Automator Installer"'
 done
 
-rm -rf ./temp
+rm -rf ./workflows_temp
+
+cd $dir_prev
