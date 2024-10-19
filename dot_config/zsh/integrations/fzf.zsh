@@ -19,5 +19,5 @@ export FZF_CTRL_T_OPTS="
 
 ## ---------------------------------------------------------------------------------------------------------------------
 
-# https://github.com/junegunn/fzf?tab=readme-ov-file#using-homebrew
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# https://github.com/junegunn/fzf?tab=readme-ov-file#setting-up-shell-integration
+source <($(mise which fzf) --zsh)

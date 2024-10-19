@@ -1,19 +1,34 @@
 [tools]
-go = "latest"
-neovim = ["stable", "nightly"]
-node = ["16", "20"]
-pipx = "latest"
-python = "3"
-ruby = "3.3"
-rust = "stable"
-zoxide = "latest"
-"pipx:neovim-remote" = "latest"
+"bun" = "latest"
 "cargo:eza" = "latest"
-"cargo:vivid" = "latest"
-"cargo:yazi-fm" = "latest"
 "cargo:yazi-cli" = "latest"
+"cargo:yazi-fm" = "latest"
+"go" = "latest"
+"node" = ["16", "20"]
 "npm:@georgesg/arc-cli" = "latest"
-bun = "latest"
+"pipx" = "latest"
+"pipx:neovim-remote" = "latest"
+"python" = "3"
+"ruby" = "3.3"
+"rust" = "latest"
+"ubi:ajeetdsouza/zoxide" = "latest"
+"ubi:twpayne/chezmoi" = "latest"
+"ubi:ast-grep/ast-grep" = "latest"
+"ubi:BurntSushi/ripgrep" = { version = "latest", exe = "rg" }
+"ubi:ClementTsang/bottom" = { version = "latest", exe = "btm" }
+"ubi:cli/cli" = { version = "latest", exe = "gh" }
+"ubi:jesseduffield/lazygit" = "latest"
+"ubi:junegunn/fzf" = "latest"
+"ubi:kirtan-shah/nowplaying-cli" = "latest"
+"ubi:neovim/neovim" = [
+	{ version = "stable", exe = "nvim" },
+	{ version = "nightly", exe = "nvim" },
+]
+"ubi:sharkdp/bat" = "latest"
+"ubi:sharkdp/fd" = "latest"
+"ubi:sharkdp/vivid" = "latest"
+"ubi:so-fancy/diff-so-fancy" = "latest"
+"ubi:Wilfred/difftastic" = { version = "latest", exe = "difft" }
 
 [plugins]
 neovim = "https://github.com/richin13/asdf-neovim"
