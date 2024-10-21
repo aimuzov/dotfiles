@@ -87,7 +87,6 @@
     "lazyvimx.extras.optimizations.auto-switch-colorscheme-on-signal",
     "lazyvimx.extras.optimizations.auto-update-third-party-tools",
     "lazyvimx.extras.optimizations.fast-share-code",
-    "lazyvimx.extras.optimizations.improve-your-keymap-skill",
     "lazyvimx.extras.optimizations.local-config",
     "lazyvimx.extras.optimizations.stop-inactive-lsp",
     "lazyvimx.extras.optimizations.stop-treesitter-on-large-js-files",
