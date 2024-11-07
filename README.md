@@ -17,3 +17,7 @@ TBD...
 ## Useful links
 
 - [macos-defaults.com](https://macos-defaults.com/)
+
+## Repo Activity
+
+![Repo Activity](https://repobeats.axiom.co/api/embed/5f836ec617e98ecfa2c81e02c79aaa806f7bc42e.svg "Repobeats analytics image")
