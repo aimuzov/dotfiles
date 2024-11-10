@@ -13,6 +13,7 @@ local lazy_opts = {
 	ui = {
 		backdrop = 100,
 		border = "rounded",
+		size = { width = 0.84, height = 0.62 },
 		icons = { lazy = "(H) ", keys = "󰥻" },
 	},
 }
