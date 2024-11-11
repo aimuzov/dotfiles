@@ -96,8 +96,6 @@
     "lazyvimx.extras.ui.editor.line-hints.colorizer",
     "lazyvimx.extras.ui.editor.line-hints.diagnostic-lsp",
     "lazyvimx.extras.ui.editor.line-hints.diagnostic-pretty",
-    "lazyvimx.extras.ui.editor.line-hints.inlay-hints.core",
-    "lazyvimx.extras.ui.editor.line-hints.inlay-hints.disabling-for-insert-mode",
     "lazyvimx.extras.ui.editor.line-hints.symbol-usage",
     "lazyvimx.extras.ui.editor.ruler",
     "lazyvimx.extras.ui.editor.scroll-bar",
