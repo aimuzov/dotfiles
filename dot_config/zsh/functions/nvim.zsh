@@ -32,7 +32,9 @@ function nvim_disable_builtin_colorschemes() {
 				fi
 			done
 
-			mv "vim.lua" "vim.lua.disabled"
+			if [ -e "vim.lua" ]; then
+				mv "vim.lua" "vim.lua.disabled"
+			fi
 
 			cd $dir_prev
 		fi
