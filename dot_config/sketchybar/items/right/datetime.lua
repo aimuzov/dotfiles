@@ -16,6 +16,7 @@ end
 local function toggle()
 	local battery = require("items.right.battery")
 	local brew = require("items.right.brew")
+	local nvim = require("items.right.nvim")
 	local spaces = require("items.left.spaces.spaces").spaces
 
 	local drawing = battery:query().label.drawing ~= "on"
@@ -23,6 +24,7 @@ local function toggle()
 	battery:set({ label = { drawing = drawing } })
 	datetime:set({ icon = { drawing = drawing } })
 	brew:set({ drawing = drawing })
+	nvim:set({ drawing = drawing })
 
 	for i in pairs(spaces) do
 		spaces[i]:set({ label = { drawing = drawing } })
