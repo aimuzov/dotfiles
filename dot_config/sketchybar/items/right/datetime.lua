@@ -15,7 +15,7 @@ end
 
 local function toggle()
 	local battery = require("items.right.battery")
-	local brew = require("items.right.brew")
+	local brew = require("items.right.deps")
 	local nvim = require("items.right.nvim")
 	local spaces = require("items.left.spaces.spaces").spaces
 

@@ -2,13 +2,12 @@ local sbar = require("sketchybar")
 local colors = require("config").colors
 
 local brew = sbar.add("item", {
-	icon = { string = "􀐛" },
+	icon = { string = "􀐙" },
 
 	label = {
 		align = "center",
 		color = colors.grey,
 		string = "􀍠",
-		width = 18,
 	},
 
 	position = "right",
@@ -16,21 +15,27 @@ local brew = sbar.add("item", {
 })
 
 local function action()
-	sbar.exec([[wezterm start -- zsh -c "brew upgrade"]])
+	sbar.exec([[wezterm start -- zsh -c "brew upgrade && mise upgrade"]])
 end
 
 local function update()
-	local file = assert(io.popen("brew outdated | wc -l | tr -d ' '"))
-	local brew_info = assert(file:read("a"))
-	local count = tonumber(brew_info)
+	local brew_file = assert(io.popen("brew outdated | wc -l | tr -d ' '"))
+	local brew_info = assert(brew_file:read("a"))
+	local brew_count = tonumber(brew_info)
+
+	local mise_file = assert(io.popen("mise outdated --json --quiet | jq 'keys | length'"))
+	local mise_info = assert(mise_file:read("a"))
+	local mise_count = tonumber(mise_info) ~= nil and tonumber(mise_info) or 0
+
+	local count = brew_count + mise_count
 	local icon = { color = colors.white }
-	local label = { string = tostring(count), color = colors.white, drawing = true }
+	local label = { string = brew_count .. " • " .. mise_count, color = colors.white, drawing = true }
 
 	if count == 0 then
 		label.drawing = false
-	elseif count < 9 then
+	elseif count < 5 then
 		icon.color = colors.yellow
-	elseif count < 19 then
+	elseif count < 10 then
 		icon.color = colors.orange
 	else
 		icon.color = colors.red
