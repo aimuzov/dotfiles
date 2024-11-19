@@ -9,7 +9,6 @@
     "lazyvim.plugins.extras.lang.markdown",
     "lazyvim.plugins.extras.lang.toml",
     "lazyvim.plugins.extras.linting.eslint",
-    "lazyvim.plugins.extras.ui.edgy",
     "lazyvim.plugins.extras.ui.treesitter-context",
     "lazyvim.plugins.extras.util.rest",
     "lazyvim.plugins.extras.vscode",
@@ -147,7 +146,7 @@
   ],
   "news": {
     "NEWS.md": "7107",
-    "doc/news.txt": "14053"
+    "doc/news.txt": "14160"
   },
   "version": 7
 }
