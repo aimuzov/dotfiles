@@ -2,7 +2,7 @@ function brew() {
 	command brew "$@"
 
 	if [[ $* =~ "upgrade" ]] || [[ $* =~ "update" ]] || [[ $* =~ "outdated" ]]; then
-		command sketchybar --trigger brew_update
+		command sketchybar --trigger deps_update
 	fi
 }
 

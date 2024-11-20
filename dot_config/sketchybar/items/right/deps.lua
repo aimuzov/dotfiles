@@ -46,7 +46,7 @@ local function update()
 	end)
 end
 
-brew:subscribe({ "forced", "routine", "brew_update", "update" }, update)
+brew:subscribe({ "forced", "routine", "update", "deps_update" }, update)
 brew:subscribe("mouse.clicked", action)
 
 return brew

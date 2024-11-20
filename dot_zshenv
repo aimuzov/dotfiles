@@ -3,6 +3,7 @@
 source $HOME/.config/zsh/vars.zsh
 
 source $ZSH_CONFIG_PATH/functions/brew.zsh
+source $ZSH_CONFIG_PATH/functions/mise.zsh
 source $ZSH_CONFIG_PATH/functions/nvim.zsh
 source $ZSH_CONFIG_PATH/functions/ui.zsh
 source $ZSH_CONFIG_PATH/functions/wm.zsh
