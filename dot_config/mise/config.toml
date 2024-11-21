@@ -1,3 +1,9 @@
+[alias]
+node = "asdf:asdf-vm/asdf-nodejs"
+pipx = "asdf:yozachar/asdf-pipx"
+python = "asdf:asdf-community/asdf-python"
+ruby = "asdf:asdf-vm/asdf-ruby"
+
 [tools]
 "bun" = "latest"
 "cargo:eza" = "latest"
@@ -29,14 +35,6 @@
 "ubi:sharkdp/vivid" = "latest"
 "ubi:so-fancy/diff-so-fancy" = "latest"
 "ubi:Wilfred/difftastic" = { version = "latest", exe = "difft" }
-
-[plugins]
-neovim = "https://github.com/richin13/asdf-neovim"
-node = "https://github.com/asdf-vm/asdf-nodejs"
-pipx = "https://github.com/yozachar/asdf-pipx"
-python = "https://github.com/asdf-community/asdf-python"
-ruby = "https://github.com/asdf-vm/asdf-ruby"
-zoxide = "https://github.com/nyrst/asdf-zoxide"
 
 [settings]
 experimental = true
