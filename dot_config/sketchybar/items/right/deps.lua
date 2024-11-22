@@ -20,11 +20,11 @@ end
 
 local function update()
 	local brew_file = assert(io.popen("brew outdated | wc -l | tr -d ' '"))
-	local brew_info = assert(brew_file:read("a"))
+	local brew_info = assert(brew_file:read("*a"))
 	local brew_count = tonumber(brew_info)
 
 	local mise_file = assert(io.popen("mise outdated --json --quiet | jq 'keys | length'"))
-	local mise_info = assert(mise_file:read("a"))
+	local mise_info = assert(mise_file:read("*a"))
 	local mise_count = tonumber(mise_info) ~= nil and tonumber(mise_info) or 0
 
 	local count = brew_count + mise_count
