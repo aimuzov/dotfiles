@@ -3,8 +3,6 @@
 tap "daipeihust/tap"
 tap "felixkratz/formulae"
 tap "homebrew/bundle"
-tap "homebrew/cask-drivers"
-tap "homebrew/cask-fonts"
 tap "homebrew/services"
 tap "jdx/tap"
 tap "koekeishiya/formulae"

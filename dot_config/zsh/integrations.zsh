@@ -1,6 +1,7 @@
 source $ZSH_CONFIG_PATH/integrations/spaceship.zsh
 
 source $ZSH_CONFIG_PATH/integrations/brew.zsh
+source $ZSH_CONFIG_PATH/integrations/mise.zsh
 source $ZSH_CONFIG_PATH/integrations/stv-tools.zsh
 
 source $ZSH_CONFIG_PATH/integrations/asdf.zsh

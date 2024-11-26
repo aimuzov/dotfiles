@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env zsh
 
 # Close any open System Preferences panes,
 # to prevent them from overriding
@@ -27,13 +27,20 @@ echo "Installing Brew..."
 
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 brew analytics off
+
+echo "Installing Mise..."
+
+brew install mise
+brew install --cask keepassxc
+
+echo "Installing chezmoi..."
+
+mise install ubi:twpayne/chezmoi
+$(mise where ubi:twpayne/chezmoi)/bin/chezmoi init
+$(mise where ubi:twpayne/chezmoi)/bin/chezmoi apply
+
 brew bundle install --global
-
-# ----------------------------------------------------------------------------------------------------------------------
-
-echo "Setupping mise..."
-
-mise install
+mise install -y
 
 # ----------------------------------------------------------------------------------------------------------------------
 

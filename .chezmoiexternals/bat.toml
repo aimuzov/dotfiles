@@ -1,7 +1,6 @@
-[".config/bat/themes"]
+[".config/bat"]
 type = "archive"
 url = "https://github.com/catppuccin/bat/archive/master.tar.gz"
-exact = true
 stripComponents = 1
 refreshPeriod = "168h"
-include = ["*/*.tmTheme"]
+include = ["*/themes/**"]

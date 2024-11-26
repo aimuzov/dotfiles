@@ -6,17 +6,22 @@ ruby = "asdf:asdf-vm/asdf-ruby"
 
 [tools]
 "bun" = "latest"
-"cargo:eza" = "latest"
-"cargo:yazi-cli" = "latest"
-"cargo:yazi-fm" = "latest"
 "go" = "latest"
 "node" = ["16", "20"]
-"npm:@georgesg/arc-cli" = "latest"
 "pipx" = "latest"
-"pipx:neovim-remote" = "latest"
 "python" = "3"
 "ruby" = "3.3"
 "rust" = "latest"
+"neovim" = ["stable", "nightly"]
+
+"cargo:eza" = "latest"
+"cargo:yazi-cli" = "latest"
+"cargo:yazi-fm" = "latest"
+"cargo:vivid" = "latest"
+
+# "npm:@georgesg/arc-cli" = { version = "latest", exe = "arc-cli" }
+# "pipx:neovim-remote" = "latest"
+
 "ubi:ajeetdsouza/zoxide" = "latest"
 "ubi:twpayne/chezmoi" = "latest"
 "ubi:ast-grep/ast-grep" = "latest"
@@ -32,7 +37,6 @@ ruby = "asdf:asdf-vm/asdf-ruby"
 ]
 "ubi:sharkdp/bat" = "latest"
 "ubi:sharkdp/fd" = "latest"
-"ubi:sharkdp/vivid" = "latest"
 "ubi:so-fancy/diff-so-fancy" = "latest"
 "ubi:Wilfred/difftastic" = { version = "latest", exe = "difft" }
 
