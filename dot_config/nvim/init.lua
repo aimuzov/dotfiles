@@ -20,14 +20,14 @@ local lazy_opts = {
 
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
-local lazydev_path = vim.fn.getenv("HOME") .. "/projects/lazy-dev"
+local lazyvimx_path = vim.fn.getenv("HOME") .. "/projects/github/aimuzov/LazyVimx"
 
-if vim.fn.isdirectory(lazydev_path) ~= 0 then
-	lazy_opts.dev = {
-		path = lazydev_path,
-		patterns = { "" },
-		fallback = true,
-	}
+if vim.fn.isdirectory(lazyvimx_path) ~= 0 then
+	table.insert(lazy_opts.spec, 1, {
+		"aimuzov/LazyVimx",
+		dir = "~/projects/github/aimuzov/LazyVimx",
+		dev = true,
+	})
 end
 
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
