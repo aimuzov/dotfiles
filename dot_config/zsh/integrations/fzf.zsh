@@ -7,13 +7,17 @@ export FZF_DEFAULT_OPTS=$([[ $MACOS_IS_DARK == "yes" ]] && echo " \
 --color=fg:#4c4f69,header:#d20f39,info:#8839ef,pointer:#dc8a78 \
 --color=marker:#dc8a78,fg+:#4c4f69,prompt:#8839ef,hl+:#d20f39")
 
+FZF_DEFAULT_OPTS+=" \
+--reverse \
+--height '90%' \
+"
+
 export FZF_DEFAULT_COMMAND="fd --type f --strip-cwd-prefix --hidden --follow"
 
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 export FZF_CTRL_T_OPTS="
 	--preview 'bat -n --color=always {}'
-	--preview-window 'noborder'
 	--bind 'ctrl-/:change-preview-window(hidden|)'
 "
 

@@ -9,6 +9,7 @@ plugins=(
 	zsh-bat
 	zsh-interactive-cd
 	zsh-mise
+	forgit
 	zsh-npm
 	zsh-syntax-highlighting
 	zsh-vi-mode
