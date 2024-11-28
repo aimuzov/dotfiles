@@ -119,6 +119,8 @@ defaults write com.apple.frameworks.diskimages "skip-verify-remote" -bool "true"
 defaults write com.apple.mail "AddressesIncludeNameOnPasteboard" -bool "false"
 defaults write com.apple.mail "NSUserKeyEquivalents" -dict-add "Send" "@\U21a9"
 
+defaults write kCFPreferencesAnyApplication "TSMLanguageIndicatorEnabled" -bool "false"
+
 # ----------------------------------------------------------------------------------------------------------------------
 
 /usr/bin/env zsh -c "wezterm_update_icon"
