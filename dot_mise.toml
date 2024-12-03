@@ -1,5 +1,5 @@
 [tools]
 neovim = "nightly"
 node = "20"
-python = "3"
-ruby = "3.3"
+python = "latest"
+ruby = "latest"
