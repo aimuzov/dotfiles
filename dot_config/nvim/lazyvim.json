@@ -95,6 +95,7 @@
     "lazyvimx.extras.ui.editor.line-hints.colorizer",
     "lazyvimx.extras.ui.editor.line-hints.diagnostic-lsp",
     "lazyvimx.extras.ui.editor.line-hints.diagnostic-pretty",
+    "lazyvimx.extras.ui.editor.line-hints.highlight-word-under-cursor",
     "lazyvimx.extras.ui.editor.line-hints.inlay-hints",
     "lazyvimx.extras.ui.editor.line-hints.symbol-usage",
     "lazyvimx.extras.ui.editor.ruler",
@@ -146,7 +147,7 @@
   ],
   "news": {
     "NEWS.md": "7429",
-    "doc/news.txt": "15379"
+    "doc/news.txt": "15722"
   },
   "version": 7
 }
