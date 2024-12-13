@@ -20,7 +20,7 @@ ruby = "asdf:asdf-vm/asdf-ruby"
 "cargo:vivid" = "latest"
 
 "npm:@georgesg/arc-cli" = { version = "latest", exe = "arc-cli" }
-# "pipx:neovim-remote" = "latest"
+"pipx:neovim-remote" = "latest"
 
 "ubi:ajeetdsouza/zoxide" = "latest"
 "ubi:twpayne/chezmoi" = "latest"
