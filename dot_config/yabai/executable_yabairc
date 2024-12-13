@@ -84,6 +84,7 @@ yabai -m rule --add space=reflection app="^(Calendar|Mail|NetNewsWire|Things)$"
 yabai -m rule --add space=design app="^(Figma|Miro)$"
 yabai -m rule --add space=explorer app="^(Finder|Cyberduck)$"
 yabai -m rule --add space=games app="^(Steam Helper|Dota 2)$"
+yabai -m rule --add space=other app="^(wezterm\-gui)$"
 yabai -m rule --add space=media app="^(Yandex Music|Photos)$"
 yabai -m rule --add space=calls app="^(zoom.us|Толк)$"
 yabai -m rule --add space=social app="^(TiMe|Telegram|Discord|WhatsApp)$"
@@ -105,6 +106,7 @@ Things|\
 TiMe|\
 VSCodium|\
 WezTerm|\
+wezterm-gui|\
 WhatsApp|\
 Yandex|\
 Yandex Music|\
