@@ -22,6 +22,7 @@ ruby = "asdf:asdf-vm/asdf-ruby"
 "npm:@georgesg/arc-cli" = { version = "latest", exe = "arc-cli" }
 "pipx:neovim-remote" = "latest"
 
+"ubi:JanDeDobbeleer/oh-my-posh" = { version = "latest", exe = "oh-my-posh" }
 "ubi:ajeetdsouza/zoxide" = "latest"
 "ubi:twpayne/chezmoi" = "latest"
 "ubi:ast-grep/ast-grep" = "latest"

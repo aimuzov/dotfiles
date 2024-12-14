@@ -1,0 +1,54 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "blocks": [
+    {
+      "alignment": "left",
+      "segments": [
+        {
+          "foreground": "cyan",
+          "properties": { "style": "folder" },
+          "style": "plain",
+          "template": "<white></> {{ .Path }} ",
+          "type": "path"
+        },
+        {
+          "type": "git",
+          "style": "plain",
+          "foreground": "blue",
+          "template": "<white>{{ .UpstreamIcon }}</>{{ .HEAD }} ",
+          "properties": {
+            "branch_icon": "",
+            "fetch_status": true,
+            "fetch_upstream_icon": true,
+            "source": "cli",
+            "mapped_branches": {
+              "release/*": "r/",
+              "feature/*": "f/",
+              "bugfix/*": "b/"
+            }
+          }
+        },
+        {
+          "style": "plain",
+          "template": "󰋙 <green>{{ .Full }}</> ",
+          "type": "node"
+        },
+        {
+          "foreground_templates": [
+            "{{if contains \"N\" .Env.POSH_VI_MODE}}blue{{end}}",
+            "{{if contains \"I\" .Env.POSH_VI_MODE}}green{{end}}",
+            "{{if contains \"V\" .Env.POSH_VI_MODE}}cyan{{end}}",
+            "{{if contains \"V-L\" .Env.POSH_VI_MODE}}cyan{{end}}",
+            "{{if contains \"R\" .Env.POSH_VI_MODE}}red{{end}}"
+          ],
+          "style": "plain",
+          "template": "{{ if .Env.POSH_VI_MODE }}{{ .Env.POSH_VI_ICON }}{{ end }}",
+          "type": "text"
+        }
+      ],
+      "type": "prompt"
+    }
+  ],
+  "final_space": true,
+  "version": 3
+}

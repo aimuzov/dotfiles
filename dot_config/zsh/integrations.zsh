@@ -1,4 +1,4 @@
-source $ZSH_CONFIG_PATH/integrations/spaceship.zsh
+source $ZSH_CONFIG_PATH/integrations/oh-my-posh.zsh
 
 source $ZSH_CONFIG_PATH/integrations/brew.zsh
 source $ZSH_CONFIG_PATH/integrations/mise.zsh
