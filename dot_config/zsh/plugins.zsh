@@ -8,7 +8,7 @@ plugins=(
 	zsh-autosuggestions
 	zsh-bat
 	zsh-interactive-cd
-	zsh-mise
+	mise
 	forgit
 	zsh-npm
 	zsh-syntax-highlighting
