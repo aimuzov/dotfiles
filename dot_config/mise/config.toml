@@ -9,6 +9,7 @@ ruby = "asdf:asdf-vm/asdf-ruby"
 "go" = "latest"
 "node" = ["16", "20"]
 "pipx" = "latest"
+"pnpm" = "latest"
 "python" = "latest"
 "ruby" = "latest"
 "rust" = "latest"
