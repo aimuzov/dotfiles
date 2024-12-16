@@ -1,6 +1,6 @@
 ## -- GIT / GIT FLOW ---------------------------------------------------------------------------------------------------
 
-zsh-defer source "$ZSH/plugins/git/git.plugin.zsh"
+zsh-defer -t 0.1 source "$ZSH/plugins/git/git.plugin.zsh"
 zsh-defer source "$ZSH/plugins/git-flow/git-flow.plugin.zsh"
 zsh-defer source "$ZSH/plugins/git-flow-avh/git-flow-avh.plugin.zsh"
 

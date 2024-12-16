@@ -30,7 +30,7 @@ if [[ ! -e "$ZSH_CACHE_DIR/completions/_mise" ]]; then
 	eval "mise completion zsh > $ZSH_CACHE_DIR/completions/_mise"
 fi
 
-source <(mise activate zsh)
-source "$ZSH/plugins/mise/mise.plugin.zsh"
+zsh-defer -t 0.1 eval "$(mise activate zsh)"
+zsh-defer source "$ZSH/plugins/mise/mise.plugin.zsh"
 
 MISE_INSTALL_PATH="/opt/homebrew/bin/mise"
