@@ -1,16 +1,16 @@
-source $ZSH_CONFIG_PATH/integrations/oh-my-posh.zsh
+integrations=(
+	'shell'
+	'stv-tools'
+	'cmd'
+	'deps-management'
+	'dir-listing'
+	'file-listing'
+	'git'
+	'lang'
+)
 
-source $ZSH_CONFIG_PATH/integrations/brew.zsh
-source $ZSH_CONFIG_PATH/integrations/mise.zsh
-source $ZSH_CONFIG_PATH/integrations/stv-tools.zsh
+source $ZSH/plugins/zsh-defer/zsh-defer.plugin.zsh
 
-source $ZSH_CONFIG_PATH/integrations/asdf.zsh
-source $ZSH_CONFIG_PATH/integrations/bat.zsh
-source $ZSH_CONFIG_PATH/integrations/fzf.zsh
-source $ZSH_CONFIG_PATH/integrations/forgit.zsh
-source $ZSH_CONFIG_PATH/integrations/eza.zsh
-source $ZSH_CONFIG_PATH/integrations/go.zsh
-source $ZSH_CONFIG_PATH/integrations/node.zsh
-source $ZSH_CONFIG_PATH/integrations/rust.zsh
-source $ZSH_CONFIG_PATH/integrations/wezterm.zsh
-source $ZSH_CONFIG_PATH/integrations/zoxide.zsh
+for name in $integrations; do
+	source $ZSH/integrations/$name.zsh
+done

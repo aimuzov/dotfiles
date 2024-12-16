@@ -2,8 +2,8 @@
 
 source $HOME/.config/zsh/vars.zsh
 
-source $ZSH_CONFIG_PATH/functions/brew.zsh
-source $ZSH_CONFIG_PATH/functions/mise.zsh
-source $ZSH_CONFIG_PATH/functions/nvim.zsh
-source $ZSH_CONFIG_PATH/functions/ui.zsh
-source $ZSH_CONFIG_PATH/functions/wm.zsh
+source $ZSH/functions/brew.zsh
+source $ZSH/functions/mise.zsh
+source $ZSH/functions/nvim.zsh
+source $ZSH/functions/ui.zsh
+source $ZSH/functions/wm.zsh

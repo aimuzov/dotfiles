@@ -3,6 +3,7 @@
   "blocks": [
     {
       "alignment": "left",
+      "type": "prompt",
       "segments": [
         {
           "foreground": "cyan",
@@ -10,6 +11,29 @@
           "style": "plain",
           "template": "<white></> {{ .Path }} ",
           "type": "path"
+        },
+        {
+          "foreground_templates": [
+            "{{if contains \"N\" .Env.POSH_VI_MODE}}blue{{end}}",
+            "{{if contains \"I\" .Env.POSH_VI_MODE}}green{{end}}",
+            "{{if contains \"V\" .Env.POSH_VI_MODE}}cyan{{end}}",
+            "{{if contains \"V-L\" .Env.POSH_VI_MODE}}cyan{{end}}",
+            "{{if contains \"R\" .Env.POSH_VI_MODE}}red{{end}}"
+          ],
+          "style": "plain",
+          "template": "{{ if .Env.POSH_VI_MODE }}{{ .Env.POSH_VI_ICON }}{{ end }}",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "alignment": "right",
+      "type": "rprompt",
+      "segments": [
+        {
+          "style": "plain",
+          "template": "󰋙 <green>{{ .Full }}</> ",
+          "type": "node"
         },
         {
           "type": "git",
@@ -27,26 +51,8 @@
               "bugfix/*": "b/"
             }
           }
-        },
-        {
-          "style": "plain",
-          "template": "󰋙 <green>{{ .Full }}</> ",
-          "type": "node"
-        },
-        {
-          "foreground_templates": [
-            "{{if contains \"N\" .Env.POSH_VI_MODE}}blue{{end}}",
-            "{{if contains \"I\" .Env.POSH_VI_MODE}}green{{end}}",
-            "{{if contains \"V\" .Env.POSH_VI_MODE}}cyan{{end}}",
-            "{{if contains \"V-L\" .Env.POSH_VI_MODE}}cyan{{end}}",
-            "{{if contains \"R\" .Env.POSH_VI_MODE}}red{{end}}"
-          ],
-          "style": "plain",
-          "template": "{{ if .Env.POSH_VI_MODE }}{{ .Env.POSH_VI_ICON }}{{ end }}",
-          "type": "text"
         }
-      ],
-      "type": "prompt"
+      ]
     }
   ],
   "final_space": true,

@@ -11,5 +11,4 @@ function brew_last_updated() {
 	local CELLAR="$(brew --prefix)/Cellar"
 	local QUERY='[inputs | {time, file: (input_filename|sub($cellar;"") | sub("/INSTALL_RECEIPT.json";""))}] | sort_by(.time)[-10:][] | .file'
 	command jq -cnr --arg cellar "$CELLAR" $QUERY $CELLAR/*/*/INSTALL_RECEIPT.json
-
 }

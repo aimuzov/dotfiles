@@ -1,6 +1,6 @@
 eval "$($(mise which oh-my-posh) init zsh --config $XDG_CONFIG_HOME/oh-my-posh/config.json)"
 
-_omp_redraw-prompt() {
+function _omp_redraw-prompt() {
 	local precmd
 	for precmd in "${precmd_functions[@]}"; do
 		"$precmd"

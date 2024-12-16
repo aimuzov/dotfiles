@@ -1,3 +1,9 @@
+## -- BAT --------------------------------------------------------------------------------------------------------------
+
+export BAT_THEME=$([[ $MACOS_IS_DARK == "yes" ]] && echo "Catppuccin Macchiato" || echo "Catppuccin Latte")
+
+## -- FZF --------------------------------------------------------------------------------------------------------------
+
 # https://github.com/catppuccin/fzf?tab=readme-ov-file#usage
 export FZF_DEFAULT_OPTS=$([[ $MACOS_IS_DARK == "yes" ]] && echo " \
 --color=bg+:#363a4f,bg:-1,spinner:#f4dbd6,hl:#ed8796 \
@@ -13,15 +19,20 @@ FZF_DEFAULT_OPTS+=" \
 "
 
 export FZF_DEFAULT_COMMAND="fd --type f --strip-cwd-prefix --hidden --follow"
-
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-
 export FZF_CTRL_T_OPTS="
 	--preview 'bat -n --color=always {}'
 	--bind 'ctrl-/:change-preview-window(hidden|)'
 "
 
-## ---------------------------------------------------------------------------------------------------------------------
-
 # https://github.com/junegunn/fzf?tab=readme-ov-file#setting-up-shell-integration
-source <($(mise which fzf) --zsh)
+zsh-defer source <($(mise which fzf) --zsh)
+
+## -- EZA --------------------------------------------------------------------------------------------------------------
+
+zsh-defer source "$ZSH/plugins/zsh-eza/zsh-eza.plugin.zsh"
+
+COLORS="$($(mise which vivid) generate catppuccin-$CATPPUCCIN_FLAVOR)"
+
+export LS_COLORS=COLORS
+export EZA_COLORS=COLORS

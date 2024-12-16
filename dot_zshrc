@@ -1,9 +1,5 @@
 # vi: ft=zsh
 
-source $ZSH_CONFIG_PATH/settings.zsh
-source $ZSH_CONFIG_PATH/integrations.zsh
-source $ZSH_CONFIG_PATH/aliases.zsh
-source $ZSH_CONFIG_PATH/plugins.zsh
-source $ZSH_CONFIG_PATH/secrets.zsh
-
-source $ZSH/oh-my-zsh.sh
+source $ZSH/vars.zsh
+source $ZSH/integrations.zsh
+source $ZSH/aliases.zsh

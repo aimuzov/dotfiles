@@ -1,3 +1,0 @@
-export CARGO_BIN_PATH="$HOME/.cargo/bin"
-
-PATH="$CARGO_BIN_PATH:$PATH"
