@@ -96,13 +96,6 @@ exact = true
 stripComponents = 1
 refreshPeriod = "168h"
 
-[".config/zsh/plugins/zsh-eza"]
-type = "archive"
-url = "https://github.com/z-shell/zsh-eza/archive/master.tar.gz"
-exact = true
-stripComponents = 1
-refreshPeriod = "168h"
-
 [".config/zsh/plugins/forgit"]
 type = "archive"
 url = "https://github.com/wfxr/forgit/archive/master.tar.gz"

@@ -30,9 +30,16 @@ zsh-defer -t 0.2 eval "$($(mise which fzf) --zsh)"
 
 ## -- EZA --------------------------------------------------------------------------------------------------------------
 
-zsh-defer source "$ZSH/plugins/zsh-eza/zsh-eza.plugin.zsh"
-
 COLORS="$($(mise which vivid) generate catppuccin-$CATPPUCCIN_FLAVOR)"
 
 export LS_COLORS=COLORS
 export EZA_COLORS=COLORS
+
+eza_params=('--git' '--icons' '--group' '--group-directories-first' '--time-style=long-iso')
+
+alias ls='eza $eza_params'
+alias l='eza --git-ignore $eza_params'
+alias ll='eza --all --header --long $eza_params'
+alias llm='eza --all --header --long --sort=modified $eza_params'
+alias la='eza -lbhHigUmuSa'
+alias lt='eza --tree $eza_params'
