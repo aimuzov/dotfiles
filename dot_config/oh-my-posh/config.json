@@ -31,8 +31,9 @@
       "type": "rprompt",
       "segments": [
         {
+          "foreground": "green",
           "style": "plain",
-          "template": "󰋙 <green>{{ .Full }}</> ",
+          "template": "{{ if .Full }}<white>󰋙</> {{ .Full }} {{ end }}",
           "type": "node"
         },
         {
