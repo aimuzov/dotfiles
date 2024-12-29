@@ -4,6 +4,7 @@ const scopes = [
   "borders",
   "brew",
   "chezmoi",
+  "ghostty",
   "git",
   "gitconfig",
   "install-script",
