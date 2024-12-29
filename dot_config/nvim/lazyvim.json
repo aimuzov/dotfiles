@@ -80,6 +80,7 @@
     "lazyvimx.extras.nav.better-move-between-words",
     "lazyvimx.extras.nav.langmapper",
     "lazyvimx.extras.nav.search-labels",
+    "lazyvimx.extras.nav.sibling-move",
     "lazyvimx.extras.nav.sibling-swap",
     "lazyvimx.extras.optimizations.auto-apply-chezmoi-on-lazy-update",
     "lazyvimx.extras.optimizations.auto-switch-colorscheme-on-signal",
@@ -147,7 +148,7 @@
   ],
   "news": {
     "NEWS.md": "10960",
-    "doc/news.txt": "16155"
+    "doc/news.txt": "17439"
   },
   "version": 7
 }
