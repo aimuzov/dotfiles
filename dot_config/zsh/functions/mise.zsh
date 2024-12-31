@@ -1,6 +1,6 @@
 function mise() {
 	if [[ $* =~ "upgrade" ]] || [[ $* =~ "update" ]]; then
-		rm $CARGO_HOME/.package-cache
+		rm $CARGO_HOME/package-cache
 	fi
 
 	command mise "$@"
