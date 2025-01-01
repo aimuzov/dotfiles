@@ -41,7 +41,7 @@ for i = 1, 10, 1 do
 			image = {
 				corner_radius = 9,
 				border_width = 5,
-				border_color = colors.green,
+				border_color = colors.blue,
 				scale = 0.02,
 			},
 		},
