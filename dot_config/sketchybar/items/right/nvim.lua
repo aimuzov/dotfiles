@@ -1,6 +1,5 @@
 local sbar = require("sketchybar")
 local colors = require("config").colors
-local tag = "nightly"
 
 local nvim = sbar.add("item", {
 	icon = {
@@ -8,17 +7,57 @@ local nvim = sbar.add("item", {
 		string = ":neovim:",
 	},
 
-	label = { drawing = false },
+	label = { drawing = true },
+
+	popup = {
+		align = "right",
+		background = {
+			corner_radius = 9,
+			border_width = 5,
+			border_color = colors.blue,
+			color = colors.black,
+		},
+	},
 
 	position = "right",
 	update_freq = 60 * 60,
 })
 
+local nvim_ver_current = sbar.add("item", {
+	position = "popup." .. nvim.name,
+	padding_left = 10,
+	padding_right = 10,
+})
+
+local nvim_ver_next = sbar.add("item", {
+	position = "popup." .. nvim.name,
+	padding_left = 10,
+	padding_right = 10,
+})
+
+nvim:subscribe("mouse.entered", function()
+	sbar.animate("sin", 10, function()
+		nvim:set({ popup = { drawing = true } })
+	end)
+end)
+
+nvim:subscribe("mouse.exited", function()
+	nvim:set({ popup = { drawing = false } })
+end)
+
+local function get_nvim_tag()
+	local file = assert(io.popen([[mise tool neovim --active --cd ~]]))
+	local result = assert(file:read("a"))
+
+	return result
+end
+
 local function action()
-	sbar.exec('wezterm start -- zsh -c "nvim_update ' .. tag .. '"')
+	sbar.exec('wezterm start -- zsh -c "nvim_update ' .. get_nvim_tag() .. '"')
 end
 
 local function update()
+	local tag = get_nvim_tag()
 	-- stylua: ignore start
 	local version_next_file = assert(io.popen([[$(mise where ubi:cli/cli latest)/bin/gh api --method GET /repos/neovim/neovim/releases | jq -r 'map(select(.tag_name == "]]..tag..[["))[0] | .body | capture("```\n(?<version>NVIM(.*))\n```\n\n"; "m") | .version']]))
 	local version_next_result = assert(version_next_file:read("a"))
@@ -27,6 +66,9 @@ local function update()
 	-- stylua: ignore end
 
 	local icon = { color = colors.white }
+
+	nvim_ver_current:set({ label = version_current_result:gsub("NVIM", "current: "):gsub("Build type.*", "") })
+	nvim_ver_next:set({ label = version_next_result:gsub("NVIM", "next: "):gsub("Build type.*", "") })
 
 	if version_next_result ~= version_current_result then
 		icon.color = colors.orange
