@@ -70,8 +70,8 @@ local function update()
 	nvim_ver_current:set({ label = version_current_result:gsub("NVIM", "current: "):gsub("Build type.*", "") })
 	nvim_ver_next:set({ label = version_next_result:gsub("NVIM", "next: "):gsub("Build type.*", "") })
 
-	if version_next_result ~= version_current_result then
-		icon.color = colors.orange
+	if version_next_result ~= "" and version_next_result ~= version_current_result then
+		icon.color = colors.yellow
 	end
 
 	sbar.animate("sin", 10, function()
