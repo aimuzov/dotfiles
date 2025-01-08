@@ -21,6 +21,7 @@ ruby = "asdf:asdf-vm/asdf-ruby"
 "cargo:vivid" = "latest"
 
 "npm:@georgesg/arc-cli" = { version = "latest", exe = "arc-cli" }
+"npm:@aimuzov/sketchybar-app-font" = { version = "latest", exe = "sketchybar-app-font" }
 "pipx:neovim-remote" = "latest"
 
 "ubi:JanDeDobbeleer/oh-my-posh" = { version = "latest", exe = "oh-my-posh" }

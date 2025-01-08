@@ -3,8 +3,8 @@ local colors = require("config").colors
 
 local nvim = sbar.add("item", {
 	icon = {
-		font = "sketchybar-app-font:Regular:14",
-		string = ":neovim:",
+		font = "Sketchybar App Font:Regular:14",
+		string = "Neovim",
 	},
 
 	label = { drawing = true },

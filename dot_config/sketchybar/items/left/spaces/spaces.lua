@@ -20,7 +20,7 @@ for i = 1, 10, 1 do
 			padding_right = 6,
 			color = colors.grey,
 			highlight_color = colors.grey,
-			font = "sketchybar-app-font:Regular:16",
+			font = "Sketchybar App Font:Regular:16",
 			y_offset = -1,
 		},
 
@@ -99,9 +99,7 @@ space_creator:subscribe("space_windows_change", function(env)
 
 	for app in pairs(env.INFO.apps) do
 		no_app = false
-		local lookup = icon_map[app]
-		local icon = ((lookup == nil) and icon_map["default"] or lookup)
-		icon_line = icon_line .. icon .. " "
+		icon_line = icon_line .. app .. " "
 	end
 
 	if no_app then
