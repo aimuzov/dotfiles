@@ -7,7 +7,7 @@ ruby = "asdf:asdf-vm/asdf-ruby"
 [tools]
 "bun" = "latest"
 "go" = "latest"
-"node" = ["16", "20"]
+"node" = ["16", "20", "latest"]
 "pipx" = "latest"
 "pnpm" = "latest"
 "python" = "latest"
