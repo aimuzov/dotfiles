@@ -8,8 +8,6 @@ source "$ZSH/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh"
 
 zstyle ':autocomplete:*' min-input 2
 zstyle ':autocomplete:*' delay 0.1
-zstyle -e ':autocomplete:*:*' list-lines 'reply=( LINES )'
-zstyle ':autocomplete:*complete*:*' insert-unambiguous yes
 
 zsh-defer source "$ZSH/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh"
 
