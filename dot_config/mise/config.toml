@@ -24,13 +24,12 @@ ruby = "asdf:asdf-vm/asdf-ruby"
 "npm:@aimuzov/sketchybar-app-font" = { version = "latest", exe = "sketchybar-app-font" }
 "pipx:neovim-remote" = "latest"
 
-"ubi:JanDeDobbeleer/oh-my-posh" = { version = "latest", exe = "oh-my-posh" }
 "ubi:ajeetdsouza/zoxide" = "latest"
-"ubi:twpayne/chezmoi" = "latest"
 "ubi:ast-grep/ast-grep" = "latest"
 "ubi:BurntSushi/ripgrep" = { version = "latest", exe = "rg" }
 "ubi:ClementTsang/bottom" = { version = "latest", exe = "btm" }
 "ubi:cli/cli" = { version = "latest", exe = "gh" }
+"ubi:JanDeDobbeleer/oh-my-posh" = { version = "latest", exe = "oh-my-posh" }
 "ubi:jesseduffield/lazygit" = "latest"
 "ubi:junegunn/fzf" = "latest"
 "ubi:kirtan-shah/nowplaying-cli" = "latest"
@@ -38,6 +37,7 @@ ruby = "asdf:asdf-vm/asdf-ruby"
 	{ version = "stable", exe = "nvim" },
 	{ version = "nightly", exe = "nvim" },
 ]
+"ubi:twpayne/chezmoi" = "latest"
 "ubi:sharkdp/bat" = "latest"
 "ubi:sharkdp/fd" = "latest"
 "ubi:so-fancy/diff-so-fancy" = "latest"
