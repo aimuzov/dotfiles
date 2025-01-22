@@ -26,7 +26,7 @@ export FZF_CTRL_T_OPTS="
 "
 
 # https://github.com/junegunn/fzf?tab=readme-ov-file#setting-up-shell-integration
-zsh-defer -t 0.2 eval "$($(mise which fzf) --zsh)"
+zsh-defer -t 0.1 eval "$($(mise which fzf) --zsh)"
 
 ## -- EZA --------------------------------------------------------------------------------------------------------------
 

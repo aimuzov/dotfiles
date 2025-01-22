@@ -1,5 +1,6 @@
 integrations=(
 	'shell'
+	# 'vi-mode'
 	'stv-tools'
 	'cmd'
 	'deps-management'
@@ -9,8 +10,8 @@ integrations=(
 	'lang'
 )
 
-source $ZSH/plugins/zsh-defer/zsh-defer.plugin.zsh
+source "$ZSH/plugins/zsh-defer/zsh-defer.plugin.zsh"
 
 for name in $integrations; do
-	source $ZSH/integrations/$name.zsh
+	source "$ZSH/integrations/$name.zsh"
 done

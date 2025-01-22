@@ -51,6 +51,13 @@ exact = true
 stripComponents = 1
 refreshPeriod = "168h"
 
+[".config/zsh/plugins/zsh-autocomplete"]
+type = "archive"
+url = "https://github.com/marlonrichert/zsh-autocomplete/archive/master.tar.gz"
+exact = true
+stripComponents = 1
+refreshPeriod = "168h"
+
 [".config/zsh/plugins/zsh-better-npm-completion"]
 type = "archive"
 url = "https://github.com/lukechilds/zsh-better-npm-completion/archive/master.tar.gz"
