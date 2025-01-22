@@ -3,7 +3,7 @@
     "lazyvim.plugins.extras.coding.blink",
     "lazyvim.plugins.extras.coding.mini-surround",
     "lazyvim.plugins.extras.coding.yanky",
-    "lazyvim.plugins.extras.editor.telescope",
+    "lazyvim.plugins.extras.editor.snacks_picker",
     "lazyvim.plugins.extras.formatting.prettier",
     "lazyvim.plugins.extras.lang.git",
     "lazyvim.plugins.extras.lang.helm",
@@ -47,7 +47,6 @@
     "lazyvimx.extras.keys.buffer.pick",
     "lazyvimx.extras.keys.dap.chrome-keys-style",
     "lazyvimx.extras.keys.files.find-by-yazi",
-    "lazyvimx.extras.keys.files.find-dir-current",
     "lazyvimx.extras.keys.git.gitlab",
     "lazyvimx.extras.keys.git.open-in-browser",
     "lazyvimx.extras.keys.git.open-repo-temporarily-in-tab",
@@ -62,8 +61,8 @@
     "lazyvimx.extras.keys.nav.better-move-between-words",
     "lazyvimx.extras.keys.nav.go-to-context",
     "lazyvimx.extras.keys.register.d-blackholed",
+    "lazyvimx.extras.keys.snacks",
     "lazyvimx.extras.keys.tab.rename",
-    "lazyvimx.extras.keys.terminal.open-cwd",
     "lazyvimx.extras.keys.window.open-dashboard",
     "lazyvimx.extras.keys.window.open-zen-mode",
     "lazyvimx.extras.keys.window.resize",
@@ -121,14 +120,7 @@
     "lazyvimx.extras.ui.panels.quick-fix",
     "lazyvimx.extras.ui.panels.search-and-replace",
     "lazyvimx.extras.ui.panels.status-line",
-    "lazyvimx.extras.ui.panels.telescope.base",
-    "lazyvimx.extras.ui.panels.telescope.extensions.advanced-git-search",
-    "lazyvimx.extras.ui.panels.telescope.extensions.file-browser",
-    "lazyvimx.extras.ui.panels.telescope.extensions.fzf-native",
-    "lazyvimx.extras.ui.panels.telescope.extensions.live-grep-agrs",
-    "lazyvimx.extras.ui.panels.telescope.extensions.pretty-code-actions",
-    "lazyvimx.extras.ui.panels.telescope.extensions.scope",
-    "lazyvimx.extras.ui.panels.telescope.extensions.smart-open",
+    "lazyvimx.extras.ui.snacks",
     "lazyvimx.extras.ui.style.auto-complete.pretty-doc-border",
     "lazyvimx.extras.ui.style.auto-complete.pretty-kind",
     "lazyvimx.extras.ui.style.auto-complete.prevent-enabling-for-specific-context",
@@ -149,7 +141,7 @@
   ],
   "news": {
     "NEWS.md": "10960",
-    "doc/news.txt": "19948"
+    "doc/news.txt": "20232"
   },
   "version": 7
 }
