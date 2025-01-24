@@ -13,15 +13,8 @@
           "type": "path"
         },
         {
-          "foreground_templates": [
-            "{{if contains \"N\" .Env.POSH_VI_MODE}}blue{{end}}",
-            "{{if contains \"I\" .Env.POSH_VI_MODE}}green{{end}}",
-            "{{if contains \"V\" .Env.POSH_VI_MODE}}cyan{{end}}",
-            "{{if contains \"V-L\" .Env.POSH_VI_MODE}}cyan{{end}}",
-            "{{if contains \"R\" .Env.POSH_VI_MODE}}red{{end}}"
-          ],
           "style": "plain",
-          "template": "{{ if .Env.POSH_VI_MODE }}{{ .Env.POSH_VI_ICON }}{{ end }}",
+          "template": "{{ if eq .Env.FISH_BIND_MODE \"default\" }}<blue>󰰓</>{{ else if eq .Env.FISH_BIND_MODE \"insert\" }}<magenta>󰰄</>{{ else if eq .Env.FISH_BIND_MODE \"replace_one\" }}<yellow>󰰟</>{{ else if eq .Env.FISH_BIND_MODE \"visual\"}}<cyan>󰰫</>{{ else }}<gray></>{{ end }}",
           "type": "text"
         }
       ]

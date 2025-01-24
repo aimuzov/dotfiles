@@ -1,0 +1,6 @@
+[".config/fish/themes"]
+type = "archive"
+url = "https://github.com/catppuccin/fish/archive/master.tar.gz"
+stripComponents = 2
+refreshPeriod = "168h"
+include = ["*/themes/**"]

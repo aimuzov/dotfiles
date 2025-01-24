@@ -1,0 +1,282 @@
+# vi: ft=fish
+
+# -- XDG ---------------------------------------------------------------------------------------------------------------
+
+# https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html
+set -q XDG_CONFIG_HOME; or set -Ux XDG_CONFIG_HOME $HOME/.config
+set -q XDG_DATA_HOME; or set -Ux XDG_DATA_HOME $HOME/.local/share
+set -q XDG_STATE_HOME; or set -Ux XDG_STATE_HOME $HOME/.local/state
+set -q XDG_CACHE_HOME; or set -Ux XDG_CACHE_HOME $HOME/.cache
+
+for xdgdir in (path filter -vd $XDG_CONFIG_HOME $XDG_DATA_HOME $XDG_STATE_HOME $XDG_CACHE_HOME)
+    mkdir -p $xdgdir
+end
+
+# -- RECURSIVE PATHS ---------------------------------------------------------------------------------------------------
+
+# Allow subdirs for functions and completions.
+set fish_function_path (path resolve $__fish_config_dir/functions/*/) $fish_function_path
+set fish_complete_path (path resolve $__fish_config_dir/completions/*/) $fish_complete_path
+
+# -- MACOS COLORSCHEME -------------------------------------------------------------------------------------------------
+
+defaults read -g AppleInterfaceStyle >/dev/null 2>&1; and set -gx MACOS_IS_DARK yes; or set -gx MACOS_IS_DARK no
+
+# -- CACHE -------------------------------------------------------------------------------------------------------------
+
+# Setup caching
+if not set -q __fish_cache_dir
+    if set -q XDG_CACHE_HOME
+        set -U __fish_cache_dir $XDG_CACHE_HOME/fish
+    else
+        set -U __fish_cache_dir $HOME/.cache/fish
+    end
+end
+
+test -d $__fish_cache_dir; or mkdir -p $__fish_cache_dir
+
+# Remove expired cache files
+find $__fish_cache_dir -name '*.fish' -type f -mmin +1200 -delete
+
+# -- FISHER ------------------------------------------------------------------------------------------------------------
+
+set -q fisher_path || set -gx fisher_path $__fish_config_dir/.fisher
+set -q my_plugins_path || set -gx my_plugins_path $__fish_config_dir/plugins
+
+if test "$fisher_paths_initialized" != true
+    set --local idx (contains -i $__fish_config_dir/functions $fish_function_path || echo 1)
+    set fish_function_path $fish_function_path[1..$idx] $fisher_path/functions $fish_function_path[(math $idx + 1)..]
+
+    set --local idx (contains -i $__fish_config_dir/completions $fish_complete_path || echo 1)
+    set fish_complete_path $fish_complete_path[1..$idx] $fisher_path/completions $fish_complete_path[(math $idx + 1)..]
+
+    set -g fisher_paths_initialized true
+end
+
+if not test -d $fisher_path
+    functions -e fisher &>/dev/null
+    mkdir -p $fisher_path
+    touch $__fish_config_dir/fish_plugins
+    curl -sL https://git.io/fisher | source
+
+    if test -s $__fish_config_dir/fish_plugins
+        fisher update
+    else
+        fisher install jorgebucaran/fisher
+    end
+end
+
+for file in $fisher_path/conf.d/*.fish
+    if ! test -f $__fish_config_dir/conf.d/(path basename -- $file)
+        and test -f $file && test -r $file
+        builtin source $file
+    end
+end
+
+# -- OH MY POSH --------------------------------------------------------------------------------------------------------
+
+set fish_greeting # Disable new user greeting.
+
+if type -q oh-my-posh
+    if not test -r $__fish_cache_dir/omp_init.fish
+        oh-my-posh init fish --config $XDG_CONFIG_HOME/oh-my-posh/config.json >$__fish_cache_dir/omp_init.fish
+    end
+
+    source $__fish_cache_dir/omp_init.fish
+end
+
+# -- BREW --------------------------------------------------------------------------------------------------------------
+
+# Setup homebrew 
+if not set -q HOMEBREW_PREFIX
+    if not test -s $__fish_cache_dir/brew_init.fish
+        /opt/homebrew/bin/brew shellenv >$__fish_cache_dir/brew_init.fish
+    end
+
+    source $__fish_cache_dir/brew_init.fish
+end
+
+# Add fish completions
+if test -e "$HOMEBREW_PREFIX/share/fish/completions"
+    set --append fish_complete_path "$HOMEBREW_PREFIX/share/fish/completions"
+end
+
+# Other homebrew vars
+set -q HOMEBREW_NO_ANALYTICS || set -gx HOMEBREW_NO_ANALYTICS 1
+
+# -- ASDF --------------------------------------------------------------------------------------------------------------
+
+if not set -q ASDF_DIR
+    source /opt/homebrew/opt/asdf/libexec/asdf.fish # https://asdf-vm.com/guide/getting-started.html#_3-install-asdf
+end
+
+set -q ASDF_CONFIG_FILE; or set -Ux ASDF_CONFIG_FILE $HOME/.config/asdf/asdfrc
+
+## -- MISE -------------------------------------------------------------------------------------------------------------
+
+if not set -q MISE_SHELL
+    set -gx MISE_INSTALL_PATH /opt/homebrew/bin/mise
+
+    if not test -s $__fish_cache_dir/misej_init.fish
+        mise activate fish >$__fish_cache_dir/mise_init.fish
+    end
+
+    source $__fish_cache_dir/mise_init.fish
+
+    if not test -e $__fish_config_dir/completions/mise.fish
+        mise completion fish >$__fish_config_dir/completions/mise.fish
+    end
+end
+
+# -- CHEZMOI -----------------------------------------------------------------------------------------------------------
+
+if not test -e $__fish_config_dir/completions/chezmoi.fish
+    chezmoi completion fish >$__fish_config_dir/completions/chezmoi.fish
+end
+
+# -- FZF ---------------------------------------------------------------------------------------------------------------
+
+if type -q fzf
+    if not test -r $__fish_cache_dir/fzf_init.fish
+        fzf --fish >$__fish_cache_dir/fzf_init.fish
+    end
+
+    source $__fish_cache_dir/fzf_init.fish
+
+    # https://github.com/catppuccin/fzf?tab=readme-ov-file#usage
+    if [ $MACOS_IS_DARK = yes ]
+        set -gx FZF_DEFAULT_OPTS " \
+		--color=bg+:#363a4f,bg:-1,spinner:#f4dbd6,hl:#ed8796 \
+		--color=fg:#cad3f5,header:#ed8796,info:#c6a0f6,pointer:#f4dbd6 \
+		--color=marker:#f4dbd6,fg+:#cad3f5,prompt:#c6a0f6,hl+:#ed8796"
+    else
+        set -gx FZF_DEFAULT_OPTS " \
+		--color=bg+:#ccd0da,bg:-1,spinner:#dc8a78,hl:#d20f39 \
+		--color=fg:#4c4f69,header:#d20f39,info:#8839ef,pointer:#dc8a78 \
+		--color=marker:#dc8a78,fg+:#4c4f69,prompt:#8839ef,hl+:#d20f39"
+    end
+
+    set -gx FZF_DEFAULT_OPTS "$FZF_DEFAULT_OPTS --reverse --height '90%'"
+    set -gx FZF_DEFAULT_COMMAND "fd --type f --strip-cwd-prefix --hidden --follow"
+    set -gx FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
+    set -gx FZF_CTRL_T_OPTS "--preview 'bat -n --color=always {}' --bind 'ctrl-/:change-preview-window(hidden|)'"
+end
+
+# -- ZOXIDE ------------------------------------------------------------------------------------------------------------
+
+if type -q zoxide
+    if not test -r $__fish_cache_dir/zoxide_init.fish
+        zoxide init fish >$__fish_cache_dir/zoxide_init.fish
+    end
+
+    source $__fish_cache_dir/zoxide_init.fish
+end
+
+
+# -- PAGER -------------------------------------------------------------------------------------------------------------
+
+set -q MANPAGER; or set -Ux MANPAGER less
+set -q PAGER; or set -Ux PAGER $MANPAGER
+
+# Colorize man pages.
+set -q LESS_TERMCAP_mb; or set -Ux LESS_TERMCAP_mb (set_color -o blue)
+set -q LESS_TERMCAP_md; or set -Ux LESS_TERMCAP_md (set_color -o cyan)
+set -q LESS_TERMCAP_me; or set -Ux LESS_TERMCAP_me (set_color normal)
+set -q LESS_TERMCAP_so; or set -Ux LESS_TERMCAP_so (set_color -b white black)
+set -q LESS_TERMCAP_se; or set -Ux LESS_TERMCAP_se (set_color normal)
+set -q LESS_TERMCAP_us; or set -Ux LESS_TERMCAP_us (set_color -u magenta)
+set -q LESS_TERMCAP_ue; or set -Ux LESS_TERMCAP_ue (set_color normal)
+
+# Ensure manpath is set to something so we can add to it.
+set -q MANPATH || set -gx MANPATH ''
+
+# Add more man page paths.
+for manpath in (path filter $__fish_data_dir/man /usr/local/share/man /usr/share/man)
+    set -a MANPATH $manpath
+end
+
+# -- VI MODE -----------------------------------------------------------------------------------------------------------
+
+fish_vi_key_bindings
+
+bind -M visual y fish_clipboard_copy
+bind -M normal yy fish_clipboard_copy
+bind p fish_clipboard_paste
+
+function rerender_on_bind_mode_change --on-variable fish_bind_mode
+    if test "$fish_bind_mode" != "$FISH__BIND_MODE"
+        set -gx FISH_BIND_MODE $fish_bind_mode
+        omp_repaint_prompt
+    end
+end
+
+function fish_default_mode_prompt --description "Display vi prompt mode"
+    # This function is masked and does nothing
+end
+
+# -- EDITOR ------------------------------------------------------------------------------------------------------------
+
+# Set editor variables.
+set -q EDITOR; or set -Ux EDITOR nvim
+set -q VISUAL; or set -Ux VISUAL $EDITOR
+set -q GIT_EDITOR; or set -Ux GIT_EDITOR $EDITOR
+
+# -- SECRETS -----------------------------------------------------------------------------------------------------------
+
+set -gx OPENAI_API_KEY "{{ (keepassxcAttribute "OPENAI" "API_KEY") }}"
+set -gx GITLAB_TOKEN "{{ (keepassxcAttribute "GITLAB" "TOKEN") }}"
+set -gx GITHUB_TOKEN "{{ (keepassxcAttribute "GITHUB" "TOKEN") }}"
+
+# -- ABBRS -------------------------------------------------------------------------------------------------------------
+
+if status is-interactive
+    abbr -a -- e nvim
+    abbr -a -- y yazi
+    abbr -a -- c "clear && exec fish"
+    abbr -a -- ca chezmoi apply
+    abbr -a -- ee nvim_config_pick
+    abbr -a -- eu "nvim --headless '+Lazy! update' +qa && nvim"
+    abbr -a -- f "for i in (seq 1 5); /usr/bin/time fish -i -c exit; end"
+    abbr -a -- q exit
+
+    alias nr "npm run"
+
+    alias cat bat
+    alias ls "eza $eza_params"
+    alias l "eza --git-ignore $eza_params"
+    alias ll "eza --all --header --long $eza_params"
+    alias llm "eza --all --header --long --sort=modified $eza_params"
+    alias la "eza -lbhHigUmuSa"
+    alias lt "eza --tree $eza_params"
+end
+
+# -- EZA --------------------------------------------------------------------------------------------------------------
+
+set -l COLORS (vivid generate catppuccin-$([ $MACOS_IS_DARK = yes ]; and echo macchiato; or echo latte))
+
+set -gx LS_COLORS $COLORS
+set -gx EZA_COLORS $COLORS
+
+# -- PATH --------------------------------------------------------------------------------------------------------------
+
+set -gx GOPATH $HOME/Library/go
+
+# Add bin directories to path
+fish_add_path --prepend (path filter $HOME/bin $HOME/.local/bin)
+
+# https://github.com/git-quick-stats/git-quick-stats#macos-homebrew
+fish_add_path $HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin
+
+fish_add_path $GOPATH
+fish_add_path node_modules/.bin
+fish_add_path $HOME/.cargo/bin
+
+# -- OTHER -------------------------------------------------------------------------------------------------------------
+
+set -g ZDOTDIR $XDG_CONFIG_HOME/zsh
+set -g IWD $PWD # Set initial working directory.
+
+set -gx CATPPUCCIN_FLAVOR "Catppuccin $([ $MACOS_IS_DARK = yes ]; and echo Macchiato; or echo Latte)"
+set -gx BAT_THEME $CATPPUCCIN_FLAVOR
+
+fish_config theme choose $CATPPUCCIN_FLAVOR

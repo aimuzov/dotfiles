@@ -10,3 +10,4 @@ quit-after-last-window-closed = true
 theme = "dark:catppuccin-macchiato,light:catppuccin-latte"
 window-padding-x = 0,0 
 window-padding-y = 0,0 
+command = /opt/homebrew/opt/fish/bin/fish --login --interactive
