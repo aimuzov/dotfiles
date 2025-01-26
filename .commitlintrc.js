@@ -4,6 +4,7 @@ const scopes = [
   "borders",
   "brew",
   "chezmoi",
+  "fish",
   "ghostty",
   "git",
   "gitconfig",
