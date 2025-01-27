@@ -239,6 +239,17 @@ if status is-interactive
     abbr -a -- f "for i in (seq 1 5); /usr/bin/time fish -i -c exit; end"
     abbr -a -- q exit
 
+    abbr -a -- gb git branch -vv
+    abbr -a -- gba git branch -vv -a
+    abbr -a -- gbsup git branch --set-upstream-to=origin/\(git symbolic-ref HEAD\)
+    abbr -a -- gc! git commit -v --amend
+    abbr -a -- gcn! git commit -v --no-edit --amend
+    abbr -a -- gf git fetch
+    abbr -a -- gfa git fetch --all --prune
+    abbr -a -- gl git pull
+    abbr -a -- gp git push
+    abbr -a -- gp! git push --force-with-lease
+
     alias nr "npm run"
 
     alias cat bat
