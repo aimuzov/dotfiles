@@ -22,6 +22,10 @@ set fish_complete_path (path resolve $__fish_config_dir/completions/*/) $fish_co
 
 defaults read -g AppleInterfaceStyle >/dev/null 2>&1; and set -gx MACOS_IS_DARK yes; or set -gx MACOS_IS_DARK no
 
+set -gx CATPPUCCIN_FLAVOR "Catppuccin $([ $MACOS_IS_DARK = yes ]; and echo Macchiato; or echo Latte)"
+
+fish_config theme choose $CATPPUCCIN_FLAVOR
+
 # -- CACHE -------------------------------------------------------------------------------------------------------------
 
 # Setup caching
@@ -284,10 +288,4 @@ fish_add_path $HOME/.cargo/bin
 
 # -- OTHER -------------------------------------------------------------------------------------------------------------
 
-set -g ZDOTDIR $XDG_CONFIG_HOME/zsh
-set -g IWD $PWD # Set initial working directory.
-
-set -gx CATPPUCCIN_FLAVOR "Catppuccin $([ $MACOS_IS_DARK = yes ]; and echo Macchiato; or echo Latte)"
 set -gx BAT_THEME $CATPPUCCIN_FLAVOR
-
-fish_config theme choose $CATPPUCCIN_FLAVOR
