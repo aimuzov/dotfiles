@@ -33,7 +33,7 @@
           "type": "git",
           "style": "plain",
           "foreground": "blue",
-          "template": "<white>{{ .UpstreamIcon }}</>{{ .HEAD }} ",
+          "template": "{{ if .UpstreamIcon }}<white>{{ .UpstreamIcon }}</> {{ end }}{{ if .HEAD }}{{ .HEAD }} {{ end }}",
           "properties": {
             "branch_icon": "",
             "fetch_status": true,
