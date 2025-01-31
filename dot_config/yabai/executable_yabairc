@@ -80,12 +80,12 @@ space_create 2 10 social
 yabai -m rule --add app="^.*$" space=other
 yabai -m rule --add space=term app="^(WezTerm|Ghostty|VSCodium)$"
 yabai -m rule --add space=browser app="^(Arc|Google Chrome)$"
-yabai -m rule --add space=reflection app="^(Calendar|Mail|NetNewsWire|Things)$"
+yabai -m rule --add space=reflection app="^(Calendar|Mail)$"
 yabai -m rule --add space=design app="^(Figma|Miro)$"
 yabai -m rule --add space=explorer app="^(Finder|Cyberduck)$"
 yabai -m rule --add space=games app="^(Steam Helper|Dota 2)$"
 yabai -m rule --add space=other app="^(wezterm\-gui)$"
-yabai -m rule --add space=media app="^(Yandex Music|Photos)$"
+yabai -m rule --add space=media app="^(Yandex Music|Photos|Things)$"
 yabai -m rule --add space=calls app="^(zoom.us|Толк)$"
 yabai -m rule --add space=social app="^(TiMe|Telegram|Discord|WhatsApp)$"
 
