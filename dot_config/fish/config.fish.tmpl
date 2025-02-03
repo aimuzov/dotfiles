@@ -179,8 +179,8 @@ end
 
 # -- PAGER -------------------------------------------------------------------------------------------------------------
 
-set -q MANPAGER; or set -Ux MANPAGER less
-set -q PAGER; or set -Ux PAGER $MANPAGER
+set -Ux MANPAGER nvim +Man!
+set -Ux PAGER $MANPAGER
 
 # Colorize man pages.
 set -q LESS_TERMCAP_mb; or set -Ux LESS_TERMCAP_mb (set_color -o blue)
