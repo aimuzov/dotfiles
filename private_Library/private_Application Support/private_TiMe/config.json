@@ -2,25 +2,24 @@
   "version": 3,
   "teams": [
     {
+      "name": "time.r1.team",
       "url": "https://time.r1.team",
-      "name": "r1",
       "order": 0,
       "tabs": [
         {
           "name": "TAB_MESSAGING",
-          "order": 2,
+          "order": 0,
           "isOpen": true
         },
         {
           "name": "TAB_FOCALBOARD",
-          "order": 0
+          "order": 1
         },
         {
           "name": "TAB_PLAYBOOKS",
-          "order": 1
+          "order": 2
         }
-      ],
-      "lastActiveTab": 0
+      ]
     }
   ],
   "showTrayIcon": false,
@@ -38,10 +37,10 @@
   "hideOnStart": false,
   "spellCheckerLocales": [],
   "darkMode": false,
-  "lastActiveTeam": 0,
+  "lastActiveTeam": 1,
   "downloadLocation": "/Users/aimuzov/temp/time",
   "startInFullscreen": false,
   "logLevel": "error",
-  "webappVersion": "v6.27.3-001",
+  "webappVersion": "v6.33.2",
   "autoCheckForUpdates": true
 }
