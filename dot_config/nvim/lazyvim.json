@@ -139,9 +139,11 @@
     "lazyvimx.extras.ui.style.terminal.start-insert-on-open",
     "lazyvimx.extras.ui.style.windows.bolder-separators"
   ],
+  "install_version": 7,
   "news": {
     "NEWS.md": "10960",
     "doc/news.txt": "20912"
   },
-  "version": 7
+  "version": 8
 }
+

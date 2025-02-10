@@ -1,5 +1,6 @@
 local lazy_opts = {
 	spec = {
+		{ "LazyVim/LazyVim", import = "lazyvim.plugins" },
 		{ "aimuzov/LazyVimx", import = "lazyvimx.core" },
 		{ import = "lazyvimx.colorschemes.catppuccin" },
 		-- { import = "lazyvimx.colorschemes.tokyonight" },
