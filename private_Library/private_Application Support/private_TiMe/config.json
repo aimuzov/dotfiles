@@ -19,7 +19,8 @@
           "name": "TAB_PLAYBOOKS",
           "order": 2
         }
-      ]
+      ],
+      "lastActiveTab": 0
     }
   ],
   "showTrayIcon": false,
