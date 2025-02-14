@@ -42,6 +42,7 @@ ruby = "asdf:asdf-vm/asdf-ruby"
 "ubi:sharkdp/fd" = "latest"
 "ubi:so-fancy/diff-so-fancy" = "latest"
 "ubi:Wilfred/difftastic" = { version = "latest", exe = "difft" }
+"ubi:jqlang/jq" = "latest"
 
 [settings]
 experimental = true
