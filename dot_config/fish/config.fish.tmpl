@@ -110,11 +110,26 @@ set -q HOMEBREW_NO_ANALYTICS || set -gx HOMEBREW_NO_ANALYTICS 1
 
 # -- ASDF --------------------------------------------------------------------------------------------------------------
 
-if not set -q ASDF_DIR
-    source /opt/homebrew/opt/asdf/libexec/asdf.fish # https://asdf-vm.com/guide/getting-started.html#_3-install-asdf
+# ASDF configuration code
+if test -z $ASDF_DATA_DIR
+    set _asdf_shims "$HOME/.asdf/shims"
+else
+    set _asdf_shims "$ASDF_DATA_DIR/shims"
 end
 
+# Do not use fish_add_path (added in Fish 3.2) because it
+# potentially changes the order of items in PATH
+if not contains $_asdf_shims $PATH
+    set -gx --prepend PATH $_asdf_shims
+end
+
+set --erase _asdf_shims
+
 set -q ASDF_CONFIG_FILE; or set -Ux ASDF_CONFIG_FILE $HOME/.config/asdf/asdfrc
+
+if not test -e $__fish_config_dir/completions/fish.fish
+    asdf completion fish >$__fish_config_dir/completions/asdf.fish
+end
 
 ## -- MISE -------------------------------------------------------------------------------------------------------------
 
@@ -252,7 +267,27 @@ if status is-interactive
     abbr -a -- gfa git fetch --all --prune
     abbr -a -- gl git pull
     abbr -a -- gp git push
+    abbr -a -- gpsup git push --set-upstream origin (git symbolic-ref HEAD)
     abbr -a -- gp! git push --force-with-lease
+    abbr -a -- gco git checkout
+    abbr -a -- gcb git checkout -b
+    abbr -a -- gcod git checkout develop
+    abbr -a -- gcom git checkout main
+    abbr -a -- gfb git flow bugfix
+    abbr -a -- gff git flow feature
+    abbr -a -- gfr git flow release
+    abbr -a -- gfh git flow hotfix
+    abbr -a -- gfs git flow support
+    abbr -a -- gfbs git flow bugfix start
+    abbr -a -- gffs git flow feature start
+    abbr -a -- gfrs git flow release start
+    abbr -a -- gfhs git flow hotfix start
+    abbr -a -- gfss git flow support start
+    abbr -a -- gfbt git flow bugfix track
+    abbr -a -- gfft git flow feature track
+    abbr -a -- gfrt git flow release track
+    abbr -a -- gfht git flow hotfix track
+    abbr -a -- gfst git flow support track
 
     alias nr "npm run"
 
@@ -286,6 +321,13 @@ fish_add_path $GOPATH
 fish_add_path node_modules/.bin
 fish_add_path $HOME/.cargo/bin
 fish_add_path $XDG_DATA_HOME/nvim/lazy/nvim_rocks/bin
+
+# https://webostv.developer.lge.com/develop/tools/cli-installation
+set -gx LG_WEBOS_TV_SDK_HOME "$HOME/stv-tools/webos-sdk"
+set -gx WEBOS_CLI_TV "$LG_WEBOS_TV_SDK_HOME/bin"
+
+fish_add_path $WEBOS_CLI_TV
+fish_add_path "$HOME/stv-tools/tizen-studio/tools/ide/bin"
 
 # -- OTHER -------------------------------------------------------------------------------------------------------------
 
