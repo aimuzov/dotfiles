@@ -1,0 +1,6 @@
+[".config/bottom"]
+type = "archive"
+url = "https://github.com/catppuccin/bottom/archive/master.tar.gz"
+stripComponents = 1
+refreshPeriod = "168h"
+include = ["*/themes/**"]

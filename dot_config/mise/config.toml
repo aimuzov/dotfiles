@@ -19,6 +19,7 @@ ruby = "asdf:asdf-vm/asdf-ruby"
 "cargo:yazi-cli" = "latest"
 "cargo:yazi-fm" = "latest"
 "cargo:vivid" = "latest"
+"cargo:bottom" = "latest"
 
 "npm:@georgesg/arc-cli" = { version = "latest", exe = "arc-cli" }
 "npm:@aimuzov/sketchybar-app-font" = { version = "latest", exe = "sketchybar-app-font" }
