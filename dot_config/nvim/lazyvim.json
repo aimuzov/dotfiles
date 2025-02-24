@@ -127,7 +127,7 @@
     "lazyvimx.extras.ui.style.auto-complete.pretty-doc-border",
     "lazyvimx.extras.ui.style.auto-complete.pretty-kind",
     "lazyvimx.extras.ui.style.auto-complete.prevent-enabling-for-specific-context",
-    "lazyvimx.extras.ui.style.editor.fix-backround-on-selection-for-inline-hints",
+    "lazyvimx.extras.ui.style.editor.hide-hints-in-insert-mode",
     "lazyvimx.extras.ui.style.hunks.highlight-words",
     "lazyvimx.extras.ui.style.hunks.preview-in-popup",
     "lazyvimx.extras.ui.style.icons.override",
