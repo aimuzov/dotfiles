@@ -13,9 +13,6 @@ PATH="$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin:$PATH"
 
 export ASDF_CONFIG_FILE="$HOME/.config/asdf/asdfrc"
 
-# https://asdf-vm.com/guide/getting-started.html#_3-install-asdf
-. $(brew --prefix)/opt/asdf/libexec/asdf.sh
-
 ## -- MISE -------------------------------------------------------------------------------------------------------------
 
 if [[ ! -e "$ZSH_CACHE_DIR/completions/_mise" ]]; then
