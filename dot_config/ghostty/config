@@ -11,3 +11,7 @@ theme = "dark:catppuccin-macchiato,light:catppuccin-latte"
 window-padding-x = 0,0 
 window-padding-y = 0,0 
 command = /opt/homebrew/opt/fish/bin/fish --login --interactive
+
+keybind = ctrl+m=text:\x0D
+keybind = ctrl+i=text:\x09
+keybind = ctrl+[=text:\x1B
