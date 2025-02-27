@@ -1,6 +1,9 @@
+# vi: ft=conf
+
 adjust-box-thickness = 150%
 adjust-cell-height = 21
 adjust-cursor-height = 47%
+command = /opt/homebrew/opt/fish/bin/fish --login --interactive
 confirm-close-surface = false
 font-family = "JetBrainsMono NFM"
 font-size = 16
@@ -10,8 +13,9 @@ quit-after-last-window-closed = true
 theme = "dark:catppuccin-macchiato,light:catppuccin-latte"
 window-padding-x = 0,0 
 window-padding-y = 0,0 
-command = /opt/homebrew/opt/fish/bin/fish --login --interactive
 
+# -- KEYBINDINGS -------------------------------------------------------------------------------------------------------
+
+keybind = global:cmd+escape=toggle_quick_terminal
 keybind = ctrl+m=text:\x0D
-keybind = ctrl+i=text:\x09
-keybind = ctrl+[=text:\x1B
+
