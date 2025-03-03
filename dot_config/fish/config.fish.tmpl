@@ -260,14 +260,14 @@ if status is-interactive
 
     abbr -a -- gb git branch -vv
     abbr -a -- gba git branch -vv -a
-    abbr -a -- gbsup git branch --set-upstream-to=origin/\(git symbolic-ref HEAD\)
+    abbr -a -- gbsup git branch --set-upstream-to=origin/\(__git.current_branch\)
     abbr -a -- gc! git commit -v --amend
     abbr -a -- gcn! git commit -v --no-edit --amend
     abbr -a -- gf git fetch
     abbr -a -- gfa git fetch --all --prune
     abbr -a -- gl git pull
     abbr -a -- gp git push
-    abbr -a -- gpsup git push --set-upstream origin (git symbolic-ref HEAD)
+    abbr -a -- gpsup git push --set-upstream origin \(__git.current_branch\)
     abbr -a -- gp! git push --force-with-lease
     abbr -a -- gco git checkout
     abbr -a -- gcod git checkout develop
