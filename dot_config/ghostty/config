@@ -16,6 +16,6 @@ window-padding-y = 0,0
 
 # -- KEYBINDINGS -------------------------------------------------------------------------------------------------------
 
-keybind = global:cmd+escape=toggle_quick_terminal
+keybind = global:alt+escape=toggle_quick_terminal
 keybind = ctrl+m=text:\x0D
 
