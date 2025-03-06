@@ -86,6 +86,7 @@
   "vim-helm": { "branch": "master", "commit": "ae1ebc160d2b9b90108477ab10df7a4fc501e358" },
   "vim-rhubarb": { "branch": "master", "commit": "386daa2e9d98e23e27ad089afcbe5c5a903e488d" },
   "virt-column.nvim": { "branch": "master", "commit": "b87e3e0864211a32724a2ebf3be37e24e9e2fa99" },
+  "visual-whitespace.nvim": { "branch": "main", "commit": "11b340715aa5e0ed730520741591de3f2ab1f28f" },
   "vscode-js-debug": { "branch": "main", "commit": "cdca7f206692f5ceed702c19b7f7f72aa2bba3b9" },
   "which-key.nvim": { "branch": "main", "commit": "370ec46f710e058c9c1646273e6b225acf47cbed" },
   "wtf.nvim": { "branch": "main", "commit": "16eec1f32c3608bd8519e9e520041fe34201abb0" },
