@@ -133,6 +133,7 @@
     "lazyvimx.extras.ui.style.panels.buffer-line.add-groups",
     "lazyvimx.extras.ui.style.panels.buffer-line.hide-extension",
     "lazyvimx.extras.ui.style.panels.sidebar-pretty-offset",
+    "lazyvimx.extras.ui.style.popups.no-backdrop",
     "lazyvimx.extras.ui.style.popups.rounded",
     "lazyvimx.extras.ui.style.popups.size",
     "lazyvimx.extras.ui.style.terminal.colorize-ansi-escape-sequences",
