@@ -5,15 +5,15 @@ python = "asdf:asdf-community/asdf-python"
 ruby = "asdf:asdf-vm/asdf-ruby"
 
 [tools]
-"bun" = "latest"
-"go" = "latest"
-"node" = ["16", "18", "20", "latest"]
-"pipx" = "latest"
-"pnpm" = "latest"
-"python" = "3.12"
-"ruby" = "latest"
-"rust" = "latest"
-"neovim" = ["stable", "nightly"]
+bun = "latest"
+go = "latest"
+node = ["16", "18", "20", "latest"]
+pipx = "latest"
+pnpm = "latest"
+python = "3.12"
+ruby = "latest"
+rust = "latest"
+neovim = ["stable", "nightly"]
 
 "cargo:eza" = "latest"
 "cargo:yazi-cli" = "latest"
