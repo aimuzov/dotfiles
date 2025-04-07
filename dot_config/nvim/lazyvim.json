@@ -16,7 +16,6 @@
     "lazyvim.plugins.extras.util.dot",
     "lazyvim.plugins.extras.util.rest",
     "lazyvim.plugins.extras.vscode",
-    "lazyvimx.extras.ai.chatgpt",
     "lazyvimx.extras.ai.wtf",
     "lazyvimx.extras.buffers.close.hidden",
     "lazyvimx.extras.buffers.close.inactive",
