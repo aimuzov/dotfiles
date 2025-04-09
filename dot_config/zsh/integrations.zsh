@@ -8,6 +8,7 @@ integrations=(
 	'file-listing'
 	'git'
 	'lang'
+	'vscode'
 )
 
 source "$ZSH/plugins/zsh-defer/zsh-defer.plugin.zsh"

@@ -23,7 +23,7 @@ const scopes = [
   "svim",
   "them-switcher",
   "time",
-  "vscodium",
+  "vscode",
   "wezterm",
   "yabai",
   "yazi",

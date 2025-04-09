@@ -1,0 +1,12 @@
+.sidebar,
+.tab {
+  font-family: "JetBrainsMono NFM";
+}
+
+.monaco-editor .relative-current-line-number {
+  text-align: right;
+}
+
+.monaco-editor .scroll-decoration {
+  top: -6px;
+}

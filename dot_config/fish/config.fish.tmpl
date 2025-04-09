@@ -191,7 +191,6 @@ if type -q zoxide
     source $__fish_cache_dir/zoxide_init.fish
 end
 
-
 # -- PAGER -------------------------------------------------------------------------------------------------------------
 
 set -Ux MANPAGER nvim +Man!
@@ -327,6 +326,11 @@ set -gx WEBOS_CLI_TV "$LG_WEBOS_TV_SDK_HOME/bin"
 
 fish_add_path $WEBOS_CLI_TV
 fish_add_path "$HOME/stv-tools/tizen-studio/tools/ide/bin"
+
+# -- VSCODE ------------------------------------------------------------------------------------------------------------
+
+string match -q "$TERM_PROGRAM" vscode
+and . (code --locate-shell-integration-path fish)
 
 # -- OTHER -------------------------------------------------------------------------------------------------------------
 
