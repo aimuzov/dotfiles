@@ -21,7 +21,6 @@ neovim = ["stable", "nightly"]
 "cargo:vivid" = "latest"
 "cargo:bottom" = "latest"
 "cargo:tokei" = "latest"
-"cargo:genact" = "latest"
 
 "npm:@georgesg/arc-cli" = { version = "latest", exe = "arc-cli" }
 "npm:@aimuzov/sketchybar-app-font" = { version = "latest", exe = "sketchybar-app-font" }
