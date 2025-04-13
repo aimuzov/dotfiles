@@ -69,8 +69,9 @@ local function update()
 		icon.width = 30
 	end
 
+	yabai:set({ icon = icon, label = label })
+
 	sbar.animate("sin", 10, function()
-		yabai:set({ icon = icon, label = label })
 		sbar.bar({ color = bar_color })
 	end)
 end

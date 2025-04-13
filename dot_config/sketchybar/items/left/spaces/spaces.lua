@@ -32,45 +32,15 @@ for i = 1, 10, 1 do
 
 	spaces[i] = space
 
-	local space_preview = sbar.add("item", {
-		position = "popup." .. space.name,
-		padding_left = 0,
-		padding_right = 0,
-		background = {
-			drawing = true,
-			image = {
-				corner_radius = 9,
-				border_width = 5,
-				border_color = colors.blue,
-				scale = 0.02,
-			},
-		},
-	})
-
 	space:subscribe("space_change", function(ENV)
 		local bg_color = ENV.SELECTED == "true" and colors.bg2 or colors.bg1
 		local text_color = ENV.SELECTED == "true" and colors.white or colors.grey
 
-		sbar.animate("sin", 10, function()
-			space:set({
-				icon = { highlight = ENV.SELECTED, color = text_color },
-				label = { highlight = ENV.SELECTED, highlight_color = text_color },
-				background = { color = bg_color },
-			})
-		end)
-	end)
-
-	space:subscribe("mouse.entered", function(ENV)
-		sbar.animate("sin", 10, function()
-			space:set({ popup = { drawing = true } })
-			space_preview:set({ background = { image = "space." .. ENV.SID } })
-			space_preview:set({ background = { image = { scale = 0.08 } } })
-		end)
-	end)
-
-	space:subscribe("mouse.exited", function()
-		space_preview:set({ background = { image = { scale = 0.02 } } })
-		space:set({ popup = { drawing = false } })
+		space:set({
+			icon = { highlight = ENV.SELECTED, color = text_color },
+			label = { highlight = ENV.SELECTED, highlight_color = text_color },
+			background = { color = bg_color },
+		})
 	end)
 
 	space:subscribe("mouse.clicked", function(ENV)
@@ -108,9 +78,7 @@ space_creator:subscribe("space_windows_change", function(env)
 
 	icon_line = icon_line:gsub("%s+$", "")
 
-	sbar.animate("sin", 10, function()
-		spaces[env.INFO.space]:set({ label = icon_line })
-	end)
+	spaces[env.INFO.space]:set({ label = icon_line })
 end)
 
 return {

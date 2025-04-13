@@ -7,9 +7,7 @@ local front_app = sbar.add("item", {
 })
 
 local function update(env)
-	sbar.animate("sin", 10, function()
-		front_app:set({ label = { string = env.INFO } })
-	end)
+	front_app:set({ label = { string = env.INFO } })
 end
 
 local function action()
