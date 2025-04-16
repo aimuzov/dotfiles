@@ -62,32 +62,35 @@ function space_create {
 	yabai -m space "$idx" --label "$name" --display "$display"
 }
 
-space_destroy_amount 10
+space_destroy_amount 12
 
-space_create 1 1 term
-space_create 1 2 browser
-space_create 1 3 reflection
-space_create 1 4 design
-space_create 1 5 explorer
-space_create 1 6 games
-space_create 2 7 other
-space_create 2 8 media
-space_create 2 9 calls
-space_create 2 10 social
+space_create 1 1 "code"
+space_create 1 2 "serf"
+space_create 1 3 "org"
+space_create 1 4 "graphic"
+space_create 1 5 "explore"
+space_create 1 6 "fun"
+space_create 1 7 "sys"
+space_create 2 8 "media"
+space_create 2 9 "calls"
+space_create 2 10 "social"
+space_create 2 11 "any"
+space_create 2 12 "ai"
 
 # -- Assigning windows in spaces ---------------------------------------------------------------------------------------
 
-yabai -m rule --add app="^.*$" space=other
-yabai -m rule --add space=term app="^(WezTerm|Ghostty|Code)$"
-yabai -m rule --add space=browser app="^(Arc|Google Chrome)$"
-yabai -m rule --add space=reflection app="^(Things|Calendar|Mail)$"
-yabai -m rule --add space=design app="^(Figma|Miro)$"
-yabai -m rule --add space=explorer app="^(Finder|Cyberduck)$"
-yabai -m rule --add space=games app="^(Steam Helper|Dota 2)$"
-yabai -m rule --add space=other app="^(wezterm\-gui)$"
-yabai -m rule --add space=media app="^(Yandex Music|Photos)$"
-yabai -m rule --add space=calls app="^(zoom.us|Толк)$"
-yabai -m rule --add space=social app="^(TiMe|Telegram|Discord|WhatsApp)$"
+yabai -m rule --add app="^.*$" space="any"
+yabai -m rule --add space="code" app="^(WezTerm|Ghostty|Code)$"
+yabai -m rule --add space="serf" app="^(Arc|Google Chrome)$"
+yabai -m rule --add space="org" app="^(Things|Calendar|Mail)$"
+yabai -m rule --add space="graphic" app="^(Figma|Miro)$"
+yabai -m rule --add space="explore" app="^(Finder|Cyberduck)$"
+yabai -m rule --add space="fun" app="^(Steam Helper|Dota 2)$"
+yabai -m rule --add space="sys" app="^(System Settings|MacPass)$"
+yabai -m rule --add space="media" app="^(Yandex Music|Photos)$"
+yabai -m rule --add space="calls" app="^(Толк)$"
+yabai -m rule --add space="social" app="^(TiMe|Telegram|WhatsApp)$"
+yabai -m rule --add space="ai" app="^(ChatGPT)$"
 
 # -- Layout managing ---------------------------------------------------------------------------------------------------
 
@@ -105,16 +108,14 @@ Telegram|\
 Things|\
 TiMe|\
 Code|\
-wezterm-gui|\
 WezTerm|\
 WhatsApp|\
 Yandex|\
 Yandex Music|\
-zoom.us|\
 Толк\
 )$"
 
-yabai -m rule --add app="^Arc$" title="Aleksey" manage=off
+yabai -m rule --add app="^Calendar$" title="General" manage=off
 yabai -m rule --add app="^Finder$" title="(Copy|Connect|Move|Info|Pref|Finder Settings)" manage=off
 yabai -m rule --add app="^Things$" title="(Quick Entry)" manage=off
 
