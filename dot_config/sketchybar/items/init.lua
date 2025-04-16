@@ -1,5 +1,4 @@
-require("items.left.spaces.spaces")
-require("items.left.front_app")
+require("items.left.spaces")
 require("items.left.yabai")
 
 require("items.center.keyboard_layout")

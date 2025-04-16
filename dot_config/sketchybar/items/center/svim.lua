@@ -6,7 +6,7 @@ local icons = {
 	insert = "􀂥",
 	visual = "􀂿",
 	cmd = "􀂙",
-	pending = "􀈏",
+	pending = "􀕵",
 }
 
 local svim = sbar.add("item", {
@@ -15,8 +15,8 @@ local svim = sbar.add("item", {
 	padding_right = 0,
 
 	icon = {
-		align = "left",
-		font = { size = 26 },
+		align = "right",
+		font = { size = 22 },
 		padding_left = 0,
 		padding_right = 9,
 	},
@@ -52,11 +52,10 @@ local function update(ENV)
 		label.string = ENV.CMDLINE
 	elseif ENV.MODE == "_" then
 		icon.string = icons.pending
+		icon.color = colors.magenta
 	end
 
-	sbar.animate("sin", 10, function()
-		svim:set({ icon = icon, label = label })
-	end)
+	svim:set({ icon = icon, label = label })
 end
 
 svim:subscribe({ "svim_update", "window_focus" }, update)

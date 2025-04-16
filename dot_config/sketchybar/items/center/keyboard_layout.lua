@@ -8,7 +8,7 @@ local icons = {
 }
 
 local keyboard_layout = sbar.add("item", {
-	icon = { font = { size = 26 } },
+	icon = { font = { size = 22 } },
 	padding_left = 0,
 	padding_right = 0,
 	display = "active",
@@ -29,9 +29,7 @@ local function update()
 		icon.color = colors.red
 	end
 
-	sbar.animate("sin", 10, function()
-		keyboard_layout:set({ icon = icon })
-	end)
+	keyboard_layout:set({ icon = icon })
 end
 
 sbar.add("event", "keyboard_layout_change", "AppleSelectedInputSourcesChangedNotification")
