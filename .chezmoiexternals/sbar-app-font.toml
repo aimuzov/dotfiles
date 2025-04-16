@@ -1,6 +1,0 @@
-[".config/sketchybar-app-font"]
-type = "archive"
-url = "https://github.com/kvndrsslr/sketchybar-app-font/archive/master.tar.gz"
-exact = true
-stripComponents = 1
-refreshPeriod = "168h"
