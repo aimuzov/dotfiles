@@ -21,7 +21,7 @@ local lazy_opts = {
 
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
-local lazyvimx_path = vim.fn.getenv("HOME") .. "/projects/aimuzov/LazyVimx"
+local lazyvimx_path = vim.fn.getenv("HOME") .. "/Projects/aimuzov/LazyVimx"
 
 if vim.fn.isdirectory(lazyvimx_path) ~= 0 then
 	table.insert(lazy_opts.spec, 1, {
