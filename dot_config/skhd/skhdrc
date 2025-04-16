@@ -1,15 +1,20 @@
+# keycodes: 
+# https://github.com/koekeishiya/skhd/issues/1#issue-248494406
+
 # -- Space focusing ----------------------------------------------------------------------------------------------------
 
-alt - 1 : yabai -m query --spaces --space 1 | jq -r '.windows[0]' | xargs yabai -m window --focus ; yabai -m space --focus 1
-alt - 2 : yabai -m query --spaces --space 2 | jq -r '.windows[0]' | xargs yabai -m window --focus ; yabai -m space --focus 2
-alt - 3 : yabai -m query --spaces --space 3 | jq -r '.windows[0]' | xargs yabai -m window --focus ; yabai -m space --focus 3
-alt - 4 : yabai -m query --spaces --space 4 | jq -r '.windows[0]' | xargs yabai -m window --focus ; yabai -m space --focus 4
-alt - 5 : yabai -m query --spaces --space 5 | jq -r '.windows[0]' | xargs yabai -m window --focus ; yabai -m space --focus 5
-alt - 6 : yabai -m query --spaces --space 6 | jq -r '.windows[0]' | xargs yabai -m window --focus ; yabai -m space --focus 6
-alt - 7 : yabai -m query --spaces --space 7 | jq -r '.windows[0]' | xargs yabai -m window --focus ; yabai -m space --focus 7
-alt - 8 : yabai -m query --spaces --space 8 | jq -r '.windows[0]' | xargs yabai -m window --focus ; yabai -m space --focus 8
-alt - 9 : yabai -m query --spaces --space 9 | jq -r '.windows[0]' | xargs yabai -m window --focus ; yabai -m space --focus 9
-alt - 0 : yabai -m query --spaces --space 10 | jq -r '.windows[0]' | xargs yabai -m window --focus ; yabai -m space --focus 10
+alt - 1		: yabai -m query --spaces --space 1 | jq -r '.windows[0]' | xargs yabai -m window --focus ; yabai -m space --focus 1
+alt - 2		: yabai -m query --spaces --space 2 | jq -r '.windows[0]' | xargs yabai -m window --focus ; yabai -m space --focus 2
+alt - 3		: yabai -m query --spaces --space 3 | jq -r '.windows[0]' | xargs yabai -m window --focus ; yabai -m space --focus 3
+alt - 4		: yabai -m query --spaces --space 4 | jq -r '.windows[0]' | xargs yabai -m window --focus ; yabai -m space --focus 4
+alt - 5		: yabai -m query --spaces --space 5 | jq -r '.windows[0]' | xargs yabai -m window --focus ; yabai -m space --focus 5
+alt - 6		: yabai -m query --spaces --space 6 | jq -r '.windows[0]' | xargs yabai -m window --focus ; yabai -m space --focus 6
+alt - 7		: yabai -m query --spaces --space 7 | jq -r '.windows[0]' | xargs yabai -m window --focus ; yabai -m space --focus 7
+alt - 8		: yabai -m query --spaces --space 8 | jq -r '.windows[0]' | xargs yabai -m window --focus ; yabai -m space --focus 8
+alt - 9		: yabai -m query --spaces --space 9 | jq -r '.windows[0]' | xargs yabai -m window --focus ; yabai -m space --focus 9
+alt - 0		: yabai -m query --spaces --space 10 | jq -r '.windows[0]' | xargs yabai -m window --focus ; yabai -m space --focus 10
+alt - 0x1B	: yabai -m query --spaces --space 11 | jq -r '.windows[0]' | xargs yabai -m window --focus ; yabai -m space --focus 11
+alt - 0x18	: yabai -m query --spaces --space 12 | jq -r '.windows[0]' | xargs yabai -m window --focus ; yabai -m space --focus 12
 
 # -- Space layout rotating ---------------------------------------------------------------------------------------------------
 
