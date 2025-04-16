@@ -3,6 +3,7 @@
 adjust-box-thickness = 150%
 adjust-cell-height = 21
 adjust-cursor-height = 47%
+cursor-invert-fg-bg = true
 command = /opt/homebrew/opt/fish/bin/fish --login --interactive
 confirm-close-surface = false
 font-family = "JetBrainsMono NFM"
