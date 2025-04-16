@@ -33,7 +33,7 @@
   },
   "showUnreadBadge": true,
   "useSpellChecker": true,
-  "enableHardwareAcceleration": true,
+  "enableHardwareAcceleration": false,
   "autostart": true,
   "hideOnStart": false,
   "spellCheckerLocales": [],
