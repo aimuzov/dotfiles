@@ -1,0 +1,79 @@
+# vi: ft=zsh
+
+## -- SECRETS ----------------------------------------------------------------------------------------------------------
+
+export OPENAI_API_KEY="{{ (keepassxcAttribute "OPENAI" "API_KEY") }}"
+export GITLAB_TOKEN="{{ (keepassxcAttribute "GITLAB" "TOKEN") }}"
+export GITHUB_TOKEN="{{ (keepassxcAttribute "GITHUB" "TOKEN") }}"
+
+EDITOR="nvim"
+XDG_CONFIG_HOME="$HOME/.config"
+GPG_TTY="$(tty)"
+
+## -- ZSH --------------------------------------------------------------------------------------------------------------
+
+ZSH="$XDG_CONFIG_HOME/zsh"
+ZSH_CACHE_DIR="$ZSH/cache"
+ZSH_COMPDUMP="$ZSH_CACHE_DIR/.zcompdump-$HOST"
+
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=500
+SAVEHIST=$HISTSIZE
+
+source "$ZSH/plugins/zsh-defer/zsh-defer.plugin.zsh"
+
+## -- STV / WEBOS ------------------------------------------------------------------------------------------------------
+
+# https://webostv.developer.lge.com/develop/tools/cli-installation
+export LG_WEBOS_TV_SDK_HOME="$HOME/stv-tools/webos-sdk"
+export WEBOS_CLI_TV="$LG_WEBOS_TV_SDK_HOME/bin"
+
+PATH="$WEBOS_CLI_TV:$PATH"
+
+## -- STV / TIZEN ------------------------------------------------------------------------------------------------------
+
+export SAMSUNG_TIZEN_SDK_HOME="$HOME/stv-tools/tizen-studio"
+export TIZEN_CLI_TV="$SAMSUNG_TIZEN_SDK_HOME/tools/ide/bin"
+
+PATH="$TIZEN_CLI_TV:$PATH"
+
+## -- BREW -------------------------------------------------------------------------------------------------------------
+
+source "$ZSH/plugins/brew/brew.plugin.zsh"
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+HOMEBREW_NO_ENV_HINTS=1
+HOMEBREW_NO_ANALYTICS=1
+
+# https://github.com/git-quick-stats/git-quick-stats#macos-homebrew
+PATH="$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin:$PATH"
+
+## -- ASDF -------------------------------------------------------------------------------------------------------------
+
+export ASDF_CONFIG_FILE="$HOME/.config/asdf/asdfrc"
+
+## -- MISE -------------------------------------------------------------------------------------------------------------
+
+zsh-defer -t 0.1 eval "$(mise activate zsh)"
+zsh-defer source "$ZSH/plugins/mise/mise.plugin.zsh"
+
+MISE_INSTALL_PATH="/opt/homebrew/bin/mise"
+
+## -- VSCODE -----------------------------------------------------------------------------------------------------------
+
+[[ "$TERM_PROGRAM" == "vscode" ]] && . "$(code --locate-shell-integration-path zsh)"
+
+## -- SHELL ------------------------------------------------------------------------------------------------------------
+
+eval "$($(mise which oh-my-posh) init zsh --config $XDG_CONFIG_HOME/oh-my-posh/config.json)"
+
+## -- OTHER ------------------------------------------------------------------------------------------------------------
+
+PATH="$HOME/.bin:$PATH"
+PATH="$XDG_DATA_HOME/nvim/lazy/nvim_rocks/bin:$PATH"
+
+export MACOS_IS_DARK=$([[ $(defaults read -g AppleInterfaceStyle 2>&1) == "Dark" ]] && echo "yes" || echo "no")
+export CATPPUCCIN_FLAVOR=$([[ $MACOS_IS_DARK == "yes" ]] && echo "macchiato" || echo "latte")
+
+# https://wezfurlong.org/wezterm/faq.html#pasting-or-entering-unicode-in-zsh-looks-broken
+setopt COMBINING_CHARS

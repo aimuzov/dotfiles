@@ -3,18 +3,19 @@
 
 # -- Space focusing ----------------------------------------------------------------------------------------------------
 
-alt - 1		: yabai -m query --spaces --space 1 | jq -r '.windows[0]' | xargs yabai -m window --focus ; yabai -m space --focus 1
-alt - 2		: yabai -m query --spaces --space 2 | jq -r '.windows[0]' | xargs yabai -m window --focus ; yabai -m space --focus 2
-alt - 3		: yabai -m query --spaces --space 3 | jq -r '.windows[0]' | xargs yabai -m window --focus ; yabai -m space --focus 3
-alt - 4		: yabai -m query --spaces --space 4 | jq -r '.windows[0]' | xargs yabai -m window --focus ; yabai -m space --focus 4
-alt - 5		: yabai -m query --spaces --space 5 | jq -r '.windows[0]' | xargs yabai -m window --focus ; yabai -m space --focus 5
-alt - 6		: yabai -m query --spaces --space 6 | jq -r '.windows[0]' | xargs yabai -m window --focus ; yabai -m space --focus 6
-alt - 7		: yabai -m query --spaces --space 7 | jq -r '.windows[0]' | xargs yabai -m window --focus ; yabai -m space --focus 7
-alt - 8		: yabai -m query --spaces --space 8 | jq -r '.windows[0]' | xargs yabai -m window --focus ; yabai -m space --focus 8
-alt - 9		: yabai -m query --spaces --space 9 | jq -r '.windows[0]' | xargs yabai -m window --focus ; yabai -m space --focus 9
-alt - 0		: yabai -m query --spaces --space 10 | jq -r '.windows[0]' | xargs yabai -m window --focus ; yabai -m space --focus 10
-alt - 0x1B	: yabai -m query --spaces --space 11 | jq -r '.windows[0]' | xargs yabai -m window --focus ; yabai -m space --focus 11
-alt - 0x18	: yabai -m query --spaces --space 12 | jq -r '.windows[0]' | xargs yabai -m window --focus ; yabai -m space --focus 12
+alt - 1		: yabai_space_focus 1
+alt - 2		: yabai_space_focus 2
+alt - 3		: yabai_space_focus 3
+alt - 4		: yabai_space_focus 4
+alt - 5		: yabai_space_focus 5
+alt - 6		: yabai_space_focus 6
+alt - 7		: yabai_space_focus 7
+alt - 8		: yabai_space_focus 8
+alt - 9		: yabai_space_focus 9
+alt - 0		: yabai_space_focus 10
+alt - 0x1B	: yabai_space_focus 11
+alt - 0x18	: yabai_space_focus 12
+
 
 # -- Space layout rotating ---------------------------------------------------------------------------------------------------
 
@@ -26,11 +27,11 @@ alt + shift - x : yabai -m space --mirror x-axis
 
 alt - h :	yabai -m window --focus west || \
 			(yabai -m display --focus west && yabai -m window --focus last) || \
-			(yabai -m display --focus $(display_index_get 1) && yabai -m window --focus last)
+			(yabai -m display --focus $(yabai_display_index_get 1) && yabai -m window --focus last)
 
 alt - l :	yabai -m window --focus east || \
 			(yabai -m display --focus east && yabai -m window --focus first) || \
-			(yabai -m display --focus $(display_index_get 2) && yabai -m window --focus first)
+			(yabai -m display --focus $(yabai_display_index_get 2) && yabai -m window --focus first)
 
 alt - j : yabai -m window --focus south	|| yabai -m display --focus south
 alt - k : yabai -m window --focus north	|| yabai -m display --focus north

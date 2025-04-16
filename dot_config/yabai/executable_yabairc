@@ -50,7 +50,7 @@ function space_destroy_amount {
 }
 
 function space_create {
-	local display=$(display_index_get $1)
+	local display=$(yabai_display_index_get $1)
 	local idx=$2
 	local name=$3
 	local space=$(yabai -m query --spaces | jq "first(.[] | select(.index == $idx) | .index)")

@@ -1,5 +1,0 @@
-# vi: ft=zsh
-
-source $ZSH/vars.zsh
-source $ZSH/integrations.zsh
-source $ZSH/aliases.zsh

@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/bash
 
 # Required parameters:
 # @raycast.schemaVersion 1
@@ -8,4 +8,4 @@
 # Optional parameters:
 # @raycast.icon https://github.com/koekeishiya/yabai/blob/master/assets/icon/2x/icon-32px@2x.png?raw=true
 
-restart_vm
+/opt/homebrew/bin/fish -c "restart_vm"

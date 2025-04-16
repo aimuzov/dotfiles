@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/bash
 
 # Required parameters:
 # @raycast.schemaVersion 1
@@ -9,4 +9,4 @@
 # @raycast.icon /Applications/Tailscale.app/Contents/Resources/AppIcon.icns
 # @raycast.argument1 { "type": "dropdown", "data": [{"title": "up", "value": "up"}, {"title": "down", "value": "down"}], "placeholder": "up" }
 
-tailscale $1
+/opt/homebrew/bin/fish -c "tailscale $1"

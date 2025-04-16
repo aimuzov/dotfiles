@@ -1,9 +1,18 @@
 # vi: ft=zsh
 
-source $HOME/.config/zsh/vars.zsh
+function yabai_display_index_get() {
+	local cond=$([[ "$1" == "1" ]] && echo "!=" || echo "==")
+	local retina_uuid="37D8832A-2D66-02CA-B9F7-8F30A301B230"
+	local index=$(yabai -m query --displays | jq "first(.[] | select(.uuid $cond \"$retina_uuid\") | .index)")
 
-source $ZSH/functions/brew.zsh
-source $ZSH/functions/mise.zsh
-source $ZSH/functions/nvim.zsh
-source $ZSH/functions/ui.zsh
-source $ZSH/functions/wm.zsh
+	if [ -z "$index" ]; then
+		echo "1"
+	else
+		echo $index
+	fi
+}
+
+function yabai_space_focus() {
+	yabai -m query --spaces --space $1 | jq -r '.windows[0]' | xargs yabai -m window --focus
+	yabai -m space --focus $1
+}

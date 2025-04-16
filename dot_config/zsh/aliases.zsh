@@ -1,8 +1,0 @@
-alias c="clear && exec zsh"
-alias ca="chezmoi apply"
-alias e="$EDITOR"
-alias ee="nvim_config_pick"
-alias eu="$EDITOR --headless '+Lazy! update' +qa && $EDITOR"
-alias nr="npm run"
-alias q="exit"
-alias y="yazi"
