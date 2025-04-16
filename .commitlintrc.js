@@ -20,6 +20,7 @@ const scopes = [
   "shell",
   "sketchybar",
   "skhd",
+  "ssh",
   "svim",
   "them-switcher",
   "time",
