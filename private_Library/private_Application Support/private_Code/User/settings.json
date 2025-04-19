@@ -78,7 +78,7 @@
     "delete",
     "s"
   ],
-  "vscode-neovim.neovimExecutablePaths.darwin": "/Users/aimuzov/.local/share/mise/installs/neovim/nightly/bin/nvim",
+  "vscode-neovim.neovimExecutablePaths.darwin": "/Users/aimuzov/.local/share/mise/installs/neovim/nightly/nvim-macos-arm64/bin/nvim",
   "vscode_custom_css.imports": [
     "file:///Users/aimuzov/Library/Application Support/Code/User/custom.css"
   ],
