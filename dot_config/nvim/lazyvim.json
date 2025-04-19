@@ -16,6 +16,7 @@
     "lazyvim.plugins.extras.util.dot",
     "lazyvim.plugins.extras.util.rest",
     "lazyvim.plugins.extras.vscode",
+    "lazyvimx.extras.ai.agent",
     "lazyvimx.extras.ai.wtf",
     "lazyvimx.extras.buffers.close.hidden",
     "lazyvimx.extras.buffers.close.inactive",
