@@ -1,10 +1,5 @@
 local lazy_opts = {
-	spec = {
-		{ "LazyVim/LazyVim", import = "lazyvim.plugins" },
-		{ "aimuzov/LazyVimx", import = "lazyvimx.core" },
-		{ import = "lazyvimx.colorschemes.catppuccin" },
-		-- { import = "lazyvimx.colorschemes.tokyonight" },
-	},
+	spec = { { "aimuzov/LazyVimx", import = "lazyvimx.colorschemes.catppuccin" } },
 
 	install = { colorscheme = { "catppuccin", "tokyonight" } },
 	checker = { enabled = true, notify = false },
@@ -14,8 +9,7 @@ local lazy_opts = {
 	ui = {
 		backdrop = 100,
 		border = "rounded",
-		size = { width = 0.84, height = 0.62 },
-		icons = { lazy = "(H) ", keys = "󰥻" },
+		icons = { keys = "󰥻" },
 	},
 }
 
