@@ -309,24 +309,23 @@ set -gx EZA_COLORS $COLORS
 
 set -gx GOPATH $HOME/Library/go
 
-# Add bin directories to path
-fish_add_path --prepend (path filter $HOME/bin $HOME/.local/bin)
-
-# https://github.com/git-quick-stats/git-quick-stats#macos-homebrew
-fish_add_path $HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin
-
-fish_add_path $GOPATH
-fish_add_path node_modules/.bin
-fish_add_path $HOME/.cargo/bin
-fish_add_path $XDG_DATA_HOME/nvim/lazy/nvim_rocks/bin
-fish_add_path $HOME/.bin
-
 # https://webostv.developer.lge.com/develop/tools/cli-installation
 set -gx LG_WEBOS_TV_SDK_HOME "$HOME/stv-tools/webos-sdk"
 set -gx WEBOS_CLI_TV "$LG_WEBOS_TV_SDK_HOME/bin"
 
-fish_add_path $WEBOS_CLI_TV
-fish_add_path "$HOME/stv-tools/tizen-studio/tools/ide/bin"
+fish_add_path $GOPATH
+fish_add_path "$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin" # https://github.com/git-quick-stats/git-quick-stats#macos-homebrew
+
+# Add bin directories to path
+fish_add_path --prepend (path filter \
+	$HOME/bin \
+	$HOME/.bin \
+	$HOME/.local/bin \
+	$HOME/.cargo/bin \
+	$WEBOS_CLI_TV \
+	$HOME/stv-tools/tizen-studio/tools/ide/bin \
+	node_modules/.bin
+)
 
 # -- VSCODE ------------------------------------------------------------------------------------------------------------
 
