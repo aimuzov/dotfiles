@@ -82,8 +82,6 @@ return {
 
 	window_decorations = "RESIZE",
 	window_padding = { left = 0, right = 0, top = 0, bottom = 0 },
-	window_background_opacity = 0.9,
-	macos_window_background_blur = 20,
 
 	debug_key_events = false,
 	use_ime = true,
