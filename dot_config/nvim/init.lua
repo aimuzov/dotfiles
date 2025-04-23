@@ -1,5 +1,5 @@
 local lazy_opts = {
-	spec = { { "aimuzov/LazyVimx", import = "lazyvimx.colorschemes.catppuccin" } },
+	spec = { { "aimuzov/LazyVimx", import = "lazyvimx.boot" } },
 
 	install = { colorscheme = { "catppuccin", "tokyonight" } },
 	checker = { enabled = true, notify = false },
