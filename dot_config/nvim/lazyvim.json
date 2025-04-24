@@ -1,6 +1,5 @@
 {
   "extras": [
-    "lazyvim.plugins.extras.coding.blink",
     "lazyvim.plugins.extras.coding.mini-surround",
     "lazyvim.plugins.extras.coding.yanky",
     "lazyvim.plugins.extras.dap.core",
@@ -10,33 +9,16 @@
     "lazyvim.plugins.extras.lang.helm",
     "lazyvim.plugins.extras.lang.json",
     "lazyvim.plugins.extras.lang.markdown",
+    "lazyvim.plugins.extras.lang.svelte",
     "lazyvim.plugins.extras.lang.toml",
     "lazyvim.plugins.extras.linting.eslint",
+    "lazyvim.plugins.extras.test.core",
     "lazyvim.plugins.extras.ui.alpha",
     "lazyvim.plugins.extras.ui.edgy",
     "lazyvim.plugins.extras.ui.treesitter-context",
     "lazyvim.plugins.extras.util.dot",
-    "lazyvim.plugins.extras.util.rest",
     "lazyvim.plugins.extras.vscode",
-    "lazyvimx.extras.core.all",
-    "lazyvimx.extras.optimizations.auto-apply-chezmoi-on-lazy-update",
-    "lazyvimx.extras.optimizations.auto-switch-colorscheme-on-signal",
-    "lazyvimx.extras.optimizations.auto-update-third-party-tools",
-    "lazyvimx.extras.optimizations.local-config",
-    "lazyvimx.extras.optimizations.man-mode",
-    "lazyvimx.extras.optimizations.stop-inactive-lsp",
-    "lazyvimx.extras.optimizations.stop-treesitter-on-large-js-files",
-    "lazyvimx.extras.test.jest",
-    "lazyvimx.extras.ui.style.editor.hide-hints-in-insert-mode",
-    "lazyvimx.extras.ui.style.hunks.highlight-words",
-    "lazyvimx.extras.ui.style.hunks.preview-in-popup",
-    "lazyvimx.extras.ui.style.popups.no-backdrop",
-    "lazyvimx.extras.ui.style.popups.rounded",
-    "lazyvimx.extras.ui.style.popups.size",
-    "lazyvimx.extras.ui.style.terminal.colorize-ansi-escape-sequences",
-    "lazyvimx.extras.ui.style.terminal.disable-line-numbers",
-    "lazyvimx.extras.ui.style.terminal.start-insert-on-open",
-    "lazyvimx.extras.ui.style.windows.bolder-separators"
+    "lazyvimx.extras.core.all"
   ],
   "news": {
     "NEWS.md": "10960"
