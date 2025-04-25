@@ -18,11 +18,8 @@ local lazy_opts = {
 local lazyvimx_path = vim.fn.getenv("HOME") .. "/Projects/" .. lazy_opts.spec[1][1]
 
 if vim.fn.isdirectory(lazyvimx_path) ~= 0 then
-	table.insert(lazy_opts.spec, 1, {
-		lazy_opts.spec[1][1],
-		dir = lazyvimx_path,
-		dev = true,
-	})
+	lazy_opts.spec[1].dir = lazyvimx_path
+	lazy_opts.spec[1].dev = true
 end
 
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
@@ -30,11 +27,11 @@ end
 local lazy_path = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 local lazy_url = "https://github.com/folke/lazy.nvim.git"
 
-vim.opt.rtp:prepend(vim.env.LAZY or lazy_path)
-
 if not vim.loop.fs_stat(lazy_path) then
-	vim.fn.system({ "git", "clone", "--filter=blob:none", lazy_url, "--branch=stable", lazy_path })
+	vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazy_url, lazy_path })
 end
+
+vim.opt.rtp:prepend(lazy_path)
 
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
