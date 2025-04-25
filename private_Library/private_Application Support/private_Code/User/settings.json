@@ -95,5 +95,7 @@
   "workbench.preferredDarkColorTheme": "Catppuccin Macchiato",
   "workbench.preferredLightColorTheme": "Catppuccin Latte",
   "workbench.startupEditor": "none",
-  "workbench.statusBar.visible": false
+  "workbench.statusBar.visible": false,
+  "mise.configureExtensionsAutomatically": false,
+  "explorer.confirmDelete": false
 }
