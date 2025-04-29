@@ -87,7 +87,7 @@ yabai -m rule --add space="graphic" app="^(Figma|Miro)$"
 yabai -m rule --add space="explore" app="^(Finder|Cyberduck)$"
 yabai -m rule --add space="fun" app="^(Steam Helper|Dota 2)$"
 yabai -m rule --add space="sys" app="^(System Settings|MacPass)$"
-yabai -m rule --add space="media" app="^(Yandex Music|Photos)$"
+yabai -m rule --add space="media" app="^(Yandex Music|Photos|mpv)$"
 yabai -m rule --add space="calls" app="^(Толк)$"
 yabai -m rule --add space="social" app="^(TiMe|Telegram|WhatsApp)$"
 yabai -m rule --add space="ai" app="^(ChatGPT)$"
@@ -97,6 +97,7 @@ yabai -m rule --add space="ai" app="^(ChatGPT)$"
 yabai -m rule --add manage=off app!="^(\
 Arc|\
 Calendar|\
+Code|\
 Cyberduck|\
 Figma|\
 Finder|\
@@ -107,7 +108,6 @@ Miro|\
 Telegram|\
 Things|\
 TiMe|\
-Code|\
 WezTerm|\
 WhatsApp|\
 Yandex|\

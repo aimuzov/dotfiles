@@ -1,4 +1,33 @@
 [[manager.prepend_keymap]]
-on = ["<C-s>"]
+on = ["<c-s>"]
 run = 'shell "$SHELL" --block --confirm'
 desc = "Open shell here"
+
+[[manager.prepend_keymap]]
+on = "<c-p>"
+run = 'shell -- qlmanage -p "$@"'
+
+[[manager.prepend_keymap]]
+on = "H"
+run = "plugin duckdb -1"
+desc = "Scroll one column to the left"
+
+[[manager.prepend_keymap]]
+on = "L"
+run = "plugin duckdb +1"
+desc = "Scroll one column to the right"
+
+[[manager.prepend_keymap]]
+on = ["g", "o"]
+run = "plugin duckdb -open"
+desc = "open with duckdb"
+
+[[manager.prepend_keymap]]
+on = ["g", "u"]
+run = "plugin duckdb -ui"
+desc = "open with duckdb ui"
+
+[[manager.prepend_keymap]]
+on = ["C"]
+run = "plugin ouch"
+desc = "Compress with ouch"

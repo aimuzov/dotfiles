@@ -35,6 +35,7 @@ neovim = ["stable", "nightly"]
 "ubi:jesseduffield/lazygit" = "latest"
 "ubi:junegunn/fzf" = "latest"
 "ubi:kirtan-shah/nowplaying-cli" = "latest"
+"ubi:ouch-org/ouch" = "latest"
 "ubi:neovim/neovim" = [
 	{ version = "stable", exe = "nvim" },
 	{ version = "nightly", exe = "nvim" },
