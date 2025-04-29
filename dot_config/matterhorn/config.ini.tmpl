@@ -1,0 +1,9 @@
+[mattermost]
+user: {{ (keepassxcAttribute "MATTERHORN" "USER") }} 
+team: {{ (keepassxcAttribute "MATTERHORN" "TEAM") }} 
+host: {{ (keepassxcAttribute "MATTERHORN" "HOST") }} 
+tokencmd: {{ (keepassxcAttribute "MATTERHORN" "TOKEN_CMD") }}
+
+enableMouseMode = true
+urlOpenCommand = open
+urlOpenCommandIsInteractive = true
