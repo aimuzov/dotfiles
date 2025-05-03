@@ -36,6 +36,7 @@ neovim = ["stable", "nightly"]
 "ubi:junegunn/fzf" = "latest"
 "ubi:kirtan-shah/nowplaying-cli" = "latest"
 "ubi:matterhorn-chat/matterhorn" = "latest"
+"ubi:openziti/zrok" = "latest"
 "ubi:ouch-org/ouch" = "latest"
 "ubi:neovim/neovim" = [
 	{ version = "stable", exe = "nvim" },

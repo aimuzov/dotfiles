@@ -12,7 +12,6 @@ const scopes = [
   "karabiner",
   "lazygit",
   "mise",
-  "ngrok",
   "nvim",
   "oh-my-posh",
   "other",
@@ -29,6 +28,7 @@ const scopes = [
   "yabai",
   "yazi",
   "zed",
+  "zrok",
   "zsh",
 ];
 
