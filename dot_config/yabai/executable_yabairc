@@ -80,7 +80,7 @@ space_create 2 12 "ai"
 # -- Assigning windows in spaces ---------------------------------------------------------------------------------------
 
 yabai -m rule --add app="^.*$" space="any"
-yabai -m rule --add space="code" app="^(WezTerm|Ghostty|Code)$"
+yabai -m rule --add space="code" app="^(WezTerm|Ghostty|Code|Cursor)$"
 yabai -m rule --add space="serf" app="^(Arc|Google Chrome)$"
 yabai -m rule --add space="org" app="^(Things|Calendar|Mail)$"
 yabai -m rule --add space="graphic" app="^(Figma|Miro)$"
@@ -98,6 +98,7 @@ yabai -m rule --add manage=off app!="^(\
 Arc|\
 Calendar|\
 Code|\
+Cursor|\
 Cyberduck|\
 Figma|\
 Finder|\
