@@ -118,6 +118,7 @@ Yandex Music|\
 )$"
 
 yabai -m rule --add app="^Calendar$" title="General" manage=off
+yabai -m rule --add app="^Mail$" title="General" manage=off
 yabai -m rule --add app="^Finder$" title="(Copy|Connect|Move|Info|Pref|Finder Settings)" manage=off
 yabai -m rule --add app="^Things$" title="(Quick Entry)" manage=off
 
