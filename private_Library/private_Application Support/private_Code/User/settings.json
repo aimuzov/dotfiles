@@ -97,5 +97,6 @@
   "workbench.startupEditor": "none",
   "workbench.statusBar.visible": false,
   "mise.configureExtensionsAutomatically": false,
-  "explorer.confirmDelete": false
+  "explorer.confirmDelete": false,
+  "update.showReleaseNotes": false
 }
