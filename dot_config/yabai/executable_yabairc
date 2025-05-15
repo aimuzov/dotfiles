@@ -70,12 +70,12 @@ space_create 1 3 "org"
 space_create 1 4 "graphic"
 space_create 1 5 "explore"
 space_create 1 6 "fun"
-space_create 1 7 "sys"
-space_create 2 8 "media"
-space_create 2 9 "calls"
+space_create 2 7 "sys"
+space_create 2 8 "ai"
+space_create 2 9 "any"
 space_create 2 10 "social"
-space_create 2 11 "any"
-space_create 2 12 "ai"
+space_create 2 11 "calls"
+space_create 2 12 "media"
 
 # -- Assigning windows in spaces ---------------------------------------------------------------------------------------
 
