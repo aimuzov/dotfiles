@@ -1,6 +1,7 @@
 {
     "freetype": true,
     "new-windows-size-as-first": true,
+    "prefer-ipv6": true,
     "send-large-photos": true,
     "show-peer-id-below-about": true,
     "tabbed-panel-show-on-click": true,
