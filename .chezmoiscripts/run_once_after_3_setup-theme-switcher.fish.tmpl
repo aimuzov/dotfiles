@@ -1,0 +1,9 @@
+#!/usr/bin/env fish
+# vi: ft=fish
+
+{{ if (eq .chezmoi.os "darwin") -}}
+
+cd $HOME/Library/ThemeSwitcher && swift build --configuration release
+launchctl load -w $HOME/Library/LaunchAgents/io.aimuzov.theme-switcher.plist
+
+{{ end -}}

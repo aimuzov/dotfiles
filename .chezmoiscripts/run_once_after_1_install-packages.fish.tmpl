@@ -1,0 +1,9 @@
+#!/usr/bin/env fish
+# vi: ft=fish
+
+{{ if (eq .chezmoi.os "darwin") -}}
+
+brew bundle install --file $XDG_CONFIG_HOME/homebrew/Brewfile
+mise install -y
+
+{{ end -}}

@@ -1,0 +1,11 @@
+#!/usr/bin/env fish
+# vi: ft=fish
+
+{{ if (eq .chezmoi.os "darwin") -}}
+
+git clone https://github.com/FelixKratz/SbarLua.git /tmp/SbarLua
+cd /tmp/SbarLua
+make install
+rm -rf /tmp/SbarLua
+
+{{ end -}}

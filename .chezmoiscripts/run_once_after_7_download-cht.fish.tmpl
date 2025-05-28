@@ -1,0 +1,11 @@
+#!/usr/bin/env fish
+# vi: ft=fish
+
+{{ if (eq .chezmoi.os "darwin") -}}
+
+set -l CHT_PATH "$HOME/.bin/cht.sh"
+
+curl https://cht.sh/:cht.sh >$CHT_PATH
+chmod +x $CHT_PATH
+
+{{ end -}}
