@@ -105,5 +105,6 @@
         "plaintext": false,
         "markdown": false,
         "scminput": false
-    }
+    },
+    "cursor.general.gitGraphIndexing": "enabled"
 }
