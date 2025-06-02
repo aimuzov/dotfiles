@@ -106,5 +106,9 @@
         "markdown": false,
         "scminput": false
     },
-    "cursor.general.gitGraphIndexing": "enabled"
+    "cursor.general.gitGraphIndexing": "enabled",
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "editor.formatOnSave": true
 }
