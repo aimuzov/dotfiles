@@ -6,6 +6,14 @@ stripComponents = 1
 refreshPeriod = "168h"
 include = ["*/catppuccin-latte.yazi/**", "*/catppuccin-macchiato.yazi/**"]
 
+[".config/yazi/plugins/piper.yazi"]
+type = "archive"
+url = "https://github.com/yazi-rs/plugins/archive/master.tar.gz"
+exact = true
+stripComponents = 2
+refreshPeriod = "168h"
+include = ["*/piper.yazi/**"]
+
 [".config/yazi/plugins/yatline.yazi"]
 type = "archive"
 url = "https://github.com/imsi32/yatline.yazi/archive/master.tar.gz"
@@ -23,13 +31,6 @@ refreshPeriod = "168h"
 [".config/yazi/plugins/yatline-catppuccin.yazi"]
 type = "archive"
 url = "https://github.com/imsi32/yatline-catppuccin.yazi/archive/master.tar.gz"
-exact = true
-stripComponents = 1
-refreshPeriod = "168h"
-
-[".config/yazi/plugins/duckdb.yazi"]
-type = "archive"
-url = "https://github.com/wylie102/duckdb.yazi/archive/master.tar.gz"
 exact = true
 stripComponents = 1
 refreshPeriod = "168h"

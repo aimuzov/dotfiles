@@ -42,6 +42,8 @@ neovim = ["stable", "nightly"]
 	{ version = "stable", exe = "nvim" },
 	{ version = "nightly", exe = "nvim" },
 ]
+"ubi:charmbracelet/glow" = "latest"
+"ubi:sharkdp/hexyl" = "latest"
 "ubi:twpayne/chezmoi" = "latest"
 "ubi:sharkdp/bat" = "latest"
 "ubi:sharkdp/fd" = "latest"

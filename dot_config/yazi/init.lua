@@ -10,13 +10,13 @@ require("yatline"):setup({
 
 	header_line = {
 		left = {
-			section_a = { { type = "line", custom = false, name = "tabs", params = { "left" } } },
+			section_a = {},
 			section_b = {},
 			section_c = {},
 		},
 		right = {
 			section_a = {},
-			section_b = { { type = "coloreds", custom = false, name = "githead" } },
+			section_b = {},
 			section_c = {},
 		},
 	},
@@ -31,9 +31,10 @@ require("yatline"):setup({
 			},
 		},
 		right = {
-			section_a = { { type = "string", custom = false, name = "cursor_position" } },
+			section_a = { { type = "line", custom = false, name = "tabs", params = { "right" } } },
 			section_b = {},
 			section_c = {
+				{ type = "string", custom = false, name = "cursor_position" },
 				{ type = "string", custom = false, name = "hovered_file_extension", params = { true } },
 				{ type = "coloreds", custom = false, name = "permissions" },
 			},
@@ -41,10 +42,8 @@ require("yatline"):setup({
 	},
 })
 
-require("yatline-githead"):setup({
-	theme = catppuccin_theme,
-	branch_symbol = "",
-	branch_borders = "",
-})
-
-require("duckdb"):setup()
+-- require("githead"):setup({
+-- 	theme = catppuccin_theme,
+-- 	branch_symbol = "",
+-- 	branch_borders = "",
+-- })
