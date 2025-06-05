@@ -15,12 +15,13 @@ ruby = "latest"
 rust = "latest"
 neovim = ["stable", "nightly"]
 
+"cargo:bottom" = "latest"
 "cargo:eza" = "latest"
+"cargo:genact" = "latest"
+"cargo:tokei" = "latest"
+"cargo:vivid" = "latest"
 "cargo:yazi-cli" = "latest"
 "cargo:yazi-fm" = "latest"
-"cargo:vivid" = "latest"
-"cargo:bottom" = "latest"
-"cargo:tokei" = "latest"
 
 "npm:@georgesg/arc-cli" = { version = "latest", exe = "arc-cli" }
 "npm:@aimuzov/sketchybar-app-font" = { version = "latest", exe = "sketchybar-app-font" }
