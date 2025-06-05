@@ -1,0 +1,6 @@
+#!/usr/bin/env fish
+# vi: ft=fish
+
+{{ if (eq .chezmoi.os "darwin") -}}
+bat cache --build
+{{ end -}}
