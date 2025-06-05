@@ -21,13 +21,6 @@ exact = true
 stripComponents = 1
 refreshPeriod = "168h"
 
-[".config/yazi/plugins/yatline-githead.yazi"]
-type = "archive"
-url = "https://github.com/imsi32/yatline-githead.yazi/archive/master.tar.gz"
-exact = true
-stripComponents = 1
-refreshPeriod = "168h"
-
 [".config/yazi/plugins/yatline-catppuccin.yazi"]
 type = "archive"
 url = "https://github.com/imsi32/yatline-catppuccin.yazi/archive/master.tar.gz"

@@ -1,10 +1,12 @@
 local flavor = os.getenv("MACOS_IS_DARK") == "yes" and "macchiato" or "latte"
 local catppuccin_theme = require("yatline-catppuccin"):setup(flavor)
 
+th.mgr.border_style.fg = os.getenv("MACOS_IS_DARK") == "yes" and "#32324d" or "#dfe3ec"
+
 catppuccin_theme.section_separator = { open = "", close = "" }
 catppuccin_theme.part_separator = { open = "", close = "" }
 
-require("yatline"):setup({
+local yatline_config = {
 	theme = catppuccin_theme,
 	show_background = true,
 
@@ -40,10 +42,14 @@ require("yatline"):setup({
 			},
 		},
 	},
-})
+}
 
--- require("githead"):setup({
--- 	theme = catppuccin_theme,
--- 	branch_symbol = "",
--- 	branch_borders = "",
--- })
+local githead_config = {
+	theme = catppuccin_theme,
+	branch_symbol = "",
+	branch_borders = "",
+}
+
+require("border"):setup()
+require("yatline"):setup(yatline_config)
+-- require("githead"):setup(githead_config)
