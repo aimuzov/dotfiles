@@ -81,7 +81,7 @@ space_create 2 12 "media"
 
 yabai -m rule --add app="^.*$" space="any"
 yabai -m rule --add space="code" app="^(WezTerm|Ghostty|Code|Cursor)$"
-yabai -m rule --add space="serf" app="^(Arc|Google Chrome)$"
+yabai -m rule --add space="serf" app="^(Arc|Dia|Google Chrome)$"
 yabai -m rule --add space="org" app="^(Things|Calendar|Mail)$"
 yabai -m rule --add space="graphic" app="^(Figma|Miro)$"
 yabai -m rule --add space="explore" app="^(Finder|Cyberduck)$"
@@ -100,6 +100,7 @@ Calendar|\
 Code|\
 Cursor|\
 Cyberduck|\
+Dia|\
 Figma|\
 Finder|\
 Ghostty|\
