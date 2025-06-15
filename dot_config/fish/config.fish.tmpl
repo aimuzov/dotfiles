@@ -79,14 +79,17 @@ end
 
 # -- OH MY POSH --------------------------------------------------------------------------------------------------------
 
-set fish_greeting # Disable new user greeting.
+set fish_greeting
 
 if type -q oh-my-posh
-    if not test -r $__fish_cache_dir/omp_init.fish
-        oh-my-posh init fish --config $XDG_CONFIG_HOME/oh-my-posh/config.json >$__fish_cache_dir/omp_init.fish
+    set --local omp_ver $(oh-my-posh --version)
+    set --local omp_path $__fish_cache_dir/omp_init_$omp_ver.fish
+
+    if not test -r $omp_path
+        oh-my-posh init fish --config $XDG_CONFIG_HOME/oh-my-posh/config.json >$omp_path
     end
 
-    source $__fish_cache_dir/omp_init.fish
+    source $omp_path
 end
 
 # -- BREW --------------------------------------------------------------------------------------------------------------
