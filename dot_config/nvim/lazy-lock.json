@@ -2,7 +2,7 @@
   "LazyVim": { "branch": "main", "commit": "25abbf546d564dc484cf903804661ba12de45507" },
   "SchemaStore.nvim": { "branch": "main", "commit": "19158d5cb9d5e066d41d7510a1588719bf48542c" },
   "alpha-nvim": { "branch": "main", "commit": "a35468cd72645dbd52c0624ceead5f301c566dff" },
-  "avante.nvim": { "branch": "main", "commit": "b8aa182c3f0b4ae992c7f5311629e644b9a0af74" },
+  "avante.nvim": { "branch": "main", "commit": "fcf457ed7fc6ceb671ccc21f43e26ab2e75f3924" },
   "baleia.nvim": { "branch": "main", "commit": "1b25eac3ac03659c3d3af75c7455e179e5f197f7" },
   "blink.cmp": { "branch": "main", "commit": "022521a8910a5543b0251b21c9e1a1e989745796" },
   "blink.compat": { "branch": "main", "commit": "2ed6d9a28b07fa6f3bface818470605f8896408c" },
@@ -86,5 +86,5 @@
   "vscode-js-debug": { "branch": "main", "commit": "0b5e0dade997b3c702a98e1f58989afcb30612d6" },
   "which-key.nvim": { "branch": "main", "commit": "370ec46f710e058c9c1646273e6b225acf47cbed" },
   "yanky.nvim": { "branch": "main", "commit": "04775cc6e10ef038c397c407bc17f00a2f52b378" },
-  "yazi.nvim": { "branch": "main", "commit": "10c86f2c972f6b7543221f917ec30928595d415d" }
+  "yazi.nvim": { "branch": "main", "commit": "c61f2d29ab94c5f22cbca5088dcfd33d7659dae8" }
 }
