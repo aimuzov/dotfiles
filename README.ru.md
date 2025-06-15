@@ -106,6 +106,10 @@ $(mise where ubi:twpayne/chezmoi)/bin/chezmoi init --apply aimuzov
 └── private_Library/        # Приватные настройки macOS
 ```
 
+### Документация по конфигурации
+
+- [Fish Shell](dot_config/fish/README.md) - Настройка и кастомизация shell
+
 ## Полезные ссылки
 
 - [macos-defaults.com](https://macos-defaults.com/) - справочник по настройкам macOS
