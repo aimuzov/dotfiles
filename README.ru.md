@@ -1,5 +1,13 @@
 # Dotfiles
 
+<p>
+<img src="https://img.shields.io/badge/platform-macos-lightgrey?logo=apple" alt="Platform" />
+<a href="https://www.chezmoi.io/"><img src="https://img.shields.io/badge/managed%20by-chezmoi-yellow?logo=chezmoi" alt="Chezmoi" /></a>
+<a href="https://github.com/aimuzov/dotfiles/commits"><img src="https://img.shields.io/github/last-commit/aimuzov/dotfiles?color=orange" alt="Last commit" /></a>
+<a href="https://github.com/aimuzov/dotfiles/blob/main/LICENSE"><img src="https://img.shields.io/github/license/aimuzov/dotfiles?color=blue" alt="License" /></a>
+<a href="https://github.com/aimuzov/dotfiles/stargazers"><img src="https://img.shields.io/github/stars/aimuzov/dotfiles?color=gray" alt="GitHub stars" /></a>
+</p>
+
 > ⚠️ **Внимание**: Эта документация находится в режиме разработки и может быть неполной или содержать неточности. Структура и содержимое могут меняться.
 >
 > [🇬🇧 English version](README.md)
