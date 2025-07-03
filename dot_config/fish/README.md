@@ -40,8 +40,8 @@ The configuration sets up various paths for functions and completions:
 
 The shell uses Catppuccin theme with automatic dark/light mode detection based on macOS system settings:
 
-- Dark mode: Catppuccin Macchiato
-- Light mode: Catppuccin Latte
+- Dark mode: [Catppuccin Macchiato](https://github.com/catppuccin/fish)
+- Light mode: [Catppuccin Latte](https://github.com/catppuccin/fish)
 
 ## Cache Management
 

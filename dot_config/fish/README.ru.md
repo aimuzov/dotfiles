@@ -40,8 +40,8 @@
 
 Оболочка использует тему Catppuccin с автоматическим определением темной/светлой темы на основе настроек macOS:
 
-- Темная тема: Catppuccin Macchiato
-- Светлая тема: Catppuccin Latte
+- Тёмная тема: [Catppuccin Macchiato](https://github.com/catppuccin/fish)
+- Светлая тема: [Catppuccin Latte](https://github.com/catppuccin/fish)
 
 ## Управление кэшем
 
