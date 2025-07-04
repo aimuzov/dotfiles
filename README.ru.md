@@ -118,6 +118,7 @@ $(mise where ubi:twpayne/chezmoi)/bin/chezmoi init --apply aimuzov
 
 - [Fish Shell](dot_config/fish/README.md) - Настройка и кастомизация shell
 - [SketchyBar](dot_config/sketchybar/README.ru.md) - Конфигурация и модули статус-бара
+- [Yazi](dot_config/yazi/README.ru.md) — Настройки и плагины файлового менеджера
 
 ## Полезные ссылки
 
