@@ -19,6 +19,6 @@ window-padding-y = 0,0
 
 keybind = global:alt+escape=toggle_quick_terminal
 keybind = ctrl+m=text:\x0D
-keybind = page_up=scroll_page_lines:-25
-keybind = page_down=scroll_page_lines:26
+keybind = shift+up=scroll_page_lines:-25
+keybind = shift+down=scroll_page_lines:26
 
