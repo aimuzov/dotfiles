@@ -167,21 +167,22 @@ if type -q fzf
 
     # https://github.com/catppuccin/fzf?tab=readme-ov-file#usage
     if [ $MACOS_IS_DARK = yes ]
-        set -gx FZF_DEFAULT_OPTS " \
-		--color=bg+:#363a4f,bg:-1,spinner:#f4dbd6,hl:#ed8796 \
-		--color=fg:#cad3f5,header:#ed8796,info:#c6a0f6,pointer:#f4dbd6 \
-		--color=marker:#f4dbd6,fg+:#cad3f5,prompt:#c6a0f6,hl+:#ed8796"
+        source $fisher_path/themes/catppuccin-fzf-macchiato.fish
     else
-        set -gx FZF_DEFAULT_OPTS " \
-		--color=bg+:#ccd0da,bg:-1,spinner:#dc8a78,hl:#d20f39 \
-		--color=fg:#4c4f69,header:#d20f39,info:#8839ef,pointer:#dc8a78 \
-		--color=marker:#dc8a78,fg+:#4c4f69,prompt:#8839ef,hl+:#d20f39"
+        source $fisher_path/themes/catppuccin-fzf-latte.fish
     end
 
-    set -gx FZF_DEFAULT_OPTS "$FZF_DEFAULT_OPTS --reverse --height '90%'"
+    set -gxa FZF_DEFAULT_OPTS "--reverse --height '100%' \
+		--bind ctrl-b:preview-up,ctrl-f:preview-down\
+		--bind ctrl-u:preview-half-page-up,ctrl-d:preview-half-page-down\
+		--bind 'ctrl-/:change-preview-window(hidden|)'\
+		--preview-window 'right:60%'"
     set -gx FZF_DEFAULT_COMMAND "fd --type f --strip-cwd-prefix --hidden --follow"
     set -gx FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
-    set -gx FZF_CTRL_T_OPTS "--preview 'bat -n --color=always {}' --bind 'ctrl-/:change-preview-window(hidden|)'"
+    set -gxa FZF_CTRL_T_OPTS "--preview 'bat {}'"
+
+    # https://github.com/PatrickF1/fzf.fish?tab=readme-ov-file#integrate-with-a-diff-highlighter
+    set fzf_diff_highlighter diff-so-fancy
 end
 
 # -- ZOXIDE ------------------------------------------------------------------------------------------------------------
@@ -329,4 +330,4 @@ and . (code --locate-shell-integration-path fish)
 set -gx BAT_THEME $CATPPUCCIN_FLAVOR
 set -gx SHELL (which fish)
 
-set -gx _GIT_PATHSPEC ":!package-lock.json"
+set -gx _GIT_PATHSPEC ":!package-lock.json" # https://git-quick-stats.sh/#docs
