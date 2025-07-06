@@ -1,2 +1,6 @@
+--color=always
+--ignored-suffix ".tmpl"
+--line-range=:90
 --map-syntax ".*ignore:Git Ignore"
+--style=numbers,changes
 --tabs 4
