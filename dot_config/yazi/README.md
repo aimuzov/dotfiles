@@ -6,6 +6,16 @@ This folder contains user settings and plugins for the [Yazi](https://yazi-rs.gi
 
 ---
 
+## Screenshots
+
+Here is how the Yazi interface looks with the current settings:
+
+|                      Light theme                      |                     Dark theme                      |
+| :---------------------------------------------------: | :-------------------------------------------------: |
+| ![Yazi Light](../../assets/yazi.sketchybar.light.png) | ![Yazi Dark](../../assets/yazi.sktechybar.dark.png) |
+
+---
+
 ## Contents
 
 - `init.lua` — the main Lua script for advanced interface and plugin configuration in Yazi.
