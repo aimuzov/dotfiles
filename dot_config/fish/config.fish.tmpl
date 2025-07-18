@@ -324,10 +324,10 @@ fish_add_path --prepend (path filter \
 	node_modules/.bin
 )
 
-# -- VSCODE ------------------------------------------------------------------------------------------------------------
+# -- VSCODE AND OTHERS -------------------------------------------------------------------------------------------------
 
-string match -q "$TERM_PROGRAM" vscode
-and . (code --locate-shell-integration-path fish)
+string match -q "$TERM_PROGRAM" vscode and . (code --locate-shell-integration-path fish)
+string match -q "$TERM_PROGRAM" kiro and . (kiro --locate-shell-integration-path fish)
 
 # -- OTHER -------------------------------------------------------------------------------------------------------------
 
