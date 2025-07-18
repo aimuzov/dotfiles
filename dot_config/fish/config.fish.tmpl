@@ -172,14 +172,14 @@ if type -q fzf
         source $fisher_path/themes/catppuccin-fzf-latte.fish
     end
 
-    set -gxa FZF_DEFAULT_OPTS "--reverse --height '100%' \
+    set -Uxa FZF_DEFAULT_OPTS "--reverse --height '100%' \
 		--bind ctrl-b:preview-up,ctrl-f:preview-down\
 		--bind ctrl-u:preview-half-page-up,ctrl-d:preview-half-page-down\
 		--bind 'ctrl-/:change-preview-window(hidden|)'\
 		--preview-window 'right:60%'"
-    set -gx FZF_DEFAULT_COMMAND "fd --type f --strip-cwd-prefix --hidden --follow"
-    set -gx FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
-    set -gxa FZF_CTRL_T_OPTS "--preview 'bat {}'"
+    set -Ux FZF_DEFAULT_COMMAND "fd --type f --strip-cwd-prefix --hidden --follow"
+    set -Ux FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
+    set -Uxa FZF_CTRL_T_OPTS "--preview 'bat {}'"
 
     # https://github.com/PatrickF1/fzf.fish?tab=readme-ov-file#integrate-with-a-diff-highlighter
     set fzf_diff_highlighter diff-so-fancy
