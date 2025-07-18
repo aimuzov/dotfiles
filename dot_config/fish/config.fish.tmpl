@@ -211,10 +211,6 @@ end
 
 fish_vi_key_bindings
 
-bind -M visual y fish_clipboard_copy
-bind -M normal yy fish_clipboard_copy
-bind p fish_clipboard_paste
-
 function rerender_on_bind_mode_change --on-variable fish_bind_mode
     if test "$fish_bind_mode" != "$FISH__BIND_MODE"
         set -gx FISH_BIND_MODE $fish_bind_mode
@@ -225,6 +221,15 @@ end
 function fish_default_mode_prompt --description "Display vi prompt mode"
     # This function is masked and does nothing
 end
+
+# -- BINDINGS ----------------------------------------------------------------------------------------------------------
+
+bind -M visual y fish_clipboard_copy
+bind -M normal yy fish_clipboard_copy
+bind p fish_clipboard_paste
+
+bind -M insert ctrl-l clear_and_reinit
+bind ctrl-l clear_and_reinit
 
 # -- EDITOR ------------------------------------------------------------------------------------------------------------
 
@@ -244,7 +249,6 @@ set -gx GITHUB_TOKEN "{{ (keepassxcAttribute "GITHUB" "TOKEN") }}"
 if status is-interactive
     abbr -a -- e nvim
     abbr -a -- y yazi
-    abbr -a -- c "clear && exec fish"
     abbr -a -- ca chezmoi apply
     abbr -a -- ee nvim_config_pick
     abbr -a -- eu "nvim --headless '+Lazy! update' +qa && nvim"
