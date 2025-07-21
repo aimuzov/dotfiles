@@ -173,10 +173,13 @@ if type -q fzf
     end
 
     set -Uxa FZF_DEFAULT_OPTS "--reverse --height '100%' \
-		--bind ctrl-b:preview-up,ctrl-f:preview-down\
-		--bind ctrl-u:preview-half-page-up,ctrl-d:preview-half-page-down\
-		--bind 'ctrl-/:change-preview-window(hidden|)'\
-		--preview-window 'right:60%'"
+        --bind ctrl-b:preview-up,ctrl-f:preview-down \
+        --bind ctrl-u:preview-half-page-up,ctrl-d:preview-half-page-down \
+        --bind 'ctrl-/:change-preview-window(hidden|)' \
+        --bind 'ctrl-e:execute(nvim {})' \
+        --walker-skip .git,node_modules \
+        --preview-window 'right:60%' \
+        --multi"
     set -Ux FZF_DEFAULT_COMMAND "fd --type f --strip-cwd-prefix --hidden --follow"
     set -Ux FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
     set -Uxa FZF_CTRL_T_OPTS "--preview 'bat {}'"
