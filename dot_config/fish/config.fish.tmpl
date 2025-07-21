@@ -227,12 +227,23 @@ end
 
 # -- BINDINGS ----------------------------------------------------------------------------------------------------------
 
-bind -M visual y fish_clipboard_copy
-bind -M normal yy fish_clipboard_copy
-bind p fish_clipboard_paste
+function bind_all_modes
+    set -l key $argv[1]
+    set -l cmd $argv[2]
 
-bind -M insert ctrl-l clear_and_reinit
-bind ctrl-l clear_and_reinit
+    for mode in (bind -L)
+        bind -M $mode $key $cmd
+    end
+end
+
+function fish_user_key_bindings
+    bind -M visual y fish_clipboard_copy
+    bind -M normal yy fish_clipboard_copy
+    bind p fish_clipboard_paste
+
+    bind_all_modes ctrl-l clear_and_reinit
+    bind_all_modes ctrl-д clear_and_reinit
+end
 
 # -- EDITOR ------------------------------------------------------------------------------------------------------------
 
