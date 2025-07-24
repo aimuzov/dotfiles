@@ -111,5 +111,6 @@
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "editor.formatOnSave": true,
-    "javascript.updateImportsOnFileMove.enabled": "always"
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "svelte.enable-ts-plugin": true
 }
