@@ -3,19 +3,22 @@
   "profiles": [
     {
       "complex_modifications": {
+        "parameters": {
+          "basic.simultaneous_threshold_milliseconds": 90,
+          "basic.to_if_alone_timeout_milliseconds": 300,
+          "basic.to_if_held_down_threshold_milliseconds": 110
+        },
         "rules": [
           {
             "description": "Disable Control + Command + Space",
             "manipulators": [
               {
-                "type": "basic",
                 "from": {
                   "key_code": "spacebar",
-                  "modifiers": {
-                    "mandatory": ["command", "control"]
-                  }
+                  "modifiers": { "mandatory": ["command", "control"] }
                 },
-                "to": [{ "key_code": "vk_none" }]
+                "to": [{ "key_code": "vk_none" }],
+                "type": "basic"
               }
             ]
           },
@@ -478,3 +481,4 @@
     }
   ]
 }
+
