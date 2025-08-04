@@ -17,6 +17,8 @@ This document describes the configuration of the Fish shell environment.
 - [Key Bindings](#key-bindings)
 - [Environment Variables](#environment-variables)
 - [Abbreviations and Aliases](#abbreviations-and-aliases)
+- [Custom Functions](#custom-functions)
+- [Secrets Management](#secrets-management)
 
 ## XDG Base Directories
 
@@ -43,12 +45,15 @@ The shell uses Catppuccin theme with automatic dark/light mode detection based o
 - Dark mode: [Catppuccin Macchiato](https://github.com/catppuccin/fish)
 - Light mode: [Catppuccin Latte](https://github.com/catppuccin/fish)
 
+The theme automatically switches based on the system appearance setting.
+
 ## Cache Management
 
 Cache files are managed in `$XDG_CACHE_HOME/fish`:
 
 - Expired cache files (older than 1200 minutes) are automatically removed
-- Cache initialization for various tools (brew, fzf, zoxide, etc.)
+- Cache initialization for various tools (brew, fzf, zoxide, mise, etc.)
+- Cached configurations for better performance
 
 ## Plugin Management
 
@@ -58,45 +63,80 @@ Uses Fisher as the plugin manager:
 - Custom plugins directory: `$__fish_config_dir/plugins`
 - Automatic plugin initialization and updates
 
+### Installed Plugins
+
+- `catppuccin/fzf` - Catppuccin theme for FZF
+- `jorgebucaran/fisher` - Plugin manager itself
+- `PatrickF1/fzf.fish` - FZF integration for Fish
+- `wfxr/forgit` - Git workflow enhancement
+
 ## Shell Integration
 
 ### Oh My Posh
 
-- Custom prompt configuration
+- Custom prompt configuration from `$XDG_CONFIG_HOME/oh-my-posh/config.json`
 - Automatic theme switching based on system appearance
+- Version-based caching for performance
 
 ### FZF Integration
 
-- Custom color schemes for dark/light modes
-- Default commands and preview settings
-- Integration with `fd` for file searching
+- Custom color schemes for dark/light modes using Catppuccin themes
+- Default commands and preview settings with `fd`
+- Integration with `bat` for file preview
+- Custom key bindings for navigation and file editing
+- Integration with `diff-so-fancy` for diff highlighting
+
+#### Screenshots
+
+Here is how FZF looks with the current Catppuccin theme settings:
+
+|               Light theme                |               Dark theme               |
+| :--------------------------------------: | :------------------------------------: |
+| ![FZF Light](../../assets/fzf.light.png) | ![FZF Dark](../../assets/fzf.dark.png) |
 
 ### Zoxide
 
 - Directory jumping functionality
-- Automatic initialization
+- Automatic initialization with caching
+
+### Chezmoi
+
+- Template management integration
+- Automatic completion generation
 
 ## Development Tools
 
 ### Version Managers
 
-- ASDF configuration for multiple language versions
-- MISE configuration for development environment management
+- **ASDF**: Configuration for multiple language versions
+  - Automatic shims setup
+  - Completion generation
+  - Config file location: `$HOME/.config/asdf/asdfrc`
+- **MISE**: Modern development environment management
+  - Automatic activation
+  - Completion generation
+  - Install path: `/opt/homebrew/bin/mise`
 
 ### Homebrew
 
-- Automatic shell environment setup
+- Automatic shell environment setup with caching
 - Fish completions integration
-- Analytics disabled by default
+- Analytics disabled by default (`HOMEBREW_NO_ANALYTICS=1`)
+
+### WebOS TV SDK
+
+- SDK home: `$HOME/stv-tools/webos-sdk`
+- CLI tools path: `$LG_WEBOS_TV_SDK_HOME/bin`
+- Tizen Studio integration
 
 ## File Management
 
 ### EZA (Modern ls)
 
-- Custom color schemes using Vivid
+- Custom color schemes using Vivid with Catppuccin themes
 - Various aliases for different listing options:
-  - `l`: Basic listing
-  - `ll`: Detailed listing
+  - `l`: Basic listing with git ignore
+  - `ll`: Detailed listing with headers
   - `llm`: Modified time sorting
   - `la`: All files with details
   - `lt`: Tree view
@@ -105,12 +145,19 @@ Uses Fisher as the plugin manager:
 
 - Used as a replacement for `cat`
 - Theme matching system appearance
+- Syntax highlighting for various file types
 
 ## Key Bindings
 
 - Vi mode enabled with custom bindings
 - Clipboard integration for copy/paste operations
 - Visual mode support
+- Custom bindings:
+  - `Ctrl+L` / `Ctrl+Д`: Clear screen and reinitialize
+  - `Ctrl+E` / `Ctrl+У`: Open Neovim
+  - `y` in visual mode: Copy to clipboard
+  - `yy` in normal mode: Copy line to clipboard
+  - `p`: Paste from clipboard
 
 ## Environment Variables
 
@@ -125,6 +172,16 @@ Uses Fisher as the plugin manager:
 - `GOPATH`: `$HOME/Library/go`
 - `LG_WEBOS_TV_SDK_HOME`: WebOS TV SDK location
 - `BAT_THEME`: Matches system theme
+- `SHELL`: Fish shell path
+
+### Path Additions
+
+- `$HOME/bin`, `$HOME/.bin`, `$HOME/.local/bin`
+- `$HOME/.cargo/bin` (Rust)
+- `$GOPATH/bin` (Go)
+- `$WEBOS_CLI_TV` (WebOS tools)
+- `node_modules/.bin` (Node.js)
+- Coreutils GNU binaries
 
 ## Abbreviations and Aliases
 
@@ -132,29 +189,40 @@ Uses Fisher as the plugin manager:
 
 - `e`: Open Neovim
 - `y`: Open Yazi file manager
-- `c`: Clear screen and restart fish
+- `ca`: Apply Chezmoi changes
+- `ee`: Neovim config picker
+- `eu`: Update Neovim plugins
+- `f`: Fish performance test
 - `q`: Exit shell
 
 ### Git
 
 - `gb`: List branches
-- `gco`: Checkout
-- `gp`: Push
+- `gba`: List all branches
+- `gbsup`: Set upstream branch
+- `gc!`: Amend commit
+- `gcn!`: Amend commit without editing
+- `gf`: Fetch
+- `gfa`: Fetch all and prune
 - `gl`: Pull
-- And many more git flow related abbreviations
+- `gp`: Push
+- `gpsup`: Push and set upstream
+- `gp!`: Force push with lease
+- `gco`: Checkout
+- `gcod`: Checkout develop
+- `gcom`: Checkout main
+
+### Git Flow
+
+- `gfb`, `gff`, `gfr`, `gfh`, `gfs`: Git flow commands
+- `gfbs`, `gffs`, `gfrs`, `gfhs`, `gfss`: Start flow branches
+- `gfbt`, `gfft`, `gfrt`, `gfht`, `gfst`: Track flow branches
 
 ### Development
 
 - `nr`: npm run
 - `cat`: bat (with syntax highlighting)
 - Various `ls` alternatives using eza
-
-## Additional Features
-
-- Automatic man page path configuration
-- VS Code shell integration
-- Custom Git pathspec configuration
-- Secret management for API keys and tokens
 
 ## Custom Functions
 
@@ -180,6 +248,7 @@ Located in `functions/git/`:
 - `wezterm_update_icon`: Updates WezTerm terminal icon
 - `yabai_sudoers`: Manages Yabai window manager sudoers configuration
 - `restart_vm`: Utility for restarting virtual machines
+- `clear_and_reinit`: Clears screen and reinitializes fish
 
 ### Command Wrappers
 
@@ -190,3 +259,22 @@ Located in `functions/wrappers/`:
 - `grep`: Enhanced grep wrapper
 
 These functions enhance the shell's functionality and provide convenient shortcuts for common tasks. They are automatically loaded when the shell starts.
+
+## Secrets Management
+
+The configuration integrates with KeePassXC for secure secret management:
+
+- `OPENAI_API_KEY`: OpenAI API key
+- `GITLAB_TOKEN`: GitLab access token
+- `GITHUB_TOKEN`: GitHub access token
+
+Secrets are automatically loaded from KeePassXC using Chezmoi template functions.
+
+## Additional Features
+
+- Automatic man page path configuration
+- VS Code and Kiro shell integration
+- Custom Git pathspec configuration (`_GIT_PATHSPEC`)
+- Automatic completion generation for various tools
+- Performance optimization through caching
+- Integration with macOS system appearance changes
