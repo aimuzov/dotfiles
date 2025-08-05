@@ -1,6 +1,6 @@
 {
   "LazyVim": { "branch": "main", "commit": "25abbf546d564dc484cf903804661ba12de45507" },
-  "SchemaStore.nvim": { "branch": "main", "commit": "34e3958a9afd7d1bd938b0cd9eecaa6f1925d4c4" },
+  "SchemaStore.nvim": { "branch": "main", "commit": "b7e9af87f062bcaee219f9d91bc157169bb20486" },
   "avante.nvim": { "branch": "main", "commit": "b941cd902decf2a231affc45f1d25a0ff41c43a7" },
   "baleia.nvim": { "branch": "main", "commit": "1b25eac3ac03659c3d3af75c7455e179e5f197f7" },
   "blink.cmp": { "branch": "main", "commit": "bae4bae0eedd1fa55f34b685862e94a222d5c6f8" },
@@ -62,7 +62,7 @@
   "nvim-ts-context-commentstring": { "branch": "main", "commit": "1b212c2eee76d787bbea6aa5e92a2b534e7b4f8f" },
   "persistence.nvim": { "branch": "main", "commit": "166a79a55bfa7a4db3e26fc031b4d92af71d0b51" },
   "plenary.nvim": { "branch": "master", "commit": "b9fd5226c2f76c951fc8ed5923d85e4de065e509" },
-  "render-markdown.nvim": { "branch": "main", "commit": "eec00fbfd7273cdfa0a1154dbef0bb983641eaf8" },
+  "render-markdown.nvim": { "branch": "main", "commit": "5df2eab599e06c48d04ea7e89cbaa3cdb4e09538" },
   "reticle.nvim": { "branch": "main", "commit": "48b0ce41b90e571271d3c6d481d81e7be4e563b1" },
   "scope.nvim": { "branch": "main", "commit": "6b4208f017da9b122d69ddc5841e040dffe7313c" },
   "sibling-swap.nvim": { "branch": "main", "commit": "75e696c340429769aa34d0bbae1511c8d9660c0b" },
