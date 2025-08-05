@@ -40,7 +40,7 @@
 
 ## Тема и внешний вид
 
-Оболочка использует тему Catppuccin с автоматическим определением темной/светлой темы на основе настроек macOS:
+Оболочка использует тему [Catppuccin](https://github.com/catppuccin/fish) с автоматическим определением темной/светлой темы на основе настроек macOS:
 
 - Тёмная тема: [Catppuccin Macchiato](https://github.com/catppuccin/fish)
 - Светлая тема: [Catppuccin Latte](https://github.com/catppuccin/fish)
@@ -52,12 +52,12 @@
 Файлы кэша управляются в `$XDG_CACHE_HOME/fish`:
 
 - Устаревшие файлы кэша (старше 1200 минут) автоматически удаляются
-- Инициализация кэша для различных инструментов (brew, fzf, zoxide, mise и т.д.)
+- Инициализация кэша для различных инструментов ([Homebrew](https://brew.sh/), [FZF](https://github.com/junegunn/fzf), [Zoxide](https://github.com/ajeetdsouza/zoxide), [mise](https://mise.jdx.dev/) и т.д.)
 - Кэшированные конфигурации для лучшей производительности
 
 ## Управление плагинами
 
-Использует Fisher в качестве менеджера плагинов:
+Использует [Fisher](https://github.com/jorgebucaran/fisher) в качестве менеджера плагинов:
 
 - Директория плагинов: `$__fish_config_dir/.fisher`
 - Директория пользовательских плагинов: `$__fish_config_dir/plugins`
@@ -65,41 +65,41 @@
 
 ### Установленные плагины
 
-- `catppuccin/fzf` - Тема Catppuccin для FZF
-- `jorgebucaran/fisher` - Сам менеджер плагинов
-- `PatrickF1/fzf.fish` - Интеграция FZF для Fish
-- `wfxr/forgit` - Улучшение Git workflow
+- `[catppuccin/fzf](https://github.com/catppuccin/fzf)` — Тема [Catppuccin](https://github.com/catppuccin/fish) для [FZF](https://github.com/junegunn/fzf)
+- `[jorgebucaran/fisher](https://github.com/jorgebucaran/fisher)` — Сам менеджер плагинов
+- `[PatrickF1/fzf.fish](https://github.com/PatrickF1/fzf.fish)` — [FZF](https://github.com/junegunn/fzf) интеграция для Fish
+- `[wfxr/forgit](https://github.com/wfxr/forgit)` — Улучшение Git workflow
 
 ## Интеграция с оболочкой
 
-### Oh My Posh
+### [Oh My Posh](https://ohmyposh.dev/)
 
 - Пользовательская конфигурация промпта из `$XDG_CONFIG_HOME/oh-my-posh/config.json`
 - Автоматическое переключение темы в зависимости от системного оформления
 - Кэширование на основе версии для производительности
 
-### Интеграция FZF
+### Интеграция [FZF](https://github.com/junegunn/fzf)
 
-- Пользовательские цветовые схемы для темного/светлого режимов с использованием тем Catppuccin
-- Настройки команд и предпросмотра по умолчанию с `fd`
-- Интеграция с `bat` для предпросмотра файлов
+- Пользовательские цветовые схемы для темного/светлого режимов с использованием тем [Catppuccin](https://github.com/catppuccin/fish)
+- Настройки команд и предпросмотра по умолчанию с [`fd`](https://github.com/sharkdp/fd)
+- Интеграция с [`bat`](https://github.com/sharkdp/bat) для предпросмотра файлов
 - Пользовательские горячие клавиши для навигации и редактирования файлов
-- Интеграция с `diff-so-fancy` для подсветки различий
+- Интеграция с [`diff-so-fancy`](https://github.com/so-fancy/diff-so-fancy) для подсветки различий
 
 #### Скриншоты
 
-Вот как выглядит FZF с текущими настройками темы Catppuccin:
+Вот как выглядит [FZF](https://github.com/junegunn/fzf) с текущими настройками темы [Catppuccin](https://github.com/catppuccin/fish):
 
 |                Светлая тема                |               Тёмная тема                |
 | :----------------------------------------: | :--------------------------------------: |
 | ![FZF Светлая](../../assets/fzf.light.png) | ![FZF Тёмная](../../assets/fzf.dark.png) |
 
-### Zoxide
+### [Zoxide](https://github.com/ajeetdsouza/zoxide)
 
 - Функциональность перехода между директориями
 - Автоматическая инициализация с кэшированием
 
-### Chezmoi
+### [Chezmoi](https://www.chezmoi.io/)
 
 - Интеграция управления шаблонами
 - Автоматическая генерация автодополнений
@@ -108,16 +108,16 @@
 
 ### Менеджеры версий
 
-- **ASDF**: Конфигурация для нескольких версий языков
+- **[ASDF](https://asdf-vm.com/)**: Конфигурация для нескольких версий языков
   - Автоматическая настройка shims
   - Генерация автодополнений
   - Расположение конфигурационного файла: `$HOME/.config/asdf/asdfrc`
-- **MISE**: Современное управление окружением разработки
+- **[MISE](https://mise.jdx.dev/)**: Современное управление окружением разработки
   - Автоматическая активация
   - Генерация автодополнений
   - Путь установки: `/opt/homebrew/bin/mise`
 
-### Homebrew
+### [Homebrew](https://brew.sh/)
 
 - Автоматическая настройка окружения оболочки с кэшированием
 - Интеграция автодополнений Fish
@@ -127,13 +127,13 @@
 
 - Домашняя директория SDK: `$HOME/stv-tools/webos-sdk`
 - Путь к CLI инструментам: `$LG_WEBOS_TV_SDK_HOME/bin`
-- Интеграция с Tizen Studio
+- Интеграция с [Tizen Studio](https://developer.tizen.org/development/tizen-studio)
 
 ## Управление файлами
 
-### EZA (Современный ls)
+### [EZA (Современный ls)](https://github.com/eza-community/eza)
 
-- Пользовательские цветовые схемы с использованием Vivid и тем Catppuccin
+- Пользовательские цветовые схемы с использованием Vivid и тем [Catppuccin](https://github.com/catppuccin/fish)
 - Различные псевдонимы для разных вариантов вывода:
   - `l`: Базовый вывод с игнорированием git
   - `ll`: Подробный вывод с заголовками
@@ -141,7 +141,7 @@
   - `la`: Все файлы с деталями
   - `lt`: Древовидный вид
 
-### Bat
+### [Bat](https://github.com/sharkdp/bat)
 
 - Используется как замена для `cat`
 - Тема соответствует системному оформлению
@@ -154,7 +154,7 @@
 - Поддержка визуального режима
 - Пользовательские привязки:
   - `Ctrl+L` / `Ctrl+Д`: Очистить экран и переинициализировать
-  - `Ctrl+E` / `Ctrl+У`: Открыть Neovim
+  - `Ctrl+E` / `Ctrl+У`: Открыть [Neovim](https://neovim.io/)
   - `y` в визуальном режиме: Копировать в буфер обмена
   - `yy` в обычном режиме: Копировать строку в буфер обмена
   - `p`: Вставить из буфера обмена
@@ -163,7 +163,7 @@
 
 ### Настройки редактора
 
-- `EDITOR`: Neovim
+- `EDITOR`: [Neovim](https://neovim.io/)
 - `VISUAL`: То же, что и EDITOR
 - `GIT_EDITOR`: То же, что и EDITOR
 
@@ -181,17 +181,17 @@
 - `$GOPATH/bin` (Go)
 - `$WEBOS_CLI_TV` (Инструменты WebOS)
 - `node_modules/.bin` (Node.js)
-- GNU бинарники Coreutils
+- [GNU бинарники Coreutils](https://www.gnu.org/software/coreutils/)
 
 ## Сокращения и псевдонимы
 
 ### Общие
 
-- `e`: Открыть Neovim
-- `y`: Открыть файловый менеджер Yazi
-- `ca`: Применить изменения Chezmoi
-- `ee`: Выбор конфигурации Neovim
-- `eu`: Обновить плагины Neovim
+- `e`: Открыть [Neovim](https://neovim.io/)
+- `y`: Открыть файловый менеджер [Yazi](https://yazi-rs.github.io/)
+- `ca`: Применить изменения [Chezmoi](https://www.chezmoi.io/)
+- `ee`: Выбор конфигурации [Neovim](https://neovim.io/)
+- `eu`: Обновить плагины [Neovim](https://neovim.io/)
 - `f`: Тест производительности Fish
 - `q`: Выйти из оболочки
 
@@ -221,20 +221,20 @@
 ### Разработка
 
 - `nr`: npm run
-- `cat`: bat (с подсветкой синтаксиса)
-- Различные альтернативы `ls` с использованием eza
+- `cat`: [bat](https://github.com/sharkdp/bat) (с подсветкой синтаксиса)
+- Различные альтернативы `ls` с использованием [eza](https://github.com/eza-community/eza)
 
 ## Пользовательские функции
 
 Конфигурация включает несколько пользовательских функций, организованных в директории `functions`:
 
-### Функции, связанные с Neovim
+### Функции, связанные с [Neovim](https://neovim.io/)
 
-- `nvim_config_pick`: Интерактивная функция для выбора и переключения между различными конфигурациями Neovim
-  - Использует `fd` и `fzf` для выбора конфигурации
-  - Поддерживает несколько конфигураций Neovim через `NVIM_APPNAME`
-- `nvim_update`: Обновление Neovim и его плагинов
-- `nvim_disable_builtin_colorschemes`: Отключение встроенных цветовых схем в Neovim
+- `nvim_config_pick`: Интерактивная функция для выбора и переключения между различными конфигурациями [Neovim](https://neovim.io/)
+  - Использует [`fd`](https://github.com/sharkdp/fd) и [FZF](https://github.com/junegunn/fzf) для выбора конфигурации
+  - Поддерживает несколько конфигураций [Neovim](https://neovim.io/) через `NVIM_APPNAME`
+- `nvim_update`: Обновление [Neovim](https://neovim.io/) и его плагинов
+- `nvim_disable_builtin_colorschemes`: Отключение встроенных цветовых схем в [Neovim](https://neovim.io/)
 
 ### Функции, связанные с Git
 
@@ -254,26 +254,26 @@
 
 Расположены в `functions/wrappers/`:
 
-- `lazygit`: Обертка для терминального интерфейса lazygit для Git
-- `btm`: Обертка для системного монитора bottom
+- `lazygit`: Обертка для терминального интерфейса [lazygit](https://github.com/jesseduffield/lazygit) для Git
+- `btm`: Обертка для системного монитора [bottom (btm)](https://github.com/ClementTsang/bottom)
 - `grep`: Улучшенная обертка для grep
 
 Эти функции расширяют функциональность оболочки и предоставляют удобные сокращения для часто используемых задач. Они автоматически загружаются при запуске оболочки.
 
 ## Управление секретами
 
-Конфигурация интегрируется с KeePassXC для безопасного управления секретами:
+Конфигурация интегрируется с [KeePassXC](https://keepassxc.org/) для безопасного управления секретами:
 
 - `OPENAI_API_KEY`: API ключ OpenAI
 - `GITLAB_TOKEN`: Токен доступа GitLab
 - `GITHUB_TOKEN`: Токен доступа GitHub
 
-Секреты автоматически загружаются из KeePassXC с использованием функций шаблонов Chezmoi.
+Секреты автоматически загружаются из [KeePassXC](https://keepassxc.org/) с использованием функций шаблонов [Chezmoi](https://www.chezmoi.io/).
 
 ## Дополнительные возможности
 
 - Автоматическая настройка путей для man-страниц
-- Интеграция с VS Code и Kiro
+- Интеграция с [VS Code](https://code.visualstudio.com/) и [Kiro](https://k0kubun.github.io/kiro)
 - Пользовательская конфигурация Git pathspec (`_GIT_PATHSPEC`)
 - Автоматическая генерация автодополнений для различных инструментов
 - Оптимизация производительности через кэширование
