@@ -1,5 +1,0 @@
-[tools]
-neovim = "nightly"
-node = "latest"
-python = "3.12"
-ruby = "latest"

@@ -1,3 +1,4 @@
 # vi: ft=sh
 
 export SHELL="/bin/zsh"
+export HISTFILE="${XDG_STATE_HOME}"/bash/history

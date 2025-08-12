@@ -7,6 +7,7 @@ set -q XDG_CONFIG_HOME; or set -Ux XDG_CONFIG_HOME $HOME/.config
 set -q XDG_DATA_HOME; or set -Ux XDG_DATA_HOME $HOME/.local/share
 set -q XDG_STATE_HOME; or set -Ux XDG_STATE_HOME $HOME/.local/state
 set -q XDG_CACHE_HOME; or set -Ux XDG_CACHE_HOME $HOME/.cache
+set -Ux XDG_RUNTIME_DIR $HOME/Library/Caches/TemporaryItems
 
 for xdgdir in (path filter -vd $XDG_CONFIG_HOME $XDG_DATA_HOME $XDG_STATE_HOME $XDG_CACHE_HOME)
     mkdir -p $xdgdir
@@ -320,6 +321,10 @@ set -gx EZA_COLORS $COLORS
 
 # -- PATH --------------------------------------------------------------------------------------------------------------
 
+set -gx CARGO_HOME $XDG_DATA_HOME/cargo
+set -gx GNUPGHOME $XDG_DATA_HOME/gnupg
+set -gx RUSTUP_HOME $XDG_DATA_HOME/rustup
+
 set -gx GOPATH $HOME/Library/go
 
 # https://webostv.developer.lge.com/develop/tools/cli-installation
@@ -349,5 +354,11 @@ string match -q "$TERM_PROGRAM" kiro and . (kiro --locate-shell-integration-path
 
 set -gx BAT_THEME $CATPPUCCIN_FLAVOR
 set -gx SHELL (which fish)
+set -gx NODE_REPL_HISTORY $XDG_STATE_HOME/node_repl_history
+
+set -gx NPM_CONFIG_INIT_MODULE $XDG_CONFIG_HOME/npm/config/npm-init.js
+set -gx NPM_CONFIG_CACHE $XDG_CACHE_HOME/npm
+set -gx NPM_CONFIG_TMP $XDG_RUNTIME_DIR/npm
+set -gx NPM_CONFIG_USERCONFIG $XDG_CONFIG_HOME/npm/npmrc
 
 set -gx _GIT_PATHSPEC ":!package-lock.json" # https://git-quick-stats.sh/#docs

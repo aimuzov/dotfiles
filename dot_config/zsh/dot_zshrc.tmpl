@@ -7,16 +7,14 @@ export GITLAB_TOKEN="{{ (keepassxcAttribute "GITLAB" "TOKEN") }}"
 export GITHUB_TOKEN="{{ (keepassxcAttribute "GITHUB" "TOKEN") }}"
 
 EDITOR="nvim"
-XDG_CONFIG_HOME="$HOME/.config"
 GPG_TTY="$(tty)"
 
 ## -- ZSH --------------------------------------------------------------------------------------------------------------
 
-ZSH="$XDG_CONFIG_HOME/zsh"
 ZSH_CACHE_DIR="$ZSH/cache"
 ZSH_COMPDUMP="$ZSH_CACHE_DIR/.zcompdump-$HOST"
 
-HISTFILE="$HOME/.zsh_history"
+HISTFILE="$XDG_STATE_HOME/zsh/history"
 HISTSIZE=500
 SAVEHIST=$HISTSIZE
 

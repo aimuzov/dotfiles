@@ -1,5 +1,11 @@
 # vi: ft=zsh
 
+SHELL_SESSIONS_DISABLE=1
+
+XDG_CONFIG_HOME="$HOME/.config"
+ZSH="$XDG_CONFIG_HOME/zsh"
+ZDOTDIR=$ZSH
+
 function yabai_display_index_get() {
 	local cond=$([[ "$1" == "1" ]] && echo "!=" || echo "==")
 	local retina_uuid="37D8832A-2D66-02CA-B9F7-8F30A301B230"

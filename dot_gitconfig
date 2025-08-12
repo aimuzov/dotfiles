@@ -1,4 +1,0 @@
-# vi: ft=gitconfig
-
-[include]
-    path = ~/.config/git/config 
