@@ -1,6 +1,6 @@
 function nvim_update --description="Update Neovim to a specific tag"
     set tag $argv[1]
-    set echo_preset "$(set_color blue)[mise]\t$(set_color black)"
+    set echo_preset "$(set_color blue) [mise] $(set_color black)"
 
     set nvim_path (echo (mise where neovim@$tag))
 

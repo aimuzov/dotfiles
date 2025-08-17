@@ -3,6 +3,7 @@ node = "asdf:asdf-vm/asdf-nodejs"
 pipx = "asdf:yozachar/asdf-pipx"
 python = "asdf:asdf-community/asdf-python"
 ruby = "asdf:asdf-vm/asdf-ruby"
+neovim = "asdf:richin13/asdf-neovim"
 
 [tools]
 bun = "latest"
@@ -13,7 +14,7 @@ pnpm = "latest"
 python = "3.12"
 ruby = "latest"
 rust = "latest"
-neovim = "nightly"
+neovim = ["nightly", "stable"]
 
 "cargo:bottom" = "latest"
 "cargo:eza" = "latest"
@@ -39,10 +40,6 @@ neovim = "nightly"
 "ubi:matterhorn-chat/matterhorn" = "latest"
 "ubi:openziti/zrok" = "latest"
 "ubi:ouch-org/ouch" = "latest"
-"ubi:neovim/neovim" = [
-	{ version = "stable", exe = "nvim" },
-	{ version = "nightly", exe = "nvim" },
-]
 "ubi:charmbracelet/glow" = "latest"
 "ubi:sharkdp/hexyl" = "latest"
 "ubi:twpayne/chezmoi" = "latest"
