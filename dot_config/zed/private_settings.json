@@ -1,6 +1,15 @@
 {
+  "base_keymap": "VSCode",
+  "relative_line_numbers": true,
+  "scroll_beyond_last_line": "off",
+  "gutter": {
+    "line_numbers": true
+  },
+  "minimap": {
+    "show": "never"
+  },
   "features": {
-    "inline_completion_provider": "none"
+    "edit_prediction_provider": "none"
   },
   "collaboration_panel": {
     "dock": "right"
@@ -8,8 +17,9 @@
   "outline_panel": {
     "dock": "right"
   },
+  "buffer_line_height": "comfortable",
   "ui_font_size": 16,
-  "buffer_font_size": 16,
+  "buffer_font_size": 16.0,
   "theme": {
     "mode": "system",
     "light": "Catppuccin Latte",
