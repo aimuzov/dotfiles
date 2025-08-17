@@ -95,7 +95,7 @@ end
 
 # -- BREW --------------------------------------------------------------------------------------------------------------
 
-# Setup homebrew 
+# Setup homebrew
 if not set -q HOMEBREW_PREFIX
     if not test -s $__fish_cache_dir/brew_init.fish
         /opt/homebrew/bin/brew shellenv >$__fish_cache_dir/brew_init.fish
@@ -349,16 +349,19 @@ fish_add_path --prepend (path filter \
 
 string match -q "$TERM_PROGRAM" vscode and . (code --locate-shell-integration-path fish)
 string match -q "$TERM_PROGRAM" kiro and . (kiro --locate-shell-integration-path fish)
+string match -q "$TERM_PROGRAM" cursor and . (cursor --locate-shell-integration-path fish)
+
+# -- NODE --------------------------------------------------------------------------------------------------------------
+
+set -gx NODE_REPL_HISTORY $XDG_STATE_HOME/node_repl_history
+
+set -gx NPM_CONFIG_INIT_MODULE $XDG_CONFIG_HOME/npm/config/npm-init.js
+set -gx NPM_CONFIG_CACHE $XDG_CACHE_HOME/npm
+set -gx NPM_CONFIG_USERCONFIG $XDG_CONFIG_HOME/npm/npmrc
 
 # -- OTHER -------------------------------------------------------------------------------------------------------------
 
 set -gx BAT_THEME $CATPPUCCIN_FLAVOR
 set -gx SHELL (which fish)
-set -gx NODE_REPL_HISTORY $XDG_STATE_HOME/node_repl_history
-
-set -gx NPM_CONFIG_INIT_MODULE $XDG_CONFIG_HOME/npm/config/npm-init.js
-set -gx NPM_CONFIG_CACHE $XDG_CACHE_HOME/npm
-set -gx NPM_CONFIG_TMP $XDG_RUNTIME_DIR/npm
-set -gx NPM_CONFIG_USERCONFIG $XDG_CONFIG_HOME/npm/npmrc
 
 set -gx _GIT_PATHSPEC ":!package-lock.json" # https://git-quick-stats.sh/#docs
