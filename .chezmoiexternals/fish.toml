@@ -1,6 +1,60 @@
-[".config/fish/themes"]
+[".config/fish/themes/Catppuccin Macchiato.theme"]
+type = "file"
+url = "https://raw.githubusercontent.com/catppuccin/fish/refs/heads/main/themes/Catppuccin%20Macchiato.theme"
+refreshPeriod = "168h"
+
+[".config/fish/themes/Catppuccin Latte.theme"]
+type = "file"
+url = "https://raw.githubusercontent.com/catppuccin/fish/refs/heads/main/themes/Catppuccin%20Latte.theme"
+refreshPeriod = "168h"
+
+[".config/fish/themes/catppuccin-fzf-macchiato.fish"]
+type = "file"
+url = "https://raw.githubusercontent.com/catppuccin/fzf/refs/heads/main/themes/catppuccin-fzf-macchiato.fish"
+refreshPeriod = "168h"
+
+[".config/fish/themes/catppuccin-fzf-latte.fish"]
+type = "file"
+url = "https://raw.githubusercontent.com/catppuccin/fzf/refs/heads/main/themes/catppuccin-fzf-latte.fish"
+refreshPeriod = "168h"
+
+[".config/fish/conf.d/fzf/fzf.fish"]
+type = "file"
+url = "https://raw.githubusercontent.com/PatrickF1/fzf.fish/refs/heads/main/conf.d/fzf.fish"
+refreshPeriod = "168h"
+
+[".config/fish/completions/fzf"]
 type = "archive"
-url = "https://github.com/catppuccin/fish/archive/master.tar.gz"
+url = "https://github.com/PatrickF1/fzf.fish/archive/master.tar.gz"
+exact = true
 stripComponents = 2
 refreshPeriod = "168h"
-include = ["*/themes/**"]
+include = ["*/completions/**"]
+
+[".config/fish/functions/fzf"]
+type = "archive"
+url = "https://github.com/PatrickF1/fzf.fish/archive/master.tar.gz"
+exact = true
+stripComponents = 2
+refreshPeriod = "168h"
+include = ["*/functions/**"]
+
+[".config/fish/conf.d/forgit.plugin.fish"]
+type = "file"
+url = "https://raw.githubusercontent.com/wfxr/forgit/refs/heads/main/conf.d/forgit.plugin.fish"
+refreshPeriod = "168h"
+executable = true
+
+[".config/fish/conf.d/bin/git-forgit"]
+type = "file"
+url = "https://raw.githubusercontent.com/wfxr/forgit/refs/heads/main/bin/git-forgit"
+executable = true
+refreshPeriod = "168h"
+
+[".config/fish/completions/forgit"]
+type = "archive"
+url = "https://github.com/wfxr/forgit/archive/master.tar.gz"
+exact = true
+stripComponents = 2
+refreshPeriod = "168h"
+include = ["*/completions/**/*.fish"]
