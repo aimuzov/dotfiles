@@ -1,7 +1,7 @@
 {
   "LazyVim": { "branch": "main", "commit": "25abbf546d564dc484cf903804661ba12de45507" },
-  "SchemaStore.nvim": { "branch": "main", "commit": "64f345511dc43c78170b942ca56bfbaed160cb78" },
-  "avante.nvim": { "branch": "main", "commit": "24f7dbbe76f2b0f9a1224b68cd39935582547b3e" },
+  "SchemaStore.nvim": { "branch": "main", "commit": "e906ac3ed0bd273781759e7635b5b824393c925c" },
+  "avante.nvim": { "branch": "main", "commit": "212797a2f27d15ef5f0e8b3727a2c0a245ea5f8d" },
   "baleia.nvim": { "branch": "main", "commit": "1b25eac3ac03659c3d3af75c7455e179e5f197f7" },
   "blink.cmp": { "branch": "main", "commit": "bae4bae0eedd1fa55f34b685862e94a222d5c6f8" },
   "blink.compat": { "branch": "main", "commit": "2ed6d9a28b07fa6f3bface818470605f8896408c" },
@@ -47,7 +47,7 @@
   "nvim-dap-ui": { "branch": "master", "commit": "cf91d5e2d07c72903d052f5207511bf7ecdb7122" },
   "nvim-dap-virtual-text": { "branch": "master", "commit": "fbdb48c2ed45f4a8293d0d483f7730d24467ccb6" },
   "nvim-dap-vscode-js": { "branch": "main", "commit": "03bd29672d7fab5e515fc8469b7d07cc5994bbf6" },
-  "nvim-early-retirement": { "branch": "main", "commit": "b95724575f10f0d1deaad7284fa762141dcdc092" },
+  "nvim-early-retirement": { "branch": "main", "commit": "ef9fc0267da4204432ab7bf3ab9df359874cfeb6" },
   "nvim-emmet": { "branch": "main", "commit": "cde4fb2968704aae5c18b7f8a9bc2508767bb78d" },
   "nvim-highlight-colors": { "branch": "main", "commit": "1ce0a09bfc28c7274e649d20927cea51e440b65c" },
   "nvim-lint": { "branch": "master", "commit": "7ef127aaede2a4d5ad8df8321e2eb4e567f29594" },
@@ -84,5 +84,5 @@
   "vscode-js-debug": { "branch": "main", "commit": "0740ca29d8c48115b6f510d0d4fd38348a2cbf49" },
   "which-key.nvim": { "branch": "main", "commit": "370ec46f710e058c9c1646273e6b225acf47cbed" },
   "yanky.nvim": { "branch": "main", "commit": "04775cc6e10ef038c397c407bc17f00a2f52b378" },
-  "yazi.nvim": { "branch": "main", "commit": "ddb52bd5c1067643071b42c0d0934f4d48c8774a" }
+  "yazi.nvim": { "branch": "main", "commit": "aa8ca37640375e26202330053de10af275209f6c" }
 }
