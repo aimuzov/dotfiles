@@ -27,6 +27,7 @@ neovim = ["nightly", "stable"]
 "npm:@georgesg/arc-cli" = { version = "latest", exe = "arc-cli" }
 "npm:@aimuzov/sketchybar-app-font" = { version = "latest", exe = "sketchybar-app-font" }
 "pipx:neovim-remote" = "latest"
+"pipx:httpie" = "latest"
 
 "ubi:ajeetdsouza/zoxide" = "latest"
 "ubi:ast-grep/ast-grep" = "latest"
