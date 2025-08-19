@@ -1,20 +1,20 @@
 [alias]
+neovim = "asdf:richin13/asdf-neovim"
 node = "asdf:asdf-vm/asdf-nodejs"
 pipx = "asdf:yozachar/asdf-pipx"
 python = "asdf:asdf-community/asdf-python"
 ruby = "asdf:asdf-vm/asdf-ruby"
-neovim = "asdf:richin13/asdf-neovim"
 
 [tools]
 bun = "latest"
 go = "latest"
+neovim = ["nightly", "stable"]
 node = "latest"
 pipx = "latest"
 pnpm = "latest"
 python = "3.12"
 ruby = "latest"
 rust = "latest"
-neovim = ["nightly", "stable"]
 
 "cargo:bottom" = "latest"
 "cargo:eza" = "latest"
@@ -24,32 +24,33 @@ neovim = ["nightly", "stable"]
 "cargo:yazi-cli" = "latest"
 "cargo:yazi-fm" = "latest"
 
-"npm:@georgesg/arc-cli" = { version = "latest", exe = "arc-cli" }
 "npm:@aimuzov/sketchybar-app-font" = { version = "latest", exe = "sketchybar-app-font" }
-"pipx:neovim-remote" = "latest"
+"npm:@georgesg/arc-cli" = { version = "latest", exe = "arc-cli" }
+
 "pipx:httpie" = "latest"
+"pipx:neovim-remote" = "latest"
 
 "ubi:ajeetdsouza/zoxide" = "latest"
 "ubi:ast-grep/ast-grep" = "latest"
 "ubi:BurntSushi/ripgrep" = { version = "latest", exe = "rg" }
+"ubi:charmbracelet/glow" = "latest"
 "ubi:ClementTsang/bottom" = { version = "latest", exe = "btm" }
 "ubi:cli/cli" = { version = "latest", exe = "gh" }
 "ubi:JanDeDobbeleer/oh-my-posh" = { version = "latest", exe = "oh-my-posh" }
 "ubi:jesseduffield/lazygit" = "latest"
+"ubi:jqlang/jq" = "latest"
 "ubi:junegunn/fzf" = "latest"
 "ubi:kirtan-shah/nowplaying-cli" = "latest"
 "ubi:matterhorn-chat/matterhorn" = "latest"
 "ubi:openziti/zrok" = "latest"
 "ubi:ouch-org/ouch" = "latest"
-"ubi:charmbracelet/glow" = "latest"
-"ubi:sharkdp/hexyl" = "latest"
-"ubi:twpayne/chezmoi" = "latest"
 "ubi:sharkdp/bat" = "latest"
 "ubi:sharkdp/fd" = "latest"
+"ubi:sharkdp/hexyl" = "latest"
 "ubi:so-fancy/diff-so-fancy" = "latest"
+"ubi:twpayne/chezmoi" = "latest"
 "ubi:veeso/termscp" = "latest"
 "ubi:Wilfred/difftastic" = { version = "latest", exe = "difft" }
-"ubi:jqlang/jq" = "latest"
 
 [settings]
 experimental = true
