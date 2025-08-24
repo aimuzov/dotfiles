@@ -57,18 +57,15 @@ Cache files are managed in `$XDG_CACHE_HOME/fish`:
 
 ## Plugin Management
 
-Uses [Fisher](https://github.com/jorgebucaran/fisher) as the plugin manager:
+Plugins are installed automatically using [chezmoi](https://www.chezmoi.io/) based on the [`.chezmoiexternals/fish.toml`](../../.chezmoiexternals/fish.toml) file. This file contains all plugins, their sources, and update settings.
 
-- Plugin directory: `$__fish_config_dir/.fisher`
-- Custom plugins directory: `$__fish_config_dir/plugins`
-- Automatic plugin initialization and updates
+### Used Plugins and Extensions
 
-### Installed Plugins
+- [catppuccin/fzf](https://github.com/catppuccin/fzf) — Catppuccin theme for FZF
+- [PatrickF1/fzf.fish](https://github.com/PatrickF1/fzf.fish) — FZF integration for Fish
+- [wfxr/forgit](https://github.com/wfxr/forgit) — Git workflow enhancements
 
-- `[catppuccin/fzf](https://github.com/catppuccin/fzf)` - Catppuccin theme for [FZF](https://github.com/junegunn/fzf)
-- `[jorgebucaran/fisher](https://github.com/jorgebucaran/fisher)` - Plugin manager itself
-- `[PatrickF1/fzf.fish](https://github.com/PatrickF1/fzf.fish)` - [FZF](https://github.com/junegunn/fzf) integration for Fish
-- `[wfxr/forgit](https://github.com/wfxr/forgit)` - Git workflow enhancement
+See [`.chezmoiexternals/fish.toml`](../../.chezmoiexternals/fish.toml) for the full list and configuration.
 
 ## Shell Integration
 
@@ -160,6 +157,17 @@ Here is how [FZF](https://github.com/junegunn/fzf) looks with the current [Catpp
   - `p`: Paste from clipboard
 
 ## Environment Variables
+
+### Node & NPM
+
+The configuration sets XDG-compliant environment variables for Node.js and npm:
+
+- `NODE_REPL_HISTORY`: Stores Node.js REPL history in `$XDG_STATE_HOME/node_repl_history`.
+- `NPM_CONFIG_INIT_MODULE`: Path to npm init script at `$XDG_CONFIG_HOME/npm/config/npm-init.js`.
+- `NPM_CONFIG_CACHE`: Stores npm cache in `$XDG_CACHE_HOME/npm`.
+- `NPM_CONFIG_USERCONFIG`: User npm config at `$XDG_CONFIG_HOME/npm/npmrc`.
+
+This keeps Node.js and npm files organized and portable, following XDG standards.
 
 ### Editor Settings
 
