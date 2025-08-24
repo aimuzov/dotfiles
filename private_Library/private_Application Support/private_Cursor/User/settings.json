@@ -80,7 +80,6 @@
         "delete",
         "s"
     ],
-    "vscode-neovim.neovimExecutablePaths.darwin": "/Users/aimuzov/.local/share/mise/installs/neovim/nightly/nvim-macos-arm64/bin/nvim",
     "window.autoDetectColorScheme": true,
     "window.commandCenter": false,
     "window.density.editorTabHeight": "compact",
