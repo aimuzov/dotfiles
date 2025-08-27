@@ -13,12 +13,6 @@ for xdgdir in (path filter -vd $XDG_CONFIG_HOME $XDG_DATA_HOME $XDG_STATE_HOME $
     mkdir -p $xdgdir
 end
 
-# -- RECURSIVE PATHS ---------------------------------------------------------------------------------------------------
-
-# Allow subdirs for functions and completions.
-set fish_function_path (path resolve $__fish_config_dir/functions/*/) $fish_function_path
-set fish_complete_path (path resolve $__fish_config_dir/completions/*/) $fish_complete_path
-
 # -- MACOS COLORSCHEME -------------------------------------------------------------------------------------------------
 
 defaults read -g AppleInterfaceStyle >/dev/null 2>&1; and set -gx MACOS_IS_DARK yes; or set -gx MACOS_IS_DARK no
