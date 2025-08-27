@@ -33,10 +33,12 @@ These directories are automatically created if they don't exist.
 
 ## Path Configuration
 
-The configuration sets up various paths for functions and completions:
+The configuration automatically adds all subdirectories for functions and completions:
 
-- Recursive function paths from `$__fish_config_dir/functions/*/`
-- Recursive completion paths from `$__fish_config_dir/completions/*/`
+- For functions: all subfolders inside `$__fish_config_dir/functions/` are added to `fish_function_path`.
+- For completions: all subfolders inside `$__fish_config_dir/completions/` are added to `fish_complete_path`.
+
+The implementation and configuration of this logic is located in [`conf.d/recursive_paths.fish`](conf.d/recursive_paths.fish).
 
 ## Theme and Appearance
 

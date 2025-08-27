@@ -33,10 +33,15 @@
 
 ## Настройка путей
 
-Конфигурация устанавливает различные пути для функций и автодополнений:
 
-- Рекурсивные пути функций из `$__fish_config_dir/functions/*/`
-- Рекурсивные пути автодополнений из `$__fish_config_dir/completions/*/`
+Конфигурация автоматически добавляет все вложенные директории для функций и автодополнений:
+
+- Для функций: все подпапки внутри `$__fish_config_dir/functions/` добавляются в `fish_function_path`.
+- Для автодополнений: все подпапки внутри `$__fish_config_dir/completions/` добавляются в `fish_complete_path`.
+
+Это реализовано через рекурсивный обход всех вложенных директорий с помощью команды `find`, что позволяет использовать функции и автодополнения из любых уровней вложенности.
+
+Реализация и настройка этой логики находится в файле [`conf.d/recursive_paths.fish`](conf.d/recursive_paths.fish).
 
 ## Тема и внешний вид
 
@@ -57,18 +62,16 @@
 
 ## Управление плагинами
 
-Использует [Fisher](https://github.com/jorgebucaran/fisher) в качестве менеджера плагинов:
 
-- Директория плагинов: `$__fish_config_dir/.fisher`
-- Директория пользовательских плагинов: `$__fish_config_dir/plugins`
-- Автоматическая инициализация и обновление плагинов
+Плагины устанавливаются автоматически с помощью [chezmoi](https://www.chezmoi.io/) на основе файла [`.chezmoiexternals/fish.toml`](../../.chezmoiexternals/fish.toml). Этот файл содержит все плагины, их источники и настройки обновления.
 
-### Установленные плагины
+### Используемые плагины и расширения
 
-- `[catppuccin/fzf](https://github.com/catppuccin/fzf)` — Тема [Catppuccin](https://github.com/catppuccin/fish) для [FZF](https://github.com/junegunn/fzf)
-- `[jorgebucaran/fisher](https://github.com/jorgebucaran/fisher)` — Сам менеджер плагинов
-- `[PatrickF1/fzf.fish](https://github.com/PatrickF1/fzf.fish)` — [FZF](https://github.com/junegunn/fzf) интеграция для Fish
-- `[wfxr/forgit](https://github.com/wfxr/forgit)` — Улучшение Git workflow
+- [catppuccin/fzf](https://github.com/catppuccin/fzf) — Тема Catppuccin для FZF
+- [PatrickF1/fzf.fish](https://github.com/PatrickF1/fzf.fish) — Интеграция FZF для Fish
+- [wfxr/forgit](https://github.com/wfxr/forgit) — Улучшение Git workflow
+
+Полный список и конфигурация — в [`.chezmoiexternals/fish.toml`](../../.chezmoiexternals/fish.toml).
 
 ## Интеграция с оболочкой
 
@@ -160,6 +163,17 @@
   - `p`: Вставить из буфера обмена
 
 ## Переменные окружения
+
+### Node & NPM
+
+Конфигурация задаёт XDG-совместимые переменные окружения для Node.js и npm:
+
+- `NODE_REPL_HISTORY`: История REPL Node.js хранится в `$XDG_STATE_HOME/node_repl_history`.
+- `NPM_CONFIG_INIT_MODULE`: Путь к npm init-скрипту — `$XDG_CONFIG_HOME/npm/config/npm-init.js`.
+- `NPM_CONFIG_CACHE`: Кэш npm хранится в `$XDG_CACHE_HOME/npm`.
+- `NPM_CONFIG_USERCONFIG`: Пользовательский конфиг npm — `$XDG_CONFIG_HOME/npm/npmrc`.
+
+Это позволяет организовать файлы Node.js и npm по стандарту XDG.
 
 ### Настройки редактора
 
