@@ -1,5 +1,29 @@
 # vi: ft=fish
 
+# -- HELPERS -----------------------------------------------------------------------------------------------------------
+
+function cache_and_source
+    set -l cache_file $argv[1]
+    set -l cache_cmd $argv[2]
+    set -l cache_path $__fish_cache_dir/$cache_file
+
+    if not test -f $cache_path
+        eval $cache_cmd | tee $cache_path
+    end
+
+    source $cache_path
+end
+
+function add_completion
+    set -l completion_file $argv[1]
+    set -l completion_cmd $argv[2]
+    set -l completion_path $__fish_config_dir/completions/$completion_file
+
+    if not test -e $completion_path
+        eval $completion_cmd | tee $completion_path
+    end
+end
+
 # -- XDG ---------------------------------------------------------------------------------------------------------------
 
 # https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html
@@ -42,25 +66,14 @@ find $__fish_cache_dir -name '*.fish' -type f -mmin +1200 -delete
 set fish_greeting
 
 if type -q oh-my-posh
-    set --local omp_ver $(oh-my-posh --version)
-    set --local omp_path $__fish_cache_dir/omp_init_$omp_ver.fish
-
-    if not test -r $omp_path
-        oh-my-posh init fish --config $XDG_CONFIG_HOME/oh-my-posh/config.json >$omp_path
-    end
-
-    source $omp_path
+    cache_and_source oh-my-posh_init_(oh-my-posh --version).fish "oh-my-posh init fish --config $XDG_CONFIG_HOME/oh-my-posh/config.json"
 end
 
 # -- BREW --------------------------------------------------------------------------------------------------------------
 
 # Setup homebrew
 if not set -q HOMEBREW_PREFIX
-    if not test -s $__fish_cache_dir/brew_init.fish
-        /opt/homebrew/bin/brew shellenv >$__fish_cache_dir/brew_init.fish
-    end
-
-    source $__fish_cache_dir/brew_init.fish
+    cache_and_source brew_init.fish "/opt/homebrew/bin/brew shellenv"
 end
 
 # Add fish completions
@@ -90,40 +103,25 @@ set --erase _asdf_shims
 
 set -q ASDF_CONFIG_FILE; or set -Ux ASDF_CONFIG_FILE $HOME/.config/asdf/asdfrc
 
-if not test -e $__fish_config_dir/completions/fish.fish
-    asdf completion fish >$__fish_config_dir/completions/asdf.fish
-end
+add_completion asdf.fish "asdf completion fish"
 
 ## -- MISE -------------------------------------------------------------------------------------------------------------
 
 if not set -q MISE_SHELL
-    set -gx MISE_INSTALL_PATH /opt/homebrew/bin/mise
-
-    if not test -s $__fish_cache_dir/misej_init.fish
-        mise activate fish >$__fish_cache_dir/mise_init.fish
-    end
-
-    source $__fish_cache_dir/mise_init.fish
-
-    if not test -e $__fish_config_dir/completions/mise.fish
-        mise completion fish >$__fish_config_dir/completions/mise.fish
-    end
+    set -gx MISE_INSTALL_PATH (dirname (which brew))/mise
 end
+
+cache_and_source mise_init.fish "mise activate fish"
+add_completion mise.fish "mise completion fish"
 
 # -- CHEZMOI -----------------------------------------------------------------------------------------------------------
 
-if not test -e $__fish_config_dir/completions/chezmoi.fish
-    chezmoi completion fish >$__fish_config_dir/completions/chezmoi.fish
-end
+add_completion chezmoi.fish "chezmoi completion fish"
 
 # -- FZF ---------------------------------------------------------------------------------------------------------------
 
 if type -q fzf
-    if not test -r $__fish_cache_dir/fzf_init.fish
-        fzf --fish >$__fish_cache_dir/fzf_init.fish
-    end
-
-    source $__fish_cache_dir/fzf_init.fish
+    cache_and_source fzf_init.fish "fzf --fish"
 
     # https://github.com/catppuccin/fzf?tab=readme-ov-file#usage
     if [ $MACOS_IS_DARK = yes ]
@@ -153,11 +151,7 @@ end
 # -- ZOXIDE ------------------------------------------------------------------------------------------------------------
 
 if type -q zoxide
-    if not test -r $__fish_cache_dir/zoxide_init.fish
-        zoxide init fish >$__fish_cache_dir/zoxide_init.fish
-    end
-
-    source $__fish_cache_dir/zoxide_init.fish
+    cache_and_source zoxide_init.fish "zoxide init fish"
 end
 
 # -- PAGER -------------------------------------------------------------------------------------------------------------
@@ -189,16 +183,16 @@ end
 
 # -- BINDINGS ----------------------------------------------------------------------------------------------------------
 
-function bind_all_modes
-    set -l key $argv[1]
-    set -l cmd $argv[2]
-
-    for mode in (bind -L)
-        bind -M $mode $key $cmd
-    end
-end
-
 function fish_user_key_bindings
+    function bind_all_modes
+        set -l key $argv[1]
+        set -l cmd $argv[2]
+
+        for mode in (bind -L)
+            bind -M $mode $key $cmd
+        end
+    end
+
     bind -M visual y fish_clipboard_copy
     bind -M normal yy fish_clipboard_copy
     bind p fish_clipboard_paste
@@ -207,6 +201,8 @@ function fish_user_key_bindings
     bind_all_modes ctrl-д clear_and_reinit
     bind_all_modes ctrl-e nvim
     bind_all_modes ctrl-у nvim
+
+    functions -e bind_all_modes
 end
 
 # -- EDITOR ------------------------------------------------------------------------------------------------------------
@@ -326,3 +322,8 @@ set -gx BAT_THEME $CATPPUCCIN_FLAVOR
 set -gx SHELL (which fish)
 
 set -gx _GIT_PATHSPEC ":!package-lock.json" # https://git-quick-stats.sh/#docs
+
+# ----------------------------------------------------------------------------------------------------------------------
+
+functions -e cache_and_source
+functions -e add_completion
