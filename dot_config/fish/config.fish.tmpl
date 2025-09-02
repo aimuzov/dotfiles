@@ -8,7 +8,7 @@ function cache_and_source
     set -l cache_path $__fish_cache_dir/$cache_file
 
     if not test -f $cache_path
-        eval $cache_cmd | tee $cache_path
+        eval $cache_cmd >$cache_path
     end
 
     source $cache_path
@@ -20,7 +20,7 @@ function add_completion
     set -l completion_path $__fish_config_dir/completions/$completion_file
 
     if not test -e $completion_path
-        eval $completion_cmd | tee $completion_path
+        eval $completion_cmd >$completion_path
     end
 end
 
