@@ -1,0 +1,13 @@
+[user_interface]
+text_editor = "/Users/aimuzov/.local/share/mise/installs/neovim/nightly/nvim-macos-arm64/bin/nvim"
+default_protocol = "FTP"
+show_hidden_files = true
+check_for_updates = false
+prompt_on_file_replace = true
+notifications = true
+notification_threshold = 536870912
+
+[remote]
+ssh_config = "/Users/aimuzov/.ssh/config"
+
+[remote.ssh_keys]

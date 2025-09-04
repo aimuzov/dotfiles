@@ -21,6 +21,7 @@ const scopes = [
   "skhd",
   "ssh",
   "svim",
+  "termscp",
   "them-switcher",
   "time",
   "vscode",
