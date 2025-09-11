@@ -10,3 +10,8 @@ Host gitlab.com
 	HostName gitlab.com
 	IdentityFile ~/.ssh/gitlab
 	IdentitiesOnly yes
+
+Host {{ keepassxcAttribute "SSH_HOST" "GITLAB_CDN" }}
+	HostName {{ keepassxcAttribute "SSH_HOST" "GITLAB_CDN" }}
+	IdentityFile ~/.ssh/gitlab_cdn
+	IdentitiesOnly yes
