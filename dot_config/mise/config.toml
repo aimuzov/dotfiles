@@ -51,6 +51,7 @@ rust = "latest"
 "ubi:twpayne/chezmoi" = "latest"
 "ubi:veeso/termscp" = "latest"
 "ubi:Wilfred/difftastic" = { version = "latest", exe = "difft" }
+"ubi:zdyxry/tokui" = "latest"
 
 [settings]
 experimental = true
