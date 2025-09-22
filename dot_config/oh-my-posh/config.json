@@ -9,7 +9,7 @@
           "foreground": "cyan",
           "properties": { "style": "folder" },
           "style": "plain",
-          "template": "<white></> {{ .Path }} ",
+          "template": "<white></> {{ .Path }}",
           "type": "path"
         },
         {
@@ -26,14 +26,14 @@
         {
           "foreground": "green",
           "style": "plain",
-          "template": "{{ if .Full }}<white>󰋙</> {{ .Full }} {{ end }}",
+          "template": "{{ if .Full }}<white>󰋙</> {{ .Full }}{{ end }}",
           "type": "node"
         },
         {
           "type": "git",
           "style": "plain",
           "foreground": "blue",
-          "template": "{{ if .UpstreamIcon }}<white>{{ .UpstreamIcon }}</> {{ end }}{{ if .HEAD }}{{ .HEAD }} {{ end }}",
+          "template": "{{ if .UpstreamIcon }}<white>{{ .UpstreamIcon }}</>{{ end }}{{ if .HEAD }} {{ .HEAD }}{{ end }}",
           "properties": {
             "branch_icon": "",
             "fetch_status": true,
