@@ -283,7 +283,7 @@ Secrets are automatically loaded from [KeePassXC](https://keepassxc.org/) using 
 ## Additional Features
 
 - Automatic man page path configuration
-- [VS Code](https://code.visualstudio.com/) and [Kiro](https://k0kubun.github.io/kiro/) shell integration
+- [VS Code](https://code.visualstudio.com/) shell integration
 - Custom Git pathspec configuration (`_GIT_PATHSPEC`)
 - Automatic completion generation for various tools
 - Performance optimization through caching

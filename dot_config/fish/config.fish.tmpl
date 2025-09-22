@@ -302,12 +302,6 @@ fish_add_path --prepend (path filter \
 	node_modules/.bin
 )
 
-# -- VSCODE AND OTHERS -------------------------------------------------------------------------------------------------
-
-string match -q "$TERM_PROGRAM" vscode and . (code --locate-shell-integration-path fish)
-string match -q "$TERM_PROGRAM" kiro and . (kiro --locate-shell-integration-path fish)
-string match -q "$TERM_PROGRAM" cursor and . (cursor --locate-shell-integration-path fish)
-
 # -- NODE --------------------------------------------------------------------------------------------------------------
 
 set -gx NODE_REPL_HISTORY $XDG_STATE_HOME/node_repl_history
@@ -319,7 +313,7 @@ set -gx NPM_CONFIG_USERCONFIG $XDG_CONFIG_HOME/npm/npmrc
 # -- OTHER -------------------------------------------------------------------------------------------------------------
 
 set -gx BAT_THEME $CATPPUCCIN_FLAVOR
-set -gx SHELL (which fish)
+set -U SHELL /opt/homebrew/bin/fish
 
 set -gx _GIT_PATHSPEC ":!package-lock.json" # https://git-quick-stats.sh/#docs
 
