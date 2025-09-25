@@ -36,6 +36,7 @@ rust = "latest"
 "ubi:charmbracelet/glow" = "latest"
 "ubi:ClementTsang/bottom" = { version = "latest", exe = "btm" }
 "ubi:cli/cli" = { version = "latest", exe = "gh" }
+"ubi:gitlab-org/cli" = { version = "latest", provider = "gitlab", exe = "glab" }
 "ubi:JanDeDobbeleer/oh-my-posh" = { version = "latest", exe = "oh-my-posh" }
 "ubi:jesseduffield/lazygit" = "latest"
 "ubi:jqlang/jq" = "latest"
