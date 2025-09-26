@@ -317,6 +317,8 @@ set -gx SHELL /opt/homebrew/bin/fish
 
 set -gx _GIT_PATHSPEC ":!package-lock.json" # https://git-quick-stats.sh/#docs
 
+add_completion glab.fish "glab completion -s fish"
+
 # ----------------------------------------------------------------------------------------------------------------------
 
 functions -e cache_and_source
