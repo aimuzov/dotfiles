@@ -14,7 +14,7 @@
         },
         {
           "style": "plain",
-          "template": "{{ if eq .Env.FISH_BIND_MODE \"default\" }}<blue>󰰓</>{{ else if eq .Env.FISH_BIND_MODE \"insert\" }}<magenta>󰰄</>{{ else if eq .Env.FISH_BIND_MODE \"replace_one\" }}<yellow>󰰟</>{{ else if eq .Env.FISH_BIND_MODE \"visual\"}}<cyan>󰰫</>{{ end }}",
+          "template": " {{ if eq .Env.FISH_BIND_MODE \"default\" }}<blue>󰰓</>{{ else if eq .Env.FISH_BIND_MODE \"insert\" }}<magenta>󰰄</>{{ else if eq .Env.FISH_BIND_MODE \"replace_one\" }}<yellow>󰰟</>{{ else if eq .Env.FISH_BIND_MODE \"visual\"}}<cyan>󰰫</>{{ end }}",
           "type": "text"
         }
       ]
@@ -26,7 +26,7 @@
         {
           "foreground": "green",
           "style": "plain",
-          "template": "{{ if .Full }}<white>󰋙</> {{ .Full }}{{ end }}",
+          "template": "{{ if .Full }}<white>󰋙</> {{ .Full }} {{ end }}",
           "type": "node"
         },
         {
