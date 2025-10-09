@@ -60,8 +60,7 @@ return {
 	},
 
 	font = wezterm.font_with_fallback({
-		{ family = "JetBrainsMono NFM", weight = "Medium" },
-		"Noto Emoji",
+		{ family = "JetBrainsMono NFM" },
 		"SF Pro",
 	}),
 
