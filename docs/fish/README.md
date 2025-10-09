@@ -38,7 +38,7 @@ The configuration automatically adds all subdirectories for functions and comple
 - For functions: all subfolders inside `$__fish_config_dir/functions/` are added to `fish_function_path`.
 - For completions: all subfolders inside `$__fish_config_dir/completions/` are added to `fish_complete_path`.
 
-The implementation and configuration of this logic is located in [`conf.d/recursive_paths.fish`](conf.d/recursive_paths.fish).
+The implementation and configuration of this logic is located in [`conf.d/recursive_paths.fish`](../../dot_config/fish/conf.d/recursive_paths.fish).
 
 ## Theme and Appearance
 
@@ -59,7 +59,7 @@ Cache files are managed in `$XDG_CACHE_HOME/fish`:
 
 ## Plugin Management
 
-Plugins are installed automatically using [chezmoi](https://www.chezmoi.io/) based on the [`.chezmoiexternals/fish.toml`](../../.chezmoiexternals/fish.toml) file. This file contains all plugins, their sources, and update settings.
+Plugins are installed automatically using [chezmoi](https://www.chezmoi.io/) based on the `.chezmoiexternals/fish.toml` file. This file contains all plugins, their sources, and update settings.
 
 ### Used Plugins and Extensions
 
@@ -67,7 +67,7 @@ Plugins are installed automatically using [chezmoi](https://www.chezmoi.io/) bas
 - [PatrickF1/fzf.fish](https://github.com/PatrickF1/fzf.fish) — FZF integration for Fish
 - [wfxr/forgit](https://github.com/wfxr/forgit) — Git workflow enhancements
 
-See [`.chezmoiexternals/fish.toml`](../../.chezmoiexternals/fish.toml) for the full list and configuration.
+See `.chezmoiexternals/fish.toml` for the full list and configuration.
 
 ## Shell Integration
 
