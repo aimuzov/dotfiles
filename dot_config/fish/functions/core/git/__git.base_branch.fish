@@ -7,7 +7,7 @@ function __git.base_branch -d "Определяет базовую ветку, �
     set -l upstream (git rev-parse --abbrev-ref HEAD@{upstream} 2>/dev/null)
 
     if test -n "$upstream"
-        echo $upstream | sed 's/^origin\///'
+        echo (string replace 'origin/' '' $upstream)
         return 0
     end
 
