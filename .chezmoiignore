@@ -1,6 +1,5 @@
 .DS_Store
 .gitignore
-CLAUDE.md
 docs
 LICENSE
 node_modules
