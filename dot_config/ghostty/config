@@ -22,4 +22,4 @@ keybind = ctrl+m=text:\x0D
 keybind = shift+up=scroll_page_lines:-25
 keybind = shift+down=scroll_page_lines:26
 keybind = ctrl+с=text:\x03
-
+keybind = shift+enter=text:\x1b\r
