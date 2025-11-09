@@ -15,8 +15,8 @@ gui:
   showCommandLog: false
 git:
   branchLogCmd: "git lg {{branchName}}"
-  paging:
-    externalDiffCommand: difft
+  pagers:
+    - externalDiffCommand: difft
 customCommands:
   - key: "C"
     command: "npm run commit"
