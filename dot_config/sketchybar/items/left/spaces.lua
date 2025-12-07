@@ -1,63 +1,46 @@
 local sbar = require("sketchybar")
-local colors = require("config").colors
+local config = require("config")
 
 local spaces = {}
 
 local spaces_length = io.popen([[yabai -m query --spaces | jq "length"]]):read("a"):gsub("%s+", "")
 
 local spaces_num_icons = {
-	["1"] = "􀃋",
-	["2"] = "􀃍",
-	["3"] = "􀃏",
-	["4"] = "􀘚",
-	["5"] = "􀃓",
-	["6"] = "􀃕",
-	["7"] = "􀃗",
-	["8"] = "􀃙",
-	["9"] = "􀃛",
-	["10"] = "􀕒",
-	["11"] = "􀕓",
-	["12"] = "􀕔",
-	["13"] = "􀕕",
-	["14"] = "􀕖",
-	["15"] = "􀕗",
-	["16"] = "􀕘",
+	["1"] = "􀀻",
+	["2"] = "􀀽",
+	["3"] = "􀀿",
+	["4"] = "􀁁",
+	["5"] = "􀁃",
+	["6"] = "􀁅",
+	["7"] = "􀁇",
+	["8"] = "􀁉",
+	["9"] = "􀁋",
+	["10"] = "􀔔",
+	["11"] = "􀔕",
+	["12"] = "􀔖",
+	["13"] = "􀔗",
+	["14"] = "􀔘",
+	["15"] = "􀔙",
+	["16"] = "􀔚",
 }
 
 for i = 1, spaces_length, 1 do
 	local space = sbar.add("space", {
-		icon = {
-			string = "",
-			padding_right = 3,
-			padding_left = 6,
-			color = colors.white,
-			highlight_color = colors.white,
-		},
-
-		label = {
-			padding_left = 3,
-			padding_right = 6,
-			color = colors.grey,
-			highlight_color = colors.grey,
-			font = "Sketchybar App Font:Regular:16",
-		},
-
+		icon = { padding_left = 6, string = "" },
+		label = { padding_right = 6, font = "Sketchybar App Font:Regular:16" },
 		space = i,
 		padding_left = 0,
 		padding_right = 0,
-		background = { color = colors.bg1 },
+		background = { color = config.colors.transparent },
 	})
 
 	spaces[i] = space
 
 	space:subscribe("space_change", function(ENV)
-		local bg_color = ENV.SELECTED == "true" and colors.bg2 or colors.bg1
-		local text_color = ENV.SELECTED == "true" and colors.white or colors.grey
-
 		space:set({
-			icon = { highlight = ENV.SELECTED, color = text_color },
-			label = { highlight = ENV.SELECTED, highlight_color = text_color },
-			background = { color = bg_color },
+			icon = { highlight = ENV.SELECTED },
+			label = { highlight = ENV.SELECTED },
+			background = { color = ENV.SELECTED == "true" and config.colors.active or config.colors.transparent },
 		})
 	end)
 
