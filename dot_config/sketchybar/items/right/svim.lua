@@ -2,11 +2,11 @@ local sbar = require("sketchybar")
 local colors = require("config").colors
 
 local icons = {
-	normal = "􀂯",
-	insert = "􀂥",
-	visual = "􀂿",
-	cmd = "􀂙",
-	pending = "􀕵",
+	normal = "􀀞",
+	insert = "􀀔",
+	visual = "􀀮",
+	cmd = "􀀈",
+	pending = "􀍷",
 }
 
 local svim = sbar.add("item", {
@@ -16,9 +16,9 @@ local svim = sbar.add("item", {
 
 	icon = {
 		align = "right",
-		font = { size = 22 },
+		font = { size = 18 },
 		padding_left = 0,
-		padding_right = 9,
+		padding_right = 6,
 	},
 
 	label = {
@@ -28,7 +28,7 @@ local svim = sbar.add("item", {
 	},
 
 	updates = true,
-	position = "center",
+	position = "right",
 	display = "active",
 })
 

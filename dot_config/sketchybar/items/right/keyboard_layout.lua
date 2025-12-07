@@ -2,17 +2,17 @@ local sbar = require("sketchybar")
 local colors = require("config").colors
 
 local icons = {
-	en = "􀂕",
-	ru = "􀂷",
-	unknown = "􀃭",
+	en = "􀀅",
+	ru = "􀀦",
+	unknown = "􀁝",
 }
 
 local keyboard_layout = sbar.add("item", {
-	icon = { font = { size = 22 } },
+	icon = { font = { size = 18 } },
 	padding_left = 0,
 	padding_right = 0,
 	display = "active",
-	position = "center",
+	position = "right",
 })
 
 local function update()
