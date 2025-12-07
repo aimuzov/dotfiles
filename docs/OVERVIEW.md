@@ -28,17 +28,31 @@ Files and directories use chezmoi's naming conventions:
 
 ### Major Configurations
 
-- **Neovim** (`dot_config/nvim/`) - Uses [LazyVimx](https://github.com/aimuzov/LazyVimx) configuration, supports stable and nightly versions
+- **Neovim** (`dot_config/nvim/`, `dot_config/nvim-lazyvimx/`) - Uses [LazyVimx](https://github.com/aimuzov/LazyVimx) configuration, supports stable and nightly versions
 - **Fish Shell** (`dot_config/fish/`) - Comprehensive shell with custom functions, XDG compliance, theme switching
+- **Zsh** (`dot_config/zsh/`) - Zsh shell configuration
 - **Yabai** (`dot_config/yabai/`) - Tiling window manager with automatic space creation and application assignment
 - **SketchyBar** (`dot_config/sketchybar/`) - Status bar written in Lua with modular item system
 - **skhd** (`dot_config/skhd/`) - Hotkey daemon for window management keybindings
 - **SketchyVim** (`dot_config/svim/`) - System-wide Vim-like navigation with Russian keyboard layout support
 - **Karabiner** (`dot_config/private_karabiner/`) - Keyboard customization and complex modifications
+- **JankyBorders** (`dot_config/borders/`) - Visual window borders for Yabai
 - **Git** (`dot_config/git/`) - Git configuration with KeePassXC integration for secrets
 - **Yazi** (`dot_config/yazi/`) - File manager with Catppuccin theme and custom plugins
 - **LazyGit** (`dot_config/lazygit/`) - Git TUI with dark/light theme support
 - **WezTerm** (`dot_config/wezterm/`) - Terminal emulator configuration
+- **Ghostty** (`dot_config/ghostty/`) - Minimal terminal emulator configuration
+- **Matterhorn** (`dot_config/matterhorn/`) - Terminal-based Mattermost client
+- **Oh My Posh** (`dot_config/oh-my-posh/`) - Prompt theme engine
+- **Raycast** (`dot_config/raycast/`) - Productivity launcher
+- **Zed** (`dot_config/zed/`) - Code editor configuration
+- **Bat** (`dot_config/bat/`) - Cat clone with syntax highlighting
+- **Vim** (`dot_config/vim/`) - Vim configuration
+- **Mise** (`dot_config/mise/`) - Development tool version manager (replaces asdf)
+- **Asdf** (`dot_config/asdf/`) - Legacy version manager configuration
+- **Homebrew** (`dot_config/homebrew/`) - macOS package manager configuration (Brewfile)
+- **NPM** (`dot_config/npm/`) - Node package manager configuration
+- **Stylus** (`dot_config/stylus/`) - Browser extension styles
 
 ## Common Commands
 
@@ -140,7 +154,7 @@ brew services stop sketchybar
 
 This repository uses commitlint with conventional commits. Valid scopes are defined in `.commitlintrc.js`:
 
-- Component scopes: `asdf`, `bat`, `borders`, `brew`, `chezmoi`, `fish`, `ghostty`, `git`, `karabiner`, `lazygit`, `mise`, `nvim`, `oh-my-posh`, `raycast`, `sketchybar`, `skhd`, `ssh`, `svim`, `wezterm`, `yabai`, `yazi`, `zed`, `zsh`
+- Component scopes: `asdf`, `bat`, `borders`, `brew`, `claude`, `chezmoi`, `fish`, `ghostty`, `git`, `gitconfig`, `karabiner`, `lazygit`, `mise`, `nvim`, `oh-my-posh`, `raycast`, `sketchybar`, `skhd`, `ssh`, `svim`, `termscp`, `them-switcher`, `time`, `vscode`, `wezterm`, `yabai`, `yazi`, `zed`, `zrok`, `zsh`
 - Generic scopes: `other`, `shell`, `install-script`
 
 Commits must follow the format: `type(scope): description`
@@ -237,13 +251,11 @@ items/
 ├── left/              # Left-aligned items
 │   ├── spaces.lua     # Yabai workspace indicators
 │   └── yabai.lua      # Window layout status
-├── center/            # Center-aligned items
-│   ├── keyboard_layout.lua  # Current input method
-│   └── svim.lua       # SketchyVim mode indicator
 └── right/             # Right-aligned items
+    ├── keyboard_layout.lua  # Current input method
+    ├── svim.lua       # SketchyVim mode indicator
     ├── battery.lua    # Battery status
-    ├── datetime.lua   # Date and time
-    └── media.lua      # Now playing info
+    └── datetime.lua   # Date and time
 ```
 
 **Event system:**

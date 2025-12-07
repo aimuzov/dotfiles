@@ -41,7 +41,7 @@ skhd --restart-service     # после правок dot_config/skhd/
 
 Используются conventional commits со scope из `.commitlintrc.js`:
 
-**Component scopes:** `asdf`, `bat`, `borders`, `brew`, `chezmoi`, `fish`, `ghostty`, `git`, `karabiner`, `lazygit`, `mise`, `nvim`, `oh-my-posh`, `raycast`, `sketchybar`, `skhd`, `ssh`, `svim`, `wezterm`, `yabai`, `yazi`, `zed`, `zsh`
+**Component scopes:** `asdf`, `bat`, `borders`, `brew`, `claude`, `chezmoi`, `fish`, `ghostty`, `git`, `gitconfig`, `karabiner`, `lazygit`, `mise`, `nvim`, `oh-my-posh`, `raycast`, `sketchybar`, `skhd`, `ssh`, `svim`, `termscp`, `them-switcher`, `time`, `vscode`, `wezterm`, `yabai`, `yazi`, `zed`, `zrok`, `zsh`
 
 **Generic scopes:** `other`, `shell`, `install-script`
 
@@ -78,15 +78,17 @@ skhd --restart-service     # после правок dot_config/skhd/
 
 ### Структура документации
 
-- [Обзор и Архитектура](docs/OVERVIEW.md) - Полная документация
+- [Обзор и Архитектура](docs/OVERVIEW.md) - Полная документация (на английском)
 - [Скрипты Chezmoi](docs/chezmoiscripts/README.md) - Автоматизация установки
-- Документация компонентов в `dot_config/*/README.md` (русский и английский):
-  - [Fish Shell](dot_config/fish/README.md)
-  - [Git](dot_config/git/README.md)
-  - [LazyGit](dot_config/lazygit/README.md)
-  - [Mise](dot_config/mise/README.md)
-  - [SketchyBar](dot_config/sketchybar/README.md)
-  - [skhd](dot_config/skhd/README.md)
-  - [SketchyVim](dot_config/svim/README.md)
-  - [Yabai](dot_config/yabai/README.md)
-  - [Yazi](dot_config/yazi/README.md)
+- Документация компонентов (русский и английский):
+  - [Fish Shell](docs/fish/README.md) ([RU](docs/fish/README.ru.md))
+  - [Git](docs/git/README.md) ([RU](docs/git/README.ru.md))
+  - [LazyGit](docs/lazygit/README.md) ([RU](docs/lazygit/README.ru.md))
+  - [Mise](docs/mise/README.md) ([RU](docs/mise/README.ru.md))
+  - [Neovim](docs/nvim/README.md)
+  - [Oh My Posh](docs/oh-my-posh/README.md) ([RU](docs/oh-my-posh/README.ru.md))
+  - [SketchyBar](docs/sketchybar/README.md) ([RU](docs/sketchybar/README.ru.md))
+  - [skhd](docs/skhd/README.md) ([RU](docs/skhd/README.ru.md))
+  - [SketchyVim](docs/svim/README.md) ([RU](docs/svim/README.ru.md))
+  - [Yabai](docs/yabai/README.md) ([RU](docs/yabai/README.ru.md))
+  - [Yazi](docs/yazi/README.md) ([RU](docs/yazi/README.ru.md))

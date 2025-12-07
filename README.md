@@ -77,29 +77,32 @@ $(mise where ubi:twpayne/chezmoi)/bin/chezmoi init --apply aimuzov
 ├── .repro/                 # Repro configuration
 ├── dot_bin/                # User scripts
 ├── dot_config/             # Configuration files
-│   ├── asdf/               # Version manager
+│   ├── asdf/               # Version manager (legacy)
 │   ├── bat/                # Enhanced cat
 │   ├── borders/            # Window borders
-│   ├── fish/               # Shell configuration
+│   ├── fish/               # Fish shell configuration
 │   ├── git/                # Git settings
 │   ├── ghostty/            # Terminal emulator
-│   ├── homebrew/           # Package manager
+│   ├── homebrew/           # Package manager (Brewfile)
 │   ├── karabiner/          # Key remapping
 │   ├── lazygit/            # Git TUI
-│   ├── matterhorn/         # Terminal emulator
+│   ├── matterhorn/         # Mattermost client
 │   ├── mise/               # Version manager
-│   ├── nvim/               # Editor
-│   ├── nvim-lazyvimx/      # Neovim configuration
+│   ├── npm/                # Node package manager
+│   ├── nvim/               # Neovim editor
+│   ├── nvim-lazyvimx/      # Neovim LazyVimx config
 │   ├── oh-my-posh/         # Prompt customization
 │   ├── raycast/            # Launcher
 │   ├── sketchybar/         # Status bar
 │   ├── skhd/               # Hotkeys
-│   ├── stylus/             # Styling
+│   ├── stylus/             # Browser styles
 │   ├── svim/               # Vim-like keys
+│   ├── vim/                # Vim editor
 │   ├── wezterm/            # Terminal emulator
 │   ├── yabai/              # Window manager
 │   ├── yazi/               # File manager
-│   └── zed/                # Another editor
+│   ├── zed/                # Code editor
+│   └── zsh/                # Zsh shell configuration
 ├── dot_default-gems        # Ruby gems
 ├── dot_gitconfig           # Global git settings
 ├── dot_hushlogin           # Disable login message
@@ -116,10 +119,21 @@ $(mise where ubi:twpayne/chezmoi)/bin/chezmoi init --apply aimuzov
 
 ### Configuration Documentation
 
-- [Fish Shell](dot_config/fish/README.md) - Shell configuration and customization
-- [SketchyBar](dot_config/sketchybar/README.md) - Status bar configuration and modules
-- [Yabai](dot_config/yabai/README.md) - Window manager configuration and tiling
-- [Yazi](dot_config/yazi/README.md) - File manager configuration and plugins
+Detailed documentation is available in the [docs/](docs/) directory with both English and Russian versions:
+
+- [Overview & Architecture](docs/OVERVIEW.md) - Complete system documentation
+- [Chezmoi Scripts](docs/chezmoiscripts/README.md) - Setup automation
+- [Fish Shell](docs/fish/README.md) ([RU](docs/fish/README.ru.md)) - Shell configuration
+- [Git](docs/git/README.md) ([RU](docs/git/README.ru.md)) - Git settings and KeePassXC integration
+- [LazyGit](docs/lazygit/README.md) ([RU](docs/lazygit/README.ru.md)) - Git TUI configuration
+- [Mise](docs/mise/README.md) ([RU](docs/mise/README.ru.md)) - Tool version manager
+- [Neovim](docs/nvim/README.md) - Editor configuration
+- [Oh My Posh](docs/oh-my-posh/README.md) ([RU](docs/oh-my-posh/README.ru.md)) - Prompt customization
+- [SketchyBar](docs/sketchybar/README.md) ([RU](docs/sketchybar/README.ru.md)) - Status bar
+- [skhd](docs/skhd/README.md) ([RU](docs/skhd/README.ru.md)) - Hotkey daemon
+- [SketchyVim](docs/svim/README.md) ([RU](docs/svim/README.ru.md)) - Vim-like navigation
+- [Yabai](docs/yabai/README.md) ([RU](docs/yabai/README.ru.md)) - Window manager
+- [Yazi](docs/yazi/README.md) ([RU](docs/yazi/README.ru.md)) - File manager
 
 ## Useful Links
 

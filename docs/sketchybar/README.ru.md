@@ -15,8 +15,7 @@
 - **executable_sketchybarrc** — Скрипт для запуска SketchyBar с Lua-конфигом. Проверяет и устанавливает SbarLua, запускает event loop.
 - **items/** — Модули для элементов панели, сгруппированные по расположению:
   - **left/** — элементы слева (рабочие столы, yabai-статус)
-  - **center/** — элементы по центру (раскладка клавиатуры, режимы svim)
-  - **right/** — элементы справа (дата/время, батарея, медиа)
+  - **right/** — элементы справа (раскладка клавиатуры, режимы svim, дата/время, батарея)
 
 ---
 
@@ -27,16 +26,12 @@
 - **spaces.lua** — Отображение рабочих столов (spaces) через [yabai](https://github.com/koekeishiya/yabai). Поддержка выделения, отображения приложений, взаимодействие мышью.
 - **yabai.lua** — Статус активного окна (tile/float/fullscreen/stack) через [yabai](https://github.com/koekeishiya/yabai).
 
-### items/center/
+### items/right/
 
 - **keyboard_layout.lua** — Текущая раскладка клавиатуры (en/ru/unknown) через [im-select](https://github.com/daipeihust/im-select).
 - **svim.lua** — Режимы работы [svim](https://github.com/FelixKratz/SketchyVim) (normal/insert/visual/cmd/pending).
-
-### items/right/
-
 - **battery.lua** — Уровень заряда батареи и статус зарядки через pmset.
 - **datetime.lua** — Текущие дата и время, обновление каждые 30 секунд, по клику — переключение отображения дополнительных элементов.
-- **media.lua** — Информация о текущем треке (исполнитель, название, play/pause) через [nowplaying-cli](https://github.com/nowplaying/nowplaying-cli).
 
 ## Кастомизация
 
@@ -52,7 +47,6 @@
 - [SbarLua](https://github.com/FelixKratz/SbarLua)
 - [yabai](https://github.com/koekeishiya/yabai)
 - [im-select](https://github.com/daipeihust/im-select)
-- [nowplaying-cli](https://github.com/nowplaying/nowplaying-cli)
 - [jq](https://stedolan.github.io/jq/)
 - `pmset` (стандартная утилита macOS)
 
