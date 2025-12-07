@@ -2,8 +2,7 @@ local sbar = require("sketchybar")
 local config = require("config")
 
 local bar = sbar.bar({
-	border_color = config.colors.bar.border,
-	color = config.colors.bar.bg,
+	color = config.colors.transparent,
 	height = 40,
 	padding_left = 8,
 	padding_right = 8,

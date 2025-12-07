@@ -4,7 +4,7 @@ local config = require("config")
 sbar.default({
 	background = {
 		height = 26,
-		corner_radius = 9,
+		corner_radius = 16,
 		border_width = 1,
 	},
 
@@ -13,23 +13,17 @@ sbar.default({
 	updates = "when_shown",
 
 	icon = {
-		font = {
-			family = config.font,
-			size = 14,
-			style = "Bold",
-		},
+		font = { family = config.font, style = "Regular", size = 14 },
 		color = config.colors.white,
+		highlight_color = config.colors.white,
 		padding_left = config.paddings,
 		padding_right = config.paddings,
 	},
 
 	label = {
-		font = {
-			family = config.font,
-			style = "Semibold",
-			size = 13,
-		},
+		font = { family = config.font, style = "Regular", size = 14 },
 		color = config.colors.white,
+		highlight_color = config.colors.white,
 		padding_left = config.paddings,
 		padding_right = config.paddings,
 	},
