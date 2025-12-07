@@ -2,6 +2,7 @@
     "freetype": true,
     "new-windows-size-as-first": true,
     "send-large-photos": true,
+    "show-channel-joined-below-about": true,
     "show-peer-id-below-about": true,
     "tabbed-panel-show-on-click": true,
     "view-profile-in-chats-list-context-menu": true

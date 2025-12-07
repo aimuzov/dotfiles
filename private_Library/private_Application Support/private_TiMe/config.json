@@ -33,7 +33,6 @@
   },
   "showUnreadBadge": true,
   "useSpellChecker": true,
-  "enableHardwareAcceleration": false,
   "autostart": true,
   "hideOnStart": false,
   "spellCheckerLocales": [],
@@ -43,5 +42,6 @@
   "startInFullscreen": false,
   "logLevel": "error",
   "autoCheckForUpdates": true,
-  "webappVersion": "v6.39.1"
+  "webappVersion": "v6.39.1",
+  "enableGPUAcceleration": true
 }
