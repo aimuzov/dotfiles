@@ -27,9 +27,15 @@ rust = "latest"
 "npm:@aimuzov/sketchybar-app-font" = { version = "latest", exe = "sketchybar-app-font" }
 "npm:@anthropic-ai/claude-code" = { version = "latest" }
 "npm:@georgesg/arc-cli" = { version = "latest", exe = "arc-cli" }
+"npm:@modelcontextprotocol/server-everything" = "latest"
+"npm:@modelcontextprotocol/server-filesystem" = "latest"
+"npm:@modelcontextprotocol/server-memory" = "latest"
+"npm:@modelcontextprotocol/server-sequential-thinking" = "latest"
 
 "pipx:httpie" = "latest"
 "pipx:neovim-remote" = "latest"
+"pipx:mcp-server-fetch" = "latest"
+"pipx:mcp-server-git" = "latest"
 
 "ubi:ajeetdsouza/zoxide" = "latest"
 "ubi:ast-grep/ast-grep" = "latest"
