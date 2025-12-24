@@ -5,5 +5,6 @@
     "show-channel-joined-below-about": true,
     "show-peer-id-below-about": true,
     "tabbed-panel-show-on-click": true,
-    "view-profile-in-chats-list-context-menu": true
+    "view-profile-in-chats-list-context-menu": true,
+    "webview-debug-enabled": true
 }
