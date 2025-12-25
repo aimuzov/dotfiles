@@ -87,5 +87,5 @@
   "vscode-js-debug": { "branch": "main", "commit": "68b5caac3f8afa5ca1d8af0891452cc3c25bd5d3" },
   "which-key.nvim": { "branch": "main", "commit": "3aab2147e74890957785941f0c1ad87d0a44c15a" },
   "yanky.nvim": { "branch": "main", "commit": "04fc42b94305d94948c9c197f679336668af3292" },
-  "yazi.nvim": { "branch": "main", "commit": "76c61e39b37baccbcb5e02927dd6f7246d0bf95b" }
+  "yazi.nvim": { "branch": "main", "commit": "c71c3cef0213adccebc7d5dfb20d98f3b0d89165" }
 }
