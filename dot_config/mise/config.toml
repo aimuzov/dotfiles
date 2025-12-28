@@ -1,4 +1,4 @@
-[alias]
+[tool_alias]
 neovim = "asdf:richin13/asdf-neovim"
 node = "asdf:asdf-vm/asdf-nodejs"
 pipx = "asdf:yozachar/asdf-pipx"
@@ -8,7 +8,7 @@ ruby = "asdf:asdf-vm/asdf-ruby"
 [tools]
 bun = "latest"
 go = "latest"
-neovim = ["nightly", "stable"]
+neovim = "nightly"
 node = "latest"
 pipx = "latest"
 pnpm = "latest"
@@ -16,16 +16,37 @@ python = "3.12"
 ruby = "latest"
 rust = "latest"
 
-"cargo:bottom" = "latest"
+"aqua:ajeetdsouza/zoxide" = "latest"
+"aqua:ast-grep/ast-grep" = "latest"
+"aqua:BurntSushi/ripgrep" = "latest"
+"aqua:charmbracelet/glow" = "latest"
+"aqua:ClementTsang/bottom" = "latest"
+"aqua:cli/cli" = "latest"
+"aqua:jesseduffield/lazygit" = "latest"
+"aqua:jqlang/jq" = "latest"
+"aqua:junegunn/fzf" = "latest"
+"aqua:openziti/zrok" = "latest"
+"aqua:ouch-org/ouch" = "latest"
+"aqua:sharkdp/bat" = "latest"
+"aqua:sharkdp/fd" = "latest"
+"aqua:sharkdp/hexyl" = "latest"
+"aqua:sharkdp/vivid" = "latest"
+"aqua:sxyazi/yazi" = "latest"
+"aqua:twpayne/chezmoi" = "latest"
+"aqua:veeso/termscp" = "latest"
+"aqua:Wilfred/difftastic" = "latest"
+
 "cargo:eza" = "latest"
 "cargo:genact" = "latest"
 "cargo:tokei" = "latest"
-"cargo:vivid" = "latest"
-"cargo:yazi-cli" = "latest"
-"cargo:yazi-fm" = "latest"
+
+"github:matterhorn-chat/matterhorn" = "latest"
+"github:zdyxry/tokui" = "latest"
+
+"gitlab:gitlab-org/cli" = { version = "latest", exe = "glab" }
 
 "npm:@aimuzov/sketchybar-app-font" = { version = "latest", exe = "sketchybar-app-font" }
-"npm:@anthropic-ai/claude-code" = { version = "latest" }
+"npm:@anthropic-ai/claude-code" = "latest"
 "npm:@georgesg/arc-cli" = { version = "latest", exe = "arc-cli" }
 "npm:@modelcontextprotocol/server-everything" = "latest"
 "npm:@modelcontextprotocol/server-filesystem" = "latest"
@@ -33,32 +54,12 @@ rust = "latest"
 "npm:@modelcontextprotocol/server-sequential-thinking" = "latest"
 
 "pipx:httpie" = "latest"
-"pipx:neovim-remote" = "latest"
+"pipx:mhinz/neovim-remote" = "latest"
 "pipx:mcp-server-fetch" = "latest"
 "pipx:mcp-server-git" = "latest"
 
-"ubi:ajeetdsouza/zoxide" = "latest"
-"ubi:ast-grep/ast-grep" = "latest"
-"ubi:BurntSushi/ripgrep" = { version = "latest", exe = "rg" }
-"ubi:charmbracelet/glow" = "latest"
-"ubi:ClementTsang/bottom" = { version = "latest", exe = "btm" }
-"ubi:cli/cli" = { version = "latest", exe = "gh" }
-"ubi:gitlab-org/cli" = { version = "latest", provider = "gitlab", exe = "glab" }
-"ubi:JanDeDobbeleer/oh-my-posh" = { version = "latest", exe = "oh-my-posh" }
-"ubi:jesseduffield/lazygit" = "latest"
-"ubi:jqlang/jq" = "latest"
-"ubi:junegunn/fzf" = "latest"
-"ubi:matterhorn-chat/matterhorn" = "latest"
-"ubi:openziti/zrok" = "latest"
-"ubi:ouch-org/ouch" = "latest"
-"ubi:sharkdp/bat" = "latest"
-"ubi:sharkdp/fd" = "latest"
-"ubi:sharkdp/hexyl" = "latest"
+"ubi:JanDeDobbeleer/oh-my-posh" = "latest"
 "ubi:so-fancy/diff-so-fancy" = "latest"
-"ubi:twpayne/chezmoi" = "latest"
-"ubi:veeso/termscp" = "latest"
-"ubi:Wilfred/difftastic" = { version = "latest", exe = "difft" }
-"ubi:zdyxry/tokui" = "latest"
 
 [settings]
 experimental = true
