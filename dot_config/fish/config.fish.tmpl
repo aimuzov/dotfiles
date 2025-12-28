@@ -66,7 +66,19 @@ find $__fish_cache_dir -name '*.fish' -type f -mmin +1200 -delete
 set fish_greeting
 
 if type -q oh-my-posh
-    cache_and_source oh-my-posh_init_(oh-my-posh --version).fish "oh-my-posh init fish --config $XDG_CONFIG_HOME/oh-my-posh/config.json"
+    set -l omp_version (oh-my-posh --version)
+    set -l omp_cache_file oh-my-posh_init_$omp_version.fish
+    set -l omp_cache_path $__fish_cache_dir/$omp_cache_file
+
+    # If cache for current version doesn't exist - clean up old ones
+    if not test -f $omp_cache_path
+        # Remove all old oh-my-posh fish caches
+        rm -f $__fish_cache_dir/oh-my-posh_init_*.fish
+        # Clean up internal oh-my-posh cache (contains hardcoded path to binary)
+        rm -rf $XDG_CACHE_HOME/oh-my-posh
+    end
+
+    cache_and_source $omp_cache_file "oh-my-posh init fish --config $XDG_CONFIG_HOME/oh-my-posh/config.json"
 end
 
 # -- BREW --------------------------------------------------------------------------------------------------------------
