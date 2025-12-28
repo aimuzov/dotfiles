@@ -1,11 +1,6 @@
 [mgr]
 ratio = [1, 2, 5]
 
-[[mgr.prepend_keymap]]
-on = ["F"]
-run = "plugin smart-filter"
-desc = "Smart filter"
-
 [opener]
 edit = [
 	{ run = 'nvr --remote-tab-wait +"setl bufhidden=wipe" "$@"', block = true },
