@@ -1,5 +1,7 @@
 # Dotfiles Overview
 
+> [🇷🇺 Русская версия](OVERVIEW.ru.md)
+
 This is a personal macOS dotfiles repository managed with [chezmoi](https://www.chezmoi.io/). The configuration includes a complete desktop environment with Yabai (tiling window manager), SketchyBar (status bar), Neovim, Fish shell, and various development tools.
 
 ## Repository Structure
@@ -7,6 +9,7 @@ This is a personal macOS dotfiles repository managed with [chezmoi](https://www.
 ### Chezmoi File Naming Convention
 
 Files and directories use chezmoi's naming conventions:
+
 - `dot_` prefix → becomes `.` (e.g., `dot_config` → `.config`)
 - `private_` prefix → files excluded from git and restricted permissions
 - `.tmpl` suffix → files processed as templates with chezmoi variables
@@ -100,15 +103,18 @@ mise use -g node@latest
 All development tools are managed via mise (configured in `dot_config/mise/config.toml`):
 
 **Languages:**
+
 - Node.js (latest), Python (3.12), Ruby (latest), Go (latest), Rust (latest), Bun (latest)
 - Neovim (both stable and nightly versions via custom asdf plugin)
 
 **Package Managers:**
+
 - pnpm (Node.js)
 - pipx (Python)
 - cargo (Rust)
 
 **Tool Installation Backends:**
+
 - `asdf:` - Traditional asdf plugins
 - `cargo:` - Rust packages (eza, yazi, bottom, tokei, vivid, genact)
 - `npm:` - Node packages (Claude Code, Arc CLI, SketchyBar App Font)
@@ -118,6 +124,7 @@ All development tools are managed via mise (configured in `dot_config/mise/confi
 ### Window Management & Desktop Environment
 
 **Yabai & skhd keybindings:**
+
 - `Alt + 1-9,0,-,=` - Switch to workspace 1-12
 - `Alt + h/j/k/l` - Focus window (vim-like)
 - `Alt + Shift + h/j/k/l` - Move window
@@ -127,6 +134,7 @@ All development tools are managed via mise (configured in `dot_config/mise/confi
 - `Alt + Shift + e` - Balance windows
 
 **SketchyBar:**
+
 ```bash
 # Reload SketchyBar
 sketchybar --reload
@@ -136,6 +144,7 @@ sketchybar --trigger window_focus
 ```
 
 **Services:**
+
 ```bash
 # Start/stop Yabai
 yabai --start-service
@@ -170,12 +179,14 @@ Use `npm run commit` for interactive commit message creation.
 Files with `.tmpl` extension are processed as Go templates. Common patterns:
 
 **Variables:**
+
 - `{{ .chezmoi.os }}` - Operating system (typically "darwin")
 - `{{ .chezmoi.homeDir }}` - User's home directory
 - `{{ .chezmoi.username }}` - Current user
 - `{{ .chezmoi.hostname }}` - Machine hostname
 
 **Conditional blocks:**
+
 ```go
 {{ if (eq .chezmoi.os "darwin") -}}
 # macOS-specific configuration
@@ -183,6 +194,7 @@ Files with `.tmpl` extension are processed as Go templates. Common patterns:
 ```
 
 **KeePassXC integration for secrets:**
+
 ```go
 {{ (keepassxcAttribute "entry-name" "attribute-name").Text }}
 ```
@@ -192,12 +204,14 @@ Files with `.tmpl` extension are processed as Go templates. Common patterns:
 The `dot_config/mise/config.toml` defines all development tools using TOML format:
 
 **Tool aliases** (shorthand names):
+
 ```toml
 [alias]
 neovim = "asdf:richin13/asdf-neovim"
 ```
 
 **Tool versions:**
+
 ```toml
 [tools]
 node = "latest"
@@ -206,6 +220,7 @@ neovim = ["nightly", "stable"]  # Multiple versions supported
 ```
 
 **Backend-specific tools:**
+
 - `asdf:` - Traditional asdf plugins with repository path
 - `cargo:` - Rust crates from crates.io
 - `npm:` - Node packages with optional exe mapping
@@ -217,9 +232,11 @@ neovim = ["nightly", "stable"]  # Multiple versions supported
 The entire environment supports automatic dark/light theme switching based on macOS system appearance:
 
 **Environment variable:**
+
 - `MACOS_IS_DARK` - Set by system (true/false)
 
 **Components that auto-switch:**
+
 - Fish shell (Catppuccin Macchiato/Latte)
 - Neovim (via LazyVimx)
 - Yazi file manager
@@ -229,6 +246,7 @@ The entire environment supports automatic dark/light theme switching based on ma
 - Oh My Posh (prompt)
 
 **Implementation:**
+
 - Fish shell detects theme on startup via `defaults read -g AppleInterfaceStyle`
 - Theme-specific cache files stored separately
 - Color schemes loaded dynamically based on `MACOS_IS_DARK`
@@ -238,6 +256,7 @@ The entire environment supports automatic dark/light theme switching based on ma
 SketchyBar is configured entirely in Lua with a modular structure:
 
 **Core files:**
+
 - `init.lua` - Entry point, requires all modules
 - `bar.lua` - Bar appearance (position, height, colors)
 - `config.lua` - Shared configuration (fonts, padding, colors)
@@ -245,6 +264,7 @@ SketchyBar is configured entirely in Lua with a modular structure:
 - `executable_sketchybarrc` - Shell script that installs SbarLua and starts event loop
 
 **Item structure:**
+
 ```
 items/
 ├── init.lua           # Requires all items
@@ -259,6 +279,7 @@ items/
 ```
 
 **Event system:**
+
 - Items subscribe to system events (window_focus, space_change, etc.)
 - External triggers via `sketchybar --trigger event_name`
 - Integration with Yabai signals for window management updates
@@ -266,6 +287,7 @@ items/
 ### Fish Shell Architecture
 
 **Directory structure:**
+
 ```
 dot_config/fish/
 ├── config.fish.tmpl          # Main config (template for secrets)
@@ -278,12 +300,14 @@ dot_config/fish/
 ```
 
 **Initialization order:**
+
 1. Environment variables set in `~/.zshenv` (loaded first, even for Fish)
 2. `conf.d/` scripts auto-loaded
 3. `config.fish.tmpl` main configuration
 4. Functions loaded on-demand from `functions/`
 
 **Key features:**
+
 - XDG Base Directory compliance
 - Recursive function/completion path discovery
 - Cached initializations for performance (Homebrew, mise, zoxide)
@@ -293,6 +317,7 @@ dot_config/fish/
 ### Yabai Window Management
 
 **Configuration flow:**
+
 1. Load scripting addition (requires SIP disabled)
 2. Set up SketchyBar signals
 3. Configure global settings (layout, padding, gaps, mouse)
@@ -301,12 +326,14 @@ dot_config/fish/
 6. Set per-app layout exceptions
 
 **Space management:**
+
 - Spaces created automatically on startup
 - Custom names for workspaces
 - Application-to-space assignments
 - Per-space layout rules
 
 **Integration points:**
+
 - skhd for keybindings
 - SketchyBar for visual feedback
 - Custom helper scripts in PATH (`yabai_space_focus`, `yabai_display_index_get`)
@@ -314,6 +341,7 @@ dot_config/fish/
 ### Git Configuration
 
 Located in `dot_config/git/config.tmpl`:
+
 - Secrets loaded from KeePassXC via chezmoi templates (user name, email, GPG signing key)
 - GPG commit signing enabled by default
 - Custom pager: `diff-so-fancy` with color configuration
@@ -327,6 +355,7 @@ Located in `dot_config/git/config.tmpl`:
 ## Installation
 
 First boot setup (documented in README.md):
+
 1. Install Xcode Command Line Tools: `xcode-select --install`
 2. Install Homebrew
 3. Install mise and fish: `brew install mise fish`
@@ -335,6 +364,7 @@ First boot setup (documented in README.md):
 6. Initialize dotfiles: `$(mise where ubi:twpayne/chezmoi)/bin/chezmoi init --apply aimuzov`
 
 The chezmoi scripts in `.chezmoiscripts/` automatically handle:
+
 1. `run_once_after_1_install-packages.fish.tmpl` - Install Homebrew packages and mise tools
 2. `run_once_after_2_configure-system.fish.tmpl` - Configure macOS system settings
 3. `run_once_after_3_setup-theme-switcher.fish.tmpl` - Set up automatic theme switching
@@ -347,26 +377,31 @@ The chezmoi scripts in `.chezmoiscripts/` automatically handle:
 ## Troubleshooting
 
 ### Yabai Not Working
+
 - Check if Accessibility permissions are granted
 - Verify scripting addition is loaded: `yabai -m query --windows`
 - If using scripting addition, ensure SIP is disabled (see [Yabai wiki](https://github.com/koekeishiya/yabai/wiki/Disabling-System-Integrity-Protection))
 
 ### SketchyBar Not Showing
+
 - Ensure SbarLua is installed: `brew install FelixKratz/formulae/sbarlua`
 - Check service status: `brew services list | grep sketchybar`
 - Reload manually: `sketchybar --reload`
 
 ### Fish Shell Not Loading Config
+
 - Verify `~/.zshenv` sets `SHELL` and sources mise
 - Check XDG directories exist: `echo $XDG_CONFIG_HOME`
 - Test config: `fish --debug`
 
 ### Mise Tools Not Found
+
 - Ensure mise is activated in shell: `mise doctor`
 - Check PATH includes mise shims: `echo $PATH | grep mise`
 - Reinstall tools: `mise install -y`
 
 ### Theme Not Switching
+
 - Verify `MACOS_IS_DARK` environment variable: `echo $MACOS_IS_DARK`
 - Check macOS appearance: `defaults read -g AppleInterfaceStyle`
 - Restart Fish shell to reload theme
@@ -374,22 +409,26 @@ The chezmoi scripts in `.chezmoiscripts/` automatically handle:
 ## Development Workflow
 
 ### Adding New Tools
+
 1. Add to `dot_config/mise/config.toml` under appropriate backend
 2. Run `mise install` to install
 3. Commit changes with scope `mise`
 
 ### Adding New Config
+
 1. Add file to appropriate `dot_config/` subdirectory
 2. Use chezmoi naming conventions (`dot_`, `private_`, `executable_`, `.tmpl`)
 3. Test with `chezmoi diff` before `chezmoi apply`
 4. Commit with appropriate scope from `.commitlintrc.js`
 
 ### Modifying SketchyBar Items
+
 1. Edit item file in `dot_config/sketchybar/items/`
 2. Reload SketchyBar: `sketchybar --reload`
 3. Check logs if not working: `log show --predicate 'process == "sketchybar"' --last 5m`
 
 ### Testing Yabai Changes
+
 1. Edit `dot_config/yabai/executable_yabairc`
 2. Reload config: `yabai --restart-service`
 3. Check current layout: `yabai -m query --spaces --space`
@@ -397,6 +436,7 @@ The chezmoi scripts in `.chezmoiscripts/` automatically handle:
 ## Related Documentation
 
 Component-specific documentation (Russian and English versions available):
+
 - [Chezmoi Scripts](chezmoiscripts/README.md)
 - [Fish Shell Configuration](../dot_config/fish/README.md)
 - [Git Configuration](../dot_config/git/README.md)
