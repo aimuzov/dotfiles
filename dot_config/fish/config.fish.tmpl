@@ -73,7 +73,8 @@ if type -q oh-my-posh
     # If cache for current version doesn't exist - clean up old ones
     if not test -f $omp_cache_path
         # Remove all old oh-my-posh fish caches
-        rm -f $__fish_cache_dir/oh-my-posh_init_*.fish
+        set -l old_caches (path filter $__fish_cache_dir/oh-my-posh_init_*.fish)
+        test -n "$old_caches"; and rm -f $old_caches
         # Clean up internal oh-my-posh cache (contains hardcoded path to binary)
         rm -rf $XDG_CACHE_HOME/oh-my-posh
     end
