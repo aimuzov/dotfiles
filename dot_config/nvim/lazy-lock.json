@@ -36,9 +36,9 @@
   "mini.icons": { "branch": "main", "commit": "ff2e4f1d29f659cc2bad0f9256f2f6195c6b2428" },
   "mini.pairs": { "branch": "main", "commit": "d5a29b6254dad07757832db505ea5aeab9aad43a" },
   "mini.surround": { "branch": "main", "commit": "88c52297ed3e69ecf9f8652837888ecc727a28ee" },
-  "neo-tree.nvim": { "branch": "main", "commit": "f921e4eb437e4ba56ac662c0955fdf7c6588d222" },
+  "neo-tree.nvim": { "branch": "main", "commit": "4925f31285940af2805f5bfe52dcffa2037ecab2" },
   "neotest": { "branch": "master", "commit": "deadfb1af5ce458742671ad3a013acb9a6b41178" },
-  "neotest-golang": { "branch": "main", "commit": "97bf34a811806166b62494b40bbd4959c221647f" },
+  "neotest-golang": { "branch": "main", "commit": "9cd3cb85a2d3a1331c6e8d33c21077f22df3b927" },
   "neotest-jest": { "branch": "main", "commit": "3f0cc2cff1ee05394081805c622dc2551b54d8c4" },
   "noice.nvim": { "branch": "main", "commit": "7bfd942445fb63089b59f97ca487d605e715f155" },
   "nui.nvim": { "branch": "main", "commit": "de740991c12411b663994b2860f1a4fd0937c130" },
@@ -87,5 +87,5 @@
   "vscode-js-debug": { "branch": "main", "commit": "68b5caac3f8afa5ca1d8af0891452cc3c25bd5d3" },
   "which-key.nvim": { "branch": "main", "commit": "3aab2147e74890957785941f0c1ad87d0a44c15a" },
   "yanky.nvim": { "branch": "main", "commit": "04fc42b94305d94948c9c197f679336668af3292" },
-  "yazi.nvim": { "branch": "main", "commit": "5068ce098990b86f868fa2c2c642aacce105d8c1" }
+  "yazi.nvim": { "branch": "main", "commit": "1e21e3112dce511c3a485f59b5436c5761a7ad15" }
 }
