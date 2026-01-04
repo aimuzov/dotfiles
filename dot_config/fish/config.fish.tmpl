@@ -77,6 +77,7 @@ if type -q oh-my-posh
         test -n "$old_caches"; and rm -f $old_caches
         # Clean up internal oh-my-posh cache (contains hardcoded path to binary)
         rm -rf $XDG_CACHE_HOME/oh-my-posh
+        oh-my-posh cache build
     end
 
     cache_and_source $omp_cache_file "oh-my-posh init fish --config $XDG_CONFIG_HOME/oh-my-posh/config.json"
