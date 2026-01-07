@@ -44,11 +44,12 @@ rust = "latest"
 "github:matterhorn-chat/matterhorn" = "latest"
 "github:zdyxry/tokui" = "latest"
 
-"gitlab:gitlab-org/cli" = { version = "latest", exe = "glab" }
+"gitlab:gitlab-org/cli" = "latest"
 
-"npm:@aimuzov/sketchybar-app-font" = { version = "latest", exe = "sketchybar-app-font" }
+"npm:@aimuzov/sketchybar-app-font" = "latest"
 "npm:@anthropic-ai/claude-code" = "latest"
-"npm:@georgesg/arc-cli" = { version = "latest", exe = "arc-cli" }
+"npm:@eslint/mcp" = "latest"
+"npm:@georgesg/arc-cli" = "latest"
 "npm:@modelcontextprotocol/server-everything" = "latest"
 "npm:@modelcontextprotocol/server-filesystem" = "latest"
 "npm:@modelcontextprotocol/server-memory" = "latest"

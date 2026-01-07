@@ -1,3 +1,6 @@
 {
-  "alwaysThinkingEnabled": true
+  "alwaysThinkingEnabled": true,
+  "permissions": {
+    "defaultMode": "plan"
+  }
 }
