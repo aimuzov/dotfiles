@@ -1,0 +1,32 @@
+{
+	"filesystem": {
+		"command": "mcp-server-filesystem",
+		"args": ["{{ (keepassxcAttribute "ENV" "HOME") }}"],
+		"env": { "PATH": "{{ (keepassxcAttribute "ENV" "PATH") }}" }
+	},
+	"git": {
+		"command": "mcp-server-git",
+		"env": { "PATH": "{{ (keepassxcAttribute "ENV" "PATH") }}" }
+	},
+	"fetch": {
+		"command": "mcp-server-fetch",
+		"env": { "PATH": "{{ (keepassxcAttribute "ENV" "PATH") }}" }
+	},
+	"memory": {
+		"command": "mcp-server-memory",
+		"env": { "PATH": "{{ (keepassxcAttribute "ENV" "PATH") }}" }
+	},
+	"everything": {
+		"command": "mcp-server-everything",
+		"env": { "PATH": "{{ (keepassxcAttribute "ENV" "PATH") }}" }
+	},
+	"sequential-thinking": {
+		"command": "mcp-server-sequential-thinking",
+		"env": { "PATH": "{{ (keepassxcAttribute "ENV" "PATH") }}" }
+	},
+	"eslint": {
+		"command": "mcp",
+		"env": { "PATH": "{{ (keepassxcAttribute "ENV" "PATH") }}" }
+	}
+}
+

@@ -1,6 +1,5 @@
 {
   "alwaysThinkingEnabled": true,
-  "permissions": {
-    "defaultMode": "plan"
-  }
+  "permissions": { "defaultMode": "plan" },
+  "preferredNotifChannel": "ghostty"
 }
