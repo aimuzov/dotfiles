@@ -3,11 +3,6 @@ type = "file"
 url = "https://raw.githubusercontent.com/catppuccin/fish/refs/heads/main/themes/Catppuccin%20Macchiato.theme"
 refreshPeriod = "168h"
 
-[".config/fish/themes/Catppuccin Latte.theme"]
-type = "file"
-url = "https://raw.githubusercontent.com/catppuccin/fish/refs/heads/main/themes/Catppuccin%20Latte.theme"
-refreshPeriod = "168h"
-
 [".config/fish/themes/catppuccin-fzf-macchiato.fish"]
 type = "file"
 url = "https://raw.githubusercontent.com/catppuccin/fzf/refs/heads/main/themes/catppuccin-fzf-macchiato.fish"

@@ -39,11 +39,10 @@ end
 
 # -- MACOS COLORSCHEME -------------------------------------------------------------------------------------------------
 
-defaults read -g AppleInterfaceStyle >/dev/null 2>&1; and set -gx MACOS_IS_DARK yes; or set -gx MACOS_IS_DARK no
+set -gx MACOS_IS_DARK (defaults read -g AppleInterfaceStyle >/dev/null 2>&1; and echo yes; or echo no)
+set -gx CATPPUCCIN_FLAVOR $([ $MACOS_IS_DARK = yes ]; and echo macchiato; or echo latte)
 
-set -gx CATPPUCCIN_FLAVOR "Catppuccin $([ $MACOS_IS_DARK = yes ]; and echo Macchiato; or echo Latte)"
-
-fish_config theme choose $CATPPUCCIN_FLAVOR
+fish_config theme choose "Catppuccin Macchiato"
 
 # -- CACHE -------------------------------------------------------------------------------------------------------------
 
@@ -139,12 +138,7 @@ if type -q fzf
     cache_and_source fzf_init.fish "fzf --fish"
 
     # https://github.com/catppuccin/fzf?tab=readme-ov-file#usage
-    if [ $MACOS_IS_DARK = yes ]
-        source $__fish_config_dir/themes/catppuccin-fzf-macchiato.fish
-    else
-        source $__fish_config_dir/themes/catppuccin-fzf-latte.fish
-    end
-
+    source $__fish_config_dir/themes/catppuccin-fzf-$CATPPUCCIN_FLAVOR.fish
     source $__fish_config_dir/conf.d/fzf/fzf.fish
 
     set -Uxa FZF_DEFAULT_OPTS "--reverse --height '100%' \
@@ -286,7 +280,7 @@ end
 
 # -- EZA --------------------------------------------------------------------------------------------------------------
 
-set -l COLORS (vivid generate catppuccin-$([ $MACOS_IS_DARK = yes ]; and echo macchiato; or echo latte))
+set -l COLORS (vivid generate catppuccin-$CATPPUCCIN_FLAVOR)
 
 set -gx LS_COLORS $COLORS
 set -gx EZA_COLORS $COLORS
@@ -327,7 +321,7 @@ set -gx NPM_CONFIG_USERCONFIG $XDG_CONFIG_HOME/npm/npmrc
 
 # -- OTHER -------------------------------------------------------------------------------------------------------------
 
-set -gx BAT_THEME $CATPPUCCIN_FLAVOR
+set -gx BAT_THEME "Catppuccin $(__util.capitalize $CATPPUCCIN_FLAVOR)"
 set -gx SHELL /opt/homebrew/bin/fish
 
 set -gx _GIT_PATHSPEC ":!package-lock.json" # https://git-quick-stats.sh/#docs
