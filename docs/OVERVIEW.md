@@ -47,7 +47,11 @@ Files and directories use chezmoi's naming conventions:
 - **Ghostty** (`dot_config/ghostty/`) - Minimal terminal emulator configuration
 - **Matterhorn** (`dot_config/matterhorn/`) - Terminal-based Mattermost client
 - **Oh My Posh** (`dot_config/oh-my-posh/`) - Prompt theme engine
-- **Raycast** (`dot_config/raycast/`) - Productivity launcher
+- **Raycast** (`dot_bin/raycast/`) - Script commands for productivity launcher
+  - Tailscale VPN exit-node management
+  - VM services restart (Yabai, skhd, SketchyBar, etc.)
+  - Application launchers
+  - See [Raycast documentation](raycast/README.md) for details
 - **Zed** (`dot_config/zed/`) - Code editor configuration
 - **Bat** (`dot_config/bat/`) - Cat clone with syntax highlighting
 - **Vim** (`dot_config/vim/`) - Vim configuration
@@ -96,6 +100,19 @@ mise ls
 
 # Install specific tool
 mise use -g node@latest
+```
+
+### Raycast Script Commands
+
+```bash
+# Test script from command line
+~/.bin/raycast/tailscale.sh enable
+
+# Edit script in dotfiles
+chezmoi edit ~/.bin/raycast/tailscale.sh
+
+# Add new script to chezmoi
+chezmoi add ~/.bin/raycast/new_script.sh
 ```
 
 ### Development Tools

@@ -55,6 +55,7 @@ skhd --restart-service     # после правок dot_config/skhd/
 - `.chezmoiexternals/` - Внешние зависимости (плагины для fish, yazi, nvim)
 - `dot_config/` - Конфигурации приложений (становится `~/.config/`)
 - `dot_bin/` - Пользовательские скрипты
+- `dot_bin/raycast/` - Raycast script commands (становится `~/.bin/raycast/`)
 - `docs/` - Документация
 - `assets/` - Статические файлы для документации
 
@@ -68,6 +69,7 @@ skhd --restart-service     # после правок dot_config/skhd/
 - **SketchyVim** - Системная навигация в стиле Vim с поддержкой русской раскладки
 - **Git** - Интеграция с KeePassXC для секретов, подпись GPG
 - **mise** - Менеджер инструментов разработки (замена asdf)
+- **Raycast Scripts** - Команды для Raycast (управление Tailscale, перезапуск сервисов, лаунчеры)
 
 ### Рабочий процесс разработки
 
@@ -87,6 +89,7 @@ skhd --restart-service     # после правок dot_config/skhd/
   - [Mise](docs/mise/README.md) ([RU](docs/mise/README.ru.md))
   - [Neovim](docs/nvim/README.md)
   - [Oh My Posh](docs/oh-my-posh/README.md) ([RU](docs/oh-my-posh/README.ru.md))
+  - [Raycast](docs/raycast/README.md) ([RU](docs/raycast/README.ru.md))
   - [SketchyBar](docs/sketchybar/README.md) ([RU](docs/sketchybar/README.ru.md))
   - [skhd](docs/skhd/README.md) ([RU](docs/skhd/README.ru.md))
   - [SketchyVim](docs/svim/README.md) ([RU](docs/svim/README.ru.md))
