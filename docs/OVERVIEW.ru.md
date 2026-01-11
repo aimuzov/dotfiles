@@ -247,9 +247,11 @@ neovim = ["nightly", "stable"]  # Поддержка нескольких вер
 
 **Реализация:**
 
-- Fish shell определяет тему при запуске через `defaults read -g AppleInterfaceStyle`
+- Fish 4.3+ использует переменную `fish_terminal_color_theme`, которая автоматически обновляется когда современные терминалы (Ghostty, iTerm2, WezTerm) отправляют OSC последовательности
+- Функция `reload_theme` в `conf.d/theme_setup.fish` автоматически срабатывает при изменении `fish_terminal_color_theme`
 - Файлы кеша для каждой темы хранятся отдельно
-- Цветовые схемы загружаются динамически на основе `MACOS_IS_DARK`
+- Переменные окружения `MACOS_IS_DARK` и `CATPPUCCIN_FLAVOR` устанавливаются функцией `reload_theme`
+- Цветовые схемы для fzf, bat, eza и fish shell перезагружаются автоматически во всех открытых сессиях
 
 ### Архитектура SketchyBar
 
@@ -403,8 +405,11 @@ dot_config/fish/
 ### Тема не переключается
 
 - Проверьте переменную окружения `MACOS_IS_DARK`: `echo $MACOS_IS_DARK`
-- Проверьте оформление macOS: `defaults read -g AppleInterfaceStyle`
-- Перезапустите Fish shell для перезагрузки темы
+- Проверьте тему терминала Fish: `echo $fish_terminal_color_theme`
+- Убедитесь, что ваш терминал поддерживает OSC последовательности (Ghostty, iTerm2, WezTerm поддерживают)
+- Перезагрузите тему вручную: `theme_reload` (или сокращение `tr`)
+- Проверьте наличие функции `reload_theme`: `type reload_theme`
+- Перезапустите Fish shell, если автоматическое определение не работает
 
 ## Рабочий процесс разработки
 

@@ -47,7 +47,45 @@ The shell uses [Catppuccin](https://github.com/catppuccin/fish) theme with autom
 - Dark mode: [Catppuccin Macchiato](https://github.com/catppuccin/fish)
 - Light mode: [Catppuccin Latte](https://github.com/catppuccin/fish)
 
-The theme automatically switches based on the system appearance setting.
+### Dynamic Theme Switching
+
+The configuration supports dynamic theme switching for all components, including:
+- **fzf** - interactive file search
+- **bat** - syntax highlighting
+- **eza** (ls) - file listing color scheme
+- **Fish shell** - shell theme
+
+#### Available Commands
+
+```bash
+# Reload all themes (fish, fzf, bat, eza)
+theme_reload  # or shortcut: tr
+
+# Reload only fzf theme
+fzf_theme_reload  # or shortcut: ftr
+```
+
+#### Automatic Theme Switching
+
+**Fish 4.3+** supports automatic theme change detection through the built-in `fish_terminal_color_theme` variable. When you change the theme in macOS, modern terminals (Ghostty, iTerm2, WezTerm) automatically notify Fish of the change.
+
+Automatic theme reloading is enabled by default through the `reload_theme` function, which subscribes to `fish_terminal_color_theme` changes:
+
+```fish
+# Automatically triggered when terminal theme changes
+function reload_theme --on-variable fish_terminal_color_theme
+    # Theme switching logic
+end
+```
+
+**How it works:**
+1. You change the theme in macOS settings (light ↔ dark)
+2. Terminal sends Fish an OSC sequence about the theme change
+3. Fish updates the `fish_terminal_color_theme` variable
+4. The `reload_theme` function automatically triggers
+5. All themes (fzf, bat, eza, fish) update instantly across all open sessions
+
+**Note:** If your terminal doesn't support OSC notifications, use the `theme_reload` command manually after changing the theme.
 
 ## Cache Management
 
@@ -248,10 +286,10 @@ The configuration includes several custom functions organized in the `functions`
 
 ### Git Related Functions
 
-Located in `functions/git/`:
+Located in `functions/core/git/`:
 
-- `__git.current_branch`: Helper function to get the current Git branch name
-- `gbda`: Git branch deletion utility for managing remote branches
+- `git.branch_current`: Helper function to get the current Git branch name
+- `git.branch_prune`: Git branch deletion utility for managing merged branches (including squashed commits)
 
 ### System Management Functions
 

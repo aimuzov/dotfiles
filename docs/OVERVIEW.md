@@ -247,9 +247,11 @@ The entire environment supports automatic dark/light theme switching based on ma
 
 **Implementation:**
 
-- Fish shell detects theme on startup via `defaults read -g AppleInterfaceStyle`
+- Fish 4.3+ uses `fish_terminal_color_theme` variable that automatically updates when modern terminals (Ghostty, iTerm2, WezTerm) send OSC sequences
+- The `reload_theme` function in `conf.d/theme_setup.fish` automatically triggers on `fish_terminal_color_theme` changes
 - Theme-specific cache files stored separately
-- Color schemes loaded dynamically based on `MACOS_IS_DARK`
+- Environment variables `MACOS_IS_DARK` and `CATPPUCCIN_FLAVOR` are set by `reload_theme` function
+- Color schemes for fzf, bat, eza, and fish shell are reloaded automatically across all open sessions
 
 ### SketchyBar Architecture
 
@@ -403,8 +405,11 @@ The chezmoi scripts in `.chezmoiscripts/` automatically handle:
 ### Theme Not Switching
 
 - Verify `MACOS_IS_DARK` environment variable: `echo $MACOS_IS_DARK`
-- Check macOS appearance: `defaults read -g AppleInterfaceStyle`
-- Restart Fish shell to reload theme
+- Check Fish terminal color theme: `echo $fish_terminal_color_theme`
+- Verify your terminal supports OSC sequences (Ghostty, iTerm2, WezTerm do)
+- Manually reload theme: `theme_reload` (or `tr` shortcut)
+- Check if `reload_theme` function exists: `type reload_theme`
+- Restart Fish shell if automatic detection fails
 
 ## Development Workflow
 

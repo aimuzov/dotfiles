@@ -1,4 +1,4 @@
-function gbda --description "Delete all branches merged in current HEAD, including squashed"
+function git.branch_prune --description "Delete all branches merged in current HEAD, including squashed"
     set -l default_branch main
 
     git branch --merged | \

@@ -37,10 +37,7 @@ for xdgdir in (path filter -vd $XDG_CONFIG_HOME $XDG_DATA_HOME $XDG_STATE_HOME $
     mkdir -p $xdgdir
 end
 
-# -- MACOS COLORSCHEME -------------------------------------------------------------------------------------------------
-
-set -gx MACOS_IS_DARK (defaults read -g AppleInterfaceStyle >/dev/null 2>&1; and echo yes; or echo no)
-set -gx CATPPUCCIN_FLAVOR $([ $MACOS_IS_DARK = yes ]; and echo macchiato; or echo latte)
+# -- COLORSCHEME -------------------------------------------------------------------------------------------------------
 
 fish_config theme choose "Catppuccin Macchiato"
 
@@ -137,11 +134,9 @@ add_completion chezmoi.fish "chezmoi completion fish"
 if type -q fzf
     cache_and_source fzf_init.fish "fzf --fish"
 
-    # https://github.com/catppuccin/fzf?tab=readme-ov-file#usage
-    source $__fish_config_dir/themes/catppuccin-fzf-$CATPPUCCIN_FLAVOR.fish
     source $__fish_config_dir/conf.d/fzf/fzf.fish
 
-    set -Uxa FZF_DEFAULT_OPTS "--reverse --height '100%' \
+    set -gx FZF_CUSTOM_OPTS "--reverse --height '100%' \
         --bind ctrl-b:preview-up,ctrl-f:preview-down \
         --bind ctrl-u:preview-half-page-up,ctrl-d:preview-half-page-down \
         --bind 'ctrl-/:change-preview-window(hidden|)' \
@@ -149,8 +144,9 @@ if type -q fzf
         --walker-skip .git,node_modules \
         --preview-window 'right:60%' \
         --multi"
+
     set -Ux FZF_DEFAULT_COMMAND "fd --type f --strip-cwd-prefix --hidden --follow"
-    set -Ux FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
+    set -Ux FZF_CTRL_T_COMMAND "$FZF_CUSTOM_OPTS"
     set -Uxa FZF_CTRL_T_OPTS "--preview 'bat {}'"
 
     # https://github.com/PatrickF1/fzf.fish?tab=readme-ov-file#integrate-with-a-diff-highlighter
@@ -240,14 +236,15 @@ if status is-interactive
 
     abbr -a -- gb git branch -vv
     abbr -a -- gba git branch -vv -a
-    abbr -a -- gbsup git branch --set-upstream-to=origin/\(__git.current_branch\)
+    abbr -a -- gbsup git branch --set-upstream-to=origin/\(git.branch_current\)
+    abbr -a -- gbda git.branch_prune
     abbr -a -- gc! git commit -v --amend
     abbr -a -- gcn! git commit -v --no-edit --amend
     abbr -a -- gf git fetch
     abbr -a -- gfa git fetch --all --prune
     abbr -a -- gl git pull
     abbr -a -- gp git push
-    abbr -a -- gpsup git push --set-upstream origin \(__git.current_branch\)
+    abbr -a -- gpsup git push --set-upstream origin \(git.branch_current\)
     abbr -a -- gp! git push --force-with-lease
     abbr -a -- gco git checkout
     abbr -a -- gcod git checkout develop
@@ -277,13 +274,6 @@ if status is-interactive
     alias la "eza -lbhHigUmuSa"
     alias lt "eza --tree $eza_params"
 end
-
-# -- EZA --------------------------------------------------------------------------------------------------------------
-
-set -l COLORS (vivid generate catppuccin-$CATPPUCCIN_FLAVOR)
-
-set -gx LS_COLORS $COLORS
-set -gx EZA_COLORS $COLORS
 
 # -- PATH --------------------------------------------------------------------------------------------------------------
 
@@ -321,9 +311,7 @@ set -gx NPM_CONFIG_USERCONFIG $XDG_CONFIG_HOME/npm/npmrc
 
 # -- OTHER -------------------------------------------------------------------------------------------------------------
 
-set -gx BAT_THEME "Catppuccin $(__util.capitalize $CATPPUCCIN_FLAVOR)"
 set -gx SHELL /opt/homebrew/bin/fish
-
 set -gx _GIT_PATHSPEC ":!package-lock.json" # https://git-quick-stats.sh/#docs
 
 add_completion glab.fish "glab completion -s fish"
