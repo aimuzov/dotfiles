@@ -127,7 +127,21 @@ add_completion mise.fish "mise completion fish"
 
 # -- CHEZMOI -----------------------------------------------------------------------------------------------------------
 
-add_completion chezmoi.fish "chezmoi completion fish"
+if type -q chezmoi
+    add_completion chezmoi.fish "chezmoi completion fish"
+end
+
+# -- GLAB --------------------------------------------------------------------------------------------------------------
+
+if type -q glab
+    add_completion glab.fish "glab completion -s fish"
+end
+
+# -- ZOXIDE ------------------------------------------------------------------------------------------------------------
+
+if type -q zoxide
+    cache_and_source zoxide_init.fish "zoxide init fish"
+end
 
 # -- FZF ---------------------------------------------------------------------------------------------------------------
 
@@ -153,12 +167,6 @@ if type -q fzf
     set fzf_diff_highlighter diff-so-fancy
 end
 
-# -- ZOXIDE ------------------------------------------------------------------------------------------------------------
-
-if type -q zoxide
-    cache_and_source zoxide_init.fish "zoxide init fish"
-end
-
 # -- PAGER -------------------------------------------------------------------------------------------------------------
 
 set -Ux MANPAGER nvim +Man!
@@ -169,21 +177,6 @@ set -q MANPATH || set -gx MANPATH ''
 # Add more man page paths.
 for manpath in (path filter $__fish_data_dir/man /usr/local/share/man /usr/share/man)
     set -a MANPATH $manpath
-end
-
-# -- VI MODE -----------------------------------------------------------------------------------------------------------
-
-fish_vi_key_bindings
-
-function rerender_on_bind_mode_change --on-variable fish_bind_mode
-    if test "$fish_bind_mode" != "$FISH__BIND_MODE"
-        set -gx FISH_BIND_MODE $fish_bind_mode
-        omp_repaint_prompt
-    end
-end
-
-function fish_default_mode_prompt --description "Display vi prompt mode"
-    # This function is masked and does nothing
 end
 
 # -- BINDINGS ----------------------------------------------------------------------------------------------------------
@@ -314,8 +307,6 @@ set -gx NPM_CONFIG_USERCONFIG $XDG_CONFIG_HOME/npm/npmrc
 
 set -gx SHELL /opt/homebrew/bin/fish
 set -gx _GIT_PATHSPEC ":!package-lock.json" # https://git-quick-stats.sh/#docs
-
-add_completion glab.fish "glab completion -s fish"
 
 # ----------------------------------------------------------------------------------------------------------------------
 
