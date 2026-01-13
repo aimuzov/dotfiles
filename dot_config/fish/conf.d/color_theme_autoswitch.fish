@@ -1,4 +1,4 @@
-function reload_theme --description 'Automatically reload themes when terminal theme changes' --on-variable fish_terminal_color_theme
+function color_theme_autoswitch --description 'Automatically reload colors for utils when terminal theme changes' --on-variable fish_terminal_color_theme
     if test "$fish_terminal_color_theme" = dark
         set -gx MACOS_IS_DARK yes
         set -gx CATPPUCCIN_FLAVOR macchiato
