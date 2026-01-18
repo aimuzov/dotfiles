@@ -7,20 +7,26 @@
 
 # Optional parameters:
 # @raycast.icon /Applications/Tailscale.app/Contents/Resources/AppIcon.icns
-# @raycast.argument1 { "type": "dropdown", "data": [{"title": "no", "value": "no"}, {"title": "eu", "value": "eu"}, {"title": "us", "value": "us"}, {"title": "ru", "value": "ru"}], "placeholder": "eu" }
+# @raycast.argument1 { "type": "dropdown", "data": [{"title": "off", "value": "off"}, {"title": "eu", "value": "eu"}, {"title": "us", "value": "us"}, {"title": "ru", "value": "ru"}, {"title": "no", "value": "no"}], "placeholder": "eu" }
 
-# Обрабатываем выбор
-if [ "$1" = "no" ]; then
-	/opt/homebrew/bin/fish -c "tailscale set --exit-node="
-	echo "disable"
+status_json=$(tailscale status --json)
+
+if [ "$1" = "off" ]; then
+	/opt/homebrew/bin/fish -c "tailscale down && sketchybar --trigger tailscale_status_update"
+	echo "off"
 else
-	dnsname=$(tailscale status --json | jq -r --arg prefix "$1" '.Peer[] | select(.ExitNodeOption == true) | select(.HostName | startswith($prefix)) | .DNSName' | head -n1)
-
-	if [ -z "$dnsname" ]; then
-		echo "Could not find exit node"
-		exit 1
+	if [ "$1" = "no" ]; then
+		dnsname=""
+	else
+		dnsname=$(echo "$status_json" | jq -r --arg prefix "$1" '.Peer[] | select(.ExitNodeOption == true) | select(.HostName | startswith($prefix)) | .DNSName' | head -n1)
 	fi
 
 	/opt/homebrew/bin/fish -c "tailscale set --exit-node=$dnsname"
 	echo $dnsname
+
+	backend_state=$(echo "$status_json" | jq -r '.BackendState')
+
+	if [ "$backend_state" = "Stopped" ]; then
+		/opt/homebrew/bin/fish -c "tailscale up && sketchybar --trigger tailscale_status_update"
+	fi
 fi
