@@ -51,13 +51,12 @@ prepend_keymap = [
 	{ on = [ "С" ], run = "plugin ouch", desc = "Compress with ouch" },  # C (custom)
 
 	# Search and filter (/, ?, f, F, s, z, Z)
-	{ on = [ "." ], run = "search fd" },                 # /
-	{ on = [ "," ], run = "search rg" },                 # ?
-	{ on = [ "а" ], run = "find" },                      # f
+	{ on = [ "а" ], run = "filter" },                      # f
 	{ on = [ "А" ], run = "plugin smart-filter", desc = "Smart filter" },  # F
-	{ on = [ "ы" ], run = "search none" },               # s
-	{ on = [ "я" ], run = "jump fzf" },                  # z
-	{ on = [ "Я" ], run = "jump zoxide" },               # Z
+	{ on = [ "ы" ], run = "search none" },                 # s
+	{ on = [ "я" ], run = "plugin fzf" },                  # z
+	{ on = [ "Я" ], run = "plugin zoxide" },               # Z
+	{ on = [ "ю" ], run = "hidden toggle", desc = "Toggle hidden files" },  # .
 
 	# View and open (o, O, t)
 	{ on = [ "щ" ], run = "open" },                      # o

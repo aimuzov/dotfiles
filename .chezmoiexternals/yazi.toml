@@ -14,20 +14,6 @@ stripComponents = 2
 refreshPeriod = "168h"
 include = ["*/piper.yazi/**"]
 
-[".config/yazi/plugins/yatline.yazi"]
-type = "archive"
-url = "https://github.com/imsi32/yatline.yazi/archive/master.tar.gz"
-exact = true
-stripComponents = 1
-refreshPeriod = "168h"
-
-[".config/yazi/plugins/yatline-catppuccin.yazi"]
-type = "archive"
-url = "https://github.com/imsi32/yatline-catppuccin.yazi/archive/master.tar.gz"
-exact = true
-stripComponents = 1
-refreshPeriod = "168h"
-
 [".config/yazi/plugins/ouch.yazi"]
 type = "archive"
 url = "https://github.com/ndtoan96/ouch.yazi/archive/master.tar.gz"
