@@ -81,7 +81,7 @@ space_create 2 12 "Media"
 # -- Assigning windows in spaces ---------------------------------------------------------------------------------------
 
 yabai -m rule --add app="^.*$" space="Any"
-yabai -m rule --add space="Code" app="^(WezTerm|Ghostty|Code|Cursor)$"
+yabai -m rule --add space="Code" app="^(WezTerm|Ghostty|Code|Cursor|Zed)$"
 yabai -m rule --add space="Serf" app="^(Arc|Dia|Google Chrome)$"
 yabai -m rule --add space="Org" app="^(Things|Calendar|Mail)$"
 yabai -m rule --add space="Graph" app="^(Figma|Miro)$"
@@ -91,7 +91,7 @@ yabai -m rule --add space="Sys" app="^(System Settings|MacPass)$"
 yabai -m rule --add space="Media" app="^(Yandex Music|Photos)$"
 yabai -m rule --add space="Calls" app="^(Толк)$"
 yabai -m rule --add space="Social" app="^(Time|Telegram|WhatsApp)$"
-yabai -m rule --add space="Ai" app="^(ChatGPT|Perplexity)$"
+yabai -m rule --add space="Ai" app="^(ChatGPT|Claude|Perplexity)$"
 
 # -- Layout managing ---------------------------------------------------------------------------------------------------
 
