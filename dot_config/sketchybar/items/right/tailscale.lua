@@ -4,6 +4,7 @@ local icons = {
 	Running = "􀞿",
 	Stopped = "􀞾",
 	Unknown = "􀧸",
+	NeedsLogin = "􀺇",
 }
 
 local tailscale = sbar.add("item", {
