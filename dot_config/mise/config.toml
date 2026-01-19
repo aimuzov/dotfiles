@@ -56,9 +56,10 @@ rust = "latest"
 "npm:@modelcontextprotocol/server-sequential-thinking" = "latest"
 
 "pipx:httpie" = "latest"
-"pipx:mhinz/neovim-remote" = "latest"
 "pipx:mcp-server-fetch" = "latest"
 "pipx:mcp-server-git" = "latest"
+"pipx:mhinz/neovim-remote" = "latest"
+"pipx:yt-dlp" = "latest"
 
 "ubi:JanDeDobbeleer/oh-my-posh" = "latest"
 "ubi:so-fancy/diff-so-fancy" = "latest"

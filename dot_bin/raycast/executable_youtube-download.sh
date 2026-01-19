@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Required parameters:
+# @raycast.schemaVersion 1
+# @raycast.title Download YouTube video
+# @raycast.mode fullOutput
+# @raycast.packageName 􀩼
+
+# Optional parameters:
+# @raycast.icon 􀁸
+# @raycast.argument1 { "type": "text", "placeholder": "  url " }
+
+/opt/homebrew/bin/fish -c "./youtube-download.fish $1"
