@@ -1,4 +1,3 @@
 .DS_Store
 .vscode
-dot_config/nvim/.luarc.json
 node_modules
