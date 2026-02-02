@@ -11,6 +11,7 @@ tap "yqrashawn/goku"
 brew "git"
 brew "asdf"
 brew "coreutils"
+brew "cups" # deps: termscp (see mise config)
 brew "curl"
 brew "docker"
 brew "exiftool"
@@ -22,6 +23,7 @@ brew "gnupg"
 brew "imagemagick"
 brew "iproute2mac"
 brew "less"
+brew "libbsd" # deps: termscp (see mise config)
 brew "libyaml"
 brew "luajit"
 brew "luarocks"
@@ -31,6 +33,7 @@ brew "pinentry-mac"
 brew "rlwrap"
 brew "telnet"
 brew "trash", link: true
+brew "zlib" # deps: termscp (see mise config)
 brew "zsh"
 brew "daipeihust/tap/im-select"
 brew "felixkratz/formulae/borders"
