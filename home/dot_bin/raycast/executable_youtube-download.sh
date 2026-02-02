@@ -10,4 +10,4 @@
 # @raycast.icon 􀁸
 # @raycast.argument1 { "type": "text", "placeholder": "  url " }
 
-/opt/homebrew/bin/fish -c "./youtube-download.fish $1"
+/opt/homebrew/bin/mise exec aqua:fish-shell/fish-shell -- fish -c "./youtube-download.fish $1"

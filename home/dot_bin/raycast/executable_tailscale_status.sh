@@ -10,4 +10,4 @@
 # Optional parameters:
 # @raycast.icon /Applications/Tailscale.app/Contents/Resources/AppIcon.icns
 
-/opt/homebrew/bin/fish -c "./tailscale_status.fish $1"
+/opt/homebrew/bin/mise exec aqua:fish-shell/fish-shell -- fish -c "./tailscale_status.fish $1"
