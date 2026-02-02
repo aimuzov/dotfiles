@@ -3,7 +3,7 @@
 # Required parameters:
 # @raycast.schemaVersion 1
 # @raycast.title Tailscale Pick Node
-# @raycast.mode silent 
+# @raycast.mode silent
 # @raycast.packageName 􀩼
 
 # Optional parameters:
