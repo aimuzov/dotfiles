@@ -13,7 +13,7 @@ set OUTPUT_TEMPLATE "$OUTPUT_DIR/%(title)s.%(ext)s"
 
 echo "􀁸  downloading..."
 
-set OUTPUT (yt-dlp --format "$FORMAT" --output "$OUTPUT_TEMPLATE" --merge-output-format mp4 --windows-filenames --newline --print after_move:filepath "$argv[1]" 2>&1)
+set OUTPUT (yt-dlp --js-runtimes bun --format "$FORMAT" --output "$OUTPUT_TEMPLATE" --merge-output-format mp4 --windows-filenames --newline --print after_move:filepath "$argv[1]" 2>&1)
 set EXIT_CODE $status
 
 echo "$OUTPUT"

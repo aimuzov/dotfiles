@@ -3,7 +3,7 @@
 # Required parameters:
 # @raycast.schemaVersion 1
 # @raycast.title Download YouTube video
-# @raycast.mode compact
+# @raycast.mode fullOutput
 # @raycast.packageName 􀩼
 
 # Optional parameters:
