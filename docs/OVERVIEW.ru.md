@@ -6,6 +6,27 @@
 
 ## Структура репозитория
 
+### Корневая директория Chezmoi
+
+Этот репозиторий использует `.chezmoiroot` для указания поддиректории как корня исходного состояния. Фактические dotfiles находятся в директории `home/`:
+
+```
+dotfiles/
+├── .chezmoiroot          # Содержит "home" - указывает корень исходников
+├── home/                 # Корень исходного состояния (chezmoi управляет этим)
+│   ├── .chezmoi.toml.tmpl
+│   ├── .chezmoiscripts/
+│   ├── .chezmoiexternals/
+│   ├── dot_config/
+│   ├── dot_bin/
+│   └── ...
+├── docs/                 # Документация (не управляется chezmoi)
+├── assets/               # Изображения для документации
+└── ...
+```
+
+Эта структура позволяет хранить документацию, ресурсы и конфигурационные файлы отдельно от фактических dotfiles, которыми управляет chezmoi.
+
 ### Соглашения об именовании файлов Chezmoi
 
 Файлы и директории используют соглашения об именовании chezmoi:
@@ -17,24 +38,31 @@
 
 ### Ключевые директории
 
-- `.chezmoiscripts/` - Автоматические скрипты установки, запускаемые после chezmoi apply
+Все пути ниже указаны относительно `home/` (корня исходников chezmoi):
+
+- `home/.chezmoiscripts/` - Автоматические скрипты установки, запускаемые после chezmoi apply
   - Скрипты упорядочены с префиксами типа `run_once_after_1_`, `run_once_after_2_` и т.д.
   - Скрипты `run_once_weekly_*` запускаются периодически
   - Все скрипты написаны на Fish shell с расширением `.fish.tmpl`
-- `.chezmoiexternals/` - Внешние зависимости, управляемые chezmoi
+- `home/.chezmoiexternals/` - Внешние зависимости, управляемые chezmoi
   - `fish.toml` - Плагины Fish shell
   - `yazi.toml` - Плагины файлового менеджера Yazi
   - `nvim.toml` - Внешние конфигурации Neovim
-- `dot_config/` - Конфигурации приложений (становится `~/.config/`)
-- `dot_bin/` - Пользовательские скрипты и утилиты
+- `home/dot_config/` - Конфигурации приложений (становится `~/.config/`)
+- `home/dot_bin/` - Пользовательские скрипты и утилиты
+- `home/dot_claude/` - Конфигурация Claude Code (становится `~/.claude/`)
+- `home/dot_mcp.json.tmpl` - Централизованная конфигурация MCP серверов
+- `docs/` - Документация (вне корня chezmoi)
 - `assets/` - Изображения и другие статические файлы для документации
 
 ### Основные конфигурации
 
+Все пути ниже указаны относительно `home/` (корня исходников chezmoi):
+
 - **Neovim** (`dot_config/nvim/`, `dot_config/nvim-lazyvimx/`) - Использует конфигурацию [LazyVimx](https://github.com/aimuzov/LazyVimx), поддерживает стабильную и nightly версии
 - **Fish Shell** (`dot_config/fish/`) - Комплексная оболочка с пользовательскими функциями, соблюдением XDG, переключением тем
 - **Zsh** (`dot_config/zsh/`) - Конфигурация оболочки Zsh
-- **Yabai** (`dot_config/yabai/`) - Тайловый менеджер окон с автоматическим созданием пространств и назначением приложений
+- **Yabai** (`dot_config/yabai/`) - Тайловый менеджер окон, написанный на Fish shell, с автоматическим созданием пространств и назначением приложений
 - **SketchyBar** (`dot_config/sketchybar/`) - Панель состояния, написанная на Lua с модульной системой элементов
 - **skhd** (`dot_config/skhd/`) - Демон горячих клавиш для привязок управления окнами
 - **SketchyVim** (`dot_config/svim/`) - Системная навигация в стиле Vim с поддержкой русской раскладки клавиатуры
@@ -44,10 +72,16 @@
 - **Yazi** (`dot_config/yazi/`) - Файловый менеджер с темой Catppuccin и пользовательскими плагинами
 - **LazyGit** (`dot_config/lazygit/`) - Git TUI с поддержкой темной/светлой темы
 - **WezTerm** (`dot_config/wezterm/`) - Конфигурация эмулятора терминала
-- **Ghostty** (`dot_config/ghostty/`) - Минималистичная конфигурация эмулятора терминала
+- **Ghostty** (`dot_config/ghostty/`) - Быстрый эмулятор терминала с quick terminal, Display P3 colorspace, темой Catppuccin
+- **Claude Code** (`dot_claude/`) - Конфигурация AI ассистента с MCP серверами
 - **Matterhorn** (`dot_config/matterhorn/`) - Терминальный клиент Mattermost
 - **Oh My Posh** (`dot_config/oh-my-posh/`) - Движок тем для prompt
-- **Raycast** (`dot_config/raycast/`) - Лаунчер для повышения продуктивности
+- **Raycast** (`dot_bin/raycast/`) - Скриптовые команды для лаунчера продуктивности
+  - Управление Tailscale VPN (выбор exit-node, отображение статуса)
+  - Загрузка видео с YouTube
+  - Перезапуск сервисов VM (Yabai, skhd, SketchyBar и т.д.)
+  - Лаунчеры приложений
+  - Подробнее в [документации Raycast](raycast/README.md)
 - **Zed** (`dot_config/zed/`) - Конфигурация редактора кода
 - **Bat** (`dot_config/bat/`) - Клон cat с подсветкой синтаксиса
 - **Vim** (`dot_config/vim/`) - Конфигурация Vim
@@ -276,6 +310,7 @@ items/
 └── right/             # Элементы справа
     ├── keyboard_layout.lua  # Текущий метод ввода
     ├── svim.lua       # Индикатор режима SketchyVim
+    ├── tailscale.lua  # Статус Tailscale VPN
     ├── battery.lua    # Статус батареи
     └── datetime.lua   # Дата и время
 ```
@@ -291,14 +326,16 @@ items/
 **Структура директорий:**
 
 ```
-dot_config/fish/
+home/dot_config/fish/
 ├── config.fish.tmpl          # Основная конфигурация (шаблон для секретов)
 ├── conf.d/                   # Автоматически загружаемые конфигурации
 │   └── recursive_paths.fish  # Настройка путей функций/автодополнений
 └── functions/                # Пользовательские функции
-    ├── git/                  # Функции связанные с Git
-    ├── wrappers/             # Обертки команд
-    └── *.fish                # Отдельные функции
+    └── core/                 # Основные функции
+        ├── git/              # Функции связанные с Git
+        ├── yabai/            # Вспомогательные функции Yabai
+        ├── wrappers/         # Обертки команд
+        └── *.fish            # Отдельные функции
 ```
 
 **Порядок инициализации:**
@@ -318,27 +355,36 @@ dot_config/fish/
 
 ### Управление окнами Yabai
 
+Конфигурация Yabai полностью написана на **Fish shell** (`executable_yabairc`), используя чистый синтаксис Fish и интеграцию с другими Fish функциями.
+
 **Поток конфигурации:**
 
 1. Загрузка scripting addition (требуется отключенный SIP)
 2. Настройка сигналов SketchyBar
 3. Настройка глобальных параметров (раскладка, отступы, промежутки, мышь)
-4. Динамическое создание/переименование пространств
+4. Динамическое создание/переименование пространств с помощью Fish функций
 5. Назначение приложений конкретным пространствам
 6. Установка исключений раскладки для отдельных приложений
+
+**Вспомогательные функции** (в `dot_config/fish/functions/core/yabai/`):
+
+- `yabai.rearrange.fish` - Перераспределяет окна при создании новых
+- `yabai.restart.fish` - Перезапускает сервис Yabai
+- `yabai.sudoers.fish` - Управляет конфигурацией sudoers для scripting addition
 
 **Управление пространствами:**
 
 - Пространства создаются автоматически при запуске
-- Пользовательские имена для рабочих пространств
-- Назначения приложений пространствам
+- Пользовательские имена для рабочих пространств (Code, Serf, Org, Graph, Explr, Fun, Sys, Ai, Any, Social, Calls, Media)
+- Назначения приложений пространствам (включая Claude, Zed, Perplexity, Cursor, Dia)
 - Правила раскладки для каждого пространства
 
 **Точки интеграции:**
 
 - skhd для привязок клавиш
-- SketchyBar для визуальной обратной связи
-- Пользовательские вспомогательные скрипты в PATH (`yabai_space_focus`, `yabai_display_index_get`)
+- SketchyBar для визуальной обратной связи (через сигналы)
+- Fish функции для вспомогательных скриптов
+- Сигнал вызывает `yabai.rearrange` при создании окна
 
 ### Конфигурация Git
 
@@ -415,26 +461,26 @@ dot_config/fish/
 
 ### Добавление новых инструментов
 
-1. Добавить в `dot_config/mise/config.toml` под соответствующий бэкенд
+1. Добавить в `home/dot_config/mise/config.toml` под соответствующий бэкенд
 2. Запустить `mise install` для установки
 3. Закоммитить изменения со scope `mise`
 
 ### Добавление новой конфигурации
 
-1. Добавить файл в соответствующую поддиректорию `dot_config/`
+1. Добавить файл в соответствующую поддиректорию `home/dot_config/`
 2. Использовать соглашения об именовании chezmoi (`dot_`, `private_`, `executable_`, `.tmpl`)
 3. Протестировать с `chezmoi diff` перед `chezmoi apply`
 4. Закоммитить с соответствующим scope из `.commitlintrc.js`
 
 ### Изменение элементов SketchyBar
 
-1. Отредактировать файл элемента в `dot_config/sketchybar/items/`
+1. Отредактировать файл элемента в `home/dot_config/sketchybar/items/`
 2. Перезагрузить SketchyBar: `sketchybar --reload`
 3. Проверить логи, если не работает: `log show --predicate 'process == "sketchybar"' --last 5m`
 
 ### Тестирование изменений Yabai
 
-1. Отредактировать `dot_config/yabai/executable_yabairc`
+1. Отредактировать `home/dot_config/yabai/executable_yabairc`
 2. Перезагрузить конфигурацию: `yabai --restart-service`
 3. Проверить текущую раскладку: `yabai -m query --spaces --space`
 
@@ -443,12 +489,16 @@ dot_config/fish/
 Документация для отдельных компонентов (доступны русская и английская версии):
 
 - [Скрипты Chezmoi](chezmoiscripts/README.md)
-- [Конфигурация Fish Shell](../dot_config/fish/README.md)
-- [Конфигурация Git](../dot_config/git/README.md)
-- [Конфигурация LazyGit](../dot_config/lazygit/README.md)
-- [Конфигурация Mise](../dot_config/mise/README.md)
-- [Конфигурация SketchyBar](../dot_config/sketchybar/README.md)
-- [Конфигурация skhd](../dot_config/skhd/README.md)
-- [Конфигурация SketchyVim](../dot_config/svim/README.md)
-- [Конфигурация Yabai](../dot_config/yabai/README.md)
-- [Конфигурация Yazi](../dot_config/yazi/README.md)
+- [Конфигурация Claude Code](claude/README.md)
+- [Конфигурация Fish Shell](fish/README.md)
+- [Терминал Ghostty](ghostty/README.md)
+- [Конфигурация Git](git/README.md)
+- [Конфигурация LazyGit](lazygit/README.md)
+- [Конфигурация Mise](mise/README.md)
+- [Конфигурация Oh My Posh](oh-my-posh/README.md)
+- [Скрипты Raycast](raycast/README.md)
+- [Конфигурация SketchyBar](sketchybar/README.md)
+- [Конфигурация skhd](skhd/README.md)
+- [Конфигурация SketchyVim](svim/README.md)
+- [Конфигурация Yabai](yabai/README.md)
+- [Конфигурация Yazi](yazi/README.md)

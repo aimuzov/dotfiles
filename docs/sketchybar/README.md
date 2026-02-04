@@ -30,6 +30,7 @@ This folder contains a modular configuration for [SketchyBar](https://github.com
 
 - **keyboard_layout.lua** — Current keyboard layout (en/ru/unknown) via [im-select](https://github.com/daipeihust/im-select).
 - **svim.lua** — [svim](https://github.com/FelixKratz/SketchyVim) modes (normal/insert/visual/cmd/pending).
+- **tailscale.lua** — [Tailscale](https://tailscale.com/) VPN status indicator. Shows connection state and integrates with Raycast scripts for exit-node management.
 - **battery.lua** — Battery level and charging status via pmset.
 - **datetime.lua** — Current date and time, updates every 30 seconds, click toggles additional elements.
 

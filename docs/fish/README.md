@@ -291,11 +291,20 @@ Located in `functions/core/git/`:
 - `git.branch_current`: Helper function to get the current Git branch name
 - `git.branch_prune`: Git branch deletion utility for managing merged branches (including squashed commits)
 
+### Yabai Related Functions
+
+Located in `functions/core/yabai/`:
+
+- `yabai.rearrange`: Rearranges windows when new ones are created (triggered by Yabai signal)
+- `yabai.restart`: Restarts Yabai service cleanly
+- `yabai.sudoers`: Manages sudoers configuration for Yabai scripting addition
+
 ### System Management Functions
 
+Located in `functions/core/`:
+
 - `wezterm_update_icon`: Updates WezTerm terminal icon
-- `yabai_sudoers`: Manages Yabai window manager sudoers configuration
-- `restart_vm`: Utility for restarting virtual machines
+- `restart_vm`: Utility for restarting window manager services (Yabai, skhd, SketchyBar, etc.)
 - `clear_and_reinit`: Clears screen and reinitializes fish
 
 ### Command Wrappers

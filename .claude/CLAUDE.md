@@ -6,6 +6,13 @@
 
 Это личный репозиторий dotfiles для macOS, управляемый с помощью [chezmoi](https://www.chezmoi.io/). Подробная документация доступна в [docs/OVERVIEW.md](docs/OVERVIEW.md).
 
+### Структура репозитория
+
+Репозиторий использует `.chezmoiroot` для указания `home/` как корня исходного состояния chezmoi. Это означает:
+- Все файлы dotfiles находятся в директории `home/`
+- Документация и ресурсы хранятся вне `home/` (в `docs/`, `assets/`)
+- Chezmoi управляет только содержимым `home/`
+
 ### ⚠️ ВАЖНЫЕ ОГРАНИЧЕНИЯ ДЛЯ CLAUDE
 
 **НИКОГДА не используй следующие команды:**
@@ -16,8 +23,8 @@
 
 **Рабочий процесс для Claude:**
 
-1. Редактируй файлы напрямую в репозитории dotfiles (`/Users/aimuzov/Projects/aimuzov/dotfiles/`)
-2. Файлы в `dot_config/` уже находятся в исходном репозитории
+1. Редактируй файлы напрямую в репозитории dotfiles (`/Users/aimuzov/Projects/aimuzov/dotfiles/home/`)
+2. Файлы в `home/dot_config/` уже находятся в исходном репозитории
 3. Попроси пользователя запустить `chezmoi apply`
 4. После редактирования конфигов запусти `restart_vm`
 
@@ -66,12 +73,16 @@ skhd --restart-service     # после правок dot_config/skhd/
 
 ### Ключевые директории
 
-- `.chezmoiscripts/` - Скрипты установки (Fish shell, запускаются после chezmoi apply)
-- `.chezmoiexternals/` - Внешние зависимости (плагины для fish, yazi, nvim)
-- `dot_config/` - Конфигурации приложений (становится `~/.config/`)
-- `dot_bin/` - Пользовательские скрипты
-- `dot_bin/raycast/` - Raycast script commands (становится `~/.bin/raycast/`)
-- `docs/` - Документация
+Все пути ниже относительно корня репозитория:
+
+- `home/.chezmoiscripts/` - Скрипты установки (Fish shell, запускаются после chezmoi apply)
+- `home/.chezmoiexternals/` - Внешние зависимости (плагины для fish, yazi, nvim)
+- `home/dot_config/` - Конфигурации приложений (становится `~/.config/`)
+- `home/dot_bin/` - Пользовательские скрипты
+- `home/dot_bin/raycast/` - Raycast script commands (становится `~/.bin/raycast/`)
+- `home/dot_claude/` - Конфигурация Claude Code (становится `~/.claude/`)
+- `home/dot_mcp.json.tmpl` - Централизованная конфигурация MCP серверов
+- `docs/` - Документация (вне home/, не управляется chezmoi)
 - `assets/` - Статические файлы для документации
 
 ### Основные компоненты
@@ -88,10 +99,10 @@ skhd --restart-service     # после правок dot_config/skhd/
 
 ### Рабочий процесс разработки
 
-1. **Добавить новый инструмент:** Обновить `dot_config/mise/config.toml` → `mise install` → коммит со scope `mise`
-2. **Добавить новую конфигурацию:** Добавить в `dot_config/` → проверить через `chezmoi diff` → `chezmoi apply` → коммит с соответствующим scope
-3. **Изменить SketchyBar:** Отредактировать `dot_config/sketchybar/items/` → `sketchybar --reload`
-4. **Протестировать Yabai:** Отредактировать `dot_config/yabai/executable_yabairc` → `yabai --restart-service`
+1. **Добавить новый инструмент:** Обновить `home/dot_config/mise/config.toml` → `mise install` → коммит со scope `mise`
+2. **Добавить новую конфигурацию:** Добавить в `home/dot_config/` → проверить через `chezmoi diff` → `chezmoi apply` → коммит с соответствующим scope
+3. **Изменить SketchyBar:** Отредактировать `home/dot_config/sketchybar/items/` → `sketchybar --reload`
+4. **Протестировать Yabai:** Отредактировать `home/dot_config/yabai/executable_yabairc` → `yabai --restart-service`
 
 ### Структура документации
 

@@ -7,7 +7,9 @@
 - [Overview](#overview)
 - [Script Metadata Format](#script-metadata-format)
 - [Available Scripts](#available-scripts)
-  - [Tailscale Exit Node Management](#tailscale-exit-node-management)
+  - [Tailscale Exit Node Selection](#tailscale-exit-node-selection)
+  - [Tailscale Status](#tailscale-status)
+  - [YouTube Video Download](#youtube-video-download)
   - [VM Services Restart](#vm-services-restart)
   - [Dota 2 Launcher](#dota-2-launcher)
 - [Adding New Scripts](#adding-new-scripts)
@@ -88,52 +90,80 @@ Arguments are available as positional parameters: `$1`, `$2`, `$3`
 
 ## Available Scripts
 
-### Tailscale Exit Node Management
+### Tailscale Exit Node Selection
 
-**File:** [`dot_bin/raycast/executable_tailscale.sh`](../../dot_bin/raycast/executable_tailscale.sh)
+**File:** [`home/dot_bin/raycast/executable_tailscale_pick_node.sh`](../../home/dot_bin/raycast/executable_tailscale_pick_node.sh)
 
-**Purpose:** Manage exit-node (VPN exit node) in Tailscale to route all traffic through another peer in the network.
-
-**Parameters:**
-- **enable**: Activates the first available peer as exit-node
-- **disable**: Disables exit-node usage
+**Purpose:** Interactive selection of Tailscale exit-node from available peers.
 
 **How it works:**
-
-When selecting `enable`:
-1. Gets list of peers via `tailscale status --json`
-2. Extracts DNS name of the first peer using `jq`
-3. Sets it as exit-node via `tailscale set --exit-node=<peer>`
-
-When selecting `disable`:
-1. Clears exit-node setting via `tailscale set --exit-node=`
+1. Gets list of available peers via `tailscale status --json`
+2. Presents interactive picker for node selection
+3. Sets selected node as exit-node via `tailscale set --exit-node=<peer>`
 
 **Usage:**
 1. Invoke Raycast (⌘Space)
-2. Type "tailscale"
-3. Select mode (enable/disable)
+2. Type "tailscale pick"
+3. Select desired exit node from the list
 
 **Requirements:**
 - Installed Tailscale
-- `jq` for JSON processing (installed via mise/homebrew)
+- `jq` for JSON processing
 - Fish shell at `/opt/homebrew/bin/fish`
 
-**Version History:**
+**Related Files:**
+- Fish implementation: [`executable_tailscale_pick_node.fish`](../../home/dot_bin/raycast/executable_tailscale_pick_node.fish)
+- SketchyBar integration: [`tailscale.lua`](../../home/dot_config/sketchybar/items/right/tailscale.lua)
 
-**Version 2.0 (current):**
-- Changed from simple `tailscale up/down` to exit-node management
-- Automatic selection of first available peer
-- Using `tailscale set --exit-node` instead of `up/down`
+---
 
-**Version 1.0 (deprecated):**
-- Simple call to `tailscale up` or `tailscale down`
+### Tailscale Status
+
+**File:** [`home/dot_bin/raycast/executable_tailscale_status.sh`](../../home/dot_bin/raycast/executable_tailscale_status.sh)
+
+**Purpose:** Display current Tailscale connection status and exit-node information.
+
+**How it works:**
+1. Queries Tailscale status
+2. Shows current connection state
+3. Displays active exit-node if configured
+
+**Usage:**
+1. Invoke Raycast (⌘Space)
+2. Type "tailscale status"
+3. View current VPN status
 
 **Related Files:**
-- Tailscale configuration: (not managed through dotfiles)
+- Fish implementation: [`executable_tailscale_status.fish`](../../home/dot_bin/raycast/executable_tailscale_status.fish)
+
+---
+
+### YouTube Video Download
+
+**File:** [`home/dot_bin/raycast/executable_youtube-download.sh`](../../home/dot_bin/raycast/executable_youtube-download.sh)
+
+**Purpose:** Download YouTube videos using yt-dlp.
+
+**How it works:**
+1. Takes YouTube URL as input
+2. Downloads video using yt-dlp
+3. Saves to configured download directory
+
+**Usage:**
+1. Copy YouTube URL to clipboard
+2. Invoke Raycast (⌘Space)
+3. Type "youtube download"
+
+**Requirements:**
+- `yt-dlp` installed (via mise/homebrew)
+- Fish shell at `/opt/homebrew/bin/fish`
+
+**Related Files:**
+- Fish implementation: [`executable_youtube-download.fish`](../../home/dot_bin/raycast/executable_youtube-download.fish)
 
 ### VM Services Restart
 
-**File:** [`dot_bin/raycast/executable_restart-vm.sh`](../../dot_bin/raycast/executable_restart-vm.sh)
+**File:** [`home/dot_bin/raycast/executable_restart-vm.sh`](../../home/dot_bin/raycast/executable_restart-vm.sh)
 
 **Purpose:** Restarts all window manager services and related components (Yabai, skhd, Borders, SketchyVim, SketchyBar).
 
@@ -157,12 +187,12 @@ Calls the Fish function `restart_vm`, which sequentially restarts:
 - After updating components
 
 **Related Files:**
-- Fish function: [`dot_config/fish/functions/core/restart_vm.fish`](../../dot_config/fish/functions/core/restart_vm.fish)
+- Fish function: [`home/dot_config/fish/functions/core/restart_vm.fish`](../../home/dot_config/fish/functions/core/restart_vm.fish)
 - Configurations:
-  - [Yabai](../../dot_config/yabai/executable_yabairc)
-  - [skhd](../../dot_config/skhd/skhdrc)
-  - [SketchyBar](../../dot_config/sketchybar/)
-  - [SketchyVim](../../dot_config/svim/)
+  - [Yabai](../../home/dot_config/yabai/executable_yabairc)
+  - [skhd](../../home/dot_config/skhd/skhdrc)
+  - [SketchyBar](../../home/dot_config/sketchybar/)
+  - [SketchyVim](../../home/dot_config/svim/)
 
 **See Also:**
 - [Yabai documentation](../yabai/README.md)
@@ -171,7 +201,7 @@ Calls the Fish function `restart_vm`, which sequentially restarts:
 
 ### Dota 2 Launcher
 
-**File:** [`dot_bin/raycast/executable_dota2.sh`](../../dot_bin/raycast/executable_dota2.sh)
+**File:** [`home/dot_bin/raycast/executable_dota2.sh`](../../home/dot_bin/raycast/executable_dota2.sh)
 
 **Purpose:** Quick launch of Dota 2 through Steam.
 

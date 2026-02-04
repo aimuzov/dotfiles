@@ -2,9 +2,15 @@
 
 > 🇷🇺 [Русская версия](README.ru.md)
 >
-> **Location:** `.chezmoiscripts/` directory in the dotfiles repository
+> **Location:** `home/.chezmoiscripts/` directory in the dotfiles repository
 
 This directory contains automated setup scripts that run when initializing or updating dotfiles with chezmoi.
+
+## Repository Structure Note
+
+This repository uses `.chezmoiroot` to specify `home/` as the source state root. This means:
+- Scripts are located at `home/.chezmoiscripts/` in the repository
+- Chezmoi treats `home/` as the root, so paths within chezmoi are relative to `home/`
 
 ## Overview
 

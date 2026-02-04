@@ -30,6 +30,7 @@
 
 - **keyboard_layout.lua** — Текущая раскладка клавиатуры (en/ru/unknown) через [im-select](https://github.com/daipeihust/im-select).
 - **svim.lua** — Режимы работы [svim](https://github.com/FelixKratz/SketchyVim) (normal/insert/visual/cmd/pending).
+- **tailscale.lua** — Индикатор статуса [Tailscale](https://tailscale.com/) VPN. Показывает состояние подключения и интегрируется со скриптами Raycast для управления exit-node.
 - **battery.lua** — Уровень заряда батареи и статус зарядки через pmset.
 - **datetime.lua** — Текущие дата и время, обновление каждые 30 секунд, по клику — переключение отображения дополнительных элементов.
 

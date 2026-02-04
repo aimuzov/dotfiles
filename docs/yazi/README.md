@@ -30,10 +30,9 @@ Here is how the Yazi interface looks with the current settings:
 
 ### `init.lua`
 
-- Dynamically selects the Catppuccin theme (macchiato or latte) depending on the `MACOS_IS_DARK` environment variable.
-- Configures border colors, section separators, and the appearance of the status bar.
-- Configures the `yatline` (status bar) and `border` (borders) plugins.
-- Example of using environment variables to adapt the interface for macOS light/dark mode.
+- Configures the `border` plugin for custom window borders.
+- Simple initialization: `require("border"):setup()`
+- The default Yazi statusline is used (yatline plugin was removed).
 
 ### `yazi.toml`
 

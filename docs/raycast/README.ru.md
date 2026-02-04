@@ -7,7 +7,9 @@
 - [Обзор](#обзор)
 - [Формат метаданных скрипта](#формат-метаданных-скрипта)
 - [Доступные скрипты](#доступные-скрипты)
-  - [Управление Tailscale Exit Node](#управление-tailscale-exit-node)
+  - [Выбор Tailscale Exit Node](#выбор-tailscale-exit-node)
+  - [Статус Tailscale](#статус-tailscale)
+  - [Загрузка видео с YouTube](#загрузка-видео-с-youtube)
   - [Перезапуск сервисов VM](#перезапуск-сервисов-vm)
   - [Запуск Dota 2](#запуск-dota-2)
 - [Добавление новых скриптов](#добавление-новых-скриптов)
@@ -88,52 +90,80 @@ Raycast использует комментарии в начале скрипт
 
 ## Доступные скрипты
 
-### Управление Tailscale Exit Node
+### Выбор Tailscale Exit Node
 
-**Файл:** [`dot_bin/raycast/executable_tailscale.sh`](../../dot_bin/raycast/executable_tailscale.sh)
+**Файл:** [`home/dot_bin/raycast/executable_tailscale_pick_node.sh`](../../home/dot_bin/raycast/executable_tailscale_pick_node.sh)
 
-**Назначение:** Управление exit-node (VPN выходным узлом) в Tailscale для маршрутизации всего трафика через другой peer в сети.
-
-**Параметры:**
-- **enable**: Активирует первый доступный peer как exit-node
-- **disable**: Отключает использование exit-node
+**Назначение:** Интерактивный выбор exit-node Tailscale из доступных peers.
 
 **Как работает:**
-
-При выборе `enable`:
-1. Получает список peers через `tailscale status --json`
-2. Извлекает DNS-имя первого peer с помощью `jq`
-3. Устанавливает его как exit-node через `tailscale set --exit-node=<peer>`
-
-При выборе `disable`:
-1. Очищает настройку exit-node через `tailscale set --exit-node=`
+1. Получает список доступных peers через `tailscale status --json`
+2. Показывает интерактивный выбор узла
+3. Устанавливает выбранный узел как exit-node через `tailscale set --exit-node=<peer>`
 
 **Использование:**
 1. Вызовите Raycast (⌘Space)
-2. Введите "tailscale"
-3. Выберите режим (enable/disable)
+2. Введите "tailscale pick"
+3. Выберите нужный exit node из списка
 
 **Требования:**
 - Установленный Tailscale
-- `jq` для обработки JSON (устанавливается через mise/homebrew)
+- `jq` для обработки JSON
 - Fish shell в `/opt/homebrew/bin/fish`
 
-**История изменений:**
+**Связанные файлы:**
+- Fish реализация: [`executable_tailscale_pick_node.fish`](../../home/dot_bin/raycast/executable_tailscale_pick_node.fish)
+- Интеграция со SketchyBar: [`tailscale.lua`](../../home/dot_config/sketchybar/items/right/tailscale.lua)
 
-**Версия 2.0 (текущая):**
-- Изменено с простого `tailscale up/down` на управление exit-node
-- Автоматический выбор первого доступного peer
-- Использование `tailscale set --exit-node` вместо `up/down`
+---
 
-**Версия 1.0 (устаревшая):**
-- Простой вызов `tailscale up` или `tailscale down`
+### Статус Tailscale
+
+**Файл:** [`home/dot_bin/raycast/executable_tailscale_status.sh`](../../home/dot_bin/raycast/executable_tailscale_status.sh)
+
+**Назначение:** Отображение текущего статуса подключения Tailscale и информации о exit-node.
+
+**Как работает:**
+1. Запрашивает статус Tailscale
+2. Показывает текущее состояние подключения
+3. Отображает активный exit-node, если настроен
+
+**Использование:**
+1. Вызовите Raycast (⌘Space)
+2. Введите "tailscale status"
+3. Посмотрите текущий статус VPN
 
 **Связанные файлы:**
-- Конфигурация Tailscale: (не управляется через dotfiles)
+- Fish реализация: [`executable_tailscale_status.fish`](../../home/dot_bin/raycast/executable_tailscale_status.fish)
+
+---
+
+### Загрузка видео с YouTube
+
+**Файл:** [`home/dot_bin/raycast/executable_youtube-download.sh`](../../home/dot_bin/raycast/executable_youtube-download.sh)
+
+**Назначение:** Загрузка видео с YouTube с помощью yt-dlp.
+
+**Как работает:**
+1. Принимает URL YouTube как входные данные
+2. Загружает видео с помощью yt-dlp
+3. Сохраняет в настроенную директорию загрузок
+
+**Использование:**
+1. Скопируйте URL YouTube в буфер обмена
+2. Вызовите Raycast (⌘Space)
+3. Введите "youtube download"
+
+**Требования:**
+- `yt-dlp` установлен (через mise/homebrew)
+- Fish shell в `/opt/homebrew/bin/fish`
+
+**Связанные файлы:**
+- Fish реализация: [`executable_youtube-download.fish`](../../home/dot_bin/raycast/executable_youtube-download.fish)
 
 ### Перезапуск сервисов VM
 
-**Файл:** [`dot_bin/raycast/executable_restart-vm.sh`](../../dot_bin/raycast/executable_restart-vm.sh)
+**Файл:** [`home/dot_bin/raycast/executable_restart-vm.sh`](../../home/dot_bin/raycast/executable_restart-vm.sh)
 
 **Назначение:** Перезапускает все сервисы оконного менеджера и связанных компонентов (Yabai, skhd, Borders, SketchyVim, SketchyBar).
 
@@ -157,12 +187,12 @@ Raycast использует комментарии в начале скрипт
 - После обновления компонентов
 
 **Связанные файлы:**
-- Fish функция: [`dot_config/fish/functions/core/restart_vm.fish`](../../dot_config/fish/functions/core/restart_vm.fish)
+- Fish функция: [`home/dot_config/fish/functions/core/restart_vm.fish`](../../home/dot_config/fish/functions/core/restart_vm.fish)
 - Конфигурации:
-  - [Yabai](../../dot_config/yabai/executable_yabairc)
-  - [skhd](../../dot_config/skhd/skhdrc)
-  - [SketchyBar](../../dot_config/sketchybar/)
-  - [SketchyVim](../../dot_config/svim/)
+  - [Yabai](../../home/dot_config/yabai/executable_yabairc)
+  - [skhd](../../home/dot_config/skhd/skhdrc)
+  - [SketchyBar](../../home/dot_config/sketchybar/)
+  - [SketchyVim](../../home/dot_config/svim/)
 
 **См. также:**
 - [Документация Yabai](../yabai/README.ru.md)
@@ -171,7 +201,7 @@ Raycast использует комментарии в начале скрипт
 
 ### Запуск Dota 2
 
-**Файл:** [`dot_bin/raycast/executable_dota2.sh`](../../dot_bin/raycast/executable_dota2.sh)
+**Файл:** [`home/dot_bin/raycast/executable_dota2.sh`](../../home/dot_bin/raycast/executable_dota2.sh)
 
 **Назначение:** Быстрый запуск Dota 2 через Steam.
 

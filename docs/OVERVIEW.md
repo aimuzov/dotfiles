@@ -6,6 +6,27 @@ This is a personal macOS dotfiles repository managed with [chezmoi](https://www.
 
 ## Repository Structure
 
+### Chezmoi Root Directory
+
+This repository uses `.chezmoiroot` to specify a subdirectory as the source state root. The actual dotfiles are located in the `home/` directory:
+
+```
+dotfiles/
+├── .chezmoiroot          # Contains "home" - specifies source root
+├── home/                 # Source state root (chezmoi manages this)
+│   ├── .chezmoi.toml.tmpl
+│   ├── .chezmoiscripts/
+│   ├── .chezmoiexternals/
+│   ├── dot_config/
+│   ├── dot_bin/
+│   └── ...
+├── docs/                 # Documentation (not managed by chezmoi)
+├── assets/               # Images for documentation
+└── ...
+```
+
+This structure allows keeping documentation, assets, and configuration files separate from the actual dotfiles that chezmoi manages.
+
 ### Chezmoi File Naming Convention
 
 Files and directories use chezmoi's naming conventions:
@@ -17,24 +38,31 @@ Files and directories use chezmoi's naming conventions:
 
 ### Key Directories
 
-- `.chezmoiscripts/` - Automated setup scripts that run after chezmoi apply
+All paths below are relative to `home/` (the chezmoi source root):
+
+- `home/.chezmoiscripts/` - Automated setup scripts that run after chezmoi apply
   - Scripts are ordered with prefixes like `run_once_after_1_`, `run_once_after_2_`, etc.
   - `run_once_weekly_*` scripts run periodically
   - All scripts are Fish shell scripts with `.fish.tmpl` extension
-- `.chezmoiexternals/` - External dependencies managed by chezmoi
+- `home/.chezmoiexternals/` - External dependencies managed by chezmoi
   - `fish.toml` - Fish shell plugins
   - `yazi.toml` - Yazi file manager plugins
   - `nvim.toml` - Neovim external configurations
-- `dot_config/` - Application configurations (becomes `~/.config/`)
-- `dot_bin/` - User scripts and utilities
+- `home/dot_config/` - Application configurations (becomes `~/.config/`)
+- `home/dot_bin/` - User scripts and utilities
+- `home/dot_claude/` - Claude Code configuration (becomes `~/.claude/`)
+- `home/dot_mcp.json.tmpl` - Centralized MCP servers configuration
+- `docs/` - Documentation (outside chezmoi root)
 - `assets/` - Images and other static files for documentation
 
 ### Major Configurations
 
+All paths below are relative to `home/` (the chezmoi source root):
+
 - **Neovim** (`dot_config/nvim/`, `dot_config/nvim-lazyvimx/`) - Uses [LazyVimx](https://github.com/aimuzov/LazyVimx) configuration, supports stable and nightly versions
 - **Fish Shell** (`dot_config/fish/`) - Comprehensive shell with custom functions, XDG compliance, theme switching
 - **Zsh** (`dot_config/zsh/`) - Zsh shell configuration
-- **Yabai** (`dot_config/yabai/`) - Tiling window manager with automatic space creation and application assignment
+- **Yabai** (`dot_config/yabai/`) - Tiling window manager written in Fish shell with automatic space creation and application assignment
 - **SketchyBar** (`dot_config/sketchybar/`) - Status bar written in Lua with modular item system
 - **skhd** (`dot_config/skhd/`) - Hotkey daemon for window management keybindings
 - **SketchyVim** (`dot_config/svim/`) - System-wide Vim-like navigation with Russian keyboard layout support
@@ -44,11 +72,13 @@ Files and directories use chezmoi's naming conventions:
 - **Yazi** (`dot_config/yazi/`) - File manager with Catppuccin theme and custom plugins
 - **LazyGit** (`dot_config/lazygit/`) - Git TUI with dark/light theme support
 - **WezTerm** (`dot_config/wezterm/`) - Terminal emulator configuration
-- **Ghostty** (`dot_config/ghostty/`) - Minimal terminal emulator configuration
+- **Ghostty** (`dot_config/ghostty/`) - Fast terminal emulator with quick terminal, Display P3 colorspace, Catppuccin theme
+- **Claude Code** (`dot_claude/`) - AI assistant configuration with MCP servers
 - **Matterhorn** (`dot_config/matterhorn/`) - Terminal-based Mattermost client
 - **Oh My Posh** (`dot_config/oh-my-posh/`) - Prompt theme engine
 - **Raycast** (`dot_bin/raycast/`) - Script commands for productivity launcher
-  - Tailscale VPN exit-node management
+  - Tailscale VPN management (exit-node selection, status display)
+  - YouTube video download
   - VM services restart (Yabai, skhd, SketchyBar, etc.)
   - Application launchers
   - See [Raycast documentation](raycast/README.md) for details
@@ -293,6 +323,7 @@ items/
 └── right/             # Right-aligned items
     ├── keyboard_layout.lua  # Current input method
     ├── svim.lua       # SketchyVim mode indicator
+    ├── tailscale.lua  # Tailscale VPN status
     ├── battery.lua    # Battery status
     └── datetime.lua   # Date and time
 ```
@@ -308,14 +339,16 @@ items/
 **Directory structure:**
 
 ```
-dot_config/fish/
+home/dot_config/fish/
 ├── config.fish.tmpl          # Main config (template for secrets)
 ├── conf.d/                   # Auto-loaded configs
 │   └── recursive_paths.fish  # Function/completion path setup
 └── functions/                # Custom functions
-    ├── git/                  # Git-related functions
-    ├── wrappers/             # Command wrappers
-    └── *.fish                # Individual functions
+    └── core/                 # Core functions
+        ├── git/              # Git-related functions
+        ├── yabai/            # Yabai helper functions
+        ├── wrappers/         # Command wrappers
+        └── *.fish            # Individual functions
 ```
 
 **Initialization order:**
@@ -335,27 +368,36 @@ dot_config/fish/
 
 ### Yabai Window Management
 
+The Yabai configuration is written entirely in **Fish shell** (`executable_yabairc`), leveraging Fish's clean syntax and integration with other Fish functions.
+
 **Configuration flow:**
 
 1. Load scripting addition (requires SIP disabled)
 2. Set up SketchyBar signals
 3. Configure global settings (layout, padding, gaps, mouse)
-4. Create/rename spaces dynamically
+4. Create/rename spaces dynamically using Fish functions
 5. Assign applications to specific spaces
 6. Set per-app layout exceptions
+
+**Helper functions** (located in `dot_config/fish/functions/core/yabai/`):
+
+- `yabai.rearrange.fish` - Rearranges windows when new ones are created
+- `yabai.restart.fish` - Restarts Yabai service
+- `yabai.sudoers.fish` - Manages sudoers configuration for scripting addition
 
 **Space management:**
 
 - Spaces created automatically on startup
-- Custom names for workspaces
-- Application-to-space assignments
+- Custom names for workspaces (Code, Serf, Org, Graph, Explr, Fun, Sys, Ai, Any, Social, Calls, Media)
+- Application-to-space assignments (including Claude, Zed, Perplexity, Cursor, Dia)
 - Per-space layout rules
 
 **Integration points:**
 
 - skhd for keybindings
-- SketchyBar for visual feedback
-- Custom helper scripts in PATH (`yabai_space_focus`, `yabai_display_index_get`)
+- SketchyBar for visual feedback (via signals)
+- Fish functions for helper scripts
+- Signal triggers `yabai.rearrange` on window creation
 
 ### Git Configuration
 
@@ -432,26 +474,26 @@ The chezmoi scripts in `.chezmoiscripts/` automatically handle:
 
 ### Adding New Tools
 
-1. Add to `dot_config/mise/config.toml` under appropriate backend
+1. Add to `home/dot_config/mise/config.toml` under appropriate backend
 2. Run `mise install` to install
 3. Commit changes with scope `mise`
 
 ### Adding New Config
 
-1. Add file to appropriate `dot_config/` subdirectory
+1. Add file to appropriate `home/dot_config/` subdirectory
 2. Use chezmoi naming conventions (`dot_`, `private_`, `executable_`, `.tmpl`)
 3. Test with `chezmoi diff` before `chezmoi apply`
 4. Commit with appropriate scope from `.commitlintrc.js`
 
 ### Modifying SketchyBar Items
 
-1. Edit item file in `dot_config/sketchybar/items/`
+1. Edit item file in `home/dot_config/sketchybar/items/`
 2. Reload SketchyBar: `sketchybar --reload`
 3. Check logs if not working: `log show --predicate 'process == "sketchybar"' --last 5m`
 
 ### Testing Yabai Changes
 
-1. Edit `dot_config/yabai/executable_yabairc`
+1. Edit `home/dot_config/yabai/executable_yabairc`
 2. Reload config: `yabai --restart-service`
 3. Check current layout: `yabai -m query --spaces --space`
 
@@ -460,12 +502,16 @@ The chezmoi scripts in `.chezmoiscripts/` automatically handle:
 Component-specific documentation (Russian and English versions available):
 
 - [Chezmoi Scripts](chezmoiscripts/README.md)
-- [Fish Shell Configuration](../dot_config/fish/README.md)
-- [Git Configuration](../dot_config/git/README.md)
-- [LazyGit Configuration](../dot_config/lazygit/README.md)
-- [Mise Configuration](../dot_config/mise/README.md)
-- [SketchyBar Configuration](../dot_config/sketchybar/README.md)
-- [skhd Configuration](../dot_config/skhd/README.md)
-- [SketchyVim Configuration](../dot_config/svim/README.md)
-- [Yabai Configuration](../dot_config/yabai/README.md)
-- [Yazi Configuration](../dot_config/yazi/README.md)
+- [Claude Code Configuration](claude/README.md)
+- [Fish Shell Configuration](fish/README.md)
+- [Ghostty Terminal](ghostty/README.md)
+- [Git Configuration](git/README.md)
+- [LazyGit Configuration](lazygit/README.md)
+- [Mise Configuration](mise/README.md)
+- [Oh My Posh Configuration](oh-my-posh/README.md)
+- [Raycast Scripts](raycast/README.md)
+- [SketchyBar Configuration](sketchybar/README.md)
+- [skhd Configuration](skhd/README.md)
+- [SketchyVim Configuration](svim/README.md)
+- [Yabai Configuration](yabai/README.md)
+- [Yazi Configuration](yazi/README.md)
