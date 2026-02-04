@@ -89,7 +89,6 @@ $(mise where ubi:twpayne/chezmoi)/bin/chezmoi init --apply aimuzov
 │   ├── matterhorn/         # Терминальный эмулятор
 │   ├── mise/               # Менеджер версий
 │   ├── nvim/               # Редактор
-│   ├── nvim-lazyvimx/      # Конфигурация neovim
 │   ├── oh-my-posh/         # Кастомизация промпта
 │   ├── raycast/            # Лаунчер
 │   ├── sketchybar/         # Статус бар

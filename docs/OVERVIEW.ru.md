@@ -59,7 +59,7 @@ dotfiles/
 
 Все пути ниже указаны относительно `home/` (корня исходников chezmoi):
 
-- **Neovim** (`dot_config/nvim/`, `dot_config/nvim-lazyvimx/`) - Использует конфигурацию [LazyVimx](https://github.com/aimuzov/LazyVimx), поддерживает стабильную и nightly версии
+- **Neovim** (`dot_config/nvim/`) - Использует конфигурацию [LazyVimx](https://github.com/aimuzov/LazyVimx), поддерживает стабильную и nightly версии
 - **Fish Shell** (`dot_config/fish/`) - Комплексная оболочка с пользовательскими функциями, соблюдением XDG, переключением тем
 - **Zsh** (`dot_config/zsh/`) - Конфигурация оболочки Zsh
 - **Yabai** (`dot_config/yabai/`) - Тайловый менеджер окон, написанный на Fish shell, с автоматическим созданием пространств и назначением приложений

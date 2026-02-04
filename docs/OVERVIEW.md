@@ -59,7 +59,7 @@ All paths below are relative to `home/` (the chezmoi source root):
 
 All paths below are relative to `home/` (the chezmoi source root):
 
-- **Neovim** (`dot_config/nvim/`, `dot_config/nvim-lazyvimx/`) - Uses [LazyVimx](https://github.com/aimuzov/LazyVimx) configuration, supports stable and nightly versions
+- **Neovim** (`dot_config/nvim/`) - Uses [LazyVimx](https://github.com/aimuzov/LazyVimx) configuration, supports stable and nightly versions
 - **Fish Shell** (`dot_config/fish/`) - Comprehensive shell with custom functions, XDG compliance, theme switching
 - **Zsh** (`dot_config/zsh/`) - Zsh shell configuration
 - **Yabai** (`dot_config/yabai/`) - Tiling window manager written in Fish shell with automatic space creation and application assignment

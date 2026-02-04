@@ -90,7 +90,6 @@ $(mise where ubi:twpayne/chezmoi)/bin/chezmoi init --apply aimuzov
 │   ├── mise/               # Version manager
 │   ├── npm/                # Node package manager
 │   ├── nvim/               # Neovim editor
-│   ├── nvim-lazyvimx/      # Neovim LazyVimx config
 │   ├── oh-my-posh/         # Prompt customization
 │   ├── raycast/            # Launcher
 │   ├── sketchybar/         # Status bar
