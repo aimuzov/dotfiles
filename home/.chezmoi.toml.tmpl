@@ -1,9 +1,10 @@
-[keepassxc]
-	database = "~/Library/Mobile Documents/com~apple~CloudDocs/Secrets/vaults/secrets.kdbx"
-[git]
-	autoCommit = false
+# vi: ft=toml
 [diff]
 	pager = "diff-so-fancy"
+[git]
+	autoCommit = false
+[keepassxc]
+	database = "~/Library/Mobile Documents/com~apple~CloudDocs/Secrets/vaults/secrets.kdbx"
 [merge]
 	command = "nvim"
 	args = ["-d", "{{ `{{ .Source }}` }}", "{{ `{{ .Destination }}` }}", "{{ `{{ .Target }}` }}"]
