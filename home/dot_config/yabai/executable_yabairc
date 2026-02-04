@@ -46,64 +46,39 @@ yabai -m config \
 
 yabai.space_destroy_amount 12
 
-yabai.space_create 1 1 Code
-yabai.space_create 1 2 Serf
-yabai.space_create 1 3 Org
-yabai.space_create 1 4 Graph
-yabai.space_create 1 5 Explr
-yabai.space_create 1 6 Fun
-yabai.space_create 2 7 Sys
-yabai.space_create 2 8 Ai
-yabai.space_create 2 9 Any
-yabai.space_create 2 10 Social
-yabai.space_create 2 11 Calls
-yabai.space_create 2 12 Media
-
-# -- Assigning windows in spaces ---------------------------------------------------------------------------------------
-
-yabai -m rule --add app="^.*\$" space="Any"
-yabai -m rule --add space="Code" app="^(WezTerm|Ghostty|Code|Cursor|Zed)\$"
-yabai -m rule --add space="Serf" app="^(Arc|Dia|Google Chrome)\$"
-yabai -m rule --add space="Org" app="^(Things|Calendar|Mail)\$"
-yabai -m rule --add space="Graph" app="^(Figma|Miro)\$"
-yabai -m rule --add space="Explr" app="^(Finder|Cyberduck)\$"
-yabai -m rule --add space="Fun" app="^(Steam Helper|Dota 2)\$"
-yabai -m rule --add space="Sys" app="^(System Settings|MacPass)\$"
-yabai -m rule --add space="Media" app="^(Yandex Music|Photos)\$"
-yabai -m rule --add space="Calls" app="^(Толк)\$"
-yabai -m rule --add space="Social" app="^(Time|Telegram|WhatsApp)\$"
-yabai -m rule --add space="Ai" app="^(ChatGPT|Claude|Perplexity)\$"
+yabai.space_create 2 9 Any -- ".*"
+yabai.space_create 1 1 Code -- WezTerm Ghostty Code Cursor Zed
+yabai.space_create 1 2 Serf -- Arc Dia "Google Chrome"
+yabai.space_create 1 3 Org -- Things Calendar Mail
+yabai.space_create 1 4 Graph -- Figma Miro
+yabai.space_create 1 5 Explr -- Finder Cyberduck
+yabai.space_create 1 6 Fun -- "Steam Helper" "Dota 2"
+yabai.space_create 2 7 Sys -- "System Settings" MacPass
+yabai.space_create 2 8 Ai -- ChatGPT Claude Perplexity
+yabai.space_create 2 10 Social -- Time Telegram WhatsApp
+yabai.space_create 2 11 Calls -- Толк
+yabai.space_create 2 12 Media -- "Yandex Music" Photos
 
 # -- Layout managing ---------------------------------------------------------------------------------------------------
 
-yabai -m rule --add manage=off app!="^(\
-Arc|\
-Calendar|\
-Code|\
-Cursor|\
-Cyberduck|\
-Dia|\
-Figma|\
-Finder|\
-Ghostty|\
-Google Chrome|\
-MacPass|\
-Mail|\
-Miro|\
-Perplexity|\
-Telegram|\
-Things|\
-Time|\
-WezTerm|\
-WhatsApp|\
-Yandex|\
-Yandex Music|\
-Толк\
-)\$"
-
-yabai -m rule --add app="^Calendar\$" title="General" manage=off
-yabai -m rule --add app="^Mail\$" title="General" manage=off
-yabai -m rule --add app="^Finder\$" title="(Copy|Connect|Move|Info|Pref|Finder Settings)" manage=off
-yabai -m rule --add app="^Things\$" title="(Quick Entry)" manage=off
-
-yabai -m rule --apply
+yabai.layout_add "Google Chrome"
+yabai.layout_add "Yandex Music"
+yabai.layout_add Arc
+yabai.layout_add Calendar -- General
+yabai.layout_add Code
+yabai.layout_add Cursor
+yabai.layout_add Cyberduck
+yabai.layout_add Dia -- Settings
+yabai.layout_add Figma
+yabai.layout_add Finder -- Copy Connect Move Info Pref "Finder Settings"
+yabai.layout_add Ghostty
+yabai.layout_add Mail -- General
+yabai.layout_add Miro
+yabai.layout_add Perplexity
+yabai.layout_add Telegram
+yabai.layout_add Things -- "Quick Entry"
+yabai.layout_add Time
+yabai.layout_add WezTerm
+yabai.layout_add WhatsApp
+yabai.layout_add Yandex
+yabai.layout_add Толк
