@@ -44,39 +44,20 @@ yabai -m config \
 
 # -- Space preparing ---------------------------------------------------------------------------------------------------
 
-function space_destroy_amount
-    for idx in (yabai -m query --spaces | jq ".[].index | select(. > $argv[1])" | sort -nr)
-        yabai -m space --destroy "$idx"
-    end
-end
+yabai.space_destroy_amount 12
 
-function space_create
-    set -l display (yabai_display_index_get $argv[1])
-    set -l idx $argv[2]
-    set -l name $argv[3]
-    set -l space (yabai -m query --spaces | jq "first(.[] | select(.index == $idx) | .index)")
-
-    if test -z "$space"
-        yabai -m space --create
-    end
-
-    yabai -m space "$idx" --label "$name" --display "$display"
-end
-
-space_destroy_amount 12
-
-space_create 1 1 Code
-space_create 1 2 Serf
-space_create 1 3 Org
-space_create 1 4 Graph
-space_create 1 5 Explr
-space_create 1 6 Fun
-space_create 2 7 Sys
-space_create 2 8 Ai
-space_create 2 9 Any
-space_create 2 10 Social
-space_create 2 11 Calls
-space_create 2 12 Media
+yabai.space_create 1 1 Code
+yabai.space_create 1 2 Serf
+yabai.space_create 1 3 Org
+yabai.space_create 1 4 Graph
+yabai.space_create 1 5 Explr
+yabai.space_create 1 6 Fun
+yabai.space_create 2 7 Sys
+yabai.space_create 2 8 Ai
+yabai.space_create 2 9 Any
+yabai.space_create 2 10 Social
+yabai.space_create 2 11 Calls
+yabai.space_create 2 12 Media
 
 # -- Assigning windows in spaces ---------------------------------------------------------------------------------------
 
