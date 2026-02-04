@@ -17,6 +17,7 @@
 "core:rust" = "latest"
 
 "aqua:ajeetdsouza/zoxide" = "latest"
+"aqua:anomalyco/opencode" = "latest"
 "aqua:ast-grep/ast-grep" = "latest"
 "aqua:BurntSushi/ripgrep" = "latest"
 "aqua:charmbracelet/glow" = "latest"
@@ -55,6 +56,7 @@
 "npm:@modelcontextprotocol/server-filesystem" = "latest"
 "npm:@modelcontextprotocol/server-memory" = "latest"
 "npm:@modelcontextprotocol/server-sequential-thinking" = "latest"
+"npm:chrome-devtools-mcp" = "latest"
 
 "pipx:httpie" = "latest"
 "pipx:mcp-server-fetch" = "latest"
