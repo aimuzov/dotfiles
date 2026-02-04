@@ -2,11 +2,11 @@
 # vi: ft=fish
 
 # https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)#configure-scripting-addition
-sudo yabai --load-sa
+# sudo yabai --load-sa # not supported :(
 
 # -- Events ------------------------------------------------------------------------------------------------------------
 
-yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+# yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa" # not supported :(
 yabai -m signal --add event=window_focused action="sketchybar --trigger window_focus"
 yabai -m signal --add event=window_created action="sketchybar --trigger windows_on_spaces"
 yabai -m signal --add event=window_destroyed action="sketchybar --trigger windows_on_spaces"
@@ -61,6 +61,8 @@ yabai.space_create 2 12 Media -- "Yandex Music" Photos
 
 # -- Layout managing ---------------------------------------------------------------------------------------------------
 
+yabai -m rule --add manage=off app=".*"
+
 yabai.layout_add "Google Chrome"
 yabai.layout_add "Yandex Music"
 yabai.layout_add Arc
@@ -82,3 +84,5 @@ yabai.layout_add WezTerm
 yabai.layout_add WhatsApp
 yabai.layout_add Yandex
 yabai.layout_add Толк
+
+yabai -m rule --apply

@@ -28,4 +28,6 @@ function yabai.rearrange
             yabai -m window "$last_dia_id" --stack "$first_dia_id"
         end
     end
+
+    sketchybar --trigger window_focus
 end
