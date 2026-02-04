@@ -1,4 +1,4 @@
-function restart_vm
+function yabai.restart
     yabai --restart-service
     skhd --restart-service
     brew services restart borders
