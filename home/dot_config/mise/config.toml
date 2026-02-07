@@ -24,6 +24,7 @@
 "aqua:ClementTsang/bottom" = "latest"
 "aqua:cli/cli" = "latest"
 "aqua:fish-shell/fish-shell" = "latest"
+"aqua:github/copilot-cli" = "latest"
 "aqua:gittower/git-flow-next" = "latest"
 "aqua:jesseduffield/lazygit" = "latest"
 "aqua:jqlang/jq" = "latest"
