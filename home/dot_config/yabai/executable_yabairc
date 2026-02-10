@@ -57,7 +57,7 @@ yabai.space_create 2 7 Sys -- "System Settings" MacPass
 yabai.space_create 2 8 Ai -- ChatGPT Claude Perplexity
 yabai.space_create 2 10 Social -- Time Telegram WhatsApp
 yabai.space_create 2 11 Calls -- Толк
-yabai.space_create 2 12 Media -- "Yandex Music" Photos
+yabai.space_create 2 12 Media -- "Yandex Music" Photos
 
 # -- Layout managing ---------------------------------------------------------------------------------------------------
 
