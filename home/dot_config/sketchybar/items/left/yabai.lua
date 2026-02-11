@@ -2,7 +2,7 @@ local sbar = require("sketchybar")
 local colors = require("config").colors
 
 local icons = {
-	stack = "􀏭",
+	stack = "􃑷",
 	fullscreen_zoom = "􀏜",
 	parent_zoom = "􀥃",
 	float = "􀢌",
@@ -35,6 +35,7 @@ local function update()
 		string = "",
 		width = 0,
 		color = colors.white,
+		font = { style = "Semibold" },
 	}
 
 	if get_window_prop("is-floating") == "true" then
@@ -54,7 +55,7 @@ local function update()
 
 			icon.string = icons.stack
 			icon.color = colors.magenta
-			label.string = "[" .. stack_index .. "/" .. stack_index_last .. "]"
+			label.string = stack_index .. " / " .. stack_index_last
 			label.width = 40
 		end
 	end

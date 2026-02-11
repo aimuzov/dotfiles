@@ -86,3 +86,5 @@ yabai.layout_add Yandex
 yabai.layout_add Толк
 
 yabai -m rule --apply
+
+yabai.rearrange
