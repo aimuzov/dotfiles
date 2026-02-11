@@ -1,5 +1,9 @@
 function yabai.rearrange
-    set space_index (yabai -m query --spaces --space | jq -r '.index')
+    set space_index $argv[1]
+
+    if test -z "$space_index"
+        set space_index (yabai -m query --spaces --space | jq -r '.index')
+    end
 
     if test "$space_index" -eq 10
         set windows (yabai -m query --windows --space $space_index)
@@ -14,7 +18,8 @@ function yabai.rearrange
                 yabai -m window "$time_id" --ratio abs:0.7
             end
 
-            yabai -m window "$tg_id" --warp last
+            yabai -m window "$time_id" --insert east
+            yabai -m window "$tg_id" --warp "$time_id"
         end
     end
 
