@@ -1,7 +1,9 @@
+set -gx FISH_BIND_MODE insert
+
 function __rerender_on_bind_mode_change --on-variable fish_bind_mode
-    if test "$fish_bind_mode" != "$FISH__BIND_MODE"
+    if test "$fish_bind_mode" != "$FISH_BIND_MODE"
         set -gx FISH_BIND_MODE $fish_bind_mode
-        omp_repaint_prompt
+        type -q omp_repaint_prompt; and omp_repaint_prompt
     end
 end
 
