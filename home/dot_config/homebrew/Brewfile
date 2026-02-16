@@ -1,5 +1,6 @@
 # vi: ft=ruby
 
+tap "asmvik/formulae"
 tap "daipeihust/tap"
 tap "felixkratz/formulae"
 tap "jdx/tap"
@@ -35,12 +36,12 @@ brew "telnet"
 brew "trash", link: true
 brew "zlib" # deps: termscp (see mise config)
 brew "zsh"
+brew "asmvik/formulae/yabai", args: ["HEAD"]
 brew "daipeihust/tap/im-select"
 brew "felixkratz/formulae/borders"
 brew "felixkratz/formulae/sketchybar"
 brew "felixkratz/formulae/svim"
 brew "koekeishiya/formulae/skhd"
-brew "koekeishiya/formulae/yabai"
 brew "lukechilds/tap/gifgen"
 cask "appcleaner"
 cask "arc"
