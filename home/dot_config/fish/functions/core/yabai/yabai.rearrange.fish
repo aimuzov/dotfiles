@@ -18,8 +18,7 @@ function yabai.rearrange
                 yabai -m window "$time_id" --ratio abs:0.7
             end
 
-            yabai -m window "$time_id" --insert east
-            yabai -m window "$tg_id" --warp "$time_id"
+            yabai -m window "$tg_id" --warp last
         end
     end
 
