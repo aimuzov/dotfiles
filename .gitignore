@@ -1,4 +1,5 @@
+.claude/plans/
+.claude/worktrees/
 .DS_Store
 .vscode
 node_modules
-.claude/worktrees/
