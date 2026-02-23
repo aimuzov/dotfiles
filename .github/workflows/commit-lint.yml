@@ -1,0 +1,31 @@
+# Проверка коммитов на соответствие Conventional Commits.
+# Использует commitlint с конфигом из .commitlintrc.js.
+#
+# wagoid/commitlint-github-action — готовый action, который:
+# 1. Сам устанавливает Node.js и зависимости из package.json
+# 2. Корректно обрабатывает force-push, merge-коммиты, squash
+# 3. Проверяет все коммиты в PR за один шаг
+
+name: Commit Lint
+
+on:
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  commitlint:
+    name: Validate commits
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # wagoid/commitlint-github-action сам найдёт .commitlintrc.js,
+      # установит зависимости и проверит все коммиты в PR.
+      - uses: wagoid/commitlint-github-action@v6

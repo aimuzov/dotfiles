@@ -1,0 +1,69 @@
+# Конфигурация для actions/labeler.
+# Автоматически добавляет лейблы к PR на основе изменённых файлов.
+# Документация: https://github.com/actions/labeler
+
+fish:
+  - changed-files:
+      - any-glob-to-any-file: "home/dot_config/fish/**"
+
+sketchybar:
+  - changed-files:
+      - any-glob-to-any-file: "home/dot_config/sketchybar/**"
+
+yabai:
+  - changed-files:
+      - any-glob-to-any-file: "home/dot_config/yabai/**"
+
+skhd:
+  - changed-files:
+      - any-glob-to-any-file: "home/dot_config/skhd/**"
+
+nvim:
+  - changed-files:
+      - any-glob-to-any-file: "home/dot_config/nvim/**"
+
+wezterm:
+  - changed-files:
+      - any-glob-to-any-file: "home/dot_config/wezterm/**"
+
+yazi:
+  - changed-files:
+      - any-glob-to-any-file: "home/dot_config/yazi/**"
+
+git:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "home/dot_config/git/**"
+          - "home/dot_config/lazygit/**"
+
+mise:
+  - changed-files:
+      - any-glob-to-any-file: "home/dot_config/mise/**"
+
+brew:
+  - changed-files:
+      - any-glob-to-any-file: "home/dot_config/homebrew/**"
+
+raycast:
+  - changed-files:
+      - any-glob-to-any-file: "home/dot_bin/raycast/**"
+
+ci:
+  - changed-files:
+      - any-glob-to-any-file:
+          - ".github/**"
+          - ".commitlintrc.js"
+          - "package.json"
+
+docs:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "docs/**"
+          - "*.md"
+
+chezmoi:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "home/.chezmoiscripts/**"
+          - "home/.chezmoiexternals/**"
+          - "home/.chezmoi*"

@@ -1,0 +1,49 @@
+# Поиск опечаток в коде, комментариях и документации.
+#
+# Использует reviewdog + misspell — оставляет inline-комментарии
+# прямо в diff PR, указывая на конкретную строку с опечаткой.
+# На push в main просто фейлится при наличии опечаток.
+
+name: Misspell
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  misspell:
+    name: Check spelling
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # reviewdog/action-misspell:
+      # - Сканирует все текстовые файлы в репозитории
+      # - На PR: оставляет inline-комментарии с предложениями исправлений
+      # - На push: выводит ошибки в лог
+      # - locale: US — проверяет по американскому английскому
+      - uses: reviewdog/action-misspell@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-pr-review
+          locale: US
+          level: warning
+          # Пропускать бинарные и сгенерированные файлы
+          exclude: |
+            .git/*
+            node_modules/*
+            *.png
+            *.jpg
+            *.gif
+            *.ico

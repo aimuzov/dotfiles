@@ -1,0 +1,50 @@
+# Автоматическая блокировка неактивных issues и PR.
+#
+# После N дней без активности добавляет комментарий и блокирует обсуждение.
+# Это предотвращает некропостинг в старых issues и поддерживает порядок.
+#
+# dessant/lock-threads запускается по расписанию (cron) и проверяет
+# все закрытые issues/PR на дату последней активности.
+
+name: Lock Threads
+
+on:
+  schedule:
+    # Запуск раз в неделю, в понедельник в 00:00 UTC
+    - cron: "0 0 * * 1"
+
+  # Позволяет запустить вручную из вкладки Actions
+  workflow_dispatch:
+
+permissions:
+  issues: write
+  pull-requests: write
+
+concurrency:
+  group: lock-threads
+
+jobs:
+  lock:
+    name: Lock old threads
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: dessant/lock-threads@v5
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+          # Блокировать issues, закрытые более 60 дней назад
+          issue-inactive-days: 60
+          issue-comment: >
+            This issue has been automatically locked since there
+            has been no recent activity after it was closed.
+            Please open a new issue for related bugs or questions.
+          issue-lock-reason: resolved
+
+          # Блокировать PR, закрытые/смёрженные более 60 дней назад
+          pr-inactive-days: 60
+          pr-comment: >
+            This pull request has been automatically locked since there
+            has been no recent activity after it was closed.
+            Please open a new issue for related discussions.
+          pr-lock-reason: resolved

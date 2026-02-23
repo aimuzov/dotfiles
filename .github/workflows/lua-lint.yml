@@ -1,0 +1,61 @@
+# Проверка форматирования Lua-файлов с помощью StyLua.
+# Покрывает: SketchyBar, Neovim, WezTerm, Yazi.
+#
+# StyLua — форматтер для Lua, аналог Prettier для JS.
+# Использует конфиг из home/dot_config/nvim/stylua.toml:
+#   indent_type = "Tabs", indent_width = 4, column_width = 120
+
+name: Lua Lint
+
+on:
+  push:
+    branches: [main]
+    # Запускается только при изменении Lua-файлов
+    paths:
+      - "home/dot_config/**/*.lua"
+  pull_request:
+    branches: [main]
+    paths:
+      - "home/dot_config/**/*.lua"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+# Версия StyLua — вынесена в env для удобства обновления
+env:
+  STYLUA_VERSION: "2.0.2"
+
+jobs:
+  stylua:
+    name: StyLua format check
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # Скачать StyLua из GitHub Releases и добавить в PATH.
+      # Кешируется между запусками по версии.
+      - name: Cache StyLua
+        id: cache-stylua
+        uses: actions/cache@v4
+        with:
+          path: ~/.local/bin/stylua
+          key: stylua-${{ env.STYLUA_VERSION }}
+
+      - name: Install StyLua
+        if: steps.cache-stylua.outputs.cache-hit != 'true'
+        run: |
+          mkdir -p ~/.local/bin
+          curl -fsSL "https://github.com/JohnnyMorganz/StyLua/releases/download/v${STYLUA_VERSION}/stylua-linux-x86_64.zip" -o stylua.zip
+          unzip stylua.zip -d ~/.local/bin
+          chmod +x ~/.local/bin/stylua
+
+      - name: Add StyLua to PATH
+        run: echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+
+      # --check: не модифицирует файлы, только проверяет.
+      # Если форматирование не соответствует — exit code 1.
+      # --config-path: путь к stylua.toml (он лежит в nvim/, но применим ко всем Lua)
+      - name: Check Lua formatting
+        run: stylua --check --config-path home/dot_config/nvim/stylua.toml home/

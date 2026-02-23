@@ -1,0 +1,26 @@
+# Автоматически добавляет лейблы к PR на основе изменённых файлов.
+# Конфигурация маппинга: .github/labeler.yml
+#
+# Пример: PR с изменениями в home/dot_config/fish/ получит лейбл "fish".
+# Лейблы создаются автоматически при первом использовании.
+
+name: Labeler
+
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened]
+
+# Нужны права для добавления лейблов к PR
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  labeler:
+    name: Label PR
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/labeler@v5
+        with:
+          sync-labels: true

@@ -35,6 +35,14 @@ const scopes = [
 ];
 
 module.exports = {
+  // commitlint CLI config (used in CI)
+  extends: ["@commitlint/config-conventional"],
+  rules: {
+    "scope-enum": [2, "always", scopes],
+    "header-max-length": [2, "always", 100],
+  },
+
+  // cz-git config (used by `git cz` interactive prompt)
   allowCustomIssuePrefixs: false,
   allowEmptyIssuePrefixs: false,
   issuePrefixs: [{ value: "Closes" }],

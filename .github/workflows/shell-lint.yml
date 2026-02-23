@@ -1,0 +1,72 @@
+# Проверка синтаксиса Fish и Bash скриптов.
+#
+# Fish: `fish --no-execute` — парсит скрипт без выполнения (аналог bash -n).
+# Bash: reviewdog/action-shellcheck — оставляет inline-комментарии в PR
+#        с описанием каждой проблемы от ShellCheck.
+#
+# .fish.tmpl файлы пропускаются — они содержат Go-шаблоны chezmoi,
+# которые ломают синтаксис Fish до обработки.
+
+name: Shell Lint
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "home/**/*.fish"
+      - "home/**/*.sh"
+  pull_request:
+    branches: [main]
+    paths:
+      - "home/**/*.fish"
+      - "home/**/*.sh"
+
+permissions:
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  fish-syntax:
+    name: Fish syntax check
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # Fish shell доступен через PPA
+      - name: Install Fish shell
+        run: |
+          sudo apt-add-repository -y ppa:fish-shell/release-4
+          sudo apt-get update
+          sudo apt-get install -y fish
+
+      # Найти все .fish файлы (но НЕ .fish.tmpl) и проверить синтаксис.
+      # --no-execute: только парсинг, без выполнения.
+      - name: Check Fish syntax
+        run: |
+          find home/ -name '*.fish' -not -name '*.fish.tmpl' -print0 | \
+            xargs -0 -I{} fish --no-execute {}
+
+  shellcheck:
+    name: ShellCheck
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # reviewdog/action-shellcheck:
+      # - На PR: оставляет inline-комментарии прямо в diff
+      # - На push: выводит ошибки в лог
+      # - Гораздо информативнее, чем просто "job failed"
+      - uses: reviewdog/action-shellcheck@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-pr-review
+          level: warning
+          path: home/
+          pattern: "*.sh"
+          shellcheck_flags: "--severity=warning"
