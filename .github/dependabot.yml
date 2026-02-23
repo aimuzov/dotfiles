@@ -1,0 +1,48 @@
+# Dependabot автоматически создаёт PR при выходе новых версий зависимостей.
+# Документация: https://docs.github.com/en/code-security/dependabot/dependabot-version-updates
+
+version: 2
+
+updates:
+  # npm: commitlint, cz-git, @commitlint/config-conventional
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: monthly
+    commit-message:
+      prefix: "chore(other)"
+    labels:
+      - dependencies
+    open-pull-requests-limit: 3
+    # Группировка: все npm-обновления в один PR вместо отдельного на каждый пакет
+    groups:
+      npm-dependencies:
+        patterns:
+          - "*"
+    # Игнорировать patch-обновления (0.0.x) — обычно это мелкие фиксы,
+    # которые не стоят отдельного PR для devDependencies
+    ignore:
+      - dependency-name: "*"
+        update-types:
+          - "version-update:semver-patch"
+
+  # GitHub Actions: actions/checkout, actions/setup-node, actions/cache
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+    commit-message:
+      prefix: "ci(other)"
+    labels:
+      - dependencies
+      - github-actions
+    open-pull-requests-limit: 3
+    # Все actions-обновления в один PR
+    groups:
+      github-actions:
+        patterns:
+          - "*"
+    ignore:
+      - dependency-name: "*"
+        update-types:
+          - "version-update:semver-patch"

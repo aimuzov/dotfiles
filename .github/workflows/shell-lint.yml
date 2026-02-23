@@ -1,0 +1,62 @@
+# Проверка синтаксиса Fish и Bash скриптов.
+#
+# Fish: `fish --no-execute` — парсит скрипт без выполнения (аналог bash -n).
+# Bash: `shellcheck` — статический анализатор для shell-скриптов,
+#        находит распространённые ошибки и bad practices.
+#
+# .fish.tmpl файлы пропускаются — они содержат Go-шаблоны chezmoi,
+# которые ломают синтаксис Fish до обработки.
+
+name: Shell Lint
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "home/**/*.fish"
+      - "home/**/*.sh"
+  pull_request:
+    branches: [main]
+    paths:
+      - "home/**/*.fish"
+      - "home/**/*.sh"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  fish-syntax:
+    name: Fish syntax check
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # Fish shell доступен в стандартных репозиториях Ubuntu
+      - name: Install Fish shell
+        run: |
+          sudo apt-add-repository -y ppa:fish-shell/release-4
+          sudo apt-get update
+          sudo apt-get install -y fish
+
+      # Найти все .fish файлы (но НЕ .fish.tmpl) и проверить синтаксис.
+      # --no-execute: только парсинг, без выполнения.
+      # xargs -I{}: подставляет каждый файл по одному (для понятных ошибок).
+      - name: Check Fish syntax
+        run: |
+          find home/ -name '*.fish' -not -name '*.fish.tmpl' -print0 | \
+            xargs -0 -I{} fish --no-execute {}
+
+  shellcheck:
+    name: ShellCheck
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # shellcheck предустановлен в ubuntu-latest runner'ах GitHub Actions
+      - name: Run ShellCheck
+        run: |
+          find home/ -name '*.sh' -print0 | \
+            xargs -0 shellcheck --severity=warning

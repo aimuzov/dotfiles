@@ -1,0 +1,97 @@
+# Валидация конфигурационных файлов: JSON, YAML, TOML.
+# Проверяет только синтаксис (парсится ли файл), не схему.
+#
+# .tmpl файлы пропускаются — они содержат Go-шаблоны chezmoi.
+
+name: Validate Configs
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "home/**/*.json"
+      - "home/**/*.yml"
+      - "home/**/*.yaml"
+      - "home/**/*.toml"
+  pull_request:
+    branches: [main]
+    paths:
+      - "home/**/*.json"
+      - "home/**/*.yml"
+      - "home/**/*.yaml"
+      - "home/**/*.toml"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  json:
+    name: Validate JSON
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # python3 -m json.tool — встроенный JSON-валидатор Python.
+      # Проще и надёжнее, чем ставить отдельный инструмент.
+      # Пропускаем .json.tmpl (содержат Go-шаблоны).
+      - name: Validate JSON files
+        run: |
+          failed=0
+          while IFS= read -r -d '' file; do
+            if ! python3 -m json.tool "$file" > /dev/null 2>&1; then
+              echo "::error file=$file::Invalid JSON syntax"
+              failed=1
+            fi
+          done < <(find home/ -name '*.json' -not -name '*.json.tmpl' -print0)
+
+          if [ "$failed" -eq 1 ]; then
+            exit 1
+          fi
+          echo "All JSON files are valid"
+
+  yaml:
+    name: Validate YAML
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # yamllint — линтер для YAML, проверяет синтаксис и стиль.
+      # -d relaxed: менее строгие правила (допускает длинные строки и т.п.)
+      - name: Install yamllint
+        run: pip install yamllint
+
+      - name: Validate YAML files
+        run: |
+          files=$(find home/ -name '*.yml' -o -name '*.yaml' | grep -v '.tmpl$' || true)
+          if [ -n "$files" ]; then
+            echo "$files" | xargs yamllint -d relaxed
+          else
+            echo "No YAML files to validate"
+          fi
+
+  toml:
+    name: Validate TOML
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # Python 3.11+ имеет встроенный модуль tomllib.
+      # Используем его для валидации без внешних зависимостей.
+      - name: Validate TOML files
+        run: |
+          failed=0
+          while IFS= read -r -d '' file; do
+            if ! python3 -c "import tomllib; tomllib.load(open('$file', 'rb'))" 2>&1; then
+              echo "::error file=$file::Invalid TOML syntax"
+              failed=1
+            fi
+          done < <(find home/ -name '*.toml' -not -name '*.toml.tmpl' -print0)
+
+          if [ "$failed" -eq 1 ]; then
+            exit 1
+          fi
+          echo "All TOML files are valid"
