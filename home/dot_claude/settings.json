@@ -1,5 +1,25 @@
 {
   "alwaysThinkingEnabled": true,
-  "permissions": { "defaultMode": "plan" },
+  "permissions": {
+    "defaultMode": "plan",
+    "allow": [
+      "Bash(git log:*)",
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git show:*)",
+      "Bash(git branch:*)",
+      "Bash(git remote:*)",
+      "Bash(ls:*)",
+      "Bash(find:*)",
+      "Bash(grep:*)",
+      "Bash(cat:*)",
+      "Bash(head:*)",
+      "Bash(tail:*)",
+      "Bash(echo:*)",
+      "Bash(pwd:*)",
+      "Bash(which:*)",
+      "Bash(type:*)"
+    ]
+  },
   "preferredNotifChannel": "ghostty"
 }
