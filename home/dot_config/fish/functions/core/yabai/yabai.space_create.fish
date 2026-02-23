@@ -1,5 +1,5 @@
 function yabai.space_create
-    set -l display (yabai_display_index_get $argv[1])
+    set -l display (yabai.display_index_get $argv[1])
     set -l idx $argv[2]
     set -l name $argv[3]
     # $argv[4] is "--" separator
