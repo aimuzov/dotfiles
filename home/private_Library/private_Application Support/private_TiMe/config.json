@@ -42,7 +42,5 @@
   "startInFullscreen": false,
   "logLevel": "error",
   "autoCheckForUpdates": true,
-  "webappVersion": "v6.47.1",
   "enableGPUAcceleration": true
 }
-
