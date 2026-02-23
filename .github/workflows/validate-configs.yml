@@ -42,7 +42,7 @@ jobs:
       toml: ${{ steps.filter.outputs.toml }}
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       # dorny/paths-filter — сравнивает файлы в PR/push с базовой веткой
       # и выдаёт булевы outputs для каждого фильтра.
@@ -65,7 +65,7 @@ jobs:
     if: needs.changes.outputs.json == 'true'
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       # python3 -m json.tool — встроенный JSON-валидатор Python.
       # Пропускаем .json.tmpl (содержат Go-шаблоны).
@@ -91,7 +91,7 @@ jobs:
     if: needs.changes.outputs.yaml == 'true'
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       # yamllint — линтер для YAML, проверяет синтаксис и стиль.
       # -d relaxed: менее строгие правила (допускает длинные строки и т.п.)
@@ -114,7 +114,7 @@ jobs:
     if: needs.changes.outputs.toml == 'true'
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       # Python 3.11+ имеет встроенный модуль tomllib.
       # Используем его для валидации без внешних зависимостей.

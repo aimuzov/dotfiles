@@ -40,6 +40,8 @@ module.exports = {
   rules: {
     "scope-enum": [2, "always", scopes],
     "header-max-length": [2, "always", 100],
+    "body-max-line-length": [0],
+    "footer-max-line-length": [0],
   },
 
   // cz-git config (used by `git cz` interactive prompt)
