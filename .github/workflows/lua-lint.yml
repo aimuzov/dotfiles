@@ -32,13 +32,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       # Скачать StyLua из GitHub Releases и добавить в PATH.
       # Кешируется между запусками по версии.
       - name: Cache StyLua
         id: cache-stylua
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: ~/.local/bin/stylua
           key: stylua-${{ env.STYLUA_VERSION }}
