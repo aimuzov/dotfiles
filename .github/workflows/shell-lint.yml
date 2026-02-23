@@ -1,8 +1,8 @@
 # Проверка синтаксиса Fish и Bash скриптов.
 #
 # Fish: `fish --no-execute` — парсит скрипт без выполнения (аналог bash -n).
-# Bash: `shellcheck` — статический анализатор для shell-скриптов,
-#        находит распространённые ошибки и bad practices.
+# Bash: reviewdog/action-shellcheck — оставляет inline-комментарии в PR
+#        с описанием каждой проблемы от ShellCheck.
 #
 # .fish.tmpl файлы пропускаются — они содержат Go-шаблоны chezmoi,
 # которые ломают синтаксис Fish до обработки.
@@ -21,6 +21,10 @@ on:
       - "home/**/*.fish"
       - "home/**/*.sh"
 
+permissions:
+  contents: read
+  pull-requests: write
+
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
@@ -33,7 +37,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # Fish shell доступен в стандартных репозиториях Ubuntu
+      # Fish shell доступен через PPA
       - name: Install Fish shell
         run: |
           sudo apt-add-repository -y ppa:fish-shell/release-4
@@ -42,7 +46,6 @@ jobs:
 
       # Найти все .fish файлы (но НЕ .fish.tmpl) и проверить синтаксис.
       # --no-execute: только парсинг, без выполнения.
-      # xargs -I{}: подставляет каждый файл по одному (для понятных ошибок).
       - name: Check Fish syntax
         run: |
           find home/ -name '*.fish' -not -name '*.fish.tmpl' -print0 | \
@@ -55,8 +58,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # shellcheck предустановлен в ubuntu-latest runner'ах GitHub Actions
-      - name: Run ShellCheck
-        run: |
-          find home/ -name '*.sh' -print0 | \
-            xargs -0 shellcheck --severity=warning
+      # reviewdog/action-shellcheck:
+      # - На PR: оставляет inline-комментарии прямо в diff
+      # - На push: выводит ошибки в лог
+      # - Гораздо информативнее, чем просто "job failed"
+      - uses: reviewdog/action-shellcheck@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-pr-review
+          level: warning
+          path: home/
+          pattern: "*.sh"
+          shellcheck_flags: "--severity=warning"

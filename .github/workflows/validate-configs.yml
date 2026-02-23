@@ -1,6 +1,10 @@
 # Валидация конфигурационных файлов: JSON, YAML, TOML.
 # Проверяет только синтаксис (парсится ли файл), не схему.
 #
+# dorny/paths-filter определяет какие типы файлов изменились,
+# и запускает только соответствующие jobs. Если изменён только .toml —
+# JSON и YAML jobs пропускаются.
+#
 # .tmpl файлы пропускаются — они содержат Go-шаблоны chezmoi.
 
 name: Validate Configs
@@ -26,15 +30,44 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  # Определяет, какие типы файлов изменились.
+  # Остальные jobs используют needs + if для условного запуска.
+  changes:
+    name: Detect changes
+    runs-on: ubuntu-latest
+
+    outputs:
+      json: ${{ steps.filter.outputs.json }}
+      yaml: ${{ steps.filter.outputs.yaml }}
+      toml: ${{ steps.filter.outputs.toml }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # dorny/paths-filter — сравнивает файлы в PR/push с базовой веткой
+      # и выдаёт булевы outputs для каждого фильтра.
+      - uses: dorny/paths-filter@v3
+        id: filter
+        with:
+          filters: |
+            json:
+              - "home/**/*.json"
+            yaml:
+              - "home/**/*.yml"
+              - "home/**/*.yaml"
+            toml:
+              - "home/**/*.toml"
+
   json:
     name: Validate JSON
     runs-on: ubuntu-latest
+    needs: changes
+    if: needs.changes.outputs.json == 'true'
 
     steps:
       - uses: actions/checkout@v4
 
       # python3 -m json.tool — встроенный JSON-валидатор Python.
-      # Проще и надёжнее, чем ставить отдельный инструмент.
       # Пропускаем .json.tmpl (содержат Go-шаблоны).
       - name: Validate JSON files
         run: |
@@ -54,6 +87,8 @@ jobs:
   yaml:
     name: Validate YAML
     runs-on: ubuntu-latest
+    needs: changes
+    if: needs.changes.outputs.yaml == 'true'
 
     steps:
       - uses: actions/checkout@v4
@@ -75,6 +110,8 @@ jobs:
   toml:
     name: Validate TOML
     runs-on: ubuntu-latest
+    needs: changes
+    if: needs.changes.outputs.toml == 'true'
 
     steps:
       - uses: actions/checkout@v4

@@ -1,19 +1,17 @@
 # Проверка коммитов на соответствие Conventional Commits.
 # Использует commitlint с конфигом из .commitlintrc.js.
 #
-# Как это работает:
-# 1. Устанавливает Node.js и зависимости из package.json
-# 2. Запускает commitlint на всех коммитах в PR
-# 3. Фейлится, если коммит не соответствует формату: type(scope): description
+# wagoid/commitlint-github-action — готовый action, который:
+# 1. Сам устанавливает Node.js и зависимости из package.json
+# 2. Корректно обрабатывает force-push, merge-коммиты, squash
+# 3. Проверяет все коммиты в PR за один шаг
 
 name: Commit Lint
 
-# Запускается только на Pull Request'ах
 on:
   pull_request:
     branches: [main]
 
-# Отменяет предыдущие запуски для того же PR (экономия ресурсов)
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
   cancel-in-progress: true
@@ -24,22 +22,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Шаг 1: Клонировать репозиторий
-      # fetch-depth: 0 — нужен для доступа ко всем коммитам PR
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      # Шаг 2: Настроить Node.js с кешированием npm
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: npm
-
-      # Шаг 3: Установить зависимости (commitlint, @commitlint/config-conventional)
-      - run: npm ci
-
-      # Шаг 4: Проверить все коммиты в PR
-      # --from: первый коммит PR (базовая ветка)
-      # --to: последний коммит PR (HEAD)
-      - run: npx commitlint --from ${{ github.event.pull_request.base.sha }} --to ${{ github.event.pull_request.head.sha }} --verbose
+      # wagoid/commitlint-github-action сам найдёт .commitlintrc.js,
+      # установит зависимости и проверит все коммиты в PR.
+      - uses: wagoid/commitlint-github-action@v6
