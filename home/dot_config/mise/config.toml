@@ -50,7 +50,6 @@
 "gitlab:gitlab-org/cli" = "latest"
 
 "npm:@aimuzov/sketchybar-app-font" = "latest"
-"npm:@anthropic-ai/claude-code" = "latest"
 "npm:@eslint/mcp" = "latest"
 "npm:@georgesg/arc-cli" = "latest"
 "npm:@modelcontextprotocol/server-everything" = "latest"
