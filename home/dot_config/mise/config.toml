@@ -18,6 +18,7 @@
 
 "aqua:ajeetdsouza/zoxide" = "latest"
 "aqua:anomalyco/opencode" = "latest"
+"aqua:anthropics/claude-code" = "latest"
 "aqua:ast-grep/ast-grep" = "latest"
 "aqua:BurntSushi/ripgrep" = "latest"
 "aqua:charmbracelet/glow" = "latest"
