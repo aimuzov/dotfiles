@@ -1,7 +1,6 @@
 [tool_alias]
 "core:neovim" = "asdf:richin13/asdf-neovim"
 "core:node" = "asdf:asdf-vm/asdf-nodejs"
-"core:pipx" = "asdf:yozachar/asdf-pipx"
 "core:python" = "asdf:asdf-community/asdf-python"
 "core:ruby" = "asdf:asdf-vm/asdf-ruby"
 
@@ -10,13 +9,13 @@
 "core:go" = "latest"
 "core:neovim" = "nightly"
 "core:node" = "latest"
-"core:pipx" = "latest"
 "core:pnpm" = "latest"
 "core:python" = "3.12"
 "core:ruby" = "latest"
 "core:rust" = "latest"
 
 "aqua:ajeetdsouza/zoxide" = "latest"
+"aqua:astral-sh/uv" = "latest"
 "aqua:anomalyco/opencode" = "latest"
 "aqua:anthropics/claude-code" = "latest"
 "aqua:ast-grep/ast-grep" = "latest"
