@@ -46,13 +46,13 @@ yabai.space_destroy_amount 12
 
 yabai.space_create 2 9 Any -- ".*"
 yabai.space_create 1 1 Code -- WezTerm Ghostty Code Cursor Zed
-yabai.space_create 1 2 Serf -- Arc Dia "Google Chrome"
+yabai.space_create 1 2 Serf -- Arc Dia
 yabai.space_create 1 3 Org -- Things Calendar Mail
 yabai.space_create 1 4 Graph -- Figma Miro
 yabai.space_create 1 5 Explr -- Finder Cyberduck
 yabai.space_create 1 6 Fun -- "Steam Helper" "Dota 2"
 yabai.space_create 2 7 Sys -- "System Settings" MacPass
-yabai.space_create 2 8 Ai -- ChatGPT Claude Perplexity
+yabai.space_create 2 8 Ai -- ChatGPT Claude "Google Chrome" Perplexity
 yabai.space_create 2 10 Social -- Time Telegram WhatsApp
 yabai.space_create 2 11 Calls -- Толк
 yabai.space_create 2 12 Media -- "Yandex Music" Photos
