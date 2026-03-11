@@ -69,13 +69,23 @@ jobs:
 
       # python3 -m json.tool — встроенный JSON-валидатор Python.
       # Пропускаем .json.tmpl (содержат Go-шаблоны).
+      # JSONC-файлы (с // комментариями) предварительно очищаются через grep -v.
       - name: Validate JSON files
         run: |
           failed=0
           while IFS= read -r -d '' file; do
-            if ! python3 -m json.tool "$file" > /dev/null 2>&1; then
-              echo "::error file=$file::Invalid JSON syntax"
-              failed=1
+            # JSONC files (with // comments) need comment stripping before validation.
+            # VS Code/Cursor keybindings.json uses this format natively.
+            if grep -q '^\s*//' "$file"; then
+              if ! grep -v '^\s*//' "$file" | python3 -m json.tool > /dev/null 2>&1; then
+                echo "::error file=$file::Invalid JSONC syntax"
+                failed=1
+              fi
+            else
+              if ! python3 -m json.tool "$file" > /dev/null 2>&1; then
+                echo "::error file=$file::Invalid JSON syntax"
+                failed=1
+              fi
             fi
           done < <(find home/ -name '*.json' -not -name '*.json.tmpl' -print0)
 
