@@ -1,5 +1,6 @@
 local sbar = require("sketchybar")
 local colors = require("config").colors
+local helpers = require("helpers")
 
 local icons = {
 	stack = "􃑷",
@@ -16,11 +17,8 @@ local yabai = sbar.add("item", {
 
 local function get_window_prop(prop_name, window_query)
 	window_query = window_query ~= nil and window_query or ""
-
-	return assert(
-		io.popen([[yabai -m query --windows --window ]] .. window_query .. [[ | jq '.["]] .. prop_name .. [["]']])
-			:read("a")
-			:gsub("%s+", "")
+	return helpers.safe_exec(
+		[[yabai -m query --windows --window ]] .. window_query .. [[ | jq '.["]] .. prop_name .. [["]']]
 	)
 end
 
@@ -49,13 +47,14 @@ local function update()
 		icon.color = colors.blue
 	else
 		local stack_index = get_window_prop("stack-index")
+		local stack_num = tonumber(stack_index)
 
-		if tonumber(stack_index) > 0 then
+		if stack_num and stack_num > 0 then
 			local stack_index_last = get_window_prop("stack-index", "stack.last")
 
 			icon.string = icons.stack
 			icon.color = colors.magenta
-			label.string = stack_index .. " / " .. stack_index_last
+			label.string = stack_index .. " / " .. (stack_index_last or "")
 			label.width = 40
 		end
 	end

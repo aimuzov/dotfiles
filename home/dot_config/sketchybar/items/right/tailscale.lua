@@ -1,4 +1,5 @@
 local sbar = require("sketchybar")
+local helpers = require("helpers")
 
 local icons = {
 	Running = "􀞿",
@@ -14,7 +15,7 @@ local tailscale = sbar.add("item", {
 
 local function update()
 	local cmd = "/usr/local/bin/tailscale status --json | jq -r '.BackendState'"
-	local state = assert(io.popen(cmd):read("a"):gsub("%s+", ""))
+	local state = helpers.safe_exec(cmd)
 	tailscale:set({ icon = icons[state] or icons["Unknown"] })
 end
 

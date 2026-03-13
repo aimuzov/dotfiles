@@ -17,8 +17,12 @@ local battery = sbar.add("item", {
 })
 
 local function update()
-	local file = assert(io.popen("pmset -g batt"))
-	local batt_info = assert(file:read("a"))
+	local handle = io.popen("pmset -g batt 2>/dev/null")
+	if not handle then
+		return
+	end
+	local batt_info = handle:read("a") or ""
+	handle:close()
 	local found, _, charge = batt_info:find("(%d+)%%")
 
 	local label = ""

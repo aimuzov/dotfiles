@@ -1,5 +1,6 @@
 local sbar = require("sketchybar")
 local colors = require("config").colors
+local helpers = require("helpers")
 
 local icons = {
 	en = "􀀅",
@@ -16,7 +17,7 @@ local keyboard_layout = sbar.add("item", {
 })
 
 local function update()
-	local layout = assert(io.popen("im-select"):read("a"):gsub("%s+", ""))
+	local layout = helpers.safe_exec("im-select")
 	local icon = {
 		string = icons.unknown,
 		color = colors.white,

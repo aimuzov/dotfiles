@@ -1,9 +1,8 @@
 local sbar = require("sketchybar")
 local config = require("config")
+local helpers = require("helpers")
 
 local spaces = {}
-
-local spaces_length = io.popen([[yabai -m query --spaces | jq "length"]]):read("a"):gsub("%s+", "")
 
 local spaces_num_icons = {
 	["1"] = "􀀻",
@@ -23,6 +22,10 @@ local spaces_num_icons = {
 	["15"] = "􀔙",
 	["16"] = "􀔚",
 }
+
+helpers.wait_for_yabai()
+
+local spaces_length = tonumber(helpers.safe_exec([[yabai -m query --spaces | jq "length"]])) or 0
 
 for i = 1, spaces_length, 1 do
 	local space = sbar.add("space", {
@@ -50,7 +53,13 @@ for i = 1, spaces_length, 1 do
 	end)
 
 	space:subscribe("space_windows_change", function(env)
-		local icon_name = spaces_num_icons[tostring(env.INFO.space)]
+		local space_item = spaces[env.INFO.space]
+
+		if not space_item then
+			return
+		end
+
+		local icon_name = spaces_num_icons[tostring(env.INFO.space)] or ""
 		local icon_line = ""
 
 		for app in pairs(env.INFO.apps) do
@@ -58,12 +67,15 @@ for i = 1, spaces_length, 1 do
 		end
 
 		if icon_line == "" then
-			icon_name = icon_name
-				.. " "
-				.. io.popen([[yabai -m query --spaces | jq -r '.[]] .. env.INFO.space - 1 .. [[].label']]):read("a")
+			local label =
+				helpers.safe_exec([[yabai -m query --spaces | jq -r '.[]] .. env.INFO.space - 1 .. [[].label']])
+
+			if label then
+				icon_name = icon_name .. " " .. label
+			end
 		end
 
-		spaces[env.INFO.space]:set({
+		space_item:set({
 			icon = { string = icon_name },
 			label = {
 				string = icon_line,
