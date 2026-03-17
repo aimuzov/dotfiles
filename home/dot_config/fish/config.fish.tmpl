@@ -119,7 +119,7 @@ add_completion asdf.fish "asdf completion fish"
 ## -- MISE -------------------------------------------------------------------------------------------------------------
 
 if not set -q MISE_SHELL
-    set -gx MISE_INSTALL_PATH (dirname (which brew))/mise
+    set -gx MISE_INSTALL_PATH $HOMEBREW_PREFIX/bin/mise
 end
 
 cache_and_source mise_init.fish "mise activate fish"
@@ -291,9 +291,13 @@ fish_add_path --prepend (path filter \
 	$HOME/.local/bin \
 	$HOME/.cargo/bin \
 	$WEBOS_CLI_TV \
-	$HOME/stv-tools/tizen-studio/tools/ide/bin \
-	node_modules/.bin
+	$HOME/stv-tools/tizen-studio/tools/ide/bin
 )
+
+# Add project-local node_modules/.bin to session PATH only (not universal fish_user_paths)
+if test -d node_modules/.bin
+    fish_add_path --prepend --path node_modules/.bin
+end
 
 # -- NODE --------------------------------------------------------------------------------------------------------------
 
@@ -305,7 +309,7 @@ set -gx NPM_CONFIG_USERCONFIG $XDG_CONFIG_HOME/npm/npmrc
 
 # -- OTHER -------------------------------------------------------------------------------------------------------------
 
-set -gx SHELL (which fish)
+set -gx SHELL (command -s fish)
 set -gx _GIT_PATHSPEC ":!package-lock.json" # https://git-quick-stats.sh/#docs
 
 # ----------------------------------------------------------------------------------------------------------------------
