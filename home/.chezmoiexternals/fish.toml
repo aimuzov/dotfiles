@@ -1,6 +1,6 @@
-[".config/fish/themes/Catppuccin Macchiato.theme"]
+[".config/fish/themes/catppuccin-macchiato.theme"]
 type = "file"
-url = "https://raw.githubusercontent.com/catppuccin/fish/refs/heads/main/themes/Catppuccin%20Macchiato.theme"
+url = "https://raw.githubusercontent.com/catppuccin/fish/refs/heads/main/themes/catppuccin-macchiato.theme"
 refreshPeriod = "168h"
 
 [".config/fish/themes/catppuccin-fzf-macchiato.fish"]

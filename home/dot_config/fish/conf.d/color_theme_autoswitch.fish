@@ -9,13 +9,8 @@ function __color_theme_autoswitch --description 'Automatically reload colors for
 
     if type -q fzf
         # https://github.com/catppuccin/fzf?tab=readme-ov-file#usage
+        set --erase --global FZF_DEFAULT_OPTS
         source "$__fish_config_dir/themes/catppuccin-fzf-$CATPPUCCIN_FLAVOR.fish"
-
-        # Save theme colors
-        set -l theme_colors $FZF_DEFAULT_OPTS
-
-        # Combine theme colors with additional options
-        set -Ux FZF_DEFAULT_OPTS "$theme_colors $additional_opts"
     end
 
     if type -q bat
