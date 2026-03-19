@@ -1,12 +1,12 @@
 {
-  "mcpServers": {{ includeTemplate "dot_claude/mcp.json.tmpl" | trim }},
+  "mcpServers": {{ includeTemplate "dot_claude/mcp.json.tmpl" . | trim }},
   "preferences": {
     "menuBarEnabled": true,
     "quickEntryShortcut": "off",
     "quickEntryDictationShortcut": "off",
     "coworkScheduledTasksEnabled": true,
     "ccdScheduledTasksEnabled": true,
-    "sidebarMode": "chat",
+    "sidebarMode": "code",
     "coworkWebSearchEnabled": true,
     "keepAwakeEnabled": true
   }

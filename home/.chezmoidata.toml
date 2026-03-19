@@ -1,1 +1,2 @@
+miseBinPath = "/opt/homebrew/bin/mise"
 fishBinPath = "/opt/homebrew/bin/mise exec aqua:fish-shell/fish-shell -- fish"

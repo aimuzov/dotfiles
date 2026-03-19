@@ -1,53 +1,75 @@
 {
     "filesystem": {
-      "command": "mcp-server-filesystem",
+      "command": "{{ .miseBinPath }}",
       "args": [
-        "{{ (keepassxcAttribute "ENV" "HOME") }}"
-      ],
-      "env": {
-        "PATH": "{{ (keepassxcAttribute "ENV" "PATH") }}"
-      }
+        "exec",
+        "npm:@modelcontextprotocol/server-filesystem",
+        "--",
+        "mcp-server-filesystem",
+        "{{ .chezmoi.homeDir }}"
+      ]
     },
     "git": {
-      "command": "mcp-server-git",
-      "env": {
-        "PATH": "{{ (keepassxcAttribute "ENV" "PATH") }}"
-      }
+      "command": "{{ .miseBinPath }}",
+      "args": [
+        "exec",
+        "pipx:mcp-server-git",
+        "--",
+        "mcp-server-git"
+      ]
     },
     "fetch": {
-      "command": "mcp-server-fetch",
-      "env": {
-        "PATH": "{{ (keepassxcAttribute "ENV" "PATH") }}"
-      }
+      "command": "{{ .miseBinPath }}",
+      "args": [
+        "exec",
+        "pipx:mcp-server-fetch",
+        "--",
+        "mcp-server-fetch"
+      ]
     },
     "memory": {
-      "command": "mcp-server-memory",
-      "env": {
-        "PATH": "{{ (keepassxcAttribute "ENV" "PATH") }}"
-      }
+      "command": "{{ .miseBinPath }}",
+      "args": [
+        "exec",
+        "npm:@modelcontextprotocol/server-memory",
+        "--",
+        "mcp-server-memory"
+      ]
     },
     "everything": {
-      "command": "mcp-server-everything",
-      "env": {
-        "PATH": "{{ (keepassxcAttribute "ENV" "PATH") }}"
-      }
+      "command": "{{ .miseBinPath }}",
+      "args": [
+        "exec",
+        "npm:@modelcontextprotocol/server-everything",
+        "--",
+        "mcp-server-everything"
+      ]
     },
     "sequential-thinking": {
-      "command": "mcp-server-sequential-thinking",
-      "env": {
-        "PATH": "{{ (keepassxcAttribute "ENV" "PATH") }}"
-      }
+      "command": "{{ .miseBinPath }}",
+      "args": [
+        "exec",
+        "npm:@modelcontextprotocol/server-sequential-thinking",
+        "--",
+        "mcp-server-sequential-thinking"
+      ]
     },
     "eslint": {
-      "command": "mcp",
-      "env": {
-        "PATH": "{{ (keepassxcAttribute "ENV" "PATH") }}"
-      }
+      "command": "{{ .miseBinPath }}",
+      "args": [
+        "exec",
+        "npm:@eslint/mcp",
+        "--",
+        "mcp"
+      ]
     },
     "devtools": {
-      "command": "chrome-devtools-mcp",
-      "env": {
-        "PATH": "{{ (keepassxcAttribute "ENV" "PATH") }}"
-      }
+      "command": "{{ .miseBinPath }}",
+      "args": [
+        "exec",
+        "npm:chrome-devtools-mcp",
+        "--",
+        "chrome-devtools-mcp"
+      ]
     }
   }
