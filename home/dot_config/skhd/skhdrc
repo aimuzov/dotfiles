@@ -1,20 +1,20 @@
-# keycodes: 
+# keycodes:
 # https://github.com/koekeishiya/skhd/issues/1#issue-248494406
 
 # -- Space focusing ----------------------------------------------------------------------------------------------------
 
-alt - 1		: yabai_space_focus 1
-alt - 2		: yabai_space_focus 2
-alt - 3		: yabai_space_focus 3
-alt - 4		: yabai_space_focus 4
-alt - 5		: yabai_space_focus 5
-alt - 6		: yabai_space_focus 6
-alt - 7		: yabai_space_focus 7
-alt - 8		: yabai_space_focus 8
-alt - 9		: yabai_space_focus 9
-alt - 0		: yabai_space_focus 10
-alt - 0x1B	: yabai_space_focus 11
-alt - 0x18	: yabai_space_focus 12
+alt - 1		: yabai.space_focus 1
+alt - 2		: yabai.space_focus 2
+alt - 3		: yabai.space_focus 3
+alt - 4		: yabai.space_focus 4
+alt - 5		: yabai.space_focus 5
+alt - 6		: yabai.space_focus 6
+alt - 7		: yabai.space_focus 7
+alt - 8		: yabai.space_focus 8
+alt - 9		: yabai.space_focus 9
+alt - 0		: yabai.space_focus 10
+alt - 0x1B	: yabai.space_focus 11
+alt - 0x18	: yabai.space_focus 12
 
 
 # -- Space layout rotating ---------------------------------------------------------------------------------------------------
@@ -26,12 +26,12 @@ alt + shift - x : yabai -m space --mirror x-axis
 # -- Window focusing ---------------------------------------------------------------------------------------------------
 
 alt - h :	yabai -m window --focus west || \
-			(yabai -m display --focus west && yabai -m window --focus last) || \
-			(yabai -m display --focus $(yabai_display_index_get 1) && yabai -m window --focus last)
+			begin; yabai -m display --focus west && yabai -m window --focus last; end || \
+			begin; yabai -m display --focus (yabai.display_index_get 1) && yabai -m window --focus last; end
 
 alt - l :	yabai -m window --focus east || \
-			(yabai -m display --focus east && yabai -m window --focus first) || \
-			(yabai -m display --focus $(yabai_display_index_get 2) && yabai -m window --focus first)
+			begin; yabai -m display --focus east && yabai -m window --focus first; end || \
+			begin; yabai -m display --focus (yabai.display_index_get 2) && yabai -m window --focus first; end
 
 alt - j : yabai -m window --focus south	|| yabai -m display --focus south
 alt - k : yabai -m window --focus north	|| yabai -m display --focus north
@@ -47,16 +47,16 @@ alt + ctrl - right	: yabai -m window --resize right:20:0 	|| yabai -m window --r
 
 alt + shift - j : yabai -m window --warp south
 alt + shift - k : yabai -m window --warp north
-alt + shift - h : yabai -m window --warp west || (yabai -m window --space prev; yabai -m space --focus prev && yabai -m window --focus last)
-alt + shift - l : yabai -m window --warp east || (yabai -m window --space next; yabai -m space --focus next && yabai -m window --focus last; yabai -m window --warp first)
+alt + shift - h : yabai -m window --warp west || begin; yabai -m window --space prev; yabai -m space --focus prev && yabai -m window --focus last; end
+alt + shift - l : yabai -m window --warp east || begin; yabai -m window --space next; yabai -m space --focus next && yabai -m window --focus last; yabai -m window --warp first; end
 alt + shift - d : yabai -m window --display recent; yabai -m window --focus recent
 
 # -- Window stacking ---------------------------------------------------------------------------------------------------
 
-alt + shift - left	: yabai -m window  west --stack $(yabai -m query --windows --window | jq -r '.id') && sketchybar --trigger window_focus
-alt + shift - down	: yabai -m window south --stack $(yabai -m query --windows --window | jq -r '.id') && sketchybar --trigger window_focus
-alt + shift - up	: yabai -m window north --stack $(yabai -m query --windows --window | jq -r '.id') && sketchybar --trigger window_focus
-alt + shift - right	: yabai -m window east --stack $(yabai -m query --windows --window | jq -r '.id') && sketchybar --trigger window_focus
+alt + shift - left	: yabai -m window  west --stack (yabai -m query --windows --window | jq -r '.id') && sketchybar --trigger window_focus
+alt + shift - down	: yabai -m window south --stack (yabai -m query --windows --window | jq -r '.id') && sketchybar --trigger window_focus
+alt + shift - up	: yabai -m window north --stack (yabai -m query --windows --window | jq -r '.id') && sketchybar --trigger window_focus
+alt + shift - right	: yabai -m window east --stack (yabai -m query --windows --window | jq -r '.id') && sketchybar --trigger window_focus
 alt + shift - 0x21	: yabai -m window --focus stack.prev
 alt + shift - 0x1E	: yabai -m window --focus stack.next
 

@@ -19,7 +19,7 @@ Switch between workspaces using Alt + number:
 - `Alt + -` - Switch to workspace 11
 - `Alt + =` - Switch to workspace 12
 
-> Uses custom helper function `yabai_space_focus` for reliable space switching.
+> Uses fish function `yabai.space_focus` for reliable space switching.
 
 ### Space Layout Manipulation
 
@@ -88,12 +88,12 @@ Stack windows on top of each other:
 The `.blacklist` section excludes specific applications from skhd control. Currently configured:
 - `"Dota 2"` - Gaming application
 
-## Helper Scripts
+## Helper Functions
 
-The configuration relies on these custom helper scripts (located in PATH):
+The configuration relies on fish functions (located in `~/.config/fish/functions/core/yabai/`):
 
-- `yabai_space_focus <number>` - Reliable space switching with focus handling
-- `yabai_display_index_get <number>` - Get display index for multi-monitor setups
+- `yabai.space_focus <number>` - Reliable space switching with focus handling
+- `yabai.display_index_get <number>` - Get display index for multi-monitor setups
 
 ## Service Management
 
