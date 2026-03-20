@@ -1,5 +1,20 @@
 local wezterm = require("wezterm")
 
+do
+	local icon_src = wezterm.config_dir .. "/icon/wezterm.icns"
+	local icon_dst = "/Applications/WezTerm.app/Contents/Resources/terminal.icns"
+	local success = wezterm.run_child_process({ "cmp", "-s", icon_src, icon_dst })
+
+	if not success then
+		wezterm.run_child_process({ "cp", icon_src, icon_dst })
+		wezterm.background_child_process({
+			"sh",
+			"-c",
+			"rm /var/folders/*/*/*/com.apple.dock.iconcache 2>/dev/null; rm -r /var/folders/*/*/*/com.apple.iconservices* 2>/dev/null; killall Dock",
+		})
+	end
+end
+
 wezterm.on("user-var-changed", function(window, pane, name, value)
 	local overrides = window:get_config_overrides() or {}
 
