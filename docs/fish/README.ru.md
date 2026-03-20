@@ -305,7 +305,6 @@ end
 
 Расположены в `functions/core/`:
 
-- `wezterm_update_icon`: Обновление иконки терминала WezTerm
 - `restart_vm`: Утилита для перезапуска сервисов оконного менеджера (Yabai, skhd, SketchyBar и т.д.)
 - `clear_and_reinit`: Очистить экран и переинициализировать fish
 

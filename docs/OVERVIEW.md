@@ -431,9 +431,8 @@ The chezmoi scripts in `.chezmoiscripts/` automatically handle:
 3. `run_once_after_3_setup-theme-switcher.fish.tmpl` - Set up automatic theme switching
 4. `run_once_after_4_setup-sketchybar.fish.tmpl` - Configure SketchyBar
 5. `run_once_after_5_install-workflows.fish.tmpl` - Install custom workflows
-6. `run_once_after_6_update_wezterm_icon.fish.tmpl` - Update WezTerm icon
-7. `run_once_after_7_download-cht.fish.tmpl` - Download cheatsheets
-8. `run_once_weekly_1_rebuild_cache.fish.tmpl` - Rebuild caches weekly
+6. `run_once_after_7_download-cht.fish.tmpl` - Download cheatsheets
+7. `run_once_weekly_1_rebuild_cache.fish.tmpl` - Rebuild caches weekly
 
 ## Troubleshooting
 

@@ -303,7 +303,6 @@ Located in `functions/core/yabai/`:
 
 Located in `functions/core/`:
 
-- `wezterm_update_icon`: Updates WezTerm terminal icon
 - `restart_vm`: Utility for restarting window manager services (Yabai, skhd, SketchyBar, etc.)
 - `clear_and_reinit`: Clears screen and reinitializes fish
 

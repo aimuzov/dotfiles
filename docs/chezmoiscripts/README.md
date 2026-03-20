@@ -113,20 +113,7 @@ Installs custom workflows and automation:
 **Runs:** Once after chezmoi apply
 **Purpose:** Set up productivity workflows
 
-### 6. WezTerm Icon Update
-
-**`run_once_after_6_update_wezterm_icon.fish.tmpl`**
-
-Updates WezTerm terminal emulator icon:
-
-- Downloads custom icon
-- Applies to WezTerm.app
-- Refreshes icon cache
-
-**Runs:** Once after chezmoi apply
-**Purpose:** Customize terminal appearance
-
-### 7. Cheatsheet Download
+### 6. Cheatsheet Download
 
 **`run_once_after_7_download-cht.fish.tmpl`**
 
@@ -139,7 +126,7 @@ Downloads command-line cheatsheets:
 **Runs:** Once after chezmoi apply
 **Purpose:** Provide offline command reference
 
-### 8. Cache Rebuild (Weekly)
+### 7. Cache Rebuild (Weekly)
 
 **`run_once_weekly_1_rebuild_cache.fish.tmpl`**
 

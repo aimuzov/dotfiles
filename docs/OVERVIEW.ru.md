@@ -418,9 +418,8 @@ home/dot_config/fish/
 3. `run_once_after_3_setup-theme-switcher.fish.tmpl` - Настройка автоматического переключения тем
 4. `run_once_after_4_setup-sketchybar.fish.tmpl` - Настройка SketchyBar
 5. `run_once_after_5_install-workflows.fish.tmpl` - Установка пользовательских рабочих процессов
-6. `run_once_after_6_update_wezterm_icon.fish.tmpl` - Обновление иконки WezTerm
-7. `run_once_after_7_download-cht.fish.tmpl` - Загрузка шпаргалок
-8. `run_once_weekly_1_rebuild_cache.fish.tmpl` - Еженедельная перестройка кешей
+6. `run_once_after_7_download-cht.fish.tmpl` - Загрузка шпаргалок
+7. `run_once_weekly_1_rebuild_cache.fish.tmpl` - Еженедельная перестройка кешей
 
 ## Устранение неполадок
 
