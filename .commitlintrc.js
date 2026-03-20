@@ -26,6 +26,7 @@ const scopes = [
   "them-switcher",
   "time",
   "vscode",
+  "warp",
   "wezterm",
   "yabai",
   "yazi",

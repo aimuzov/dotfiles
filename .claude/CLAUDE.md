@@ -63,7 +63,7 @@ skhd --restart-service     # после правок dot_config/skhd/
 
 Используются conventional commits со scope из `.commitlintrc.js`:
 
-**Component scopes:** `asdf`, `bat`, `borders`, `brew`, `claude`, `chezmoi`, `fish`, `ghostty`, `git`, `gitconfig`, `karabiner`, `lazygit`, `mise`, `nvim`, `oh-my-posh`, `raycast`, `sketchybar`, `skhd`, `ssh`, `svim`, `termscp`, `them-switcher`, `time`, `vscode`, `wezterm`, `yabai`, `yazi`, `zed`, `zrok`, `zsh`
+**Component scopes:** `asdf`, `bat`, `borders`, `brew`, `claude`, `chezmoi`, `fish`, `ghostty`, `git`, `gitconfig`, `karabiner`, `lazygit`, `mise`, `nvim`, `oh-my-posh`, `raycast`, `sketchybar`, `skhd`, `ssh`, `svim`, `termscp`, `them-switcher`, `time`, `vscode`, `warp`, `wezterm`, `yabai`, `yazi`, `zed`, `zrok`, `zsh`
 
 **Generic scopes:** `other`, `shell`, `install-script`
 

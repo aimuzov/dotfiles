@@ -1,0 +1,9 @@
+[".warp/themes/catppuccin_macchiato.yml"]
+type = "file"
+url = "https://raw.githubusercontent.com/catppuccin/warp/refs/heads/main/themes/catppuccin_macchiato.yml"
+refreshPeriod = "168h"
+
+[".warp/themes/catppuccin_latte.yml"]
+type = "file"
+url = "https://raw.githubusercontent.com/catppuccin/warp/refs/heads/main/themes/catppuccin_latte.yml"
+refreshPeriod = "168h"

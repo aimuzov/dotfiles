@@ -66,4 +66,18 @@ defaults write com.apple.mail NSUserKeyEquivalents -dict-add Send "@\U21a9"
 
 defaults write kCFPreferencesAnyApplication TSMLanguageIndicatorEnabled -bool false
 
+# Warp Terminal
+defaults write dev.warp.Warp-Stable FontName -string '"JetBrainsMono Nerd Font Mono"'
+defaults write dev.warp.Warp-Stable FontSize -float 16.0
+defaults write dev.warp.Warp-Stable LineHeightRatio -float 1.5
+defaults write dev.warp.Warp-Stable NotebookFontSize -float 14.0
+defaults write dev.warp.Warp-Stable VimModeEnabled -bool true
+defaults write dev.warp.Warp-Stable SystemTheme -bool true
+defaults write dev.warp.Warp-Stable ShouldDimInactivePanes -bool true
+defaults write dev.warp.Warp-Stable AppIcon -string '"Classic2"'
+defaults write dev.warp.Warp-Stable InputBoxTypeSetting -string '"Universal"'
+defaults write dev.warp.Warp-Stable OverrideBlur -int 1
+defaults write dev.warp.Warp-Stable CrashReportingEnabled -bool true
+defaults write dev.warp.Warp-Stable FileBasedMcpEnabled -bool true
+
 {{ end -}}
