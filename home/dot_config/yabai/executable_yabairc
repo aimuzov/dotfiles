@@ -45,7 +45,7 @@ yabai -m config \
 yabai.space_destroy_amount 12
 
 yabai.space_create 2 9 Any -- ".*"
-yabai.space_create 1 1 Code -- WezTerm Ghostty Code Cursor Zed
+yabai.space_create 1 1 Code -- Ghostty WezTerm Code Cursor Zed Warp
 yabai.space_create 1 2 Serf -- Arc Dia
 yabai.space_create 1 3 Org -- Things Calendar Mail
 yabai.space_create 1 4 Graph -- Figma Miro
