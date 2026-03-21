@@ -1,4 +1,4 @@
-function claude --description 'claude with daily auto-update check' --wraps claude
+function claude --description 'claude with hourly auto-update check' --wraps claude
     argparse no-update -- $argv
     or return 1
 
@@ -13,7 +13,7 @@ function __claude_check_update
     set -l tool "aqua:anthropics/claude-code"
     set -l state_dir "$XDG_STATE_HOME/claude"
     set -l stamp_file "$state_dir/last_update_check"
-    set -l check_interval 86400
+    set -l check_interval 3600
     set -l prefix (set_color blue)"[claude]"(set_color normal)
 
     test -d $state_dir; or mkdir -p $state_dir
