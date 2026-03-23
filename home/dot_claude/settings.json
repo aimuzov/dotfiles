@@ -1,7 +1,5 @@
 {
-  "alwaysThinkingEnabled": true,
   "permissions": {
-    "defaultMode": "plan",
     "allow": [
       "Bash(git log:*)",
       "Bash(git status:*)",
@@ -19,7 +17,12 @@
       "Bash(pwd:*)",
       "Bash(which:*)",
       "Bash(type:*)"
-    ]
+    ],
+    "defaultMode": "plan"
   },
-  "preferredNotifChannel": "ghostty"
+  "alwaysThinkingEnabled": true,
+  "preferredNotifChannel": "ghostty",
+  "enabledPlugins": {
+    "telegram@claude-plugins-official": true
+  }
 }

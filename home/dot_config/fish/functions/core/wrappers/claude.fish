@@ -1,53 +1,59 @@
 function claude --description 'claude with hourly auto-update check' --wraps claude
-    argparse no-update -- $argv
+    argparse --ignore-unknown no-update -- $argv
     or return 1
 
     if not set -q _flag_no_update
-        __claude_check_update
+        __claude_maybe_update
     end
 
-    command claude $argv
+    # Load custom plugins from ~/.claude/custom-plugins/
+    set -l plugin_args
+    for dir in ~/.claude/custom-plugins/*/
+        if test -d "$dir.claude-plugin"
+            set -a plugin_args --plugin-dir $dir
+        end
+    end
+
+    command claude $plugin_args $argv
 end
 
-function __claude_check_update
-    set -l tool "aqua:anthropics/claude-code"
+function __claude_maybe_update
     set -l state_dir "$XDG_STATE_HOME/claude"
     set -l stamp_file "$state_dir/last_update_check"
     set -l check_interval 3600
-    set -l prefix (set_color blue)"[claude]"(set_color normal)
 
     test -d $state_dir; or mkdir -p $state_dir
 
-    # Skip if checked recently
     if test -f $stamp_file
         set -l last_check (cat $stamp_file)
         set -l now (date +%s)
-        set -l elapsed (math "$now - $last_check")
-
-        if test $elapsed -lt $check_interval
+        if test (math "$now - $last_check") -lt $check_interval
             return 0
         end
     end
 
-    # Record check time before the check (avoid retries on failure)
-    date +%s >$stamp_file
+    # Detached fish process — immune to Ctrl+C, no terminal output
+    command fish -c '
+        echo "STARTED "(date) >>"$XDG_STATE_HOME/claude/update.log"
+        set tool "aqua:anthropics/claude-code"
+        set state_dir "$XDG_STATE_HOME/claude"
+        set stamp_file "$state_dir/last_update_check"
+        set title "Claude Code"
 
-    echo "$prefix Checking for updates..."
+        set outdated (mise outdated $tool 2>/dev/null)
+        if test -z "$outdated"
+            date +%s >$stamp_file
+            return 0
+        end
 
-    set -l outdated (mise outdated $tool 2>/dev/null)
+        osascript -e "display notification \"Update available, upgrading...\" with title \"$title\"" &>/dev/null
 
-    if test -z "$outdated"
-        echo "$prefix Up to date."
-        return 0
-    end
-
-    echo "$prefix Update available:"
-    echo "$outdated"
-    echo "$prefix Upgrading..."
-
-    if mise upgrade $tool 2>&1
-        echo "$prefix" (set_color green)"Upgrade complete."(set_color normal)
-    else
-        echo "$prefix" (set_color yellow)"Upgrade failed, launching current version."(set_color normal)
-    end
+        if mise upgrade $tool &>/dev/null
+            osascript -e "display notification \"Upgrade complete\" with title \"$title\"" &>/dev/null
+            date +%s >$stamp_file
+        else
+            osascript -e "display notification \"Upgrade failed\" with title \"$title\"" &>/dev/null
+        end
+    ' &>/dev/null &
+    disown
 end
