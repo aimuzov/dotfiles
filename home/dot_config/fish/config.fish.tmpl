@@ -82,7 +82,7 @@ end
 # -- BREW --------------------------------------------------------------------------------------------------------------
 
 # Setup homebrew
-if not set -q HOMEBREW_PREFIX
+if not set -q HOMEBREW_PREFIX; or not contains "$HOMEBREW_PREFIX/bin" $PATH
     cache_and_source brew_init.fish "/opt/homebrew/bin/brew shellenv"
 end
 
@@ -122,8 +122,8 @@ if not set -q MISE_SHELL
     set -gx MISE_INSTALL_PATH $HOMEBREW_PREFIX/bin/mise
 end
 
-cache_and_source mise_init.fish "mise activate fish"
-add_completion mise.fish "mise completion fish"
+cache_and_source mise_init.fish "$MISE_INSTALL_PATH activate fish"
+add_completion mise.fish "$MISE_INSTALL_PATH completion fish"
 
 # -- CHEZMOI -----------------------------------------------------------------------------------------------------------
 
