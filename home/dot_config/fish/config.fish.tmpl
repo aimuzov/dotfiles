@@ -172,6 +172,12 @@ if type -q fzf
     set fzf_diff_highlighter diff-so-fancy
 end
 
+# -- ORBSTACK --------------------------------------------------------------------------------------------------------------
+
+if type -q docker
+    add_completion orbstack.fish "$HOME/.orbstack/shell/init2.fish"
+end
+
 # -- PAGER -------------------------------------------------------------------------------------------------------------
 
 set -Ux MANPAGER nvim +Man!
