@@ -20,9 +20,10 @@
     ],
     "defaultMode": "plan"
   },
-  "alwaysThinkingEnabled": true,
-  "preferredNotifChannel": "ghostty",
   "enabledPlugins": {
-    "telegram@claude-plugins-official": true
-  }
+    "telegram@claude-plugins-official": true,
+    "figma@claude-plugins-official": true
+  },
+  "alwaysThinkingEnabled": true,
+  "preferredNotifChannel": "ghostty"
 }

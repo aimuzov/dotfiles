@@ -71,5 +71,17 @@
         "--",
         "chrome-devtools-mcp"
       ]
+    },
+    "figma": {
+      "command": "{{ .miseBinPath }}",
+      "args": [
+        "exec",
+        "npm:figma-mcp",
+        "--",
+        "figma-mcp"
+      ],
+      "env": {
+        "FIGMA_API_KEY": "{{ keepassxcAttribute "FIGMA" "TOKEN" }}"
+      }
     }
   }
