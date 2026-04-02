@@ -99,5 +99,6 @@
   "explorer.confirmDelete": false,
   "update.showReleaseNotes": false,
   "terminal.integrated.lineHeight": 1.5,
-  "vscode-neovim.neovimExecutablePaths.darwin": "/Users/aimuzov/.local/share/mise/installs/neovim/nightly/bin/nvim"
+  "vscode-neovim.neovimExecutablePaths.darwin": "/Users/aimuzov/.local/share/mise/installs/neovim/nightly/bin/nvim",
+  "security.promptForLocalFileProtocolHandling": false
 }
