@@ -6,6 +6,7 @@
 
 [tools]
 "core:bun" = "latest"
+"core:cmake" = "latest"
 "core:go" = "latest"
 "core:neovim" = "nightly"
 "core:node" = "latest"
