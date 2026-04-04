@@ -65,6 +65,7 @@ if type -q oh-my-posh
     set -l omp_version (oh-my-posh --version)
     set -l omp_cache_file oh-my-posh_init_$omp_version.fish
     set -l omp_cache_path $__fish_cache_dir/$omp_cache_file
+    set -l omp_config_path $XDG_CONFIG_HOME/oh-my-posh/config.json
 
     # If cache for current version doesn't exist - clean up old ones
     if not test -f $omp_cache_path
@@ -73,10 +74,10 @@ if type -q oh-my-posh
         test -n "$old_caches"; and rm -f $old_caches
         # Clean up internal oh-my-posh cache (contains hardcoded path to binary)
         rm -rf $XDG_CACHE_HOME/oh-my-posh
-        oh-my-posh cache build
+        oh-my-posh cache build --config $omp_config_path
     end
 
-    cache_and_source $omp_cache_file "oh-my-posh init fish --config $XDG_CONFIG_HOME/oh-my-posh/config.json"
+    cache_and_source $omp_cache_file "oh-my-posh init fish --config $omp_config_path"
 end
 
 # -- BREW --------------------------------------------------------------------------------------------------------------
