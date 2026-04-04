@@ -1,0 +1,12 @@
+#!/usr/bin/env fish
+# vi: ft=fish
+
+{{ if (eq .chezmoi.os "darwin") -}}
+
+set -l themes_dir $XDG_CONFIG_HOME/ghostty/themes
+ 
+
+sed -i '' 's/^background = .*/background = #1e2030/' $themes_dir/catppuccin-macchiato.conf
+sed -i '' 's/^background = .*/background = #e6e9ef/' $themes_dir/catppuccin-latte.conf
+
+{{ end -}}
