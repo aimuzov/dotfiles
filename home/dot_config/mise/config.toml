@@ -44,6 +44,7 @@
 "cargo:eza" = "latest"
 "cargo:genact" = "latest"
 "cargo:tokei" = "latest"
+"cargo:git-graph" = "latest"
 
 "github:matterhorn-chat/matterhorn" = "latest"
 "github:zdyxry/tokui" = "latest"
