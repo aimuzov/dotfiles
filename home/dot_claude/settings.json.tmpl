@@ -25,5 +25,10 @@
     "figma@claude-plugins-official": true
   },
   "alwaysThinkingEnabled": true,
-  "preferredNotifChannel": "ghostty"
+  "preferredNotifChannel": "ghostty",
+  "statusLine": {
+    "type": "command",
+    "command": "{{ .miseBinPath }} exec npm:ccstatusline -- ccstatusline",
+    "padding": 0
+  }
 }
