@@ -1,0 +1,38 @@
+{
+  "version": 3,
+  "lines": [
+    [
+      {
+        "id": "c96212d7-3595-45ff-9535-397b25be9aea",
+        "type": "session-usage"
+      },
+      {
+        "id": "35b28a25-2593-48e8-874b-e9b2a6417a6c",
+        "type": "reset-timer"
+      },
+      {
+        "id": "4e84fb6b-e4a3-4cba-8f3c-8478fc7c037f",
+        "type": "weekly-usage"
+      }
+    ]
+  ],
+  "flexMode": "full-until-compact",
+  "compactThreshold": 60,
+  "colorLevel": 3,
+  "defaultSeparator": "  ",
+  "defaultPadding": "",
+  "inheritSeparatorColors": false,
+  "globalBold": false,
+  "powerline": {
+    "enabled": false,
+    "separators": [
+      ""
+    ],
+    "separatorInvertBackground": [
+      false
+    ],
+    "startCaps": [],
+    "endCaps": [],
+    "autoAlign": false
+  }
+}

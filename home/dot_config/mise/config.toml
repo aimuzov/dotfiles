@@ -59,6 +59,7 @@
 "npm:@modelcontextprotocol/server-memory" = "latest"
 "npm:@modelcontextprotocol/server-sequential-thinking" = "latest"
 "npm:chrome-devtools-mcp" = "latest"
+"npm:ccstatusline" = "latest"
 "npm:figma-mcp" = "latest"
 
 "pipx:httpie" = "latest"
