@@ -1,9 +1,0 @@
-[".config/ghostty/themes/catppuccin-latte.conf"]
-type = "file"
-url = "https://raw.githubusercontent.com/catppuccin/ghostty/refs/heads/main/themes/catppuccin-latte.conf"
-refreshPeriod = "168h"
-
-[".config/ghostty/themes/catppuccin-macchiato.conf"]
-type = "file"
-url = "https://raw.githubusercontent.com/catppuccin/ghostty/refs/heads/main/themes/catppuccin-macchiato.conf"
-refreshPeriod = "168h"
