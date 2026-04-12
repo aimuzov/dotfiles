@@ -1,74 +1,179 @@
-# keycodes:
-# https://github.com/koekeishiya/skhd/issues/1#issue-248494406
+# vi: ft=txt
 
-# -- Space focusing ----------------------------------------------------------------------------------------------------
-
-alt - 1		: yabai.space_focus 1
-alt - 2		: yabai.space_focus 2
-alt - 3		: yabai.space_focus 3
-alt - 4		: yabai.space_focus 4
-alt - 5		: yabai.space_focus 5
-alt - 6		: yabai.space_focus 6
-alt - 7		: yabai.space_focus 7
-alt - 8		: yabai.space_focus 8
-alt - 9		: yabai.space_focus 9
-alt - 0		: yabai.space_focus 10
-alt - 0x1B	: yabai.space_focus 11
-alt - 0x18	: yabai.space_focus 12
-
-
-# -- Space layout rotating ---------------------------------------------------------------------------------------------------
-
-alt + shift - r : yabai -m space --rotate 270
-alt + shift - y : yabai -m space --mirror y-axis
-alt + shift - x : yabai -m space --mirror x-axis
-
-# -- Window focusing ---------------------------------------------------------------------------------------------------
-
-alt - h :	yabai -m window --focus west || \
-			begin; yabai -m display --focus west && yabai -m window --focus last; end || \
-			begin; yabai -m display --focus (yabai.display_index_get 1) && yabai -m window --focus last; end
-
-alt - l :	yabai -m window --focus east || \
-			begin; yabai -m display --focus east && yabai -m window --focus first; end || \
-			begin; yabai -m display --focus (yabai.display_index_get 2) && yabai -m window --focus first; end
-
-alt - j : yabai -m window --focus south	|| yabai -m display --focus south
-alt - k : yabai -m window --focus north	|| yabai -m display --focus north
-
-# -- Window resizing ---------------------------------------------------------------------------------------------------
-
-alt + ctrl - left	: yabai -m window --resize right:-20:0 	|| yabai -m window --resize left:-20:0
-alt + ctrl - down	: yabai -m window --resize bottom:0:20 	|| yabai -m window --resize top:0:20
-alt + ctrl - up		: yabai -m window --resize bottom:0:-20	|| yabai -m window --resize top:0:-20
-alt + ctrl - right	: yabai -m window --resize right:20:0 	|| yabai -m window --resize left:20:0
-
-# -- Window warping ----------------------------------------------------------------------------------------------------
-
-alt + shift - j : yabai -m window --warp south
-alt + shift - k : yabai -m window --warp north
-alt + shift - h : yabai -m window --warp west || begin; yabai -m window --space prev; yabai -m space --focus prev && yabai -m window --focus last; end
-alt + shift - l : yabai -m window --warp east || begin; yabai -m window --space next; yabai -m space --focus next && yabai -m window --focus last; yabai -m window --warp first; end
-alt + shift - d : yabai -m window --display recent; yabai -m window --focus recent
-
-# -- Window stacking ---------------------------------------------------------------------------------------------------
-
-alt + shift - left	: yabai -m window  west --stack (yabai -m query --windows --window | jq -r '.id') && sketchybar --trigger window_focus
-alt + shift - down	: yabai -m window south --stack (yabai -m query --windows --window | jq -r '.id') && sketchybar --trigger window_focus
-alt + shift - up	: yabai -m window north --stack (yabai -m query --windows --window | jq -r '.id') && sketchybar --trigger window_focus
-alt + shift - right	: yabai -m window east --stack (yabai -m query --windows --window | jq -r '.id') && sketchybar --trigger window_focus
-alt + shift - 0x21	: yabai -m window --focus stack.prev
-alt + shift - 0x1E	: yabai -m window --focus stack.next
-
-# -- Window toggling ---------------------------------------------------------------------------------------------------
-
-alt + shift - f : yabai -m window --toggle float --grid 10:10:1:1:8:8; sketchybar --trigger window_focus
-alt + shift - m : yabai -m window --toggle zoom-fullscreen; sketchybar --trigger window_focus
-alt + shift - p : yabai -m window --toggle zoom-parent; sketchybar --trigger window_focus
-alt + shift - e : yabai -m space --balance
+########################################################################################################################
+#### General                                                                      ######################################
+####                                                                              ######################################
+#### syntax: https://github.com/jackielii/skhd.zig/blob/main/SYNTAX.md            ######################################
+########################################################################################################################
 
 # -- App blacklist -----------------------------------------------------------------------------------------------------
 
 .blacklist [
-    "Dota 2" # yes i fuck your mom
+	"Dota 2" # yes i fuck your mom
+	"loginwindow"
+	"screensaver"
 ]
+
+########################################################################################################################
+#### Helpers (must be in main file, .load is deferred and defines won't be visible) ####################################
+########################################################################################################################
+
+# -- Window / focusing -------------------------------------------------------------------------------------------------
+
+.define window_focus_left	:	yabai -m window --focus west || \
+								begin; yabai -m display --focus west && yabai -m window --focus last; end || \
+								begin; yabai -m display --focus (yabai.display_index_get 1) && yabai -m window --focus last; end
+
+.define window_focus_right	:	yabai -m window --focus east || \
+								begin; yabai -m display --focus east && yabai -m window --focus first; end || \
+								begin; yabai -m display --focus (yabai.display_index_get 2) && yabai -m window --focus first; end
+
+.define window_focus_down	:	yabai -m window --focus south || yabai -m display --focus south
+.define window_focus_up		:	yabai -m window --focus north || yabai -m display --focus north
+
+.define window_focus_recent	:	yabai -m window --display recent; yabai -m window --focus recent
+
+.define window_focus_stack_left		:	yabai -m window --focus stack.prev || yabai -m window --focus stack.last
+.define window_focus_stack_right	:	yabai -m window --focus stack.next || yabai -m window --focus stack.first
+
+# -- Window / resizing -------------------------------------------------------------------------------------------------
+
+.define window_resize_left	:	yabai -m window --resize right:-20:0 	|| yabai -m window --resize left:-20:0
+.define window_resize_down	:	yabai -m window --resize bottom:0:20 	|| yabai -m window --resize top:0:20
+.define window_resize_up	:	yabai -m window --resize bottom:0:-20	|| yabai -m window --resize top:0:-20
+.define window_resize_right :	yabai -m window --resize right:20:0 	|| yabai -m window --resize left:20:0
+
+# -- Window / swapping -------------------------------------------------------------------------------------------------
+
+.define window_swap_down	:	yabai -m window --warp south
+.define window_swap_up		:	yabai -m window --warp north
+.define window_swap_left	:	yabai -m window --warp west || begin; yabai -m window --space prev; yabai -m space --focus prev && yabai -m window --focus last; end
+.define window_swap_right	:	yabai -m window --warp east || begin; yabai -m window --space next; yabai -m space --focus next && yabai -m window --focus last; yabai -m window --warp first; end
+
+# -- Window / stacking -------------------------------------------------------------------------------------------------
+
+.define window_stack_left	:	set -l wid (yabai -m query --windows --window | jq -r '.id'); yabai -m window west  --stack $wid; yabai -m window --focus $wid && sketchybar --trigger window_focus
+.define window_stack_down	:	set -l wid (yabai -m query --windows --window | jq -r '.id'); yabai -m window south --stack $wid; yabai -m window --focus $wid && sketchybar --trigger window_focus
+.define window_stack_up		:	set -l wid (yabai -m query --windows --window | jq -r '.id'); yabai -m window north --stack $wid; yabai -m window --focus $wid && sketchybar --trigger window_focus
+.define window_stack_right	:	set -l wid (yabai -m query --windows --window | jq -r '.id'); yabai -m window east  --stack $wid; yabai -m window --focus $wid && sketchybar --trigger window_focus
+.define window_unstack		:	yabai -m window --toggle float; yabai -m window --toggle float; sketchybar --trigger window_focus
+
+# -- Window / toggling -------------------------------------------------------------------------------------------------
+
+.define window_toggle_float				:	yabai -m window --toggle float --grid 10:10:1:1:8:8; sketchybar --trigger window_focus
+.define window_toggle_maximize_full		:	yabai -m window --toggle zoom-fullscreen; sketchybar --trigger window_focus
+.define window_toggle_maximize_parent	:	yabai -m window --toggle zoom-parent; sketchybar --trigger window_focus
+.define window_toggle_equal				:	yabai -m space --balance
+
+# -- Space / layout rotating -------------------------------------------------------------------------------------------
+
+.define window_layout_rotate	:  	yabai -m space --rotate 270
+.define window_layout_mirror_y	:  	yabai -m space --mirror y-axis
+.define window_layout_mirror_x	:  	yabai -m space --mirror x-axis
+
+# -- Other -------------------------------------------------------------------------------------------------------------
+
+.define sbe_mode		:	sketchybar --trigger skhd_mode_update MODE={{1}}
+.define space_focus		:	yabai -m query --spaces --space {{1}} | jq -r '.windows[0]' | xargs yabai -m window --focus; yabai -m space --focus {{1}}
+.define window_close	:	yabai -m window --close
+
+########################################################################################################################
+#### Hotkeys / general                                                            ######################################
+####                                                                              ######################################
+#### keycodes: https://github.com/koekeishiya/skhd/issues/1#issue-248494406       ######################################
+########################################################################################################################
+
+# -- Spaces / focus ----------------------------------------------------------------------------------------------------
+
+alt - 1		: @space_focus("1")
+alt - 2		: @space_focus("2")
+alt - 3		: @space_focus("3")
+alt - 4		: @space_focus("4")
+alt - 5		: @space_focus("5")
+alt - 6		: @space_focus("6")
+alt - 7		: @space_focus("7")
+alt - 8		: @space_focus("8")
+alt - 9		: @space_focus("9")
+alt - 0		: @space_focus("10")
+alt - 0x1B	: @space_focus("11")
+alt - 0x18	: @space_focus("12")
+
+########################################################################################################################
+#### Hotkeys / modes ###################################################################################################
+########################################################################################################################
+
+# -- creating ----------------------------------------------------------------------------------------------------------
+
+:: resize @	: @sbe_mode("resize")
+:: stack @	: @sbe_mode("stack")
+:: swap @	: @sbe_mode("swap")
+:: window @	: @sbe_mode("window")
+
+# -- mapping / entering to mode ----------------------------------------------------------------------------------------
+
+cmd + ctrl - w	;	window
+cmd + ctrl - r	;	resize
+cmd + ctrl - s	;	swap
+cmd + ctrl - q	;	stack
+
+# -- mapping / reentering to mode --------------------------------------------------------------------------------------
+
+resize	< cmd + ctrl - q	;	stack
+resize	< cmd + ctrl - s	;	swap
+resize	< cmd + ctrl - w	;	window
+stack	< cmd + ctrl - r	;	resize
+stack	< cmd + ctrl - s	;	swap
+stack	< cmd + ctrl - w	;	window
+swap	< cmd + ctrl - q	;	stack
+swap	< cmd + ctrl - r	;	resize
+swap	< cmd + ctrl - w	;	window
+window	< cmd + ctrl - q	;	stack
+window	< cmd + ctrl - r	;	resize
+window	< cmd + ctrl - s	;	swap
+
+# -- mapping / return to default ---------------------------------------------------------------------------------------
+
+resize < escape	;	default	:	@sbe_mode("default")
+stack < escape	;	default	:	@sbe_mode("default")
+swap < escape	;	default	:	@sbe_mode("default")
+window < escape	;	default	:	@sbe_mode("default")
+
+# -- mapping / [window] ------------------------------------------------------------------------------------------------
+
+window < e: @window_toggle_equal
+window < r: yabai.restart 
+window < f: @window_toggle_float
+window < h: @window_focus_left
+window < j: @window_focus_down
+window < k: @window_focus_up
+window < l: @window_focus_right
+window < m: @window_toggle_maximize_full
+window < p: @window_toggle_maximize_parent
+window < q: @window_close
+
+# -- mapping / [resize] ------------------------------------------------------------------------------------------------
+
+resize < h: @window_resize_left
+resize < j: @window_resize_down
+resize < k: @window_resize_up
+resize < l: @window_resize_right
+
+# -- mapping / [swap] --------------------------------------------------------------------------------------------------
+
+swap < h: @window_swap_left
+swap < j: @window_swap_down
+swap < k: @window_swap_up
+swap < l: @window_swap_right
+swap < r: @window_layout_rotate
+swap < x: @window_layout_mirror_x
+swap < y: @window_layout_mirror_y
+
+# -- mapping / [stack] -------------------------------------------------------------------------------------------------
+
+stack < h: @window_stack_left
+stack < j: @window_stack_down
+stack < k: @window_stack_up
+stack < l: @window_stack_right
+stack < n: @window_focus_stack_right
+stack < p: @window_focus_stack_left
+stack < r: @window_unstack
