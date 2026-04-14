@@ -1,5 +1,3 @@
-# vi: ft=txt
-
 ########################################################################################################################
 #### General                                                                      ######################################
 ####                                                                              ######################################
@@ -198,11 +196,17 @@ window	< cmd + ctrl - q	;	command
 
 # -- mapping / return to default ---------------------------------------------------------------------------------------
 
-command	< escape	;	default	:	@sbe_mode("default")
-move	< escape	;	default	:	@sbe_mode("default")
-resize	< escape	;	default	:	@sbe_mode("default")
-stack	< escape	;	default	:	@sbe_mode("default")
-window	< escape	;	default	:	@sbe_mode("default")
+command	< escape			;	default	:	@sbe_mode("default")
+move	< escape			;	default	:	@sbe_mode("default")
+resize	< escape			;	default	:	@sbe_mode("default")
+stack	< escape			;	default	:	@sbe_mode("default")
+window	< escape			;	default	:	@sbe_mode("default")
+
+command	< ctrl - 0x21		;	default	:	@sbe_mode("default")
+move	< ctrl - 0x21		;	default	:	@sbe_mode("default")
+resize	< ctrl - 0x21		;	default	:	@sbe_mode("default")
+stack	< ctrl - 0x21		;	default	:	@sbe_mode("default")
+window	< ctrl - 0x21		;	default	:	@sbe_mode("default")
 
 # -- mapping / commands ------------------------------------------------------------------------------------------------
 
