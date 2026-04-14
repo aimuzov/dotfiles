@@ -1,4 +1,4 @@
-#!/usr/bin/env fish
+#!/usr/bin/env -S {{ .miseBinPath }} exec aqua:fish-shell/fish-shell -- fish
 # vi: ft=fish
 
 # https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)#configure-scripting-addition
@@ -43,7 +43,7 @@ yabai.space_create 1 3 Org -- Things Calendar Mail
 yabai.space_create 1 4 Graph -- Figma Miro
 yabai.space_create 1 5 Explr -- Finder Cyberduck
 yabai.space_create 1 6 Fun -- "Steam Helper" "Dota 2"
-yabai.space_create 2 7 Sys -- "System Settings" MacPass
+yabai.space_create 2 7 Sys -- "App Store" "System Settings" MacPass
 yabai.space_create 2 8 Ai -- ChatGPT Claude "Google Chrome" Perplexity
 yabai.space_create 2 10 Social -- Time Telegram WhatsApp
 yabai.space_create 2 11 Calls -- Толк
@@ -56,7 +56,7 @@ yabai -m rule --add manage=off app=".*"
 yabai.layout_add "Google Chrome"
 yabai.layout_add "Yandex Music"
 yabai.layout_add Arc
-yabai.layout_add Calendar -- General
+yabai.layout_add Calendar -- General Accounts Alerts Advanced
 yabai.layout_add Code
 yabai.layout_add Cursor
 yabai.layout_add Cyberduck
@@ -64,7 +64,7 @@ yabai.layout_add Dia -- Settings
 yabai.layout_add Figma
 yabai.layout_add Finder -- Copy Connect Move Info Pref "Finder Settings"
 yabai.layout_add Ghostty
-yabai.layout_add Mail -- General
+yabai.layout_add Mail -- General Accounts "Junk Mail" "Fonts & Colors" Viewing Composing Signatures Rules Extensions Privacy
 yabai.layout_add Miro
 yabai.layout_add Perplexity
 yabai.layout_add Telegram
@@ -78,3 +78,8 @@ yabai.layout_add Толк
 yabai -m rule --apply
 
 yabai.rearrange
+
+# # -- skhd ------------------------------------------------------------------------------------------------------------------
+# macOS 26: launchd-агенты не могут создавать event tap, поэтому запускаем skhd из yabairc
+command pkill -x skhd 2>/dev/null
+skhd &

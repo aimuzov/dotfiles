@@ -4,8 +4,9 @@ local colors = require("config").colors
 local icons = {
 	window = "􀏜",
 	resize = "􀄭",
-	swap = "􀭱",
+	move = "􀭱",
 	stack = "􃑷",
+	command = "􀆔",
 }
 
 sbar.add("event", "skhd_mode_update")
@@ -30,14 +31,18 @@ local function update(ENV)
 		icon.string = icons.resize
 		icon.width = 44
 		background.color = colors.orange
-	elseif ENV.MODE == "swap" then
-		icon.string = icons.swap
+	elseif ENV.MODE == "move" then
+		icon.string = icons.move
 		icon.width = 44
 		background.color = colors.green
 	elseif ENV.MODE == "stack" then
 		icon.string = icons.stack
 		icon.width = 44
 		background.color = colors.magenta
+	elseif ENV.MODE == "command" then
+		icon.string = icons.command
+		icon.width = 44
+		background.color = colors.red
 	end
 
 	skhd:set({ icon = icon, background = background })

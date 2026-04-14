@@ -10,6 +10,7 @@
 
 .blacklist [
 	"Dota 2" # yes i fuck your mom
+	"LayerX"
 	"loginwindow"
 	"screensaver"
 ]
@@ -33,8 +34,8 @@
 
 .define window_focus_recent	:	yabai -m window --display recent; yabai -m window --focus recent
 
-.define window_focus_stack_left		:	yabai -m window --focus stack.prev || yabai -m window --focus stack.last
-.define window_focus_stack_right	:	yabai -m window --focus stack.next || yabai -m window --focus stack.first
+.define window_focus_stack_left		:	yabai -m window --focus stack.prev
+.define window_focus_stack_right	:	yabai -m window --focus stack.next
 
 # -- Window / resizing -------------------------------------------------------------------------------------------------
 
@@ -43,12 +44,12 @@
 .define window_resize_up	:	yabai -m window --resize bottom:0:-20	|| yabai -m window --resize top:0:-20
 .define window_resize_right :	yabai -m window --resize right:20:0 	|| yabai -m window --resize left:20:0
 
-# -- Window / swapping -------------------------------------------------------------------------------------------------
+# -- Window / moving ---------------------------------------------------------------------------------------------------
 
-.define window_swap_down	:	yabai -m window --warp south
-.define window_swap_up		:	yabai -m window --warp north
-.define window_swap_left	:	yabai -m window --warp west || begin; yabai -m window --space prev; yabai -m space --focus prev && yabai -m window --focus last; end
-.define window_swap_right	:	yabai -m window --warp east || begin; yabai -m window --space next; yabai -m space --focus next && yabai -m window --focus last; yabai -m window --warp first; end
+.define window_move_down	:	yabai -m window --warp south
+.define window_move_up		:	yabai -m window --warp north
+.define window_move_left	:	yabai -m window --warp west || begin; yabai -m window --space prev; yabai -m space --focus prev && yabai -m window --focus last; end
+.define window_move_right	:	yabai -m window --warp east || begin; yabai -m window --space next; yabai -m space --focus next && yabai -m window --focus last; yabai -m window --warp first; end
 
 # -- Window / stacking -------------------------------------------------------------------------------------------------
 
@@ -78,6 +79,56 @@
 .define window_close	:	yabai -m window --close
 
 ########################################################################################################################
+#### Remapping #########################################################################################################
+########################################################################################################################
+
+# -- Layout fixes ------------------------------------------------------------------------------------------------------
+
+0xa						|	0x32			# § => `
+shift - 0xa				|	shift - 0x32	# shift - § => ~
+
+# -- Useful fixes ------------------------------------------------------------------------------------------------------
+
+rcmd - escape			|	0x32			# `
+cmd + ctrl - space		:	true			# ban emoji >:D
+cmd - h					:	true			# ban app hiding
+
+# -- Key navigation ----------------------------------------------------------------------------------------------------
+
+cmd + ctrl - j			|	down
+cmd + ctrl - k			|	up
+cmd + ctrl - h			|	left
+cmd + ctrl - l			|	right
+
+# -- F1-F12 ------------------------------------------------------------------------------------------------------------
+
+lcmd + lctrl - 1		|	f1
+lcmd + lctrl - 2		|	f2
+lcmd + lctrl - 3		|	f3
+lcmd + lctrl - 4		|	f4
+lcmd + lctrl - 5		|	f5
+lcmd + lctrl - 6		|	f6
+lcmd + lctrl - 7		|	f7
+lcmd + lctrl - 8		|	f8
+lcmd + lctrl - 9		|	f9
+lcmd + lctrl - 0		|	f10
+lcmd + lctrl - 0x1b 	|	f11
+lcmd + lctrl - 0x18		|	f12
+
+rcmd - 1				|	f1
+rcmd - 2				|	f2
+rcmd - 3				|	f3
+rcmd - 4				|	f4
+rcmd - 5				|	f5
+rcmd - 6				|	f6
+rcmd - 7				|	f7
+rcmd - 8				|	f8
+rcmd - 9				|	f9
+rcmd - 0				|	f10
+rcmd - 0x1b				|	f11
+rcmd - 0x18				|	f12
+
+########################################################################################################################
 #### Hotkeys / general                                                            ######################################
 ####                                                                              ######################################
 #### keycodes: https://github.com/koekeishiya/skhd/issues/1#issue-248494406       ######################################
@@ -104,76 +155,109 @@ alt - 0x18	: @space_focus("12")
 
 # -- creating ----------------------------------------------------------------------------------------------------------
 
-:: resize @	: @sbe_mode("resize")
-:: stack @	: @sbe_mode("stack")
-:: swap @	: @sbe_mode("swap")
-:: window @	: @sbe_mode("window")
+:: command @				:	@sbe_mode("command")
+:: move @					:	@sbe_mode("move")
+:: resize @					:	@sbe_mode("resize")
+:: stack @					:	@sbe_mode("stack")
+:: window @					:	@sbe_mode("window")
 
 # -- mapping / entering to mode ----------------------------------------------------------------------------------------
 
-cmd + ctrl - w	;	window
-cmd + ctrl - r	;	resize
-cmd + ctrl - s	;	swap
-cmd + ctrl - q	;	stack
+cmd + ctrl - m				;	move
+cmd + ctrl - q				;	command
+cmd + ctrl - r				;	resize
+cmd + ctrl - s				;	stack
+cmd + ctrl - w				;	window
 
 # -- mapping / reentering to mode --------------------------------------------------------------------------------------
 
-resize	< cmd + ctrl - q	;	stack
-resize	< cmd + ctrl - s	;	swap
+command	< cmd + ctrl - s	;	stack
+move	< cmd + ctrl - s	;	stack
+resize	< cmd + ctrl - s	;	stack
+window	< cmd + ctrl - s	;	stack
+
+command	< cmd + ctrl - m	;	move
+resize	< cmd + ctrl - m	;	move
+stack	< cmd + ctrl - m	;	move
+window	< cmd + ctrl - m	;	move
+
+command	< cmd + ctrl - w	;	window
+move	< cmd + ctrl - w	;	window
 resize	< cmd + ctrl - w	;	window
-stack	< cmd + ctrl - r	;	resize
-stack	< cmd + ctrl - s	;	swap
 stack	< cmd + ctrl - w	;	window
-swap	< cmd + ctrl - q	;	stack
-swap	< cmd + ctrl - r	;	resize
-swap	< cmd + ctrl - w	;	window
-window	< cmd + ctrl - q	;	stack
+
+command	< cmd + ctrl - r	;	resize
+move	< cmd + ctrl - r	;	resize
+stack	< cmd + ctrl - r	;	resize
 window	< cmd + ctrl - r	;	resize
-window	< cmd + ctrl - s	;	swap
+
+move	< cmd + ctrl - q	;	command	
+resize	< cmd + ctrl - q	;	command	
+stack	< cmd + ctrl - q	;	command	
+window	< cmd + ctrl - q	;	command	
 
 # -- mapping / return to default ---------------------------------------------------------------------------------------
 
-resize < escape	;	default	:	@sbe_mode("default")
-stack < escape	;	default	:	@sbe_mode("default")
-swap < escape	;	default	:	@sbe_mode("default")
-window < escape	;	default	:	@sbe_mode("default")
+command	< escape	;	default	:	@sbe_mode("default")
+move	< escape	;	default	:	@sbe_mode("default")
+resize	< escape	;	default	:	@sbe_mode("default")
+stack	< escape	;	default	:	@sbe_mode("default")
+window	< escape	;	default	:	@sbe_mode("default")
+
+# -- mapping / commands ------------------------------------------------------------------------------------------------
+
+command	< r					:	yabai.restart
+command	< q					:	pmset displaysleepnow
 
 # -- mapping / [window] ------------------------------------------------------------------------------------------------
 
-window < e: @window_toggle_equal
-window < r: yabai.restart 
-window < f: @window_toggle_float
-window < h: @window_focus_left
-window < j: @window_focus_down
-window < k: @window_focus_up
-window < l: @window_focus_right
-window < m: @window_toggle_maximize_full
-window < p: @window_toggle_maximize_parent
-window < q: @window_close
+window < e			:	@window_toggle_equal
+window < r			:	yabai.restart 
+window < f			:	@window_toggle_float
+window < h			:	@window_focus_left
+window < j			:	@window_focus_down
+window < k			:	@window_focus_up
+window < l			:	@window_focus_right
+window < m			:	@window_toggle_maximize_full
+window < p			:	@window_toggle_maximize_parent
+window < q			:	@window_close
+
+window < shift - h	:	@window_stack_left
+window < shift - j	:	@window_stack_down
+window < shift - k	:	@window_stack_up
+window < shift - l	:	@window_stack_right
+window < shift - n	:	@window_focus_stack_right
+window < shift - p	:	@window_focus_stack_left
+window < shift - r	:	@window_unstack
+
+window < ctrl - h	:	@window_resize_left
+window < ctrl - j	:	@window_resize_down
+window < ctrl - k	:	@window_resize_up
+window < ctrl - l	:	@window_resize_right
 
 # -- mapping / [resize] ------------------------------------------------------------------------------------------------
 
-resize < h: @window_resize_left
-resize < j: @window_resize_down
-resize < k: @window_resize_up
-resize < l: @window_resize_right
+resize < h			:	@window_resize_left
+resize < j			:	@window_resize_down
+resize < k			:	@window_resize_up
+resize < l			:	@window_resize_right
 
-# -- mapping / [swap] --------------------------------------------------------------------------------------------------
+# -- mapping / [move] --------------------------------------------------------------------------------------------------
 
-swap < h: @window_swap_left
-swap < j: @window_swap_down
-swap < k: @window_swap_up
-swap < l: @window_swap_right
-swap < r: @window_layout_rotate
-swap < x: @window_layout_mirror_x
-swap < y: @window_layout_mirror_y
+move < h			:	@window_move_left
+move < j			:	@window_move_down
+move < k			:	@window_move_up
+move < l			:	@window_move_right
+move < r			:	@window_layout_rotate
+move < x			:	@window_layout_mirror_x
+move < y			:	@window_layout_mirror_y
 
 # -- mapping / [stack] -------------------------------------------------------------------------------------------------
 
-stack < h: @window_stack_left
-stack < j: @window_stack_down
-stack < k: @window_stack_up
-stack < l: @window_stack_right
-stack < n: @window_focus_stack_right
-stack < p: @window_focus_stack_left
-stack < r: @window_unstack
+stack < h			:	@window_stack_left
+stack < j			:	@window_stack_down
+stack < k			:	@window_stack_up
+stack < l			:	@window_stack_right
+stack < n			:	@window_focus_stack_right
+stack < p			:	@window_focus_stack_left
+stack < r			:	@window_unstack
