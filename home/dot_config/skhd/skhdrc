@@ -215,8 +215,8 @@ window	< ctrl - 0x21		;	default	:	@sbe_mode("default")
 
 # -- mapping / commands ------------------------------------------------------------------------------------------------
 
-command	< r					:	yabai.restart
-command	< q					:	pmset displaysleepnow
+command	< w					;	default	:	yabai.restart
+command	< l					;	default	:	pmset displaysleepnow
 
 # -- mapping / [window] ------------------------------------------------------------------------------------------------
 
