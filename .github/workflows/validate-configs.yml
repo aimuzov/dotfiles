@@ -46,7 +46,7 @@ jobs:
 
       # dorny/paths-filter — сравнивает файлы в PR/push с базовой веткой
       # и выдаёт булевы outputs для каждого фильтра.
-      - uses: dorny/paths-filter@v3
+      - uses: dorny/paths-filter@v4
         id: filter
         with:
           filters: |
