@@ -34,7 +34,7 @@
     "@commitlint/config-conventional": "20.5.0",
     "commitizen": "4.3.0",
     "commitlint": "20.5.0",
-    "cz-git": "1.12.0"
+    "cz-git": "1.13.0"
   },
   "config": {
     "commitizen": {
