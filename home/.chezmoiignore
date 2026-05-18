@@ -1,1 +1,43 @@
+# Live MCP config (managed by Claude Code itself, не из шаблона)
 .claude/mcp.json
+
+# Runtime overrides и резервные копии (специфично для машины)
+.claude/settings.local.json
+.claude/settings.json.bak
+.claude/settings.json.orig
+
+# Плагины: cache и state регенерируются из enabledPlugins/extraKnownMarketplaces
+.claude/plugins/cache/**
+.claude/plugins/marketplaces/**
+.claude/plugins/data/**
+.claude/plugins/installed_plugins.json
+.claude/plugins/known_marketplaces.json
+.claude/plugins/plugin-catalog-cache.json
+.claude/plugins/blocklist.json
+
+# Сессионные данные и история (не для git)
+.claude/history.jsonl
+.claude/projects/**
+.claude/plans/**
+.claude/sessions/**
+.claude/todos/**
+.claude/tasks/**
+.claude/shell-snapshots/**
+.claude/channels/**
+
+# Кэши и временные файлы
+.claude/cache/**
+.claude/backups/**
+.claude/file-history/**
+.claude/paste-cache/**
+.claude/downloads/**
+.claude/debug/**
+.claude/ide/**
+.claude/session-env/**
+.claude/telemetry/**
+.claude/.last-cleanup
+.claude/stats-cache.json
+.claude/mcp-needs-auth-cache.json
+
+# Прочее (unrelated)
+.config/fish/server.config.fish

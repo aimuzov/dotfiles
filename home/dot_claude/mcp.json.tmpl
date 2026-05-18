@@ -54,6 +54,15 @@
         "mcp-server-sequential-thinking"
       ]
     },
+    "context7": {
+      "command": "{{ .miseBinPath }}",
+      "args": [
+        "exec",
+        "npm:@upstash/context7-mcp",
+        "--",
+        "context7-mcp"
+      ]
+    },
     "eslint": {
       "command": "{{ .miseBinPath }}",
       "args": [
@@ -82,6 +91,22 @@
       ],
       "env": {
         "FIGMA_API_KEY": "{{ keepassxcAttribute "FIGMA" "TOKEN" }}"
+      }
+    },
+    "serena": {
+      "command": "{{ .miseBinPath }}",
+      "args": [
+        "exec",
+        "pipx:serena-agent",
+        "--",
+        "serena",
+        "start-mcp-server",
+        "--context",
+        "claude-code",
+        "--project-from-cwd"
+      ],
+      "env": {
+        "MCP_TIMEOUT": "60000"
       }
     }
   }

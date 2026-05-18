@@ -1,34 +1,96 @@
 {
+  "env": {
+    "CLAUDE_CODE_AUTO_CONNECT_IDE": "false",
+    "CLAUDE_CODE_DISABLE_TERMINAL_TITLE": "1",
+    "IS_DEMO": "1",
+    "DISABLE_AUTOUPDATER": "1",
+    "DISABLE_BUG_COMMAND": "1",
+    "DISABLE_TELEMETRY": "1"
+  },
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
   "permissions": {
     "allow": [
-      "Bash(git log:*)",
-      "Bash(git status:*)",
-      "Bash(git diff:*)",
-      "Bash(git show:*)",
-      "Bash(git branch:*)",
-      "Bash(git remote:*)",
-      "Bash(ls:*)",
-      "Bash(find:*)",
-      "Bash(grep:*)",
       "Bash(cat:*)",
-      "Bash(head:*)",
-      "Bash(tail:*)",
       "Bash(echo:*)",
+      "Bash(find:*)",
+      "Bash(git branch:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git remote:*)",
+      "Bash(git show:*)",
+      "Bash(git status:*)",
+      "Bash(grep:*)",
+      "Bash(head:*)",
+      "Bash(ls:*)",
+      "Bash(mise exec *)",
       "Bash(pwd:*)",
-      "Bash(which:*)",
-      "Bash(type:*)"
+      "Bash(tail:*)",
+      "Bash(type:*)",
+      "Bash(which:*)"
+    ],
+    "deny": [
+      "Bash(git push:*)"
     ],
     "defaultMode": "plan"
   },
-  "enabledPlugins": {
-    "telegram@claude-plugins-official": true,
-    "figma@claude-plugins-official": true
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ~/.claude/hooks/fish-shell-wrapper.sh"
+          }
+        ]
+      }
+    ]
   },
-  "alwaysThinkingEnabled": true,
-  "preferredNotifChannel": "ghostty",
   "statusLine": {
     "type": "command",
     "command": "{{ .miseBinPath }} exec npm:ccstatusline -- ccstatusline",
     "padding": 0
-  }
+  },
+  "enabledPlugins": {
+    "svelte-v4@aimuzov-claude-svelte-v4": true,
+    "agent-sdk-dev@claude-plugins-official": true,
+    "chrome-devtools-mcp@claude-plugins-official": true,
+    "claude-md-management@claude-plugins-official": true,
+    "code-review@claude-plugins-official": true,
+    "code-simplifier@claude-plugins-official": true,
+    "commit-commands@claude-plugins-official": true,
+    "context7@claude-plugins-official": true,
+    "desktop-commander@claude-plugins-official": true,
+    "feature-dev@claude-plugins-official": true,
+    "figma@claude-plugins-official": true,
+    "frontend-design@claude-plugins-official": true,
+    "github@claude-plugins-official": true,
+    "hookify@claude-plugins-official": true,
+    "lua-lsp@claude-plugins-official": true,
+    "netlify-skills@claude-plugins-official": false,
+    "playwright@claude-plugins-official": true,
+    "pr-review-toolkit@claude-plugins-official": true,
+    "ralph-loop@claude-plugins-official": true,
+    "security-guidance@claude-plugins-official": true,
+    "serena@claude-plugins-official": true,
+    "skill-creator@claude-plugins-official": true,
+    "superpowers@claude-plugins-official": true,
+    "telegram@claude-plugins-official": true,
+    "typescript-lsp@claude-plugins-official": true,
+    "vercel@claude-plugins-official": true
+  },
+  "extraKnownMarketplaces": {
+    "aimuzov-claude-svelte-v4": {
+      "source": {
+        "source": "directory",
+        "path": "{{ .chezmoi.homeDir }}/Projects/aimuzov/claude-svelte-v4"
+      }
+    }
+  },
+  "alwaysThinkingEnabled": true,
+  "autoUpdates": false,
+  "preferredNotifChannel": "ghostty"
 }
