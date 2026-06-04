@@ -1,0 +1,72 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Весь config.json принадлежит dotfiles и задаётся здесь (поля ниже побеждают).
+# Исключение — "webappVersion": его TiMe обновляет сам при автообновлении
+# веб-аппа, поэтому это поле берётся из текущего целевого файла. Так chezmoi
+# не показывает изменение только из-за смены версии веб-аппа.
+ours=$(cat <<'CHEZMOI_TIME_EOF'
+{
+  "version": 3,
+  "teams": [
+    {
+      "name": "time.r1.team",
+      "url": "https://time.r1.team",
+      "order": 0,
+      "tabs": [
+        {
+          "name": "TAB_MESSAGING",
+          "order": 0,
+          "isOpen": true
+        },
+        {
+          "name": "TAB_FOCALBOARD",
+          "order": 1
+        },
+        {
+          "name": "TAB_PLAYBOOKS",
+          "order": 2
+        }
+      ],
+      "lastActiveTab": 0
+    }
+  ],
+  "showTrayIcon": false,
+  "trayIconTheme": "use_system",
+  "minimizeToTray": true,
+  "notifications": {
+    "flashWindow": 2,
+    "bounceIcon": true,
+    "bounceIconType": "informational"
+  },
+  "showUnreadBadge": true,
+  "useSpellChecker": true,
+  "autostart": true,
+  "hideOnStart": false,
+  "spellCheckerLocales": [],
+  "darkMode": false,
+  "lastActiveTeam": 1,
+  "downloadLocation": "{{ .chezmoi.homeDir }}/temp/time",
+  "startInFullscreen": false,
+  "logLevel": "error",
+  "autoCheckForUpdates": true,
+  "enableGPUAcceleration": true,
+  "webappVersion": "v6.58.2"
+}
+CHEZMOI_TIME_EOF
+)
+
+MISE="{{ .miseBinPath }}"
+
+# Текущее содержимое целевого файла; при первом apply stdin пустой.
+input=$(cat)
+if [[ -z "$input" ]] || ! printf '%s' "$input" | "$MISE" exec -- jq empty >/dev/null 2>&1; then
+  input='{}'
+fi
+
+# $ours задаёт весь файл, но webappVersion берём из текущего файла (что записал
+# TiMe), если он там есть. Результат печатаем без финального перевода строки —
+# TiMe пишет config.json без него, иначе chezmoi показывал бы вечное изменение.
+result=$(printf '%s' "$input" | "$MISE" exec -- jq --argjson ours "$ours" \
+  '$ours + (if has("webappVersion") then {webappVersion} else {} end)')
+printf '%s' "$result"
