@@ -89,5 +89,5 @@
   "visual-whitespace.nvim": { "branch": "main", "commit": "02714f141dc0783eb814af6be534bdb0273142ff" },
   "which-key.nvim": { "branch": "main", "commit": "3aab2147e74890957785941f0c1ad87d0a44c15a" },
   "yanky.nvim": { "branch": "main", "commit": "b13d318dc7c816e2eee626dde61fa0a7237bc77e" },
-  "yazi.nvim": { "branch": "main", "commit": "796cac37605611c19968c0b0cdfd16bb120bce01" }
+  "yazi.nvim": { "branch": "main", "commit": "159ff0e2cabebb15afda921f7e0e0688ca7c2319" }
 }
