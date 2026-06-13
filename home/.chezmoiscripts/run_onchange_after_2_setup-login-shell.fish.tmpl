@@ -1,0 +1,28 @@
+#!/usr/bin/env fish
+# vi: ft=fish
+
+{{ if (eq .chezmoi.os "darwin") -}}
+
+# Login-shell должен указывать на стабильный latest-путь mise, а не на
+# конкретную версию fish. В config.toml fish задан как "latest", поэтому
+# при обновлении mise удаляет каталог старой версии — и если login-shell
+# был зафиксирован на этой версии, Terminal.app падает на login с
+# "No such file or directory". latest-путь переживает любые обновления.
+set -l fish_bin ({{ .miseBinPath }} which fish 2>/dev/null)
+
+if test -n "$fish_bin"; and test -x "$fish_bin"
+    # Внести стабильный путь в белый список /etc/shells, удалив протухшие
+    # mise-записи fish (всё, кроме latest), оставленные прежним chsh.
+    sudo sed -i '' '/aqua-fish-shell-fish-shell/{/\/latest\//!d;}' /etc/shells
+    if not grep -qxF "$fish_bin" /etc/shells
+        echo "$fish_bin" | sudo tee -a /etc/shells >/dev/null
+    end
+
+    # Перевести login-shell на стабильный путь, если он ещё не он.
+    set -l current_shell (dscl . -read /Users/$USER UserShell | string replace 'UserShell: ' '')
+    if test "$current_shell" != "$fish_bin"
+        sudo dscl . -create /Users/$USER UserShell "$fish_bin"
+    end
+end
+
+{{ end -}}
