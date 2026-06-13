@@ -60,7 +60,9 @@
         "exec",
         "npm:@upstash/context7-mcp",
         "--",
-        "context7-mcp"
+        "context7-mcp",
+		"--api-key",
+		"{{ keepassxcAttribute "CTX7" "TOKEN" }}"
       ]
     },
     "eslint": {
