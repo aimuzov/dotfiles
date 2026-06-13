@@ -23,3 +23,9 @@ Host {{ keepassxcAttribute "SSH_HOST" "VPS" }}
 	HostName {{ keepassxcAttribute "SSH_HOST" "VPS" }}
 	IdentityFile ~/.ssh/vps
 	IdentitiesOnly yes
+
+Host {{ keepassxcAttribute "SSH_HOST" "VPS-1" }}
+	User root
+	HostName {{ keepassxcAttribute "SSH_HOST" "VPS-1" }}
+	IdentityFile ~/.ssh/vps
+	IdentitiesOnly yes
