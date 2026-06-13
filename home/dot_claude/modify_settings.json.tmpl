@@ -1,3 +1,7 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ours=$(cat <<'CHEZMOI_SETTINGS_EOF'
 {
   "env": {
     "CLAUDE_CODE_AUTO_CONNECT_IDE": "false",
@@ -56,6 +60,7 @@
   },
   "enabledPlugins": {
     "svelte-v4@aimuzov-claude-svelte-v4": true,
+    "playwright-skill@lackeyjb-playwright-skill": true,
     "agent-sdk-dev@claude-plugins-official": true,
     "chrome-devtools-mcp@claude-plugins-official": true,
     "claude-md-management@claude-plugins-official": true,
@@ -88,9 +93,26 @@
         "source": "directory",
         "path": "{{ .chezmoi.homeDir }}/Projects/aimuzov/claude-svelte-v4"
       }
+    },
+    "lackeyjb-playwright-skill": {
+      "source": {
+        "source": "github",
+        "repo": "lackeyjb/playwright-skill"
+      }
     }
   },
   "alwaysThinkingEnabled": true,
   "autoUpdates": false,
   "preferredNotifChannel": "ghostty"
 }
+CHEZMOI_SETTINGS_EOF
+)
+
+MISE="{{ .miseBinPath }}"
+
+input=$(cat)
+if [[ -z "$input" ]] || ! printf '%s' "$input" | "$MISE" exec -- jq empty >/dev/null 2>&1; then
+  input='{}'
+fi
+
+printf '%s' "$input" | "$MISE" exec -- jq --argjson ours "$ours" '. + $ours'
