@@ -8,12 +8,13 @@
 "core:bun" = "latest"
 "core:cmake" = "latest"
 "core:go" = "latest"
-"core:neovim" = "nightly"
+"core:neovim" = "latest"
 "core:node" = "latest"
 "core:pnpm" = "latest"
 "core:python" = "3.12"
 "core:ruby" = "latest"
 "core:rust" = "latest"
+"core:shellcheck" = "0.11.0"
 
 "aqua:ajeetdsouza/zoxide" = "latest"
 "aqua:astral-sh/uv" = "latest"
@@ -38,13 +39,15 @@
 "aqua:sharkdp/vivid" = "latest"
 "aqua:sxyazi/yazi" = "latest"
 "aqua:twpayne/chezmoi" = "latest"
-"aqua:veeso/termscp" = "latest"
 "aqua:Wilfred/difftastic" = "latest"
 
 "cargo:eza" = "latest"
 "cargo:genact" = "latest"
 "cargo:tokei" = "latest"
 "cargo:git-graph" = "latest"
+"cargo:termscp" = { version = "latest", default-features = false, features = [
+	"keyring",
+] }
 
 "github:matterhorn-chat/matterhorn" = "latest"
 "github:zdyxry/tokui" = "latest"
@@ -59,13 +62,16 @@
 "npm:@modelcontextprotocol/server-memory" = "latest"
 "npm:@modelcontextprotocol/server-sequential-thinking" = "latest"
 "npm:chrome-devtools-mcp" = "latest"
+"npm:@upstash/context7-mcp" = "latest"
 "npm:ccstatusline" = "latest"
 "npm:figma-mcp" = "latest"
 
+"pipx:twc-cli" = "latest"
 "pipx:httpie" = "latest"
 "pipx:mcp-server-fetch" = "latest"
 "pipx:mcp-server-git" = "latest"
 "pipx:mhinz/neovim-remote" = "latest"
+"pipx:serena-agent" = { version = "latest", uvx_args = "-p 3.13" }
 "pipx:yt-dlp" = "latest"
 
 "ubi:JanDeDobbeleer/oh-my-posh" = "latest"
