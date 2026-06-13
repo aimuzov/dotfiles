@@ -7,7 +7,6 @@
 # -- App blacklist -----------------------------------------------------------------------------------------------------
 
 .blacklist [
-	"Dota 2" # yes i fuck your mom
 	"LayerX"
 	"loginwindow"
 	"screensaver"
@@ -95,6 +94,8 @@ shift - 0xa				|	shift - 0x32	# shift - § => ~
 rcmd - escape			|	0x32			# `
 cmd + ctrl - space		:	true			# ban emoji >:D
 cmd - h					:	true			# ban app hiding
+cmd + ctrl - w			:	true			# ban
+cmd + ctrl - q			:	true			# ban 
 
 # -- Key navigation ----------------------------------------------------------------------------------------------------
 
@@ -105,18 +106,18 @@ cmd + ctrl - l			|	right
 
 # -- F1-F12 ------------------------------------------------------------------------------------------------------------
 
-lcmd + lctrl - 1		|	f1
-lcmd + lctrl - 2		|	f2
-lcmd + lctrl - 3		|	f3
-lcmd + lctrl - 4		|	f4
-lcmd + lctrl - 5		|	f5
-lcmd + lctrl - 6		|	f6
-lcmd + lctrl - 7		|	f7
-lcmd + lctrl - 8		|	f8
-lcmd + lctrl - 9		|	f9
-lcmd + lctrl - 0		|	f10
-lcmd + lctrl - 0x1b 	|	f11
-lcmd + lctrl - 0x18		|	f12
+cmd + ctrl - 1			|	f1
+cmd + ctrl - 2			|	f2
+cmd + ctrl - 3			|	f3
+cmd + ctrl - 4			|	f4
+cmd + ctrl - 5			|	f5
+cmd + ctrl - 6			|	f6
+cmd + ctrl - 7			|	f7
+cmd + ctrl - 8			|	f8
+cmd + ctrl - 9			|	f9
+cmd + ctrl - 0			|	f10
+cmd + ctrl - 0x1b	 	|	f11
+cmd + ctrl - 0x18		|	f12
 
 rcmd - 1				|	f1
 rcmd - 2				|	f2
@@ -167,37 +168,37 @@ alt - 0x18	: @space_focus("12")
 # -- mapping / entering to mode ----------------------------------------------------------------------------------------
 
 cmd + ctrl - m				;	move
-cmd + ctrl - q				;	command
-cmd + ctrl - r				;	resize
-cmd + ctrl - s				;	stack
-cmd + ctrl - w				;	window
+cmd + ctrl - 0x29			;	command
+cmd + ctrl - n				;	resize
+cmd + ctrl - o				;	stack
+cmd + ctrl - i				;	window
 
 # -- mapping / reentering to mode --------------------------------------------------------------------------------------
 
-command	< cmd + ctrl - s	;	stack
-move	< cmd + ctrl - s	;	stack
-resize	< cmd + ctrl - s	;	stack
-window	< cmd + ctrl - s	;	stack
+command	< cmd + ctrl - o	;	stack
+move	< cmd + ctrl - o	;	stack
+resize	< cmd + ctrl - o	;	stack
+window	< cmd + ctrl - o	;	stack
 
 command	< cmd + ctrl - m	;	move
 resize	< cmd + ctrl - m	;	move
 stack	< cmd + ctrl - m	;	move
 window	< cmd + ctrl - m	;	move
 
-command	< cmd + ctrl - w	;	window
-move	< cmd + ctrl - w	;	window
-resize	< cmd + ctrl - w	;	window
-stack	< cmd + ctrl - w	;	window
+command	< cmd + ctrl - i	;	window
+move	< cmd + ctrl - i	;	window
+resize	< cmd + ctrl - i	;	window
+stack	< cmd + ctrl - i	;	window
 
-command	< cmd + ctrl - r	;	resize
-move	< cmd + ctrl - r	;	resize
-stack	< cmd + ctrl - r	;	resize
-window	< cmd + ctrl - r	;	resize
+command	< cmd + ctrl - n	;	resize
+move	< cmd + ctrl - n	;	resize
+stack	< cmd + ctrl - n	;	resize
+window	< cmd + ctrl - n	;	resize
 
-move	< cmd + ctrl - q	;	command	
-resize	< cmd + ctrl - q	;	command	
-stack	< cmd + ctrl - q	;	command	
-window	< cmd + ctrl - q	;	command	
+move	< cmd + ctrl - 0x29	;	command	
+resize	< cmd + ctrl - 0x29	;	command	
+stack	< cmd + ctrl - 0x29	;	command	
+window	< cmd + ctrl - 0x29	;	command	
 
 # -- mapping / return to default ---------------------------------------------------------------------------------------
 
