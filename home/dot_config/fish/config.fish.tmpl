@@ -326,5 +326,64 @@ set -gx _GIT_PATHSPEC ":!package-lock.json" # https://git-quick-stats.sh/#docs
 
 # ----------------------------------------------------------------------------------------------------------------------
 
+# set -gx BASH_DEFAULT_TIMEOUT_MS 60000 # Default timeout (ms) for long-running bash commands
+# set -gx BASH_MAX_TIMEOUT_MS 300000 # Maximum timeout (ms) allowed for long-running bash commands
+# set -gx BASH_MAX_OUTPUT_LENGTH 20000 # Max characters in bash outputs before middle-truncation
+#
+# set -gx CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR 1 # (0 or 1) return to original project dir after each Bash command
+# set -gx CLAUDE_BASH_NO_LOGIN 1 # When set, BashTool does not use a login shell. Default behavior changed in v2.1.51 (login shell used only as fallback).
+# set -gx CLAUDE_CODE_API_KEY_HELPER_TTL_MS 600000 # Interval (ms) to refresh creds when using apiKeyHelper
+# set -gx CLAUDE_CODE_IDE_SKIP_AUTO_INSTALL 1 # (0 or 1) skip auto-installation of IDE extensions
+# set -gx CLAUDE_CODE_MAX_OUTPUT_TOKENS 4096 # Max number of output tokens for most requests
+#
+# set -gx CLAUDE_CODE_USE_BEDROCK 1 # (0 or 1) use Amazon Bedrock
+# set -gx CLAUDE_CODE_USE_VERTEX 0 # (0 or 1) use Google Vertex AI
+# set -gx CLAUDE_CODE_SKIP_BEDROCK_AUTH 0 # (0 or 1) skip AWS auth for Bedrock (e.g., via LLM gateway)
+# set -gx CLAUDE_CODE_SKIP_VERTEX_AUTH 0 # (0 or 1) skip Google auth for Vertex (e.g., via LLM gateway)
+#
+# set -gx CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC 0 # (0 or 1) disable nonessential traffic (equivalent to DISABLE_* below)
+# set -gx CLAUDE_CODE_DISABLE_TERMINAL_TITLE 0 # (0 or 1) disable automatic terminal title updates
+#
+# set -gx CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS 1 # (0 or 1) enable agent teams research preview
+# set -gx CLAUDE_CODE_ADDITIONAL_DIRECTORIES_CLAUDE_MD 1 # (0 or 1) load CLAUDE.md from --add-dir paths
+# set -gx CLAUDE_CODE_ENABLE_TASKS false # Set to "false" to disable new task system
+#
+# set -gx DISABLE_AUTOUPDATER 0 # (0 or 1) disable automatic updates (overrides autoUpdates setting)
+# set -gx DISABLE_BUG_COMMAND 0 # (0 or 1) disable the /bug command
+# set -gx DISABLE_COST_WARNINGS 0 # (0 or 1) disable cost warning messages
+# set -gx DISABLE_ERROR_REPORTING 0 # (0 or 1) opt out of Sentry error reporting
+# set -gx DISABLE_NON_ESSENTIAL_MODEL_CALLS 0 # (0 or 1) disable model calls for non-critical paths
+# set -gx DISABLE_TELEMETRY 0 # (0 or 1) opt out of Statsig telemetry
+#
+# set -gx HTTP_PROXY "http://proxy:8080" # HTTP proxy server URL
+# set -gx HTTPS_PROXY "https://proxy:8443" # HTTPS proxy server URL
+#
+# set -gx MAX_THINKING_TOKENS 0 # (0 or 1 to turn off/on) force a thinking budget for the model
+# set -gx MCP_TIMEOUT 120000 # MCP server startup timeout (ms)
+# set -gx MCP_TOOL_TIMEOUT 60000 # MCP tool execution timeout (ms)
+# set -gx MAX_MCP_OUTPUT_TOKENS 25000 # Max tokens allowed in MCP tool responses (default 25000)
+#
+# set -gx USE_BUILTIN_RIPGREP 0 # (0 or 1) set 0 to use system-installed rg instead of bundled one
+#
+# # ── New in v2.1.32–2.1.63 ──────────────────────────────────────────────────────
+# set -gx CLAUDE_CODE_SIMPLE 1 # Minimal mode: disables MCP tools, attachments, hooks, CLAUDE.md, and skills
+# set -gx CLAUDE_CODE_DISABLE_1M_CONTEXT 1 # Disable 1 M-token context window (use default shorter context)
+# set -gx CLAUDE_CODE_DISABLE_BACKGROUND_TASKS 1 # Disable background tasks entirely
+# set -gx CLAUDE_CODE_DISABLE_EXPERIMENTAL_BETAS 1 # Opt out of experimental beta features
+# set -gx CLAUDE_CODE_AUTO_CONNECT_IDE false # Disable automatic IDE connection on startup
+# set -gx CLAUDE_CODE_TMPDIR /custom/tmp # Override the temp directory Claude Code uses
+# set -gx CLAUDE_CODE_SHELL "mise exec aqua:fish-shell/fish-shell -- fish" # Override shell detection (force a specific shell)
+# # set -gx CLAUDE_CODE_SHELL_PREFIX "mise exec aqua:fish-shell/fish-shell -- fish -c" # Prefix/wrap every shell command Claude runs
+# set -gx CLAUDE_CODE_FILE_READ_MAX_OUTPUT_TOKENS 50000 # Override max output tokens for the Read tool
+# set -gx CLAUDE_CODE_PROXY_RESOLVES_HOSTS true # Let the HTTP/HTTPS proxy handle DNS resolution
+# set -gx CLAUDE_CODE_EXIT_AFTER_STOP_DELAY 30000 # Auto-exit SDK mode after idle for N ms
+# set -gx CLAUDE_CODE_PLUGIN_GIT_TIMEOUT_MS 30000 # Timeout (ms) for plugin git operations
+# set -gx ENABLE_CLAUDEAI_MCP_SERVERS false # Opt out from claude.ai-synced MCP servers
+# set -gx FORCE_AUTOUPDATE_PLUGINS 1 # Allow plugin auto-update even when main updater is disabled
+# set -gx IS_DEMO 1 # Demo mode — hides email/org from the UI
+# set -gx NO_PROXY "localhost,127.0.0.1" # Bypass proxy for specified hosts (comma-separated)
+
+# ----------------------------------------------------------------------------------------------------------------------
+
 functions -e cache_and_source
 functions -e add_completion
