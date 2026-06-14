@@ -61,6 +61,7 @@
 "npm:@modelcontextprotocol/server-filesystem" = "latest"
 "npm:@modelcontextprotocol/server-memory" = "latest"
 "npm:@modelcontextprotocol/server-sequential-thinking" = "latest"
+"npm:@sveltejs/mcp" = "latest"
 "npm:chrome-devtools-mcp" = "latest"
 "npm:@upstash/context7-mcp" = "latest"
 "npm:ccstatusline" = "latest"

@@ -110,5 +110,14 @@
       "env": {
         "MCP_TIMEOUT": "60000"
       }
+    },
+    "svelte": {
+      "command": "{{ .miseBinPath }}",
+      "args": [
+        "exec",
+        "npm:@sveltejs/mcp",
+        "--",
+        "svelte-mcp"
+      ]
     }
   }
