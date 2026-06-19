@@ -1,0 +1,10 @@
+#!/bin/sh
+# Global pre-commit hook — runs in repos that do NOT override core.hooksPath.
+# husky projects bypass this; there the same check runs via ~/.config/husky/init.sh.
+checks="${XDG_CONFIG_HOME:-$HOME/.config}/git/pre-commit-checks.sh"
+[ -x "$checks" ] && { "$checks" || exit $?; }
+
+# Delegate to a project-local hook if present.
+if [ -x ".git/hooks/pre-commit" ]; then
+	exec ".git/hooks/pre-commit"
+fi

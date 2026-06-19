@@ -1,0 +1,11 @@
+#!/bin/sh
+# Global commit-msg hook — runs in repos that do NOT override core.hooksPath.
+# husky projects bypass this hook (they set their own hooksPath); there the same
+# checks run via ~/.config/husky/init.sh instead.
+checks="${XDG_CONFIG_HOME:-$HOME/.config}/git/commit-msg-checks.sh"
+[ -x "$checks" ] && { "$checks" "$1" || exit $?; }
+
+# Delegate to a project-local hook if present.
+if [ -x ".git/hooks/commit-msg" ]; then
+	exec ".git/hooks/commit-msg" "$@"
+fi
