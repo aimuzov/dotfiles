@@ -81,7 +81,8 @@ skhd --restart-service     # после правок dot_config/skhd/
 - `home/dot_bin/` - Пользовательские скрипты
 - `home/dot_bin/raycast/` - Raycast script commands (становится `~/.bin/raycast/`)
 - `home/dot_claude/` - Конфигурация Claude Code (становится `~/.claude/`)
-- `home/dot_mcp.json.tmpl` - Централизованная конфигурация MCP серверов
+- `home/dot_claude/mcp.json.tmpl` - Определения MCP серверов (единый источник правды)
+- `home/dot_mcp.json.tmpl` - Тонкая обёртка `{"mcpServers": ...}`, подключает список выше через `includeTemplate`
 - `docs/` - Документация (вне home/, не управляется chezmoi)
 - `assets/` - Статические файлы для документации
 
@@ -103,6 +104,7 @@ skhd --restart-service     # после правок dot_config/skhd/
 2. **Добавить новую конфигурацию:** Добавить в `home/dot_config/` → проверить через `chezmoi diff` → `chezmoi apply` → коммит с соответствующим scope
 3. **Изменить SketchyBar:** Отредактировать `home/dot_config/sketchybar/items/` → `sketchybar --reload`
 4. **Протестировать Yabai:** Отредактировать `home/dot_config/yabai/executable_yabairc` → `yabai --restart-service`
+5. **Добавить MCP сервер:** Правится в ДВУХ файлах — `home/dot_config/mise/config.toml` (`[tools]`, установка пакета) и `home/dot_claude/mcp.json.tmpl` (определение сервера)
 
 ### Структура документации
 
