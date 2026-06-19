@@ -1,0 +1,7 @@
+[tools]
+"npm:@aimuzov/kaiten-mcp" = "latest"
+"npm:@eslint/mcp" = "latest"
+"npm:@prettier/mcp" = "latest"
+"npm:figma-mcp" = "latest"
+"npm:chrome-devtools-mcp" = "latest"
+"npm:@sveltejs/mcp" = "latest"
