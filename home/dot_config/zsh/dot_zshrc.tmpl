@@ -1,10 +1,6 @@
 # vi: ft=zsh
 
-## -- SECRETS ----------------------------------------------------------------------------------------------------------
-
-export OPENAI_API_KEY="{{ (keepassxcAttribute "OPENAI" "API_KEY") }}"
-export GITLAB_TOKEN="{{ (keepassxcAttribute "GITLAB" "TOKEN") }}"
-export GITHUB_TOKEN="{{ (keepassxcAttribute "GITHUB" "TOKEN") }}"
+# Секреты (GITHUB_TOKEN и др.) — из session-env.tmpl через ~/.zshenv (грузится до .zshrc).
 
 EDITOR="nvim"
 GPG_TTY="$(tty)"

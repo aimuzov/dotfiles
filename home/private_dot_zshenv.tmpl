@@ -1,0 +1,11 @@
+# vi: ft=zsh
+
+SHELL_SESSIONS_DISABLE=1
+
+# Session-переменные (включая GNUPGHOME и токены) — единый источник.
+# .zshenv сорсится при КАЖДОМ запуске zsh, в т.ч. non-interactive Bash-инструментом Claude,
+# поэтому переменные видны всегда. Источник: home/.chezmoitemplates/session-env.tmpl
+{{ includeTemplate "session-env.tmpl" (dict "syntax" "posix" "homeDir" .chezmoi.homeDir) }}
+
+ZSH="$XDG_CONFIG_HOME/zsh"
+ZDOTDIR=$ZSH

@@ -1,0 +1,40 @@
+{{- /*
+  Единый источник session-переменных окружения для всех шеллов и GUI-сессии.
+
+  Подключение:
+    {{ includeTemplate "session-env.tmpl" (dict "syntax" "posix" "homeDir" .chezmoi.homeDir) }}
+
+  syntax:
+    "posix"     → export K="V"            (zsh/bash, в т.ч. .zshenv → Bash-инструмент Claude)
+    "fish"      → set -gx K "V"           (fish, через conf.d)
+    "launchctl" → launchctl setenv K "V"  (launchd, GUI-приложения)
+
+  Значения — абсолютные пути (chezmoi-резолв во время apply), а не shell-ссылки $XDG_*:
+  launchctl не разворачивает $VAR, плюс нет зависимости от порядка установки внутри файла.
+
+  Добавить переменную = одна строка в $vars. Секреты — через keepassxcAttribute
+  (рендерятся безусловно, чтобы при ротации значение обновлялось, а не залипало).
+*/ -}}
+{{- $home := .homeDir -}}
+{{- $vars := list
+    (dict "k" "XDG_CONFIG_HOME" "v" (printf "%s/.config" $home))
+    (dict "k" "XDG_DATA_HOME"   "v" (printf "%s/.local/share" $home))
+    (dict "k" "XDG_STATE_HOME"  "v" (printf "%s/.local/state" $home))
+    (dict "k" "XDG_CACHE_HOME"  "v" (printf "%s/.cache" $home))
+    (dict "k" "GNUPGHOME"       "v" (printf "%s/.local/share/gnupg" $home))
+    (dict "k" "GOPATH"          "v" (printf "%s/Library/go" $home))
+    (dict "k" "CARGO_HOME"      "v" (printf "%s/.local/share/cargo" $home))
+    (dict "k" "RUSTUP_HOME"     "v" (printf "%s/.local/share/rustup" $home))
+    (dict "k" "GITHUB_TOKEN"    "v" (keepassxcAttribute "GITHUB" "TOKEN"))
+    (dict "k" "GITLAB_TOKEN"    "v" (keepassxcAttribute "GITLAB" "TOKEN"))
+    (dict "k" "OPENAI_API_KEY"  "v" (keepassxcAttribute "OPENAI" "API_KEY"))
+-}}
+{{- range $v := $vars }}
+{{- if eq $.syntax "fish" }}
+set -gx {{ $v.k }} "{{ $v.v }}"
+{{- else if eq $.syntax "launchctl" }}
+launchctl setenv {{ $v.k }} "{{ $v.v }}"
+{{- else }}
+export {{ $v.k }}="{{ $v.v }}"
+{{- end }}
+{{- end }}

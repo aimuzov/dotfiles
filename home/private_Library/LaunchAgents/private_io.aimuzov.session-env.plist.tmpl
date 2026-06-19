@@ -6,23 +6,21 @@
     <string>io.aimuzov.session-env</string>
     <!--
       Прокидывает session-переменные в launchd-сессию, чтобы их видели
-      GUI-приложения и не-login shell'ы (например Bash-tool у Claude), которые
-      не читают config.fish.
+      GUI-приложения, запущенные из Dock/Finder (не через шелл) — они не читают
+      ни config.fish, ни .zshenv.
 
-      Файл private_ (права 600), т.к. содержит секрет GITHUB_TOKEN из KeePassXC.
+      Файл private_ (права 600), т.к. среди переменных есть секреты из KeePassXC.
 
-        GNUPGHOME    — keyring в XDG-пути, а не дефолтном ~/.gnupg; без неё gpg
-                       в не-login окружении не находит ключ ("No secret key").
-                       Дублирует config.fish осознанно (нужна на Linux/VPS без launchd).
-        GITHUB_TOKEN — токен для gh/github-MCP в GUI-приложениях.
-
-      Новые НЕсекретные переменные — просто добавить "; launchctl setenv FOO bar".
+      Источник переменных — home/.chezmoitemplates/session-env.tmpl (режим launchctl).
+      Добавить переменную = одна строка ТАМ; сюда она попадёт автоматически.
+      Каждая команда на своей строке исполняется /bin/sh -c как отдельная
+      (перевод строки = разделитель команд).
     -->
     <key>ProgramArguments</key>
     <array>
         <string>/bin/sh</string>
         <string>-c</string>
-        <string>launchctl setenv GNUPGHOME "{{ .chezmoi.homeDir }}/.local/share/gnupg"; launchctl setenv GITHUB_TOKEN "{{ (keepassxcAttribute "GITHUB" "TOKEN") }}"</string>
+        <string>{{ includeTemplate "session-env.tmpl" (dict "syntax" "launchctl" "homeDir" .chezmoi.homeDir) }}</string>
     </array>
     <key>RunAtLoad</key>
     <true/>
