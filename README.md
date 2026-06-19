@@ -65,7 +65,7 @@ $(mise where ubi:twpayne/chezmoi)/bin/chezmoi init --apply aimuzov
 
 ## Repository Structure
 
-```
+```text
 .
 ├── README.md                # Main documentation
 ├── .chezmoi.toml.tmpl      # Chezmoi configuration template
