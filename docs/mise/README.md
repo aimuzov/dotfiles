@@ -220,7 +220,7 @@ Mise uses multiple sources to determine which version to use (in order):
 
 Create `.tool-versions` in project directory:
 
-```
+```text
 node 20.0.0
 python 3.11.0
 ruby 3.2.0
@@ -388,6 +388,7 @@ echo "ruby $(cat .ruby-version)" >> .tool-versions
 ### Version Pinning
 
 Pin versions in projects:
+
 ```toml
 # .mise.toml in project root
 [tools]
@@ -403,6 +404,7 @@ python = "3.12"  # Major.minor version
 ### Tool Organization
 
 Group related tools:
+
 ```toml
 # CLI utilities via cargo
 "cargo:eza" = "latest"

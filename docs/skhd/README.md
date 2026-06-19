@@ -123,7 +123,7 @@ skhd works in tandem with:
 - All keybindings use `Alt` (Option) as the primary modifier
 - `Shift` modifier is used for destructive operations (move, warp, toggle)
 - `Ctrl` modifier is used for resizing
-- Keycodes are referenced from: https://github.com/koekeishiya/skhd/issues/1
+- Keycodes are referenced from: <https://github.com/koekeishiya/skhd/issues/1>
 
 ## Customization
 
@@ -134,6 +134,7 @@ To add custom keybindings:
 3. Reload skhd: `skhd --reload`
 
 Example:
+
 ```bash
 # Open terminal with Alt + T
 alt - t : open -a WezTerm

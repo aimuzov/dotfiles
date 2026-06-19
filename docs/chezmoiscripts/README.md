@@ -20,7 +20,7 @@ Chezmoi scripts automate the setup and maintenance of the dotfiles environment. 
 
 Scripts follow chezmoi's naming pattern:
 
-```
+```text
 run_<frequency>_<order>_<description>.fish.tmpl
 ```
 
@@ -268,7 +268,7 @@ chezmoi apply
 
 **Run once:**
 
-```
+```text
 run_once_after_N_name.fish.tmpl
 ```
 
@@ -276,7 +276,7 @@ Executes once, tracked in state database.
 
 **Run on change:**
 
-```
+```text
 run_onchange_after_N_name.fish.tmpl
 ```
 
@@ -284,7 +284,7 @@ Executes when script content changes.
 
 **Run always:**
 
-```
+```text
 run_after_N_name.fish.tmpl
 ```
 
@@ -292,7 +292,7 @@ Executes every time `chezmoi apply` runs.
 
 **Before apply:**
 
-```
+```text
 run_before_N_name.fish.tmpl
 ```
 

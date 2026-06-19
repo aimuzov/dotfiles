@@ -20,7 +20,7 @@
 
 Скрипты следуют шаблону именования chezmoi:
 
-```
+```text
 run_<frequency>_<order>_<description>.fish.tmpl
 ```
 
@@ -268,7 +268,7 @@ chezmoi apply
 
 **Запуск один раз:**
 
-```
+```text
 run_once_after_N_name.fish.tmpl
 ```
 
@@ -276,7 +276,7 @@ run_once_after_N_name.fish.tmpl
 
 **Запуск при изменении:**
 
-```
+```text
 run_onchange_after_N_name.fish.tmpl
 ```
 
@@ -284,7 +284,7 @@ run_onchange_after_N_name.fish.tmpl
 
 **Запуск всегда:**
 
-```
+```text
 run_after_N_name.fish.tmpl
 ```
 
@@ -292,7 +292,7 @@ run_after_N_name.fish.tmpl
 
 **Перед применением:**
 
-```
+```text
 run_before_N_name.fish.tmpl
 ```
 

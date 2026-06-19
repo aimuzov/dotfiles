@@ -91,6 +91,7 @@ These patterns exclude:
 - **`.claude/settings.local.json`** - Local Claude Code configuration (machine-specific)
 
 **Configured in git:**
+
 ```git
 [core]
   excludesfile = ~/.config/git/ignore

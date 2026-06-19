@@ -7,7 +7,7 @@
 ## Быстрый старт
 
 1. **Установите yabai**
-   Следуйте официальной инструкции: https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)
+   Следуйте официальной инструкции: <https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)>
 
 2. **Установите зависимости**
 
@@ -16,6 +16,7 @@
    - [sketchybar](https://github.com/FelixKratz/SketchyBar) — для отображения статуса окон/spaces (опционально)
 
 3. **Запустите сервис**
+
    ```sh
    yabai --start-service
    ```

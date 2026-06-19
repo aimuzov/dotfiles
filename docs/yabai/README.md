@@ -7,7 +7,7 @@ This directory contains custom configuration for [yabai](https://github.com/koek
 ## Quick Start
 
 1. **Install yabai**
-   Follow the official guide: https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)
+   Follow the official guide: <https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)>
 
 2. **Install dependencies**
 
@@ -16,6 +16,7 @@ This directory contains custom configuration for [yabai](https://github.com/koek
    - [sketchybar](https://github.com/FelixKratz/SketchyBar) — for displaying window/spaces status (optional)
 
 3. **Start the service**
+
    ```sh
    yabai --start-service
    ```

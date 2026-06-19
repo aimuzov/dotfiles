@@ -10,7 +10,7 @@ This is a personal macOS dotfiles repository managed with [chezmoi](https://www.
 
 This repository uses `.chezmoiroot` to specify a subdirectory as the source state root. The actual dotfiles are located in the `home/` directory:
 
-```
+```text
 dotfiles/
 ├── .chezmoiroot          # Contains "home" - specifies source root
 ├── home/                 # Source state root (chezmoi manages this)
@@ -314,7 +314,7 @@ SketchyBar is configured entirely in Lua with a modular structure:
 
 **Item structure:**
 
-```
+```text
 items/
 ├── init.lua           # Requires all items
 ├── left/              # Left-aligned items
@@ -338,7 +338,7 @@ items/
 
 **Directory structure:**
 
-```
+```text
 home/dot_config/fish/
 ├── config.fish.tmpl          # Main config (template for secrets)
 ├── conf.d/                   # Auto-loaded configs

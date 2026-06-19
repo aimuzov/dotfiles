@@ -43,7 +43,7 @@ This means you can use:
 
 Applications listed in `blacklist` are excluded from SketchyVim control. Current entries:
 
-```
+```text
 Telegram
 ```
 
@@ -87,6 +87,7 @@ brew services restart svim
 ```
 
 Or use the launch script:
+
 ```bash
 ~/.config/svim/svim.sh
 ```
@@ -149,7 +150,8 @@ See `dot_config/sketchybar/items/center/svim.lua` for indicator configuration.
 3. Restart SketchyVim: `brew services restart svim`
 
 Example:
-```
+
+```text
 Telegram
 Terminal
 WezTerm

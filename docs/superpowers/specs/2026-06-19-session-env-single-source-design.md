@@ -53,7 +53,7 @@
 а не shell-ссылки `$XDG_DATA_HOME/...`. Причина: `launchctl setenv` не разворачивает `$VAR`,
 плюс отсутствует зависимость от порядка установки внутри файла.
 
-```
+```text
                  home/.chezmoitemplates/session-env.tmpl   (единый список $vars)
                           /                |                 \
         syntax="posix"   /    syntax="fish"|     syntax="launchctl" \
@@ -131,9 +131,11 @@ export {{ $v.k }}="{{ $v.v }}"
 ## Изменения по файлам
 
 ### Новый: `home/.chezmoitemplates/session-env.tmpl`
+
 См. референс выше.
 
 ### `home/dot_zshenv` → `home/private_dot_zshenv.tmpl`
+
 Переименовать (получает права 600 и обработку шаблона). Партиал подключается **в начале**,
 до установки `ZDOTDIR` (тот зависит от `XDG_CONFIG_HOME`, который теперь приходит из партиала):
 
@@ -152,6 +154,7 @@ ZDOTDIR=$ZSH
 переезжает в партиал, остальные сохраняются.)
 
 ### Новый: `home/dot_config/fish/conf.d/private_session-env.fish.tmpl`
+
 Права 600. fish сорсит `conf.d/*.fish` **до** `config.fish`:
 
 ```gotemplate
@@ -160,6 +163,7 @@ ZDOTDIR=$ZSH
 ```
 
 ### `home/dot_config/fish/config.fish.tmpl`
+
 Удалить (теперь приходит из партиала через conf.d):
 - секреты — блок `# -- SECRETS --` со строками `OPENAI_API_KEY`, `GITLAB_TOKEN`, `GITHUB_TOKEN` (≈228-230);
 - `set -gx CARGO_HOME ...`, `set -gx GNUPGHOME ...`, `set -gx RUSTUP_HOME ...`, `set -gx GOPATH ...` (≈286-290);
@@ -171,10 +175,12 @@ ZDOTDIR=$ZSH
 - WEBOS-переменные (`LG_WEBOS_TV_SDK_HOME`, `WEBOS_CLI_TV`) — вне scope.
 
 ### `home/dot_config/zsh/dot_zshrc.tmpl`
+
 Удалить блок `## -- SECRETS --` (строки 5-7: `OPENAI_API_KEY`, `GITLAB_TOKEN`, `GITHUB_TOKEN`).
 Остальное (`EDITOR`, `GPG_TTY`, WEBOS/TIZEN, brew, mise, oh-my-posh) — без изменений.
 
 ### `home/private_Library/LaunchAgents/private_io.aimuzov.session-env.plist.tmpl`
+
 Заменить хардкод `launchctl setenv` в `<string>` на партиал (`launchctl`). Каждая команда на своей
 строке исполняется `/bin/sh -c` как отдельная (перевод строки = разделитель команд). Обновить
 комментарий: источник переменных теперь `session-env.tmpl`, добавление новой — там.

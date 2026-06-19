@@ -340,12 +340,14 @@ esac
 ### Best Practices
 
 1. **Use absolute paths** for executables:
+
    ```bash
    /opt/homebrew/bin/fish  # ✅ Good
    fish                     # ❌ Bad (may not be found)
    ```
 
 2. **Handle errors**:
+
    ```bash
    if ! command -v tailscale &> /dev/null; then
        echo "❌ Tailscale not found"
@@ -389,6 +391,7 @@ Raycast scripts are written in bash, but you can call Fish functions to:
 ### Example: restart_vm
 
 **Raycast script** ([`executable_restart-vm.sh`](../../dot_bin/raycast/executable_restart-vm.sh)):
+
 ```bash
 #!/bin/bash
 # ... metadata ...
@@ -396,6 +399,7 @@ Raycast scripts are written in bash, but you can call Fish functions to:
 ```
 
 **Fish function** ([`restart_vm.fish`](../../dot_config/fish/functions/core/restart_vm.fish)):
+
 ```fish
 function restart_vm
     yabai --restart-service
@@ -410,6 +414,7 @@ end
 ### Creating Fish Function for Raycast
 
 1. Create function in `dot_config/fish/functions/`:
+
    ```fish
    # dot_config/fish/functions/core/my_raycast_function.fish
    function my_raycast_function
@@ -418,6 +423,7 @@ end
    ```
 
 2. Create Raycast script:
+
    ```bash
    # dot_bin/raycast/executable_my_script.sh
    #!/bin/bash
@@ -426,6 +432,7 @@ end
    ```
 
 3. Apply changes:
+
    ```bash
    chezmoi apply
    ```
@@ -460,13 +467,17 @@ end
 
 **Solutions:**
 1. Check script has execute permissions:
+
    ```bash
    ls -la ~/.bin/raycast/script.sh
    ```
+
 2. If not executable:
+
    ```bash
    chmod +x ~/.bin/raycast/script.sh
    ```
+
 3. Verify chezmoi uses `executable_` prefix in source file
 
 ### Command Not Found
@@ -475,14 +486,19 @@ end
 
 **Solutions:**
 1. Use absolute paths:
+
    ```bash
    /opt/homebrew/bin/tailscale  # Instead of just 'tailscale'
    ```
+
 2. Find command location:
+
    ```bash
    which tailscale
    ```
+
 3. Verify tool is installed:
+
    ```bash
    brew list | grep tailscale
    ```
@@ -494,13 +510,17 @@ end
 **Solutions:**
 1. Verify Fish path: `/opt/homebrew/bin/fish` (not `/usr/local/bin/fish`)
 2. Test function directly in Fish:
+
    ```fish
    fish -c "function_name"
    ```
+
 3. Check function is defined:
+
    ```fish
    type function_name
    ```
+
 4. Verify function file exists: `ls ~/.config/fish/functions/`
 
 ### Metadata Not Recognized
@@ -519,15 +539,20 @@ end
 
 **Solutions:**
 1. Test script from terminal:
+
    ```bash
    ~/.bin/raycast/script.sh argument
    ```
+
 2. Add timeout to commands:
+
    ```bash
    timeout 10s command_that_might_hang
    ```
+
 3. Check for missing input (script waiting for stdin)
 4. Add debug output:
+
    ```bash
    echo "Step 1 completed"
    ```
@@ -540,7 +565,9 @@ end
 1. Verify dropdown `value` field (not `title` which is displayed)
 2. Check argument order: `$1`, `$2`, `$3` match declaration order
 3. Test with debug output:
+
    ```bash
    echo "Received argument: $1"
    ```
+
 4. Verify quotes in JSON: use `\"` for nested quotes
