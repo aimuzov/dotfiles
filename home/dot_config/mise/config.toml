@@ -56,7 +56,6 @@
 
 "npm:@aimuzov/sketchybar-app-font" = "latest"
 "npm:@eslint/mcp" = "latest"
-"npm:@georgesg/arc-cli" = "latest"
 "npm:@modelcontextprotocol/server-everything" = "latest"
 "npm:@modelcontextprotocol/server-filesystem" = "latest"
 "npm:@modelcontextprotocol/server-memory" = "latest"

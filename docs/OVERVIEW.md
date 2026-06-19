@@ -164,7 +164,7 @@ All development tools are managed via mise (configured in `dot_config/mise/confi
 
 - `asdf:` - Traditional asdf plugins
 - `cargo:` - Rust packages (eza, yazi, bottom, tokei, vivid, genact)
-- `npm:` - Node packages (Claude Code, Arc CLI, SketchyBar App Font)
+- `npm:` - Node packages (Claude Code, SketchyBar App Font)
 - `pipx:` - Python CLI tools (httpie, neovim-remote)
 - `ubi:` - Direct GitHub releases (ripgrep, fd, bat, fzf, lazygit, chezmoi, etc.)
 

@@ -50,7 +50,6 @@ Node.js пакеты с опциональным отображением exe:
 ```toml
 "npm:@aimuzov/sketchybar-app-font" = { version = "latest", exe = "sketchybar-app-font" }
 "npm:@anthropic-ai/claude-code" = { version = "latest" }
-"npm:@georgesg/arc-cli" = { version = "latest", exe = "arc-cli" }
 ```
 
 ### Бэкенд pipx

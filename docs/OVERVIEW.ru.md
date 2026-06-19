@@ -151,7 +151,7 @@ mise use -g node@latest
 
 - `asdf:` - Традиционные плагины asdf
 - `cargo:` - Пакеты Rust (eza, yazi, bottom, tokei, vivid, genact)
-- `npm:` - Пакеты Node (Claude Code, Arc CLI, SketchyBar App Font)
+- `npm:` - Пакеты Node (Claude Code, SketchyBar App Font)
 - `pipx:` - CLI инструменты Python (httpie, neovim-remote)
 - `ubi:` - Прямые релизы с GitHub (ripgrep, fd, bat, fzf, lazygit, chezmoi и т.д.)
 
