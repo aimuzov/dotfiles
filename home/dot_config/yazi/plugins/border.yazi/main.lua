@@ -15,17 +15,17 @@ return {
 				ui.Border(ui.Edge.TOP):area(self._area):type(ui.Border.PLAIN):style(th.mgr.border_style),
 				ui.Bar(ui.Edge.TOP)
 					:area(ui.Rect({
-						x = chunks[1].right - 1,
+						x = chunks[2].x,
 						y = chunks[1].y,
-						w = ya.clamp(0, self._area.w - chunks[2].right - 1, 1),
+						w = ya.clamp(0, self._area.w - chunks[2].x, 1),
 						h = self._area.h,
 					}))
 					:symbol("┬"),
 				ui.Bar(ui.Edge.TOP)
 					:area(ui.Rect({
-						x = chunks[2].right,
+						x = chunks[2].right - 1,
 						y = chunks[2].y,
-						w = ya.clamp(0, self._area.w - chunks[2].right, 1),
+						w = ya.clamp(0, self._area.w - (chunks[2].right - 1), 1),
 						h = self._area.h,
 					}))
 					:symbol("┬"),
