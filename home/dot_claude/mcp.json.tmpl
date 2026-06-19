@@ -1,59 +1,4 @@
 {
-    "filesystem": {
-      "command": "{{ .miseBinPath }}",
-      "args": [
-        "exec",
-        "npm:@modelcontextprotocol/server-filesystem",
-        "--",
-        "mcp-server-filesystem",
-        "{{ .chezmoi.homeDir }}"
-      ]
-    },
-    "git": {
-      "command": "{{ .miseBinPath }}",
-      "args": [
-        "exec",
-        "pipx:mcp-server-git",
-        "--",
-        "mcp-server-git"
-      ]
-    },
-    "fetch": {
-      "command": "{{ .miseBinPath }}",
-      "args": [
-        "exec",
-        "pipx:mcp-server-fetch",
-        "--",
-        "mcp-server-fetch"
-      ]
-    },
-    "memory": {
-      "command": "{{ .miseBinPath }}",
-      "args": [
-        "exec",
-        "npm:@modelcontextprotocol/server-memory",
-        "--",
-        "mcp-server-memory"
-      ]
-    },
-    "everything": {
-      "command": "{{ .miseBinPath }}",
-      "args": [
-        "exec",
-        "npm:@modelcontextprotocol/server-everything",
-        "--",
-        "mcp-server-everything"
-      ]
-    },
-    "sequential-thinking": {
-      "command": "{{ .miseBinPath }}",
-      "args": [
-        "exec",
-        "npm:@modelcontextprotocol/server-sequential-thinking",
-        "--",
-        "mcp-server-sequential-thinking"
-      ]
-    },
     "context7": {
       "command": "{{ .miseBinPath }}",
       "args": [
@@ -64,36 +9,6 @@
 		"--api-key",
 		"{{ keepassxcAttribute "CTX7" "TOKEN" }}"
       ]
-    },
-    "eslint": {
-      "command": "{{ .miseBinPath }}",
-      "args": [
-        "exec",
-        "npm:@eslint/mcp",
-        "--",
-        "mcp"
-      ]
-    },
-    "devtools": {
-      "command": "{{ .miseBinPath }}",
-      "args": [
-        "exec",
-        "npm:chrome-devtools-mcp",
-        "--",
-        "chrome-devtools-mcp"
-      ]
-    },
-    "figma": {
-      "command": "{{ .miseBinPath }}",
-      "args": [
-        "exec",
-        "npm:figma-mcp",
-        "--",
-        "figma-mcp"
-      ],
-      "env": {
-        "FIGMA_API_KEY": "{{ keepassxcAttribute "FIGMA" "TOKEN" }}"
-      }
     },
     "serena": {
       "command": "{{ .miseBinPath }}",
@@ -110,14 +25,5 @@
       "env": {
         "MCP_TIMEOUT": "60000"
       }
-    },
-    "svelte": {
-      "command": "{{ .miseBinPath }}",
-      "args": [
-        "exec",
-        "npm:@sveltejs/mcp",
-        "--",
-        "svelte-mcp"
-      ]
     }
   }
