@@ -48,6 +48,21 @@ ours=$(cat <<'CHEZMOI_SETTINGS_EOF'
           {
             "type": "command",
             "command": "bash ~/.claude/hooks/fish-shell-wrapper.sh"
+          },
+          {
+            "type": "command",
+            "command": "bash ~/.claude/hooks/npm-exact-version.sh"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ~/.claude/hooks/mcp-two-files-reminder.sh"
           }
         ]
       }
