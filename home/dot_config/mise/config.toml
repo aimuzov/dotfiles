@@ -68,6 +68,7 @@
 "pipx:mcp-server-git" = "latest"
 "pipx:mhinz/neovim-remote" = "latest"
 "pipx:serena-agent" = { version = "latest", uvx_args = "-p 3.13" }
+"pipx:things-mcp" = "latest"
 "pipx:yt-dlp" = "latest"
 
 "ubi:JanDeDobbeleer/oh-my-posh" = "latest"

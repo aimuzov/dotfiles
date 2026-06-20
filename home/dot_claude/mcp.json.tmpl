@@ -25,5 +25,14 @@
       "env": {
         "MCP_TIMEOUT": "60000"
       }
+    },
+    "things": {
+      "command": "{{ .miseBinPath }}",
+      "args": [
+        "exec",
+        "pipx:things-mcp",
+        "--",
+        "things-mcp"
+      ]
     }
   }
