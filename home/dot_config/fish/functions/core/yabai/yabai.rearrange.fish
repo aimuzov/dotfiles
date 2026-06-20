@@ -23,14 +23,11 @@ function yabai.rearrange
     end
 
     if test "$space_index" -eq 2
-        set dia_windows (yabai -m query --windows --space $space_index | jq '[.[] | select(.app=="Dia")]')
-        set dia_count (echo "$dia_windows" | jq 'length')
+        yabai.stack_apps $space_index Dia
+    end
 
-        if test "$dia_count" -gt 1
-            set first_dia_id (echo "$dia_windows" | jq '.[0].id')
-            set last_dia_id (echo "$dia_windows" | jq '.[-1].id')
-            yabai -m window "$last_dia_id" --stack "$first_dia_id"
-        end
+    if test "$space_index" -eq 3
+        yabai.stack_apps $space_index Things Calendar Mail
     end
 
     sketchybar --trigger window_focus
