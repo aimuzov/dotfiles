@@ -49,6 +49,7 @@
 	"keyring",
 ] }
 
+"github:aimuzov/happ-cli" = { version = "latest", exe = "happ" }
 "github:matterhorn-chat/matterhorn" = "latest"
 "github:zdyxry/tokui" = "latest"
 
