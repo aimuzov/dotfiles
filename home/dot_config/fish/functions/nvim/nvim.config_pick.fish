@@ -1,4 +1,4 @@
-function nvim_config_pick
+function nvim.config_pick
     set config (fd --max-depth 1 --glob '{nvim,nvim-*}' $XDG_CONFIG_HOME | fzf --prompt="Neovim Configs > " --height=~50% --layout=reverse --border --exit-0)
 
     if test -z "$config"

@@ -280,11 +280,13 @@ end
 
 ### Функции, связанные с [Neovim](https://neovim.io/)
 
-- `nvim_config_pick`: Интерактивная функция для выбора и переключения между различными конфигурациями [Neovim](https://neovim.io/)
+Расположены в `functions/nvim/`:
+
+- `nvim.config_pick`: Интерактивная функция для выбора и переключения между различными конфигурациями [Neovim](https://neovim.io/)
   - Использует [`fd`](https://github.com/sharkdp/fd) и [FZF](https://github.com/junegunn/fzf) для выбора конфигурации
   - Поддерживает несколько конфигураций [Neovim](https://neovim.io/) через `NVIM_APPNAME`
-- `nvim_update`: Обновление [Neovim](https://neovim.io/) и его плагинов
-- `nvim_disable_builtin_colorschemes`: Отключение встроенных цветовых схем в [Neovim](https://neovim.io/)
+- `nvim.update`: Обновление [Neovim](https://neovim.io/) и его плагинов
+- `nvim.disable_builtin_colorschemes`: Отключение встроенных цветовых схем в [Neovim](https://neovim.io/)
 
 ### Функции, связанные с Git
 

@@ -1,4 +1,4 @@
-function nvim_update --description="Update Neovim to a specific tag"
+function nvim.update --description="Update Neovim to a specific tag"
     set tag $argv[1]
     set echo_preset "$(set_color blue) [mise] $(set_color black)"
 
@@ -27,6 +27,6 @@ function nvim_update --description="Update Neovim to a specific tag"
     echo "$echo_preset nvim updated:"
     echo "$nvim_path/bin/nvim --version"
 
-    nvim_disable_builtin_colorschemes
+    nvim.disable_builtin_colorschemes
     echo "$echo_preset default colorscheme disabled"
 end

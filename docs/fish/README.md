@@ -278,11 +278,13 @@ The configuration includes several custom functions organized in the `functions`
 
 ### [Neovim](https://neovim.io/) Related Functions
 
-- `nvim_config_pick`: Interactive function to select and switch between different [Neovim](https://neovim.io/) configurations
+Located in `functions/nvim/`:
+
+- `nvim.config_pick`: Interactive function to select and switch between different [Neovim](https://neovim.io/) configurations
   - Uses [`fd`](https://github.com/sharkdp/fd) and [FZF](https://github.com/junegunn/fzf) for configuration selection
   - Supports multiple [Neovim](https://neovim.io/) configurations via `NVIM_APPNAME`
-- `nvim_update`: Updates [Neovim](https://neovim.io/) and its plugins
-- `nvim_disable_builtin_colorschemes`: Disables built-in color schemes in [Neovim](https://neovim.io/)
+- `nvim.update`: Updates [Neovim](https://neovim.io/) and its plugins
+- `nvim.disable_builtin_colorschemes`: Disables built-in color schemes in [Neovim](https://neovim.io/)
 
 ### Git Related Functions
 
