@@ -1,0 +1,40 @@
+#!/usr/bin/env fish
+# vi: ft=fish
+
+# Патчит Spotify в два шага: сначала SpotX (убрать рекламу, премиум-фичи,
+# заблокировать автообновление), затем тема Catppuccin через spicetify ПОВЕРХ.
+# Порядок важен: SpotX патчит чистый клиент, spicetify кладёт тему на результат.
+#
+# Перезапускается при смене brew-версии Spotify (строка ниже меняется → chezmoi
+# re-run). brew — единый источник: SpotX -B глушит встроенный апдейтер Spotify,
+# поэтому новая версия приходит только через `brew upgrade --cask spotify`.
+# Spotify (brew) version: {{ output "bash" "-c" "brew list --cask --versions spotify 2>/dev/null | awk '{print $2}'" | trim }}
+
+{{ if (eq .chezmoi.os "darwin") -}}
+
+# Spotify не установлен — выходим тихо (например, на свежей машине до установки Spotify).
+if not test -d /Applications/Spotify.app
+    exit 0
+end
+
+# 1. SpotX: -p премиум-фичи, -l фон текстов, -f форс-переприменение, -B блок апдейта.
+$HOME/.local/share/spotx/spotx.sh -p -l -f -B
+
+# 2. Тема Catppuccin поверх SpotX-патча. spicetify зовётся через абсолютный путь
+#    к mise (mise-shims может не быть в PATH).
+set -l spicetify {{ .miseBinPath }} exec github:spicetify/cli -- spicetify
+
+$spicetify config \
+    current_theme catppuccin \
+    color_scheme macchiato \
+    inject_css 1 \
+    inject_theme_js 1 \
+    replace_colors 1 \
+    overwrite_assets 1
+
+# Всегда `backup apply`: backup снимает свежий слепок уже-пропатченного SpotX
+# клиента, apply кладёт тему. Просто `apply` восстановил бы старый бэкап без
+# SpotX-патча и затёр бы его.
+$spicetify backup apply
+
+{{ end -}}

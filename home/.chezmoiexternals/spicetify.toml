@@ -1,0 +1,11 @@
+# Тема Catppuccin для Spotify (через spicetify).
+# Кладётся в Themes/catppuccin; flavor (macchiato/latte) выбирается в config-xpui.ini
+# скриптом ~/.bin/spicetify-theme-sync по текущей системной теме.
+# Spicetify на macOS читает конфиг из ~/.config/spicetify (XDG не учитывается).
+[".config/spicetify/Themes/catppuccin"]
+type = "archive"
+url = "https://github.com/catppuccin/spicetify/archive/main.tar.gz"
+exact = true
+stripComponents = 2
+refreshPeriod = "168h"
+include = ["*/catppuccin/**"]
