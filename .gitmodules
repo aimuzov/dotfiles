@@ -1,0 +1,3 @@
+[submodule "home/Projects"]
+	path = home/Projects
+	url = git@github.com:aimuzov/dotfiles-projects.git

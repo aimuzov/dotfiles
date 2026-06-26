@@ -41,3 +41,6 @@
 
 # Прочее (unrelated)
 .config/fish/server.config.fish
+
+# Submodule home/Projects (приватный репо): мета-файлы не разворачиваем в ~/Projects
+Projects/README.md
