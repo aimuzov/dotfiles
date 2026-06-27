@@ -2,3 +2,6 @@
 .serena
 **/.claude/settings.local.json
 **/.claude/plans
+
+# superpowers-артефакты (specs/plans) — не коммитим ни в одном проекте
+docs/superpowers/
