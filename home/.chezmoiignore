@@ -44,3 +44,9 @@
 
 # Submodule home/Projects (приватный репо): мета-файлы не разворачиваем в ~/Projects
 Projects/README.md
+
+# Submodule home/dot_ssh (приватный репо): мета-файлы не разворачиваем в ~/.ssh
+.ssh/README.md
+
+# Submodule home/dot_local/share/private_gnupg (приватный репо): мета-файлы не разворачиваем в ~/.local/share/gnupg
+.local/share/gnupg/README.md

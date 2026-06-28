@@ -1,3 +1,9 @@
 [submodule "home/Projects"]
 	path = home/Projects
 	url = git@github.com:aimuzov/dotfiles-projects.git
+[submodule "home/dot_ssh"]
+	path = home/dot_ssh
+	url = git@github.com:aimuzov/dotfiles-ssh.git
+[submodule "home/dot_local/share/private_gnupg"]
+	path = home/dot_local/share/private_gnupg
+	url = git@github.com:aimuzov/dotfiles-gnupg.git
