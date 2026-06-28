@@ -7,3 +7,6 @@
 [submodule "home/dot_local/share/private_gnupg"]
 	path = home/dot_local/share/private_gnupg
 	url = git@github.com:aimuzov/dotfiles-gnupg.git
+[submodule "home/dot_claude"]
+	path = home/dot_claude
+	url = git@github.com:aimuzov/dotfiles-claude.git

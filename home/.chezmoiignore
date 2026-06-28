@@ -50,3 +50,6 @@ Projects/README.md
 
 # Submodule home/dot_local/share/private_gnupg (приватный репо): мета-файлы не разворачиваем в ~/.local/share/gnupg
 .local/share/gnupg/README.md
+
+# Submodule home/dot_claude (приватный репо): мета-файлы не разворачиваем в ~/.claude
+.claude/README.md
