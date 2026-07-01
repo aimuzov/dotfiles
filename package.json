@@ -31,9 +31,9 @@
   },
   "homepage": "https://github.com/aimuzov/dotfiles#readme",
   "devDependencies": {
-    "@commitlint/config-conventional": "20.5.0",
+    "@commitlint/config-conventional": "21.2.0",
     "commitizen": "4.3.0",
-    "commitlint": "20.5.0",
+    "commitlint": "21.2.0",
     "cz-git": "1.13.0"
   },
   "config": {
