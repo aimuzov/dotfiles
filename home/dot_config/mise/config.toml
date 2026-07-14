@@ -51,6 +51,7 @@
 
 "github:aimuzov/happ-cli" = { version = "latest", exe = "happ" }
 "github:matterhorn-chat/matterhorn" = "latest"
+"github:spicetify/cli" = { version = "latest", exe = "spicetify" }
 "github:zdyxry/tokui" = "latest"
 
 "gitlab:gitlab-org/cli" = "latest"

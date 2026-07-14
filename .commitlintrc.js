@@ -20,6 +20,7 @@ const scopes = [
   "shell",
   "sketchybar",
   "skhd",
+  "spicetify",
   "ssh",
   "svim",
   "termscp",
