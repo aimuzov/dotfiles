@@ -8,6 +8,6 @@ function nvim.config_pick
 
     echo "$config (mise which nvim) $argv"
 
-    # Установить переменную NVIM_APPNAME и запустить Neovim
+    # Set NVIM_APPNAME and launch Neovim
     env NVIM_APPNAME=(basename $config) (mise which nvim) $argv
 end

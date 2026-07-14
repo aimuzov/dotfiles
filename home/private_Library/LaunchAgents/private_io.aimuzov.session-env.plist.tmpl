@@ -5,16 +5,16 @@
     <key>Label</key>
     <string>io.aimuzov.session-env</string>
     <!--
-      Прокидывает session-переменные в launchd-сессию, чтобы их видели
-      GUI-приложения, запущенные из Dock/Finder (не через шелл) — они не читают
-      ни config.fish, ни .zshenv.
+      Pushes session variables into the launchd session so they are visible to
+      GUI apps launched from Dock/Finder (not via a shell) — those read neither
+      config.fish nor .zshenv.
 
-      Файл private_ (права 600), т.к. среди переменных есть секреты из KeePassXC.
+      A private_ file (mode 600), since the variables include secrets from KeePassXC.
 
-      Источник переменных — home/.chezmoitemplates/session-env.tmpl (режим launchctl).
-      Добавить переменную = одна строка ТАМ; сюда она попадёт автоматически.
-      Каждая команда на своей строке исполняется /bin/sh -c как отдельная
-      (перевод строки = разделитель команд).
+      Variable source — home/.chezmoitemplates/session-env.tmpl (launchctl mode).
+      Adding a variable = one line THERE; it propagates here automatically.
+      Each command on its own line is run by /bin/sh -c as a separate one
+      (newline = command separator).
     -->
     <key>ProgramArguments</key>
     <array>

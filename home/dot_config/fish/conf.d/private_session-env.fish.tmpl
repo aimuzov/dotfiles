@@ -1,6 +1,6 @@
 # vi: ft=fish
 
-# Session-переменные (включая GNUPGHOME и токены) — единый источник.
-# conf.d/*.fish сорсятся ДО config.fish, поэтому переменные доступны всему конфигу.
-# Источник: home/.chezmoitemplates/session-env.tmpl
+# Session variables (including GNUPGHOME and tokens) — single source of truth.
+# conf.d/*.fish are sourced BEFORE config.fish, so the variables are available to the whole config.
+# Source: home/.chezmoitemplates/session-env.tmpl
 {{ includeTemplate "session-env.tmpl" (dict "syntax" "fish" "homeDir" .chezmoi.homeDir) }}

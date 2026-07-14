@@ -27,7 +27,7 @@ end
 # -- XDG ---------------------------------------------------------------------------------------------------------------
 
 # https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html
-# XDG_CONFIG_HOME / DATA / STATE / CACHE — из session-env.tmpl (conf.d, грузится до config.fish)
+# XDG_CONFIG_HOME / DATA / STATE / CACHE — from session-env.tmpl (conf.d, loaded before config.fish)
 set -Ux XDG_RUNTIME_DIR $HOME/Library/Caches/TemporaryItems
 
 for xdgdir in (path filter -vd $XDG_CONFIG_HOME $XDG_DATA_HOME $XDG_STATE_HOME $XDG_CACHE_HOME)
@@ -274,7 +274,7 @@ end
 
 # -- PATH --------------------------------------------------------------------------------------------------------------
 
-# CARGO_HOME / GNUPGHOME / RUSTUP_HOME / GOPATH — из session-env.tmpl (conf.d, до config.fish)
+# CARGO_HOME / GNUPGHOME / RUSTUP_HOME / GOPATH — from session-env.tmpl (conf.d, before config.fish)
 
 # https://webostv.developer.lge.com/develop/tools/cli-installation
 set -gx LG_WEBOS_TV_SDK_HOME "$HOME/stv-tools/webos-sdk"

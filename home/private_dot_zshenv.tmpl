@@ -2,9 +2,9 @@
 
 SHELL_SESSIONS_DISABLE=1
 
-# Session-переменные (включая GNUPGHOME и токены) — единый источник.
-# .zshenv сорсится при КАЖДОМ запуске zsh, в т.ч. non-interactive Bash-инструментом Claude,
-# поэтому переменные видны всегда. Источник: home/.chezmoitemplates/session-env.tmpl
+# Session variables (including GNUPGHOME and tokens) — single source of truth.
+# .zshenv is sourced on EVERY zsh launch, including Claude's non-interactive Bash tool,
+# so the variables are always visible. Source: home/.chezmoitemplates/session-env.tmpl
 {{ includeTemplate "session-env.tmpl" (dict "syntax" "posix" "homeDir" .chezmoi.homeDir) }}
 
 ZSH="$XDG_CONFIG_HOME/zsh"

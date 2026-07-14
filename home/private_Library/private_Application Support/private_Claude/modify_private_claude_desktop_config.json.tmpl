@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# MCP-серверы из общего шаблона (тот же используется для ~/.claude/mcp.json).
+# MCP servers from the shared template (the same one used for ~/.claude/mcp.json).
 mcp_json=$(cat <<'CHEZMOI_MCP_EOF'
 {{ includeTemplate "dot_claude/mcp.json.tmpl" . | trim }}
 CHEZMOI_MCP_EOF
@@ -9,14 +9,14 @@ CHEZMOI_MCP_EOF
 
 MISE="{{ .miseBinPath }}"
 
-# Текущее содержимое целевого файла; при первом apply stdin пустой.
+# Current content of the target file; on the first apply stdin is empty.
 input=$(cat)
 if [[ -z "$input" ]] || ! printf '%s' "$input" | "$MISE" exec -- jq empty >/dev/null 2>&1; then
   input='{}'
 fi
 
-# Перезаписываем только наши поля, не трогая runtime-state приложения
-# (epitaxyPrefs, remoteToolsDeviceName и т.п.).
+# Overwrite only our fields, leaving the app's runtime state untouched
+# (epitaxyPrefs, remoteToolsDeviceName, etc.).
 printf '%s' "$input" | "$MISE" exec -- jq \
   --argjson mcp "$mcp_json" '
     .mcpServers = $mcp

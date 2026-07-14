@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Весь config.json принадлежит dotfiles и задаётся здесь (поля ниже побеждают).
-# Исключение — "webappVersion": его TiMe обновляет сам при автообновлении
-# веб-аппа, поэтому это поле берётся из текущего целевого файла. Так chezmoi
-# не показывает изменение только из-за смены версии веб-аппа.
+# The entire config.json is owned by dotfiles and defined here (the fields below win).
+# Exception — "webappVersion": TiMe updates it itself when the web app
+# auto-updates, so this field is taken from the current target file. That way chezmoi
+# does not show a change just because the web app version changed.
 ours=$(cat <<'CHEZMOI_TIME_EOF'
 {
   "version": 3,
@@ -58,15 +58,15 @@ CHEZMOI_TIME_EOF
 
 MISE="{{ .miseBinPath }}"
 
-# Текущее содержимое целевого файла; при первом apply stdin пустой.
+# Current content of the target file; on the first apply stdin is empty.
 input=$(cat)
 if [[ -z "$input" ]] || ! printf '%s' "$input" | "$MISE" exec -- jq empty >/dev/null 2>&1; then
   input='{}'
 fi
 
-# $ours задаёт весь файл, но webappVersion берём из текущего файла (что записал
-# TiMe), если он там есть. Результат печатаем без финального перевода строки —
-# TiMe пишет config.json без него, иначе chezmoi показывал бы вечное изменение.
+# $ours defines the whole file, but webappVersion is taken from the current file
+# (written by TiMe), if present. We print the result without a trailing newline —
+# TiMe writes config.json without one, otherwise chezmoi would show a perpetual change.
 result=$(printf '%s' "$input" | "$MISE" exec -- jq --argjson ours "$ours" \
   '$ours + (if has("webappVersion") then {webappVersion} else {} end)')
 printf '%s' "$result"

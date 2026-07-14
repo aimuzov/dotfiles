@@ -79,6 +79,6 @@ yabai -m rule --apply
 yabai.rearrange
 
 # # -- skhd ------------------------------------------------------------------------------------------------------------------
-# macOS 26: launchd-агенты не могут создавать event tap, поэтому запускаем skhd из yabairc
+# macOS 26: launchd agents cannot create an event tap, so we launch skhd from yabairc
 command pkill -x skhd 2>/dev/null
 skhd &
