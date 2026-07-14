@@ -29,6 +29,8 @@
     (dict "k" "GITLAB_TOKEN"    "v" (keepassxcAttribute "GITLAB" "TOKEN"))
     (dict "k" "OPENAI_API_KEY"  "v" (keepassxcAttribute "OPENAI" "API_KEY"))
     (dict "k" "OPENROUTER_API_KEY" "v" (keepassxcAttribute "OPENROUTER" "API_KEY"))
+    (dict "k" "AWS_ACCESS_KEY_ID" "v" (keepassxcAttribute "AWS" "ACCESS_KEY_ID"))
+    (dict "k" "AWS_SECRET_ACCESS_KEY" "v" (keepassxcAttribute "AWS" "SECRET_ACCESS_KEY"))
 -}}
 {{- range $v := $vars }}
 {{- if eq $.syntax "fish" }}
