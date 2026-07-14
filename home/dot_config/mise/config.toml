@@ -63,6 +63,7 @@
 "npm:@upstash/context7-mcp" = "latest"
 "npm:ccstatusline" = "latest"
 
+"pipx:awscli" = "latest"
 "pipx:twc-cli" = "latest"
 "pipx:httpie" = "latest"
 "pipx:mcp-server-fetch" = "latest"
