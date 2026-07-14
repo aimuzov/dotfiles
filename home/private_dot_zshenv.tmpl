@@ -9,3 +9,12 @@ SHELL_SESSIONS_DISABLE=1
 
 ZSH="$XDG_CONFIG_HOME/zsh"
 ZDOTDIR=$ZSH
+
+# mise shims at the front of PATH.
+# Interactive shells activate mise via `mise activate` and get exact per-project
+# versions. But non-interactive zsh (Claude's Bash tool, git hooks) inherits a
+# FROZEN PATH from the parent, where `installs/<tool>/latest/bin` sits ahead of the
+# shims and overrides versions from the local .mise.toml/.tool-versions.
+# shims resolve the version dynamically by cwd, so we put them first.
+typeset -gU path PATH
+path=("$XDG_DATA_HOME/mise/shims" $path)

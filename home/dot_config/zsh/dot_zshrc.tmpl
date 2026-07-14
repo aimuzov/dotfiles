@@ -48,7 +48,10 @@ export ASDF_CONFIG_FILE="$HOME/.config/asdf/asdfrc"
 
 ## -- MISE -------------------------------------------------------------------------------------------------------------
 
-zsh-defer -t 0.1 eval "$(mise activate zsh)"
+# --shims: версия резолвится самими shims по cwd на каждый вызов, без зависимости
+# от chpwd/precmd-хука. Иначе неинтерактивные команды (Claude Bash tool, git hooks)
+# не переключают версию по локальному .mise.toml и берут активную-в $HOME.
+zsh-defer -t 0.1 eval "$(mise activate zsh --shims)"
 zsh-defer source "$ZSH/plugins/mise/mise.plugin.zsh"
 
 MISE_INSTALL_PATH="{{ .miseBinPath }}"
