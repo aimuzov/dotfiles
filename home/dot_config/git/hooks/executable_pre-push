@@ -1,0 +1,11 @@
+#!/bin/sh
+# Global pre-push hook — runs in repos that do NOT override core.hooksPath.
+# husky projects bypass this; there a repo-local .husky/pre-push shim execs the
+# same shared check.
+checks="${XDG_CONFIG_HOME:-$HOME/.config}/git/pre-push-checks.sh"
+[ -x "$checks" ] && { "$checks" "$@" || exit $?; }
+
+# Delegate to a project-local hook if present.
+if [ -x ".git/hooks/pre-push" ]; then
+	exec ".git/hooks/pre-push" "$@"
+fi
