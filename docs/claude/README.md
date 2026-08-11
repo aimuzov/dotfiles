@@ -10,7 +10,7 @@ The configuration includes:
 
 - **MCP Servers** - Model Context Protocol servers for extended capabilities
 - **Centralized Configuration** - Single source of truth for MCP settings
-- **KeePassXC Integration** - Secure PATH management via templates
+- **KeePassXC Integration** - Secure secret injection via templates
 - **Custom Settings** - Personalized behavior preferences
 
 ## Configuration Files
@@ -20,13 +20,16 @@ The configuration includes:
 - `home/dot_claude/` - Claude Code configuration directory (becomes `~/.claude/`)
 - `home/dot_mcp.json.tmpl` - Centralized MCP servers configuration (becomes `~/.mcp.json`)
 
+`home/dot_claude/` is a git submodule ([dotfiles-claude](https://github.com/aimuzov/dotfiles-claude)),
+so its contents are versioned separately from the main repository.
+
 ### Files
 
 | File | Description |
 |------|-------------|
 | `CLAUDE.md` | Personal instructions for Claude Code (language, style preferences) |
 | `mcp.json.tmpl` | MCP servers configuration template |
-| `settings.json` | Claude Code behavior settings |
+| `modify_settings.json.tmpl` | chezmoi modify script: merges its settings block into the existing `~/.claude/settings.json` via `jq` |
 
 ## MCP Servers
 
@@ -34,14 +37,21 @@ The configuration includes the following MCP (Model Context Protocol) servers:
 
 | Server | Command | Purpose |
 |--------|---------|---------|
-| `filesystem` | `mcp-server-filesystem` | File system access with home directory scope |
-| `git` | `mcp-server-git` | Git repository operations |
-| `fetch` | `mcp-server-fetch` | HTTP fetching capabilities |
-| `memory` | `mcp-server-memory` | Persistent memory across sessions |
-| `everything` | `mcp-server-everything` | Demo/testing server |
-| `sequential-thinking` | `mcp-server-sequential-thinking` | Step-by-step reasoning capabilities |
-| `eslint` | `mcp` | ESLint code analysis |
-| `devtools` | `chrome-devtools-mcp` | Chrome DevTools integration |
+| `context7` | `context7-mcp` | Up-to-date documentation for libraries and frameworks |
+| `serena` | `serena start-mcp-server` | Symbol-level code navigation and edits |
+| `things` | `things-mcp` | Tasks and notes in Things |
+| `aimuzov-thinks` | `thinks-mcp` | Text in the author's own voice (style profile from a Telegram export) |
+
+Every server is launched through `mise exec` / `mise x`, so no global installation is required.
+The packages are declared in `home/dot_config/mise/config.toml`
+(`npm:@upstash/context7-mcp`, `pipx:serena-agent`, `pipx:things-mcp`) — the exception is
+`@aimuzov/thinks-mcp`, which is installed globally via npm and runs under `node@24`
+(that version is pinned for a stable `node:sqlite` with FTS5).
+
+Extra launch parameters:
+
+- `context7` receives its API key from KeePassXC (see below);
+- `serena` starts with `--context claude-code --project-from-cwd` and `MCP_TIMEOUT=60000`.
 
 ### Centralized Configuration
 
@@ -49,49 +59,67 @@ MCP servers are configured in `home/dot_mcp.json.tmpl`, which uses chezmoi templ
 
 ```json
 {
-  "mcpServers": {{- includeTemplate "dot_claude/mcp.json.tmpl" -}}
+  "mcpServers": {{- includeTemplate "dot_claude/mcp.json.tmpl" . -}}
 }
 ```
+
+The trailing dot passes the chezmoi data context to the template — without it, variables such as
+`.miseBinPath` inside the included file resolve to empty strings.
 
 This allows:
 - Single source of truth for all MCP configurations
 - Reuse across different Claude Code installations
-- Secure PATH injection via KeePassXC
+- Secure secret injection via KeePassXC
 
-### KeePassXC Integration
+### mise Binary Path
 
-All MCP servers use PATH from KeePassXC for secure environment management:
+No server sets `PATH`; instead, each one's `command` points at the mise binary, whose path lives in
+`home/.chezmoidata.toml`:
 
 ```json
 {
-  "env": {
-    "PATH": "{{ (keepassxcAttribute \"ENV\" \"PATH\") }}"
-  }
+  "command": "{{ .miseBinPath }}",
+  "args": ["exec", "pipx:things-mcp", "--", "things-mcp"]
 }
 ```
 
 This ensures:
-- Consistent PATH across all servers
-- Secure storage of environment configuration
+- A single place where the mise path is defined
 - No hardcoded paths in configuration files
+- Tool versions consistent with the rest of the mise environment
 
-## Settings
+### KeePassXC Integration
 
-The `settings.json` file configures Claude Code behavior:
+KeePassXC stores the secrets that are injected into the configuration on `chezmoi apply`. The only
+consumer right now is the context7 API key:
 
 ```json
 {
-  "alwaysThinkingEnabled": true,
-  "permissions": { "defaultMode": "plan" },
-  "preferredNotifChannel": "ghostty"
+  "args": ["--api-key", "{{ keepassxcAttribute \"CTX7\" \"TOKEN\" }}"]
 }
 ```
+
+This ensures:
+- No plaintext secrets in the repository
+- A single vault for all credentials
+
+## Settings
+
+`~/.claude/settings.json` is never overwritten wholesale: `modify_settings.json.tmpl` takes the
+existing file and merges its own settings block into it (`jq '. + $ours'`), so edits made by Claude
+Code itself survive.
+
+Key behavior settings:
 
 | Setting | Value | Description |
 |---------|-------|-------------|
 | `alwaysThinkingEnabled` | `true` | Always show thinking process |
+| `autoUpdates` | `false` | Never self-update Claude Code (mise owns the version) |
 | `permissions.defaultMode` | `plan` | Default to plan mode for safety |
 | `preferredNotifChannel` | `ghostty` | Send notifications to Ghostty terminal |
+
+The template also defines environment variables (`env`), the allowed-command list
+(`permissions.allow`), hooks, and the set of enabled plugins.
 
 ## Personal Instructions (CLAUDE.md)
 
@@ -118,9 +146,11 @@ After applying:
 ## Dependencies
 
 - [Claude Code CLI](https://claude.ai/code) - The AI assistant
-- [KeePassXC](https://keepassxc.org/) - For secure environment management
+- [KeePassXC](https://keepassxc.org/) - For secure secret storage
 - [chezmoi](https://www.chezmoi.io/) - For dotfiles management
-- Various MCP server packages (installed via mise/npm)
+- [mise](https://mise.jdx.dev/) - Runs the MCP servers and provides `jq` for the modify script
+- MCP server packages: `@upstash/context7-mcp`, `serena-agent`, `things-mcp`,
+  `@aimuzov/thinks-mcp`
 
 ## Related Documentation
 
