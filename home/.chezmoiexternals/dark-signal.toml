@@ -1,0 +1,10 @@
+# Наблюдатель за сменой светлой/тёмной темы macOS. Вынесен из этого репозитория
+# (был home/private_Library/ThemeSwitcher) в отдельный: github.com/aimuzov/dark-signal.
+# Здесь только исходники — сборку и установку LaunchAgent делает
+# .chezmoiscripts/run_onchange_after_3_setup-dark-signal.fish.tmpl
+[".local/share/dark-signal"]
+type = "archive"
+url = "https://github.com/aimuzov/dark-signal/archive/main.tar.gz"
+exact = true
+stripComponents = 1
+refreshPeriod = "168h"

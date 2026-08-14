@@ -53,3 +53,13 @@ exact = true
 stripComponents = 2
 refreshPeriod = "168h"
 include = ["*/completions/**/*.fish"]
+
+# Свои completions для yc: вынесены из этого репозитория в отдельный,
+# каталог подхватывает conf.d/recursive_paths.fish, fisher не нужен
+[".config/fish/completions/yc-completions"]
+type = "archive"
+url = "https://github.com/aimuzov/yc-completions.fish/archive/main.tar.gz"
+exact = true
+stripComponents = 2
+refreshPeriod = "168h"
+include = ["*/completions/**"]
