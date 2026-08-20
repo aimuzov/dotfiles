@@ -71,7 +71,7 @@ SketchyVim supports standard vim modes:
 - **Command mode** - Execute commands
 - **Pending mode** - Waiting for operation completion
 
-The current mode is displayed in SketchyBar (see `dot_config/sketchybar/items/center/svim.lua`).
+The current mode is displayed in SketchyBar (see the `input` item of [sketchybar-items](https://github.com/aimuzov/sketchybar-items)).
 
 ## Service Management
 
@@ -103,7 +103,7 @@ SketchyVim sends mode change events to SketchyBar, which displays a mode indicat
 - **C** - Command mode (yellow)
 - **P** - Pending mode (orange)
 
-See `dot_config/sketchybar/items/center/svim.lua` for indicator configuration.
+See the `input` item of [sketchybar-items](https://github.com/aimuzov/sketchybar-items) for indicator configuration.
 
 ## Common Usage
 

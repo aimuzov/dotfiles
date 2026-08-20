@@ -316,16 +316,19 @@ SketchyBar is configured entirely in Lua with a modular structure:
 
 ```text
 items/
-├── init.lua           # Requires all items
-├── left/              # Left-aligned items
-│   ├── spaces.lua     # Yabai workspace indicators
-│   └── yabai.lua      # Window layout status
-└── right/             # Right-aligned items
-    ├── keyboard_layout.lua  # Current input method
-    ├── svim.lua       # SketchyVim mode indicator
-    ├── tailscale.lua  # Tailscale VPN status
+├── init.lua           # Requires all items, in bar order
+└── right/             # The items kept in this repository
     ├── battery.lua    # Battery status
     └── datetime.lua   # Date and time
+
+vendor/                # aimuzov/sketchybar-items, pulled by chezmoi
+└── items/
+    ├── yabai_spaces.lua  # Yabai workspace indicators
+    ├── yabai_window.lua  # Window layout status
+    ├── skhd_mode.lua     # Active skhd mode
+    ├── input.lua         # Keyboard layout and SketchyVim mode
+    ├── tailscale.lua     # Tailscale VPN status
+    └── caffeinate.lua    # Keeps the display awake
 ```
 
 **Event system:**
@@ -428,7 +431,7 @@ The chezmoi scripts in `.chezmoiscripts/` automatically handle:
 
 1. `run_once_after_1_install-packages.fish.tmpl` - Install Homebrew packages and mise tools
 2. `run_once_after_2_configure-system.fish.tmpl` - Configure macOS system settings
-3. `run_once_after_3_setup-theme-switcher.fish.tmpl` - Set up automatic theme switching
+3. `run_onchange_after_3_setup-dark-signal.fish.tmpl` - Build and install the dark/light theme watcher
 4. `run_once_after_4_setup-sketchybar.fish.tmpl` - Configure SketchyBar
 5. `run_once_after_5_install-workflows.fish.tmpl` - Install custom workflows
 6. `run_once_after_7_download-cht.fish.tmpl` - Download cheatsheets

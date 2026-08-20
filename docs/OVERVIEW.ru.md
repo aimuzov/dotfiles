@@ -303,16 +303,19 @@ SketchyBar настроен полностью на Lua с модульной с
 
 ```text
 items/
-├── init.lua           # Подключает все элементы
-├── left/              # Элементы слева
-│   ├── spaces.lua     # Индикаторы рабочих пространств Yabai
-│   └── yabai.lua      # Статус раскладки окон
-└── right/             # Элементы справа
-    ├── keyboard_layout.lua  # Текущий метод ввода
-    ├── svim.lua       # Индикатор режима SketchyVim
-    ├── tailscale.lua  # Статус Tailscale VPN
+├── init.lua           # Подключает все элементы, в порядке панели
+└── right/             # Элементы, которые хранятся в этом репозитории
     ├── battery.lua    # Статус батареи
     └── datetime.lua   # Дата и время
+
+vendor/                # aimuzov/sketchybar-items, приезжает через chezmoi
+└── items/
+    ├── yabai_spaces.lua  # Индикаторы рабочих пространств Yabai
+    ├── yabai_window.lua  # Статус раскладки окон
+    ├── skhd_mode.lua     # Активный режим skhd
+    ├── input.lua         # Раскладка клавиатуры и режим SketchyVim
+    ├── tailscale.lua     # Статус Tailscale VPN
+    └── caffeinate.lua    # Не даёт уснуть дисплею
 ```
 
 **Система событий:**
@@ -415,7 +418,7 @@ home/dot_config/fish/
 
 1. `run_once_after_1_install-packages.fish.tmpl` - Установка пакетов Homebrew и инструментов mise
 2. `run_once_after_2_configure-system.fish.tmpl` - Настройка системных параметров macOS
-3. `run_once_after_3_setup-theme-switcher.fish.tmpl` - Настройка автоматического переключения тем
+3. `run_onchange_after_3_setup-dark-signal.fish.tmpl` - Сборка и установка наблюдателя за темой
 4. `run_once_after_4_setup-sketchybar.fish.tmpl` - Настройка SketchyBar
 5. `run_once_after_5_install-workflows.fish.tmpl` - Установка пользовательских рабочих процессов
 6. `run_once_after_7_download-cht.fish.tmpl` - Загрузка шпаргалок

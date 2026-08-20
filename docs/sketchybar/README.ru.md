@@ -12,33 +12,38 @@
 - **bar.lua** — Описывает параметры панели (цвет, высота, позиция и др.).
 - **config.lua** — Основные настройки: шрифты, отступы, цветовая схема.
 - **default.lua** — Значения по умолчанию для всех элементов панели.
-- **executable_sketchybarrc** — Скрипт для запуска SketchyBar с Lua-конфигом. Проверяет и устанавливает SbarLua, запускает event loop.
-- **items/** — Модули для элементов панели, сгруппированные по расположению:
-  - **left/** — элементы слева (рабочие столы, yabai-статус)
-  - **right/** — элементы справа (раскладка клавиатуры, режимы svim, дата/время, батарея)
+- **executable_sketchybarrc** — Скрипт для запуска SketchyBar с Lua-конфигом. Проверяет и устанавливает SbarLua, ставит `vendor/` в начало `package.path`, запускает event loop.
+- **items/init.lua** — Список подключаемых элементов, в порядке их следования в панели.
+- **items/right/** — Элементы, которые живут здесь: `datetime.lua` и `battery.lua`.
+- **vendor/** — [sketchybar-items](https://github.com/aimuzov/sketchybar-items), приезжает через chezmoi из [`.chezmoiexternals/sketchybar-items.toml`](../../home/.chezmoiexternals/sketchybar-items.toml). В этом репозитории не хранится.
 
 ---
 
 ## Описание модулей
 
-### items/left/
+### Из vendor/
 
-- **spaces.lua** — Отображение рабочих столов (spaces) через [yabai](https://github.com/koekeishiya/yabai). Поддержка выделения, отображения приложений, взаимодействие мышью.
-- **yabai.lua** — Статус активного окна (tile/float/fullscreen/stack) через [yabai](https://github.com/koekeishiya/yabai).
+Каждый элемент оттуда сначала проверяет свои инструменты и возвращает `false`, если чего-то нет: на машине без yabai панель просто короче, а не сломана.
+
+| Элемент | Показывает | Нужен |
+| --- | --- | --- |
+| `items/yabai_spaces` | по элементу на каждый space с приложениями на нём, кликабельно | `yabai`, `jq` |
+| `items/yabai_window` | float, zoom или «2 / 4» для окна в стеке | `yabai`, `jq` |
+| `items/skhd_mode` | активный модальный режим skhd — цветным бейджем | `skhd` |
+| `items/input` | раскладку клавиатуры и режим SketchyVim в одном бейдже | `im-select` и/или `svim` |
+| `items/tailscale` | поднят ли [Tailscale](https://tailscale.com/), выключен или ждёт логина | `tailscale`, `jq` |
+| `items/caffeinate` | не даёт ли что-то уснуть дисплею; по клику переключается | `caffeinate` |
 
 ### items/right/
 
-- **keyboard_layout.lua** — Текущая раскладка клавиатуры (en/ru/unknown) через [im-select](https://github.com/daipeihust/im-select).
-- **svim.lua** — Режимы работы [svim](https://github.com/FelixKratz/SketchyVim) (normal/insert/visual/cmd/pending).
-- **tailscale.lua** — Индикатор статуса [Tailscale](https://tailscale.com/) VPN. Показывает состояние подключения и интегрируется со скриптами Raycast для управления exit-node.
 - **battery.lua** — Уровень заряда батареи и статус зарядки через pmset.
 - **datetime.lua** — Текущие дата и время, обновление каждые 30 секунд, по клику — переключение отображения дополнительных элементов.
 
 ## Кастомизация
 
-- Цвета, шрифты, отступы — в `config.lua`.
-- Добавление/удаление элементов — через редактирование `items/init.lua` и соответствующих подпапок.
-- Для новых элементов создайте Lua-модуль в нужной подпапке и подключите его в `items/init.lua`.
+- Цвета, шрифты, отступы — в `config.lua`. Он мержится поверх дефолтов `vendor/theme.lua`, поэтому всё, что в нём не названо, остаётся вендорным.
+- Добавление/удаление элементов — через редактирование `items/init.lua`; порядок require и есть порядок в панели.
+- Для новых элементов создайте Lua-модуль в `items/right/` и подключите его в `items/init.lua`. Элементу, полезному за пределами этого конфига, место в [sketchybar-items](https://github.com/aimuzov/sketchybar-items).
 
 ---
 
@@ -47,9 +52,12 @@
 - [SketchyBar](https://github.com/FelixKratz/SketchyBar)
 - [SbarLua](https://github.com/FelixKratz/SbarLua)
 - [yabai](https://github.com/koekeishiya/yabai)
+- [skhd](https://github.com/koekeishiya/skhd)
+- [SketchyVim](https://github.com/FelixKratz/SketchyVim)
 - [im-select](https://github.com/daipeihust/im-select)
+- [Tailscale](https://tailscale.com/)
 - [jq](https://stedolan.github.io/jq/)
-- `pmset` (стандартная утилита macOS)
+- `pmset`, `caffeinate` (стандартные утилиты macOS)
 
 ---
 
@@ -81,3 +89,4 @@ require("items.right.mywidget")
 
 - [SketchyBar](https://github.com/FelixKratz/SketchyBar)
 - [SbarLua](https://github.com/FelixKratz/SbarLua)
+- [sketchybar-items](https://github.com/aimuzov/sketchybar-items)

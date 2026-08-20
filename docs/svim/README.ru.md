@@ -71,7 +71,7 @@ SketchyVim поддерживает стандартные vim-режимы:
 - **Command mode** - Выполнение команд
 - **Pending mode** - Ожидание завершения операции
 
-Текущий режим отображается в SketchyBar (см. `dot_config/sketchybar/items/center/svim.lua`).
+Текущий режим отображается в SketchyBar (см. элемент `input` из [sketchybar-items](https://github.com/aimuzov/sketchybar-items)).
 
 ## Управление сервисом
 
@@ -103,7 +103,7 @@ SketchyVim отправляет события изменения режима �
 - **C** - Command mode (желтый)
 - **P** - Pending mode (оранжевый)
 
-См. `dot_config/sketchybar/items/center/svim.lua` для конфигурации индикатора.
+См. элемент `input` из [sketchybar-items](https://github.com/aimuzov/sketchybar-items) для конфигурации индикатора.
 
 ## Обычное использование
 

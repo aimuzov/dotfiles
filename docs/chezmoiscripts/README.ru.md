@@ -73,18 +73,20 @@ mise install -y
 **Запускается:** Один раз после chezmoi apply
 **Назначение:** Настроить macOS под личные предпочтения
 
-### 3. Настройка переключателя тем
+### 3. Настройка dark-signal
 
-**`run_once_after_3_setup-theme-switcher.fish.tmpl`**
+**`run_onchange_after_3_setup-dark-signal.fish.tmpl`**
 
-Настраивает автоматическое переключение темной/светлой темы:
+Собирает и ставит [dark-signal](https://github.com/aimuzov/dark-signal) — наблюдатель, который
+сообщает запущенным программам о смене светлой и тёмной темы macOS:
 
-- Устанавливает скрипты переключения тем
-- Настраивает LaunchAgents
-- Настраивает мониторинг внешнего вида системы
+- Собирает исходники, которые кладёт `.chezmoiexternals/dark-signal.toml` в `$XDG_DATA_HOME/dark-signal`
+- Линкует бинарник в `~/.bin`
+- Снимает старый агент `io.aimuzov.theme-switcher` — предшественника, жившего в этом репозитории
+- Ставит свой LaunchAgent: `dark-signal install signal --process nvim`
 
-**Запускается:** Один раз после chezmoi apply
-**Назначение:** Включить автоматическое изменение темы на основе внешнего вида macOS
+**Запускается:** Раз в неделю, синхронно с `refreshPeriod` у external
+**Назначение:** Слать `SIGUSR1` каждому запущенному nvim при смене внешнего вида системы
 
 ### 4. Настройка SketchyBar
 

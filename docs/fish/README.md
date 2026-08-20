@@ -104,6 +104,7 @@ Plugins are installed automatically using [chezmoi](https://www.chezmoi.io/) bas
 - [catppuccin/fzf](https://github.com/catppuccin/fzf) — Catppuccin theme for FZF
 - [PatrickF1/fzf.fish](https://github.com/PatrickF1/fzf.fish) — FZF integration for Fish
 - [wfxr/forgit](https://github.com/wfxr/forgit) — Git workflow enhancements
+- [aimuzov/yc-completions.fish](https://github.com/aimuzov/yc-completions.fish) — Completions for the Yandex Cloud CLI, which `yc` does not ship
 
 See `.chezmoiexternals/fish.toml` for the full list and configuration.
 

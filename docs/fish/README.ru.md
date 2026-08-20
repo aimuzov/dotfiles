@@ -99,15 +99,16 @@ end
 
 ## Управление плагинами
 
-Плагины устанавливаются автоматически с помощью [chezmoi](https://www.chezmoi.io/) на основе файла [`.chezmoiexternals/fish.toml`](../../.chezmoiexternals/fish.toml). Этот файл содержит все плагины, их источники и настройки обновления.
+Плагины устанавливаются автоматически с помощью [chezmoi](https://www.chezmoi.io/) на основе файла [`.chezmoiexternals/fish.toml`](../../home/.chezmoiexternals/fish.toml). Этот файл содержит все плагины, их источники и настройки обновления.
 
 ### Используемые плагины и расширения
 
 - [catppuccin/fzf](https://github.com/catppuccin/fzf) — Тема Catppuccin для FZF
 - [PatrickF1/fzf.fish](https://github.com/PatrickF1/fzf.fish) — Интеграция FZF для Fish
 - [wfxr/forgit](https://github.com/wfxr/forgit) — Улучшение Git workflow
+- [aimuzov/yc-completions.fish](https://github.com/aimuzov/yc-completions.fish) — Completions для Yandex Cloud CLI, которых `yc` не поставляет
 
-Полный список и конфигурация — в [`.chezmoiexternals/fish.toml`](../../.chezmoiexternals/fish.toml).
+Полный список и конфигурация — в [`.chezmoiexternals/fish.toml`](../../home/.chezmoiexternals/fish.toml).
 
 ## Интеграция с оболочкой
 

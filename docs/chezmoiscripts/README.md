@@ -73,18 +73,20 @@ Configures macOS system settings:
 **Runs:** Once after chezmoi apply
 **Purpose:** Customize macOS to personal preferences
 
-### 3. Theme Switcher Setup
+### 3. Dark Signal Setup
 
-**`run_once_after_3_setup-theme-switcher.fish.tmpl`**
+**`run_onchange_after_3_setup-dark-signal.fish.tmpl`**
 
-Sets up automatic dark/light theme switching:
+Builds and installs [dark-signal](https://github.com/aimuzov/dark-signal), the watcher that signals
+running programs when macOS switches between light and dark:
 
-- Installs theme switching scripts
-- Configures LaunchAgents
-- Sets up system appearance monitoring
+- Builds the sources placed by `.chezmoiexternals/dark-signal.toml` into `$XDG_DATA_HOME/dark-signal`
+- Links the binary into `~/.bin`
+- Boots out the old `io.aimuzov.theme-switcher` agent left by the in-repo predecessor
+- Installs its own LaunchAgent: `dark-signal install signal --process nvim`
 
-**Runs:** Once after chezmoi apply
-**Purpose:** Enable automatic theme changes based on macOS appearance
+**Runs:** Weekly, in step with the `refreshPeriod` of the external
+**Purpose:** Send `SIGUSR1` to every running nvim when the system appearance changes
 
 ### 4. SketchyBar Setup
 
