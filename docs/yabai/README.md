@@ -70,9 +70,7 @@ Located in `home/dot_config/fish/functions/core/yabai/`:
 ## Integration Points
 
 - **skhd** - Keybindings for window management (see [skhd documentation](../skhd/README.md))
-- **SketchyBar** - Visual feedback via signals:
-  - `window_focus` - Updates focused window indicator
-  - `windows_on_spaces` - Updates workspace app icons
+- **SketchyBar** - Visual feedback through the `window_focus` signal, which the items that need it add for themselves instead of taking it from `yabairc` (see [sketchybar](../sketchybar/README.md))
 - **Fish shell** - Helper functions and clean configuration syntax
 - **JankyBorders** - Visual window borders (separate service)
 

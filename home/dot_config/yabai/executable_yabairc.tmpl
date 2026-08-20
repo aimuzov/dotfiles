@@ -6,10 +6,10 @@ sudo yabai --load-sa
 
 # -- Events ------------------------------------------------------------------------------------------------------------
 
+# The window_focus signal is not here: the items that listen for it install it
+# themselves, labelled, so that reloading the bar cannot leave two of them behind.
+# yabai.restart brings sketchybar up with yabai, which is what puts it back.
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
-yabai -m signal --add event=window_focused action="sketchybar --trigger window_focus"
-yabai -m signal --add event=window_created action="sketchybar --trigger windows_on_spaces"
-yabai -m signal --add event=window_destroyed action="sketchybar --trigger windows_on_spaces"
 yabai -m signal --add event=window_created action="{{ .miseBinPath }} exec aqua:fish-shell/fish-shell -- fish -c 'yabai.rearrange'"
 
 # -- Config ------------------------------------------------------------------------------------------------------------

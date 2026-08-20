@@ -113,7 +113,7 @@ Arguments are available as positional parameters: `$1`, `$2`, `$3`
 
 **Related Files:**
 - Fish implementation: [`executable_tailscale_pick_node.fish`](../../home/dot_bin/raycast/executable_tailscale_pick_node.fish)
-- SketchyBar integration: [`tailscale.lua`](../../home/dot_config/sketchybar/items/right/tailscale.lua)
+- SketchyBar integration: [`items/tailscale.lua`](https://github.com/aimuzov/sketchybar-items/blob/main/items/tailscale.lua), which the script pushes at with `sketchybar --trigger tailscale_status_update`
 
 ---
 

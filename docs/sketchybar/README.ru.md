@@ -13,8 +13,7 @@
 - **config.lua** — Основные настройки: шрифты, отступы, цветовая схема.
 - **default.lua** — Значения по умолчанию для всех элементов панели.
 - **executable_sketchybarrc** — Скрипт для запуска SketchyBar с Lua-конфигом. Проверяет и устанавливает SbarLua, ставит `vendor/` в начало `package.path`, запускает event loop.
-- **items/init.lua** — Список подключаемых элементов, в порядке их следования в панели.
-- **items/right/** — Элементы, которые живут здесь: `datetime.lua` и `battery.lua`.
+- **exact_items/init.lua** — Список подключаемых элементов, в порядке их следования в панели. Единственный оставшийся здесь файл: сами элементы приезжают из `vendor/`. Префикс `exact_` заставляет chezmoi удалять из развёрнутой директории всё, чего он не знает — так вычистились файлы прежней структуры.
 - **vendor/** — [sketchybar-items](https://github.com/aimuzov/sketchybar-items), приезжает через chezmoi из [`.chezmoiexternals/sketchybar-items.toml`](../../home/.chezmoiexternals/sketchybar-items.toml). В этом репозитории не хранится.
 
 ---
@@ -33,17 +32,16 @@
 | `items/input` | раскладку клавиатуры и режим SketchyVim в одном бейдже | `im-select` и/или `svim` |
 | `items/tailscale` | поднят ли [Tailscale](https://tailscale.com/), выключен или ждёт логина | `tailscale`, `jq` |
 | `items/caffeinate` | не даёт ли что-то уснуть дисплею; по клику переключается | `caffeinate` |
+| `items/battery` | заряд и подключено ли питание | `pmset` |
+| `items/datetime` | дату и время | — |
 
-### items/right/
-
-- **battery.lua** — Уровень заряда батареи и статус зарядки через pmset.
-- **datetime.lua** — Текущие дата и время, обновление каждые 30 секунд, по клику — переключение отображения дополнительных элементов.
+Событие `window_focus`, которое слушают трое из них, — это сигнал yabai, и они ставят его себе сами, см. [Events](https://github.com/aimuzov/sketchybar-items#events). Поэтому `yabairc` его больше не добавляет.
 
 ## Кастомизация
 
 - Цвета, шрифты, отступы — в `config.lua`. Он мержится поверх дефолтов `vendor/theme.lua`, поэтому всё, что в нём не названо, остаётся вендорным.
-- Добавление/удаление элементов — через редактирование `items/init.lua`; порядок require и есть порядок в панели.
-- Для новых элементов создайте Lua-модуль в `items/right/` и подключите его в `items/init.lua`. Элементу, полезному за пределами этого конфига, место в [sketchybar-items](https://github.com/aimuzov/sketchybar-items).
+- Добавление/удаление элементов — через редактирование `exact_items/init.lua`; порядок require и есть порядок в панели.
+- Новому элементу место в [sketchybar-items](https://github.com/aimuzov/sketchybar-items), если он не имеет смысла только в этой панели. Если всё же остаётся здесь — кладите рядом с `init.lua` и помните, что `exact_` удаляет всё, чего chezmoi не знает.
 
 ---
 
@@ -65,7 +63,7 @@
 
 Добавим новый элемент справа:
 
-1. Создайте файл `items/right/mywidget.lua`:
+1. Создайте файл `exact_items/mywidget.lua`:
 
 ```lua
 local sbar = require("sketchybar")
@@ -77,11 +75,13 @@ local mywidget = sbar.add("item", {
 return mywidget
 ```
 
-2. Подключите его в `items/init.lua`:
+2. Подключите его в `exact_items/init.lua` — на том месте, которое он должен занять в панели:
 
 ```lua
-require("items.right.mywidget")
+require("items.mywidget")
 ```
+
+`vendor/` стоит первым в `package.path`, поэтому файл отсюда не должен называться так же, как элемент из [sketchybar-items](https://github.com/aimuzov/sketchybar-items): на require ответит вендорный.
 
 ---
 
