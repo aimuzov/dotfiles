@@ -102,7 +102,7 @@ skhd --restart-service     # после правок dot_config/skhd/
 
 1. **Добавить новый инструмент:** Обновить `home/dot_config/mise/config.toml` → `mise install` → коммит со scope `mise`
 2. **Добавить новую конфигурацию:** Добавить в `home/dot_config/` → проверить через `chezmoi diff` → `chezmoi apply` → коммит с соответствующим scope
-3. **Изменить SketchyBar:** Отредактировать `home/dot_config/sketchybar/items/` → `sketchybar --reload`
+3. **Изменить SketchyBar:** Отредактировать `home/dot_config/sketchybar/items/` → `sketchybar --reload`. Общие элементы (`caffeinate`, `tailscale`, ...) живут в отдельном репозитории [sketchybar-items](https://github.com/aimuzov/sketchybar-items) и приезжают в `~/.config/sketchybar/vendor/` через `home/.chezmoiexternals/sketchybar-items.toml` — править их надо там, а не здесь
 4. **Протестировать Yabai:** Отредактировать `home/dot_config/yabai/executable_yabairc` → `yabai --restart-service`
 5. **Добавить MCP сервер:** Правится в ДВУХ файлах — `home/dot_config/mise/config.toml` (`[tools]`, установка пакета) и `home/dot_claude/mcp.json.tmpl` (определение сервера)
 

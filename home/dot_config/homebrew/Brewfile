@@ -1,83 +1,169 @@
-# vi: ft=ruby
-
 tap "asmvik/formulae"
 tap "daipeihust/tap"
 tap "farion1231/ccswitch"
 tap "felixkratz/formulae"
+tap "jackielii/tap"
 tap "jdx/tap"
-tap "koekeishiya/formulae"
+tap "koekeishiya/formulae", "https://github.com/asmvik/homebrew-formulae.git"
 tap "lukechilds/tap"
 tap "nikitabobko/tap"
 tap "whatpulse/whatpulse"
 tap "yqrashawn/goku"
+# Extendable version manager with support for Ruby, Node.js, Erlang & more
 brew "asdf"
+# GNU File, Shell, and Text utilities
 brew "coreutils"
-brew "cups" # deps: termscp (see mise config)
+# Common UNIX Printing System (termscp dependency; see mise config)
+brew "cups"
+# Get a file from an HTTP, HTTPS or FTP server
 brew "curl"
+# Pack, ship and run any application as a lightweight container
 brew "docker"
+# Perl lib for reading and writing EXIF metadata
 brew "exiftool"
+# Play, record, convert, and stream select audio and video codecs
 brew "ffmpeg"
+# GNU compiler collection
 brew "gcc"
+# GitHub command-line tool
 brew "gh"
+# Distributed revision control system
 brew "git"
+# Quickly rewrite git repository history
+brew "git-filter-repo"
+# Simple and efficient way to access statistics in git
 brew "git-quick-stats"
+# GNU implementation of the famous stream editor
 brew "gnu-sed"
+# GNU Privacy Guard (OpenPGP)
 brew "gnupg"
+# Tools and libraries to manipulate images in select formats
 brew "imagemagick"
+# CLI wrapper for basic network utilities on macOS - ip command
 brew "iproute2mac"
+# Pager program similar to more
 brew "less"
-brew "libbsd" # deps: termscp (see mise config)
+# Utility functions from BSD systems (termscp dependency; see mise config)
+brew "libbsd"
+# YAML Parser
 brew "libyaml"
+# Just-In-Time Compiler (JIT) for the Lua programming language
 brew "luajit"
+# Package manager for the Lua programming language
 brew "luarocks"
+# Polyglot runtime manager (asdf rust clone)
 brew "mise"
+# Simple tool to make locally trusted development certificates
+brew "mkcert"
+# Libraries for security-enabled client and server applications
+brew "nss"
+# 7-Zip (high compression file archiver) implementation
 brew "p7zip"
+# Pinentry for GPG on Mac
 brew "pinentry-mac"
+# Readline wrapper: adds readline support to tools that lack it
 brew "rlwrap"
+# User interface to the TELNET protocol
 brew "telnet"
+# CLI tool that moves files or folder to the trash
 brew "trash", link: true
-brew "zlib" # deps: termscp (see mise config)
+# Command-line tool for sharing terminal over the web
+brew "ttyd"
+# Your CLI home video recorder
+brew "vhs"
+# General-purpose lossless data-compression library (termscp dependency; see mise config)
+brew "zlib"
+# UNIX shell (command interpreter)
 brew "zsh"
+# A tiling window manager for macOS based on binary space partitioning
 brew "asmvik/formulae/yabai", args: ["HEAD"]
+# Switch your input method through terminal
 brew "daipeihust/tap/im-select"
+# A window border system for macOS
 brew "felixkratz/formulae/borders"
+# Custom macOS statusbar with shell plugin, interaction and graph support
 brew "felixkratz/formulae/sketchybar"
-brew "felixkratz/formulae/svim"
-brew "koekeishiya/formulae/skhd"
-brew "lukechilds/tap/gifgen"
+# Turns macOS input fields into real vim buffers
+# (release 1.0.11 leaks zombie children, SIGCHLD fix lives only in master)
+brew "felixkratz/formulae/svim", args: ["HEAD"], trusted: true
+# Simple hotkey daemon for macOS, written in Zig
+brew "jackielii/tap/skhd-zig"
+# Application uninstaller
 cask "appcleaner"
+# Video editing and image design platform
 cask "capcut"
-cask "farion1231/ccswitch/cc-switch"
+cask "cc-switch"
+# OpenAI's official ChatGPT desktop app
 cask "chatgpt"
+# Anthropic's official Claude AI desktop app
 cask "claude"
+# Write, edit, and chat about your code with AI
 cask "cursor"
+# Server and cloud storage browser
 cask "cyberduck"
+# Voice and text chat software
+cask "discord"
+# App to build and share containerised applications and microservices
 cask "docker-desktop"
+# Collaborative team software
 cask "figma"
 cask "font-jetbrains-mono-nerd-font"
+# Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
+# Git interface focused on visual interaction
 cask "gitup-app"
+# Web browser
 cask "google-chrome"
+# Menu bar manager
 cask "jordanbaird-ice"
+# Password manager app
 cask "keepassxc"
+# Software for Logitech devices
 cask "logi-options+"
+# Open-source, KeePass-client and password manager
 cask "macpass"
+# Sandbox construction video game
 cask "minecraft"
+# Intercept, modify, replay, save HTTP/S traffic
+cask "mitmproxy"
+# Tool to control external monitor brightness & volume
 cask "monitorcontrol"
+# Finds large, unwanted files and deletes them
 cask "omnidisksweeper"
+# AI coding agent desktop client
+cask "opencode-desktop"
+# Replacement for Docker Desktop
 cask "orbstack"
+# Control your tools with a few keystrokes
 cask "raycast"
+# Tool that provides consistent, highly configurable symbols for apps
 cask "sf-symbols"
+# Music streaming service
+cask "spotify"
+# Video game digital distribution service
 cask "steam"
+# Desktop client for Telegram messenger
 cask "telegram-desktop"
+# Helper application for Things
 cask "thingsmacsandboxhelper"
+# Open-source BitTorrent client
 cask "transmission"
+# Open-source code editor
 cask "visual-studio-code"
+# Multimedia player
 cask "vlc"
+# Rust-based terminal
 cask "warp"
+# GPU-accelerated cross-platform terminal emulator and multiplexer
 cask "wezterm@nightly"
+# Tune in to Yandex Music and get personal recommendations
 cask "yandex-music"
+# Yandex video calls and meetings platform
+cask "yandextelemost"
+# Multiplayer code editor
 cask "zed"
+# Video communication and virtual meeting platform
+cask "zoom"
 vscode "anthropic.claude-code"
 vscode "asvetliakov.vscode-neovim"
 vscode "be5invis.vscode-custom-css"
