@@ -1,0 +1,23 @@
+# Plugins pulled straight from their upstream repositories.
+# Refresh on demand with: chezmoi apply --refresh-externals
+
+# keysight.fish — the `keys` shortcut cheat sheet.
+# Both entries read the same tarball; include is matched against the path inside the
+# archive, before stripComponents drops the repository and category directories.
+# Landing in a subdirectory is intentional: conf.d/recursive_paths.fish adds every
+# subdirectory of functions/ and completions/ to the corresponding fish path.
+[".config/fish/functions/keysight"]
+    type = "archive"
+    url = "https://github.com/aimuzov/keysight.fish/archive/refs/heads/main.tar.gz"
+    stripComponents = 2
+    include = ["*/functions/**"]
+    exact = true
+    refreshPeriod = "168h"
+
+[".config/fish/completions/keysight"]
+    type = "archive"
+    url = "https://github.com/aimuzov/keysight.fish/archive/refs/heads/main.tar.gz"
+    stripComponents = 2
+    include = ["*/completions/**"]
+    exact = true
+    refreshPeriod = "168h"
