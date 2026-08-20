@@ -1,0 +1,12 @@
+# sketchybar-items — items shared with other bars, kept in their own repository.
+# The archive lands in vendor/ so that items/ stays chezmoi's; sketchybarrc puts
+# vendor/ in front of package.path, which is how helpers.lua and theme.lua from
+# here win over anything with the same name in the config directory.
+
+[".config/sketchybar/vendor"]
+type = "archive"
+url = "https://github.com/aimuzov/sketchybar-items/archive/refs/heads/main.tar.gz"
+exact = true
+stripComponents = 1
+refreshPeriod = "168h"
+include = ["*/items/**", "*/helpers.lua", "*/theme.lua"]
