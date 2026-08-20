@@ -9,7 +9,7 @@
 "core:cmake" = "latest"
 "core:go" = "latest"
 "core:neovim" = "latest"
-"core:node" = "latest"
+"core:node" = ["latest", "24"]
 "core:pnpm" = "latest"
 "core:python" = "3.12"
 "core:ruby" = "latest"
@@ -51,7 +51,7 @@
 	"keyring",
 ] }
 
-"github:aimuzov/happ-cli" = { version = "latest", exe = "happ" }
+"github:aimuzov/proxray" = "latest"
 "github:matterhorn-chat/matterhorn" = "latest"
 "github:spicetify/cli" = { version = "latest", exe = "spicetify" }
 "github:zdyxry/tokui" = "latest"
