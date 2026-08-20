@@ -22,10 +22,6 @@ function yabai.rearrange
         end
     end
 
-    if test "$space_index" -eq 2
-        yabai.stack_apps $space_index Dia
-    end
-
     if test "$space_index" -eq 3
         yabai.stack_apps $space_index Things Calendar Mail
     end
