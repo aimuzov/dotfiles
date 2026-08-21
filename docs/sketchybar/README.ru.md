@@ -30,7 +30,6 @@
 | `items/yabai_window` | float, zoom или «2 / 4» для окна в стеке | `yabai`, `jq` |
 | `items/skhd_mode` | активный модальный режим skhd — цветным бейджем | `skhd` |
 | `items/input` | раскладку клавиатуры и режим SketchyVim в одном бейдже | `im-select` и/или `svim` |
-| `items/tailscale` | поднят ли [Tailscale](https://tailscale.com/), выключен или ждёт логина | `tailscale`, `jq` |
 | `items/caffeinate` | не даёт ли что-то уснуть дисплею; по клику переключается | `caffeinate` |
 | `items/battery` | заряд и подключено ли питание | `pmset` |
 | `items/datetime` | дату и время | — |
@@ -53,7 +52,6 @@
 - [skhd](https://github.com/koekeishiya/skhd)
 - [SketchyVim](https://github.com/FelixKratz/SketchyVim)
 - [im-select](https://github.com/daipeihust/im-select)
-- [Tailscale](https://tailscale.com/)
 - [jq](https://stedolan.github.io/jq/)
 - `pmset`, `caffeinate` (стандартные утилиты macOS)
 

@@ -30,7 +30,6 @@ Every item there checks its own tools first and returns `false` when one is miss
 | `items/yabai_window` | floating, zoomed, or "2 / 4" for a window in a stack | `yabai`, `jq` |
 | `items/skhd_mode` | which modal skhd mode is active, as a coloured badge | `skhd` |
 | `items/input` | keyboard layout and the SketchyVim mode in one badge | `im-select` and/or `svim` |
-| `items/tailscale` | whether [Tailscale](https://tailscale.com/) is up, down or waiting for a login | `tailscale`, `jq` |
 | `items/caffeinate` | whether the display is being kept awake; click to toggle | `caffeinate` |
 | `items/battery` | charge, and whether it is on the charger | `pmset` |
 | `items/datetime` | the date and the time | — |
@@ -53,7 +52,6 @@ The `window_focus` event three of these listen for is a yabai signal, and they i
 - [skhd](https://github.com/koekeishiya/skhd)
 - [SketchyVim](https://github.com/FelixKratz/SketchyVim)
 - [im-select](https://github.com/daipeihust/im-select)
-- [Tailscale](https://tailscale.com/)
 - [jq](https://stedolan.github.io/jq/)
 - `pmset`, `caffeinate` (standard macOS utilities)
 

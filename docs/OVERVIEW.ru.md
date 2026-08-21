@@ -302,11 +302,8 @@ SketchyBar настроен полностью на Lua с модульной с
 **Структура элементов:**
 
 ```text
-items/
-├── init.lua           # Подключает все элементы, в порядке панели
-└── right/             # Элементы, которые хранятся в этом репозитории
-    ├── battery.lua    # Статус батареи
-    └── datetime.lua   # Дата и время
+exact_items/
+└── init.lua           # Подключает все элементы, в порядке панели — единственный файл здесь
 
 vendor/                # aimuzov/sketchybar-items, приезжает через chezmoi
 └── items/
@@ -314,8 +311,9 @@ vendor/                # aimuzov/sketchybar-items, приезжает через
     ├── yabai_window.lua  # Статус раскладки окон
     ├── skhd_mode.lua     # Активный режим skhd
     ├── input.lua         # Раскладка клавиатуры и режим SketchyVim
-    ├── tailscale.lua     # Статус Tailscale VPN
-    └── caffeinate.lua    # Не даёт уснуть дисплею
+    ├── caffeinate.lua    # Не даёт уснуть дисплею
+    ├── battery.lua       # Статус батареи
+    └── datetime.lua      # Дата и время
 ```
 
 **Система событий:**

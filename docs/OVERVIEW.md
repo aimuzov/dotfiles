@@ -315,11 +315,8 @@ SketchyBar is configured entirely in Lua with a modular structure:
 **Item structure:**
 
 ```text
-items/
-├── init.lua           # Requires all items, in bar order
-└── right/             # The items kept in this repository
-    ├── battery.lua    # Battery status
-    └── datetime.lua   # Date and time
+exact_items/
+└── init.lua           # Requires every item, in bar order — the only file kept here
 
 vendor/                # aimuzov/sketchybar-items, pulled by chezmoi
 └── items/
@@ -327,8 +324,9 @@ vendor/                # aimuzov/sketchybar-items, pulled by chezmoi
     ├── yabai_window.lua  # Window layout status
     ├── skhd_mode.lua     # Active skhd mode
     ├── input.lua         # Keyboard layout and SketchyVim mode
-    ├── tailscale.lua     # Tailscale VPN status
-    └── caffeinate.lua    # Keeps the display awake
+    ├── caffeinate.lua    # Keeps the display awake
+    ├── battery.lua       # Battery status
+    └── datetime.lua      # Date and time
 ```
 
 **Event system:**

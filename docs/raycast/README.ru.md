@@ -113,7 +113,7 @@ Raycast использует комментарии в начале скрипт
 
 **Связанные файлы:**
 - Fish реализация: [`executable_tailscale_pick_node.fish`](../../home/dot_bin/raycast/executable_tailscale_pick_node.fish)
-- Интеграция со SketchyBar: [`items/tailscale.lua`](https://github.com/aimuzov/sketchybar-items/blob/main/items/tailscale.lua) — скрипт толкает его через `sketchybar --trigger tailscale_status_update`
+Со SketchyBar скрипт больше не связан: элемент Tailscale убран из панели вместе с триггером, который скрипт ему посылал.
 
 ---
 

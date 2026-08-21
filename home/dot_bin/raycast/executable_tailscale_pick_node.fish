@@ -20,5 +20,3 @@ else
         tailscale up
     end
 end
-
-sketchybar --trigger tailscale_status_update
