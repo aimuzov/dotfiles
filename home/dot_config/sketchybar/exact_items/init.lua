@@ -7,9 +7,6 @@ require("items.skhd_mode")
 require("items.yabai_window")
 
 require("items.datetime")
-
 require("items.caffeinate")
-require("items.tailscale")
-
 require("items.battery")
 require("items.input")
