@@ -14,7 +14,7 @@ function srv.mount
 
     test -n "$remote_path"; or set remote_path /
 
-    set -l mount_point $HOME/mnt/$host
+    set -l mount_point (srv.mountpoint $host)
 
     if mount | string match -q "* on $mount_point *"
         echo "srv.mount: already mounted → $mount_point"

@@ -6,7 +6,7 @@ function srv.umount
         return 1
     end
 
-    set -l mount_point $HOME/mnt/$host
+    set -l mount_point (srv.mountpoint $host)
 
     if not mount | string match -q "* on $mount_point *"
         echo "srv.umount: not mounted → $mount_point"

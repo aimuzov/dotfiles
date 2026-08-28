@@ -20,11 +20,12 @@ function srv.pick
 
     srv.mount $host; or return 1
 
-    set -l target $HOME/mnt/$host/$subdir
+    set -l mount_point (srv.mountpoint $host)
+    set -l target $mount_point/$subdir
 
     if not test -d $target
         echo "srv.pick: $subdir not found, opening the mount root" >&2
-        set target $HOME/mnt/$host
+        set target $mount_point
     end
 
     nvim $target
