@@ -2,6 +2,7 @@ tap "asmvik/formulae"
 tap "daipeihust/tap"
 tap "farion1231/ccswitch"
 tap "felixkratz/formulae"
+tap "gromgit/fuse"
 tap "jackielii/tap"
 tap "jdx/tap"
 tap "koekeishiya/formulae", "https://github.com/asmvik/homebrew-formulae.git"
@@ -86,6 +87,8 @@ brew "felixkratz/formulae/sketchybar"
 # Turns macOS input fields into real vim buffers
 # (release 1.0.11 leaks zombie children, SIGCHLD fix lives only in master)
 brew "felixkratz/formulae/svim", args: ["HEAD"], trusted: true
+# File system client based on SSH File Transfer Protocol (mounts servers into ~/mnt)
+brew "gromgit/fuse/sshfs-mac"
 # Simple hotkey daemon for macOS, written in Zig
 brew "jackielii/tap/skhd-zig"
 # Application uninstaller
@@ -108,6 +111,8 @@ cask "docker-desktop"
 # Collaborative team software
 cask "figma"
 cask "font-jetbrains-mono-nerd-font"
+# Kext-less FUSE implementation, what sshfs-mac runs on
+cask "fuse-t"
 # Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
 # Git interface focused on visual interaction
