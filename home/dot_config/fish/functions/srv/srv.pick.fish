@@ -28,5 +28,9 @@ function srv.pick
         set target $mount_point
     end
 
-    nvim $target
+    # Passing the directory to nvim opens a tree instead of the dashboard,
+    # and leaves cwd wherever the shell was, so pickers look at the wrong tree
+    pushd $target
+    nvim
+    popd
 end
