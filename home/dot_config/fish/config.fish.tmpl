@@ -18,8 +18,11 @@ function add_completion
     set -l completion_file $argv[1]
     set -l completion_cmd $argv[2]
     set -l completion_path $__fish_config_dir/completions/$completion_file
+    set -l completion_tool (string split -f1 -- ' ' $completion_cmd)
+    set -l completion_src (command -s $completion_tool; or path filter -f $completion_tool)
 
-    if not test -e $completion_path
+    # Regenerate when the tool binary is newer than the completion file
+    if not test -e $completion_path; or test "$completion_src" -nt $completion_path
         eval $completion_cmd >$completion_path
     end
 end
