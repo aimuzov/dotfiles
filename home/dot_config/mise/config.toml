@@ -86,3 +86,5 @@
 experimental = true
 fetch_remote_versions_timeout = "5s"
 idiomatic_version_file_enable_tools = []
+# own package, safe to install right after publishing
+minimum_release_age_excludes = ["npm:thinks-mcp"]
