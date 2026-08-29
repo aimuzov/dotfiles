@@ -30,6 +30,7 @@
 "aqua:fish-shell/fish-shell" = "latest"
 "aqua:github/copilot-cli" = "latest"
 "aqua:gittower/git-flow-next" = "latest"
+"aqua:jdx/usage" = "latest"
 "aqua:jesseduffield/lazygit" = "latest"
 "aqua:jqlang/jq" = "latest"
 "aqua:junegunn/fzf" = "latest"
