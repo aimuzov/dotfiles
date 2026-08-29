@@ -67,6 +67,7 @@
 "npm:@modelcontextprotocol/server-sequential-thinking" = "latest"
 "npm:@upstash/context7-mcp" = "latest"
 "npm:ccstatusline" = "latest"
+"npm:thinks-mcp" = "latest"
 
 "pipx:awscli" = "latest"
 "pipx:twc-cli" = "latest"
