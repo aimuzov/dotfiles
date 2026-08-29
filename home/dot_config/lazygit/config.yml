@@ -15,8 +15,9 @@ gui:
   showCommandLog: false
 git:
   branchLogCmd: "git lg {{branchName}}"
-  pagers:
-    - externalDiffCommand: DFT_BACKGROUND=dark difft --color=always
+  diffRenderers:
+    - command: DFT_BACKGROUND=dark difft --color=always
+      type: extDiff
 customCommands:
   - key: "C"
     command: "npm run commit"
