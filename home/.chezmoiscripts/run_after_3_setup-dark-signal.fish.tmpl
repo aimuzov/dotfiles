@@ -1,0 +1,45 @@
+#!/usr/bin/env fish
+# vi: ft=fish
+
+# Собирает dark-signal (исходники кладёт .chezmoiexternals/dark-signal.toml)
+# и вешает LaunchAgent: при смене темы macOS всем запущенным nvim уходит SIGUSR1.
+# Сборка — в $XDG_STATE_HOME: exact-зону исходников apply вычищает вместе с .build.
+
+{{ if (eq .chezmoi.os "darwin") -}}
+
+set -q XDG_DATA_HOME; or set XDG_DATA_HOME $HOME/.local/share
+set -q XDG_STATE_HOME; or set XDG_STATE_HOME $HOME/.local/state
+
+set -l src $XDG_DATA_HOME/dark-signal
+set -l build $XDG_STATE_HOME/dark-signal/build
+set -l bin $build/release/dark-signal
+
+if not test -d $src
+    echo "dark-signal: sources are missing, run chezmoi apply --refresh-externals"
+    exit 0
+end
+
+# Guard на каждый apply: пересборка — когда бинарник пропал или исходники
+# новее (chezmoi трогает файлы external'а только при реальном изменении).
+set -l newer (find $src -newer $bin 2>/dev/null)
+if test -x $bin; and test (count $newer) -eq 0
+    exit 0
+end
+
+cd $src; and swift build -c release --scratch-path $build; or begin
+    echo "dark-signal: build failed"
+    exit 1
+end
+
+mkdir -p $HOME/.bin
+ln -sf $bin $HOME/.bin/dark-signal
+
+# Предшественник этого агента жил в ~/Library/ThemeSwitcher и грузился из
+# io.aimuzov.theme-switcher.plist; снимаем его, если он ещё на машине
+launchctl bootout gui/(id -u)/io.aimuzov.theme-switcher 2>/dev/null
+rm -f $HOME/Library/LaunchAgents/io.aimuzov.theme-switcher.plist
+rm -rf $HOME/Library/ThemeSwitcher
+
+$HOME/.bin/dark-signal install signal --process nvim
+
+{{ end -}}
