@@ -62,13 +62,13 @@
 "http:yc" = { version = "latest", url = "https://storage.yandexcloud.net/yandexcloud-yc/release/{{ version }}/darwin/arm64/yc", bin = "yc", version_list_url = "https://storage.yandexcloud.net/yandexcloud-yc/release/stable", version_regex = '(\d+\.\d+\.\d+)' }
 
 "npm:@aimuzov/sketchybar-app-font" = "latest"
+"npm:@aimuzov/thinks-mcp" = "latest"
 "npm:@modelcontextprotocol/server-everything" = "latest"
 "npm:@modelcontextprotocol/server-filesystem" = "latest"
 "npm:@modelcontextprotocol/server-memory" = "latest"
 "npm:@modelcontextprotocol/server-sequential-thinking" = "latest"
 "npm:@upstash/context7-mcp" = "latest"
 "npm:ccstatusline" = "latest"
-"npm:thinks-mcp" = "latest"
 
 "pipx:awscli" = "latest"
 "pipx:twc-cli" = "latest"
@@ -88,4 +88,4 @@ experimental = true
 fetch_remote_versions_timeout = "5s"
 idiomatic_version_file_enable_tools = []
 # own package, safe to install right after publishing
-minimum_release_age_excludes = ["npm:thinks-mcp"]
+minimum_release_age_excludes = ["npm:@aimuzov/thinks-mcp"]
