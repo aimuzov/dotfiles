@@ -40,13 +40,14 @@
 | `context7` | `context7-mcp` | Актуальная документация библиотек и фреймворков |
 | `serena` | `serena start-mcp-server` | Символьная навигация и правки по коду |
 | `things` | `things-mcp` | Задачи и заметки в Things |
-| `aimuzov-thinks` | `thinks-mcp` | Тексты в личном стиле пользователя (профиль из Telegram-экспорта) |
+| `thinks` | `thinks-mcp` | Тексты в личном стиле пользователя (профиль из Telegram-экспорта) |
 
 Все серверы запускаются через `mise exec` / `mise x`, поэтому глобальная установка пакетов не
 нужна. Пакеты объявлены в `home/dot_config/mise/config.toml`
-(`npm:@upstash/context7-mcp`, `pipx:serena-agent`, `pipx:things-mcp`) — исключение
-`@aimuzov/thinks-mcp`: он ставится глобально через npm и запускается под `node@24`
-(версия зафиксирована ради стабильного `node:sqlite` с FTS5).
+(`npm:@upstash/context7-mcp`, `pipx:serena-agent`, `pipx:things-mcp`,
+`npm:@aimuzov/thinks-mcp`). Последний вынесен ещё и в `minimum_release_age_excludes`: mise
+придерживает npm-релизы моложе 24 часов, а для собственного пакета автора этот карантин только
+мешает.
 
 Дополнительные параметры запуска:
 

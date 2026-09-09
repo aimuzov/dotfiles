@@ -40,13 +40,14 @@ The configuration includes the following MCP (Model Context Protocol) servers:
 | `context7` | `context7-mcp` | Up-to-date documentation for libraries and frameworks |
 | `serena` | `serena start-mcp-server` | Symbol-level code navigation and edits |
 | `things` | `things-mcp` | Tasks and notes in Things |
-| `aimuzov-thinks` | `thinks-mcp` | Text in the author's own voice (style profile from a Telegram export) |
+| `thinks` | `thinks-mcp` | Text in the author's own voice (style profile from a Telegram export) |
 
 Every server is launched through `mise exec` / `mise x`, so no global installation is required.
 The packages are declared in `home/dot_config/mise/config.toml`
-(`npm:@upstash/context7-mcp`, `pipx:serena-agent`, `pipx:things-mcp`) — the exception is
-`@aimuzov/thinks-mcp`, which is installed globally via npm and runs under `node@24`
-(that version is pinned for a stable `node:sqlite` with FTS5).
+(`npm:@upstash/context7-mcp`, `pipx:serena-agent`, `pipx:things-mcp`,
+`npm:@aimuzov/thinks-mcp`). The last one is also listed in `minimum_release_age_excludes`:
+mise holds back npm releases younger than 24 hours, and that quarantine only gets in the way
+for the author's own package.
 
 Extra launch parameters:
 
