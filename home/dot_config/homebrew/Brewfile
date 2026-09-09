@@ -89,6 +89,8 @@ brew "felixkratz/formulae/sketchybar"
 brew "felixkratz/formulae/svim", args: ["HEAD"], trusted: true
 # Simple hotkey daemon for macOS, written in Zig
 brew "jackielii/tap/skhd-zig"
+# Android SDK command-line tools: sdkmanager, NDK, emulator (packages/android)
+cask "android-commandlinetools"
 # Application uninstaller
 cask "appcleaner"
 # Video editing and image design platform

@@ -8,6 +8,7 @@
 "core:bun" = "latest"
 "core:cmake" = "latest"
 "core:go" = "latest"
+"core:java" = "temurin-21"
 "core:neovim" = "latest"
 "core:node" = ["latest", "24"]
 "core:pnpm" = "latest"
