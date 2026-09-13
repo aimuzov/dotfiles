@@ -382,7 +382,7 @@ The Yabai configuration is written entirely in **Fish shell** (`executable_yabai
 
 **Helper functions** (located in `dot_config/fish/functions/core/yabai/`):
 
-- `yabai.rearrange.fish` - Rearranges windows when new ones are created
+- `~/.bin/yabai-rearrange.sh` - Rearranges windows when new ones are created (POSIX sh, kept out of fish for speed)
 - `yabai.restart.fish` - Restarts Yabai service
 - `yabai.sudoers.fish` - Manages sudoers configuration for scripting addition
 
@@ -398,7 +398,7 @@ The Yabai configuration is written entirely in **Fish shell** (`executable_yabai
 - skhd for keybindings
 - SketchyBar for visual feedback (via signals)
 - Fish functions for helper scripts
-- Signal triggers `yabai.rearrange` on window creation
+- Signal triggers `~/.bin/yabai-rearrange.sh` on window creation
 
 ### Git Configuration
 

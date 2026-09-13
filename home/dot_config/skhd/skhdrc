@@ -4,6 +4,17 @@
 #### syntax: https://github.com/jackielii/skhd.zig/blob/main/SYNTAX.md            ######################################
 ########################################################################################################################
 
+# -- Shell -------------------------------------------------------------------------------------------------------------
+
+# Every action runs as `$SHELL -c`, and skhd inherits SHELL from yabairc, which points at the
+# mise fish shim. That made each keypress boot a full interactive fish and cost ~400ms; a desktop
+# switch now takes ~80ms, most of it the macOS space transition. Commands below must stay POSIX sh.
+.shell "/bin/dash"
+
+# There is deliberately no `.path` here: this skhd build only knows define, load, blacklist and
+# shell, and an unknown directive would reject the whole config. yabai, sketchybar and jq come
+# from the PATH inherited from yabairc; the scripts in ~/.bin set their own PATH regardless.
+
 # -- App blacklist -----------------------------------------------------------------------------------------------------
 
 .blacklist [
@@ -19,12 +30,12 @@
 # -- Window / focusing -------------------------------------------------------------------------------------------------
 
 .define window_focus_left	:	yabai -m window --focus west || \
-								begin; yabai -m display --focus west && yabai -m window --focus last; end || \
-								begin; yabai -m display --focus (yabai.display_index_get 1) && yabai -m window --focus last; end
+								{ yabai -m display --focus west && yabai -m window --focus last; } || \
+								{ yabai -m display --focus "$(yabai-display-index.sh 1)" && yabai -m window --focus last; }
 
 .define window_focus_right	:	yabai -m window --focus east || \
-								begin; yabai -m display --focus east && yabai -m window --focus first; end || \
-								begin; yabai -m display --focus (yabai.display_index_get 2) && yabai -m window --focus first; end
+								{ yabai -m display --focus east && yabai -m window --focus first; } || \
+								{ yabai -m display --focus "$(yabai-display-index.sh 2)" && yabai -m window --focus first; }
 
 .define window_focus_down	:	yabai -m window --focus south || yabai -m display --focus south
 .define window_focus_up		:	yabai -m window --focus north || yabai -m display --focus north
@@ -45,15 +56,15 @@
 
 .define window_move_down	:	yabai -m window --warp south
 .define window_move_up		:	yabai -m window --warp north
-.define window_move_left	:	yabai -m window --warp west || begin; yabai -m window --space prev; yabai -m space --focus prev && yabai -m window --focus last; end
-.define window_move_right	:	yabai -m window --warp east || begin; yabai -m window --space next; yabai -m space --focus next && yabai -m window --focus last; yabai -m window --warp first; end
+.define window_move_left	:	yabai -m window --warp west || { yabai -m window --space prev; yabai -m space --focus prev && yabai -m window --focus last; }
+.define window_move_right	:	yabai -m window --warp east || { yabai -m window --space next; yabai -m space --focus next && yabai -m window --focus last; yabai -m window --warp first; }
 
 # -- Window / stacking -------------------------------------------------------------------------------------------------
 
-.define window_stack_left	:	set -l wid (yabai -m query --windows --window | jq -r '.id'); yabai -m window west  --stack $wid; yabai -m window --focus $wid && sketchybar --trigger window_focus
-.define window_stack_down	:	set -l wid (yabai -m query --windows --window | jq -r '.id'); yabai -m window south --stack $wid; yabai -m window --focus $wid && sketchybar --trigger window_focus
-.define window_stack_up		:	set -l wid (yabai -m query --windows --window | jq -r '.id'); yabai -m window north --stack $wid; yabai -m window --focus $wid && sketchybar --trigger window_focus
-.define window_stack_right	:	set -l wid (yabai -m query --windows --window | jq -r '.id'); yabai -m window east  --stack $wid; yabai -m window --focus $wid && sketchybar --trigger window_focus
+.define window_stack_left	:	wid=$(yabai -m query --windows --window | jq -r '.id'); yabai -m window west  --stack "$wid"; yabai -m window --focus "$wid" && sketchybar --trigger window_focus
+.define window_stack_down	:	wid=$(yabai -m query --windows --window | jq -r '.id'); yabai -m window south --stack "$wid"; yabai -m window --focus "$wid" && sketchybar --trigger window_focus
+.define window_stack_up		:	wid=$(yabai -m query --windows --window | jq -r '.id'); yabai -m window north --stack "$wid"; yabai -m window --focus "$wid" && sketchybar --trigger window_focus
+.define window_stack_right	:	wid=$(yabai -m query --windows --window | jq -r '.id'); yabai -m window east  --stack "$wid"; yabai -m window --focus "$wid" && sketchybar --trigger window_focus
 .define window_unstack		:	yabai -m window --toggle float; yabai -m window --toggle float; sketchybar --trigger window_focus
 
 # -- Window / toggling -------------------------------------------------------------------------------------------------
@@ -72,7 +83,8 @@
 # -- Other -------------------------------------------------------------------------------------------------------------
 
 .define sbe_mode		:	sketchybar --trigger skhd_mode_update MODE={{1}}
-.define space_focus		:	yabai -m query --spaces --space {{1}} | jq -r '.windows[0]' | xargs yabai -m window --focus; yabai -m space --focus {{1}}
+# `// empty` keeps an empty space quiet: bare .windows[0] yields "null", which yabai rejects.
+.define space_focus		:	wid=$(yabai -m query --spaces --space {{1}} | jq -r '.windows[0] // empty'); [ -n "$wid" ] && yabai -m window --focus "$wid"; yabai -m space --focus {{1}}
 .define window_close	:	yabai -m window --close
 
 ########################################################################################################################
@@ -223,13 +235,13 @@ window	< ctrl - 0x21		;	default	:	@sbe_mode("default")
 
 # -- mapping / commands ------------------------------------------------------------------------------------------------
 
-command	< w					;	default	:	yabai.restart
+command	< w					;	default	:	yabai-restart.sh
 command	< l					;	default	:	pmset displaysleepnow
 
 # -- mapping / [window] ------------------------------------------------------------------------------------------------
 
 window < e			:	@window_toggle_equal
-window < r			:	yabai.restart 
+window < r			:	yabai-restart.sh
 window < f			:	@window_toggle_float
 window < h			:	@window_focus_left
 window < j			:	@window_focus_down

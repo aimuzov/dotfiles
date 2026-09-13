@@ -298,7 +298,7 @@ Located in `functions/core/git/`:
 
 Located in `functions/core/yabai/`:
 
-- `yabai.rearrange`: Rearranges windows when new ones are created (triggered by Yabai signal)
+- `yabai.restart`: wrapper over `~/.bin/yabai-restart.sh`; window rearranging moved to `~/.bin/yabai-rearrange.sh`
 - `yabai.restart`: Restarts Yabai service cleanly
 - `yabai.sudoers`: Manages sudoers configuration for Yabai scripting addition
 

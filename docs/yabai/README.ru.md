@@ -46,7 +46,7 @@
 
 Расположены в `home/dot_config/fish/functions/core/yabai/`:
 
-- **`yabai.rearrange.fish`** - Перераспределяет окна при создании новых. Вызывается через сигнал при событии `window_created`.
+- **`~/.bin/yabai-rearrange.sh`** - Перераспределяет окна при создании новых. Вызывается через сигнал при событии `window_created`. Обычный POSIX sh: запуск fish на этом пути стоил ~380 мс на окно.
 - **`yabai.restart.fish`** - Чистый перезапуск сервиса Yabai.
 - **`yabai.sudoers.fish`** - Управление конфигурацией sudoers для scripting addition (позволяет выполнять `yabai --load-sa` без пароля).
 

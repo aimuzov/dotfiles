@@ -10,7 +10,7 @@ sudo yabai --load-sa
 # themselves, labelled, so that reloading the bar cannot leave two of them behind.
 # yabai.restart brings sketchybar up with yabai, which is what puts it back.
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
-yabai -m signal --add event=window_created action="{{ .miseBinPath }} exec aqua:fish-shell/fish-shell -- fish -c 'yabai.rearrange'"
+yabai -m signal --add event=window_created action="{{ .chezmoi.homeDir }}/.bin/yabai-rearrange.sh"
 
 # -- Config ------------------------------------------------------------------------------------------------------------
 
@@ -75,7 +75,7 @@ yabai.layout_add Толк
 
 yabai -m rule --apply
 
-yabai.rearrange
+{{ .chezmoi.homeDir }}/.bin/yabai-rearrange.sh
 
 # # -- skhd ------------------------------------------------------------------------------------------------------------------
 # macOS 26: launchd agents cannot create an event tap, so we launch skhd from yabairc

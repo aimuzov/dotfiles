@@ -369,7 +369,7 @@ home/dot_config/fish/
 
 **Вспомогательные функции** (в `dot_config/fish/functions/core/yabai/`):
 
-- `yabai.rearrange.fish` - Перераспределяет окна при создании новых
+- `~/.bin/yabai-rearrange.sh` - Перераспределяет окна при создании новых (POSIX sh, вне fish ради скорости)
 - `yabai.restart.fish` - Перезапускает сервис Yabai
 - `yabai.sudoers.fish` - Управляет конфигурацией sudoers для scripting addition
 
@@ -385,7 +385,7 @@ home/dot_config/fish/
 - skhd для привязок клавиш
 - SketchyBar для визуальной обратной связи (через сигналы)
 - Fish функции для вспомогательных скриптов
-- Сигнал вызывает `yabai.rearrange` при создании окна
+- Сигнал вызывает `~/.bin/yabai-rearrange.sh` при создании окна
 
 ### Конфигурация Git
 

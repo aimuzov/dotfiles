@@ -93,7 +93,7 @@ The `.blacklist` section excludes specific applications from skhd control. Curre
 The configuration relies on fish functions (located in `~/.config/fish/functions/core/yabai/`):
 
 - `yabai.space_focus <number>` - Reliable space switching with focus handling
-- `yabai.display_index_get <number>` - Get display index for multi-monitor setups
+- `yabai-display-index.sh <number>` - Get display index for multi-monitor setups
 
 ## Service Management
 

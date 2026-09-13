@@ -300,7 +300,7 @@ end
 
 Расположены в `functions/core/yabai/`:
 
-- `yabai.rearrange`: Перераспределяет окна при создании новых (вызывается сигналом Yabai)
+- `yabai.restart`: обёртка над `~/.bin/yabai-restart.sh`; перераспределение окон переехало в `~/.bin/yabai-rearrange.sh`
 - `yabai.restart`: Чистый перезапуск сервиса Yabai
 - `yabai.sudoers`: Управление конфигурацией sudoers для scripting addition Yabai
 

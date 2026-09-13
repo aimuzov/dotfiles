@@ -46,7 +46,7 @@ The configuration file (`executable_yabairc`) is a Fish shell script that:
 
 Located in `home/dot_config/fish/functions/core/yabai/`:
 
-- **`yabai.rearrange.fish`** - Rearranges windows when new ones are created. Triggered via signal on `window_created` event.
+- **`~/.bin/yabai-rearrange.sh`** - Rearranges windows when new ones are created. Triggered via signal on `window_created` event. Plain POSIX sh: booting fish on this path cost ~380ms per window.
 - **`yabai.restart.fish`** - Restarts Yabai service cleanly.
 - **`yabai.sudoers.fish`** - Manages sudoers configuration for scripting addition (allows `yabai --load-sa` without password).
 
