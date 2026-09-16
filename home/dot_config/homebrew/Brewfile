@@ -1,12 +1,12 @@
 tap "asmvik/formulae"
 tap "daipeihust/tap"
 tap "farion1231/ccswitch"
-tap "felixkratz/formulae"
+tap "felixkratz/formulae", trusted: true
 tap "jackielii/tap"
 tap "jdx/tap"
 tap "koekeishiya/formulae", "https://github.com/asmvik/homebrew-formulae.git"
 tap "lukechilds/tap"
-tap "macos-fuse-t/cask"
+tap "macos-fuse-t/cask", trusted: true
 tap "nikitabobko/tap"
 tap "whatpulse/whatpulse"
 tap "yqrashawn/goku"
@@ -86,7 +86,7 @@ brew "felixkratz/formulae/borders"
 brew "felixkratz/formulae/sketchybar"
 # Turns macOS input fields into real vim buffers
 # (release 1.0.11 leaks zombie children, SIGCHLD fix lives only in master)
-brew "felixkratz/formulae/svim", args: ["HEAD"], trusted: true
+brew "felixkratz/formulae/svim", args: ["HEAD"]
 # Simple hotkey daemon for macOS, written in Zig
 brew "jackielii/tap/skhd-zig"
 # Android SDK command-line tools: sdkmanager, NDK, emulator (packages/android)
