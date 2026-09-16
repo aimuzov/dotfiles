@@ -19,6 +19,15 @@ uid=$(id -u)
 yabai --restart-service
 launchctl kickstart -k "gui/$uid/homebrew.mxcl.borders"
 launchctl kickstart -k "gui/$uid/sh.brew.svim"
+
+# A stray `brew cleanup` once unlinked the keg. launchd points at the opt path,
+# so it just kept failing with EX_CONFIG and the bar stayed dead until relinked.
+# Cheap insurance: if the binary is gone, link it back and kick the agent.
+if ! command -v sketchybar >/dev/null 2>&1; then
+	brew link felixkratz/formulae/sketchybar
+	launchctl kickstart -k "gui/$uid/sh.brew.sketchybar"
+fi
+
 sketchybar --reload
 
 echo "vm is restarted"
