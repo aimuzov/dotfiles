@@ -91,3 +91,6 @@ fetch_remote_versions_timeout = "5s"
 idiomatic_version_file_enable_tools = []
 # own package, safe to install right after publishing
 minimum_release_age_excludes = ["npm:@aimuzov/thinks-mcp"]
+# pin rust homes: without session-env mise falls back to ~/.cargo and flips the install symlink
+rust.cargo_home = "~/.local/share/cargo"
+rust.rustup_home = "~/.local/share/rustup"
