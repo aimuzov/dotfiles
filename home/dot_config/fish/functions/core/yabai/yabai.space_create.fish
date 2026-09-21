@@ -8,8 +8,12 @@ function yabai.space_create
     set -l space (echo $spaces_json | jq "first(.[] | select(.index == $idx) | .index)")
     set -l current_display (echo $spaces_json | jq "first(.[] | select(.index == $idx) | .display)")
 
+    # Spaces themselves are made by yabai.space_ensure, which waits for each one. A missing
+    # index here means creation failed; bail out instead of firing three commands at a
+    # space that is not there and leaving "could not locate the space to act on!" in the log.
     if test -z "$space"
-        yabai -m space --create
+        echo "yabai.space_create: no space with index $idx, skipping $name" >&2
+        return 1
     end
 
     yabai -m space "$idx" --label "$name"
