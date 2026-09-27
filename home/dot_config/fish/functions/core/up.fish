@@ -2,7 +2,7 @@ function up --description 'Update brew + mise tools, then apply chezmoi'
     argparse g/greedy -- $argv
     or return
 
-    # brew upgrade пропускает каски с auto_updates (Raycast, Spotify, Cursor): brew
+    # brew upgrade пропускает каски с auto_updates (Raycast, Spotify): brew
     # не видит самообновлений и держит версию момента установки. --greedy-auto-updates
     # тянет их принудительно — гигабайты и закрытые на ходу приложения, отсюда флаг.
     set -l upgrade_flags
