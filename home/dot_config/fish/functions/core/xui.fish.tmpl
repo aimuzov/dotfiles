@@ -1,0 +1,23 @@
+function xui --description 'Панель 3x-ui мастера через ssh-туннель'
+    # Порт панели открыт только нодам, поэтому ходим туннелем по ssh: он не зависит
+    # ни от нашего VPN, ни от DNS. -j <нода> -- через ноду, если мастер напрямую не виден.
+    argparse j/jump= c/close -- $argv
+    or return
+
+    set -l port 1337
+    set -l base_path {{ keepassxcAttribute "ALESHAVPNOV" "XUI-PANEL-PATH" }}
+
+    if set -q _flag_close
+        pkill -f "L $port:127.0.0.1:$port aleshavpnov-vps-0"
+        return 0
+    end
+
+    if not nc -z 127.0.0.1 $port 2>/dev/null
+        set -l jump
+        set -q _flag_jump; and set jump -J $_flag_jump
+        ssh -f -N -o ExitOnForwardFailure=yes $jump -L $port:127.0.0.1:$port aleshavpnov-vps-0
+        or return
+    end
+
+    open "https://localhost:$port/$base_path/"
+end
