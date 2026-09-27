@@ -117,12 +117,8 @@ cask "keepassxc"
 cask "logi-options+"
 # Open-source, KeePass-client and password manager
 cask "macpass"
-# Sandbox construction video game
-cask "minecraft"
 # Intercept, modify, replay, save HTTP/S traffic
 cask "mitmproxy"
-# Finds large, unwanted files and deletes them
-cask "omnidisksweeper"
 # AI coding agent desktop client
 cask "opencode-desktop"
 # Replacement for Docker Desktop
