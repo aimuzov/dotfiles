@@ -1,6 +1,5 @@
 tap "asmvik/formulae"
 tap "daipeihust/tap"
-tap "farion1231/ccswitch"
 tap "felixkratz/formulae", trusted: true
 tap "jackielii/tap"
 tap "jdx/tap"
@@ -18,8 +17,6 @@ brew "coreutils"
 brew "cups"
 # Get a file from an HTTP, HTTPS or FTP server
 brew "curl"
-# Pack, ship and run any application as a lightweight container
-brew "docker"
 # Perl lib for reading and writing EXIF metadata
 brew "exiftool"
 # Play, record, convert, and stream select audio and video codecs
@@ -93,21 +90,12 @@ brew "jackielii/tap/skhd-zig"
 cask "android-commandlinetools"
 # Application uninstaller
 cask "appcleaner"
-# Video editing and image design platform
-cask "capcut"
-cask "cc-switch"
 # OpenAI's official ChatGPT desktop app
 cask "chatgpt"
 # Anthropic's official Claude AI desktop app
 cask "claude"
-# Write, edit, and chat about your code with AI
-cask "cursor"
 # Server and cloud storage browser
 cask "cyberduck"
-# Voice and text chat software
-cask "discord"
-# App to build and share containerised applications and microservices
-cask "docker-desktop"
 # Collaborative team software
 cask "figma"
 cask "font-jetbrains-mono-nerd-font"
@@ -133,8 +121,6 @@ cask "macpass"
 cask "minecraft"
 # Intercept, modify, replay, save HTTP/S traffic
 cask "mitmproxy"
-# Tool to control external monitor brightness & volume
-cask "monitorcontrol"
 # Finds large, unwanted files and deletes them
 cask "omnidisksweeper"
 # AI coding agent desktop client
@@ -159,14 +145,8 @@ cask "transmission"
 cask "visual-studio-code"
 # Multimedia player
 cask "vlc"
-# Rust-based terminal
-cask "warp"
 # GPU-accelerated cross-platform terminal emulator and multiplexer
 cask "wezterm@nightly"
-# Tune in to Yandex Music and get personal recommendations
-cask "yandex-music"
-# Yandex video calls and meetings platform
-cask "yandextelemost"
 # Multiplayer code editor
 cask "zed"
 # Video communication and virtual meeting platform
