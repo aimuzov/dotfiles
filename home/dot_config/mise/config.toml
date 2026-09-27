@@ -28,6 +28,7 @@
 "aqua:charmbracelet/glow" = "latest"
 "aqua:ClementTsang/bottom" = "latest"
 "aqua:cli/cli" = "latest"
+"aqua:dundee/gdu" = "latest"
 "aqua:fish-shell/fish-shell" = "latest"
 "aqua:github/copilot-cli" = "latest"
 "aqua:gittower/git-flow-next" = "latest"
