@@ -1,11 +1,11 @@
 {
   "LazyVim": { "branch": "main", "commit": "999700997f72227187d49d8b92667183dc7fc809" },
-  "SchemaStore.nvim": { "branch": "main", "commit": "411163b2be396495c76788a016cb1354f1e8acd0" },
+  "SchemaStore.nvim": { "branch": "main", "commit": "b5d7de0d5be19ff7c1df71fa4ad1ea63ba1d2ea6" },
   "baleia.nvim": { "branch": "main", "commit": "710537ff5cd669c5a76c5f5b6a9169fd9b913d18" },
   "blink.cmp": { "branch": "main", "commit": "78336bc89ee5365633bcf754d93df01678b5c08f" },
   "bufferline.nvim": { "branch": "main", "commit": "655133c3b4c3e5e05ec549b9f8cc2894ac6f51b3" },
   "catppuccin": { "branch": "main", "commit": "edefef779ab08ce1a4a404713e3012b0d202bd35" },
-  "catppuccin-barista.nvim": { "branch": "main", "commit": "b1b71b9b622105d032c9a61b49b57971e5c983bc" },
+  "catppuccin-barista.nvim": { "branch": "main", "commit": "21375eacece1dcd7120b37c895d0f044a5d5838a" },
   "colorful-menu.nvim": { "branch": "master", "commit": "196ddf16d5f8fec09ba7f20e6b153aa5188e907b" },
   "conform.nvim": { "branch": "master", "commit": "016802de402556da54c36bd7359b441266b01cdd" },
   "diffview.nvim": { "branch": "main", "commit": "4516612fe98ff56ae0415a259ff6361a89419b0a" },
@@ -91,5 +91,5 @@
   "volt": { "branch": "main", "commit": "620de1321f275ec9d80028c68d1b88b409c0c8b1" },
   "which-key.nvim": { "branch": "main", "commit": "3aab2147e74890957785941f0c1ad87d0a44c15a" },
   "yanky.nvim": { "branch": "main", "commit": "4b4ddd196526fd3d6fd091d931810f9743e936d3" },
-  "yazi.nvim": { "branch": "main", "commit": "f5f0b169beaf16bb5fca50e36015b389c168ad5e" }
+  "yazi.nvim": { "branch": "main", "commit": "bc2f9d0d4d7f05f9c1bee0c3482e5ffd341ebfb7" }
 }
