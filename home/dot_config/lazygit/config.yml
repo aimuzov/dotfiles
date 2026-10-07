@@ -14,7 +14,7 @@ gui:
   commandLogSize: 3
   showCommandLog: false
 git:
-  branchLogCmd: "git lg {{branchName}}"
+  branchLogCmd: "git-graph --color always --style round --wrap none -- {{branchName}}"
   diffRenderers:
     - command: DFT_BACKGROUND=dark difft --color=always
       type: extDiff
