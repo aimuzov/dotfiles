@@ -1,0 +1,5 @@
+{{ range $i := until 7 -}}
+{{ keepassxcAttribute "SSH_HOST" (printf "VPS-%d" $i) }}	aleshavpnov-vps-{{ $i }}
+{{ end -}}
+{{ keepassxcAttribute "SSH_HOST" "VPS-SITE" }}	aleshavpnov-vps-site
+{{ keepassxcAttribute "SSH_HOST" "VPS-PUFIK" }}	pufik-vps

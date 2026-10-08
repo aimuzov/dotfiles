@@ -1,0 +1,37 @@
+#!/usr/bin/env fish
+# vi: ft=fish
+
+{{ if (eq .chezmoi.os "darwin") -}}
+
+# /etc/hosts лежит вне $HOME, файлом chezmoi им не управляет. Скрипт
+# заменяет в нём только блок между маркерами, а localhost и записи
+# других программ не трогает. Адреса VPS берутся из KeePassXC.
+# Хэш перезапускает скрипт при любой смене блока:
+# {{ includeTemplate "hosts-block.tmpl" . | sha256sum }}
+
+set -l begin '# BEGIN chezmoi'
+set -l end '# END chezmoi'
+set -l block (string split -n \n -- '{{ includeTemplate "hosts-block.tmpl" . }}')
+
+# Вне маркеров вырезаются и записи aleshavpnov-vps-*: до появления блока
+# они лежали в файле россыпью и иначе задвоились бы.
+set -l rest (awk -v b="$begin" -v e="$end" '
+    $0 == b { skip = 1; next }
+    $0 == e { skip = 0; next }
+    skip || $2 ~ /^aleshavpnov-vps-/ { next }
+    { print }
+' /etc/hosts)
+
+while test (count $rest) -gt 0; and string match -qr '^\s*$' -- $rest[-1]
+    set -e rest[-1]
+end
+
+set -l desired $rest '' $begin $block $end
+
+if test (string join \n -- $desired | string collect) != (string collect </etc/hosts)
+    printf '%s\n' $desired | sudo tee /etc/hosts >/dev/null
+    sudo dscacheutil -flushcache
+    sudo killall -HUP mDNSResponder
+end
+
+{{ end -}}
