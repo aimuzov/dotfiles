@@ -63,3 +63,20 @@ exact = true
 stripComponents = 2
 refreshPeriod = "168h"
 include = ["*/completions/**"]
+
+# bins: обзор всего установленного (пакеты + PATH) в fzf, свой репозиторий
+[".config/fish/functions/binsight"]
+type = "archive"
+url = "https://github.com/aimuzov/binsight.fish/archive/main.tar.gz"
+exact = true
+stripComponents = 2
+refreshPeriod = "168h"
+include = ["*/functions/**"]
+
+[".config/fish/completions/binsight"]
+type = "archive"
+url = "https://github.com/aimuzov/binsight.fish/archive/main.tar.gz"
+exact = true
+stripComponents = 2
+refreshPeriod = "168h"
+include = ["*/completions/**"]
