@@ -304,6 +304,14 @@ end
 - `yabai.restart`: Чистый перезапуск сервиса Yabai
 - `yabai.sudoers`: Управление конфигурацией sudoers для scripting addition Yabai
 
+### Функции для GlobalProtect
+
+Расположены в `functions/core/gp/`:
+
+- `gp.off`: Выгружает launchd-задачи GlobalProtect и убивает оставшиеся процессы (для системного демона спросит `sudo`)
+- `gp.on`: Загружает launchd-задачи GlobalProtect обратно
+- `gp.status`: Показывает запущенные процессы GlobalProtect
+
 ### Функции управления системой
 
 Расположены в `functions/core/`:

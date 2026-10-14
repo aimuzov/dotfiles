@@ -302,6 +302,14 @@ Located in `functions/core/yabai/`:
 - `yabai.restart`: Restarts Yabai service cleanly
 - `yabai.sudoers`: Manages sudoers configuration for Yabai scripting addition
 
+### GlobalProtect Functions
+
+Located in `functions/core/gp/`:
+
+- `gp.off`: Boots out the GlobalProtect launchd jobs and kills the leftover processes (asks for `sudo` for the system daemon)
+- `gp.on`: Loads the GlobalProtect launchd jobs back
+- `gp.status`: Lists running GlobalProtect processes
+
 ### System Management Functions
 
 Located in `functions/core/`:
