@@ -26,4 +26,10 @@ if [[ $(oh-my-posh --version 2>/dev/null) != "$omp_version" ]]; then
 	install -m 755 "$tmp" /usr/local/bin/oh-my-posh
 	rm "$tmp"
 fi
+
+# Ghostty logs in with TERM=xterm-ghostty, which Debian doesn't know: without it clear,
+# less and the rest fail. /etc/terminfo is where Debian keeps local entries.
+tic -x -o /etc/terminfo - <<'TERMINFO'
+{{ include ".server/xterm-ghostty.terminfo" -}}
+TERMINFO
 {{ end -}}
