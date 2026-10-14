@@ -9,11 +9,24 @@ set -euo pipefail
 
 export DEBIAN_FRONTEND=noninteractive
 apt-get update -qq
-apt-get install -y -qq --no-install-recommends fish fzf zoxide fd-find bat
+apt-get install -y -qq --no-install-recommends fish zoxide fd-find bat
 
 # fzf.fish calls fd and bat, Debian names them fdfind and batcat.
 ln -sf /usr/bin/fdfind /usr/local/bin/fd
 ln -sf /usr/bin/batcat /usr/local/bin/bat
+
+# fzf from its release, as on the Mac: Debian's 0.38 doesn't know the colors
+# of the catppuccin theme (selected-bg and the like), so its package goes away.
+fzf_version=0.74.4
+fzf_sha256=05e6813a337cc722c3ed07e54a764b75cc5d671e2e60459db0ba696ee5fa7504
+apt-get remove -y -qq fzf >/dev/null 2>&1 || true
+if [[ $(fzf --version 2>/dev/null | cut -d' ' -f1) != "$fzf_version" ]]; then
+	tmp=$(mktemp)
+	curl -fsSL -o "$tmp" "https://github.com/junegunn/fzf/releases/download/v$fzf_version/fzf-$fzf_version-linux_amd64.tar.gz"
+	echo "$fzf_sha256  $tmp" | sha256sum -c --quiet
+	tar -xzf "$tmp" -C /usr/local/bin fzf
+	rm "$tmp"
+fi
 
 # oh-my-posh isn't in Debian: the release binary, the same version as on the
 # Mac, checked against the sum from the release's checksums.txt.

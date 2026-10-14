@@ -43,7 +43,7 @@ if type -q zoxide
 end
 
 # -- FZF ---------------------------------------------------------------------
-# fzf.fish instead of `fzf --fish`: Debian's fzf is older than the one that has it.
+# The fzf.fish key bindings and the catppuccin colors, as on the Mac.
 if type -q fzf
     source $__fish_config_dir/conf.d/fzf/fzf.fish
     source $__fish_config_dir/themes/catppuccin-fzf-macchiato.fish
