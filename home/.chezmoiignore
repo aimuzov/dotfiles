@@ -53,3 +53,30 @@ Projects/README.md
 
 # Submodule home/dot_claude (приватный репо): мета-файлы не разворачиваем в ~/.claude
 .claude/README.md
+
+# Linux server (the projects server): only fish with its prompt. The rest of this repo is for
+# the Mac, and nothing private (ssh, gnupg) may reach a server. Excludes win over ignores.
+{{- if ne .chezmoi.os "darwin" }}
+**
+!.chezmoiscripts/0_install-server-packages.sh
+!.bashrc
+!.config
+!.config/fish
+!.config/fish/config.fish
+!.config/fish/conf.d
+!.config/fish/conf.d/recursive_paths.fish
+!.config/fish/conf.d/vi_mode.fish
+!.config/fish/conf.d/fzf
+!.config/fish/conf.d/fzf/**
+!.config/fish/functions
+!.config/fish/functions/fzf
+!.config/fish/functions/fzf/**
+!.config/fish/completions
+!.config/fish/completions/fzf
+!.config/fish/completions/fzf/**
+!.config/fish/themes
+!.config/fish/themes/catppuccin-macchiato.theme
+!.config/fish/themes/catppuccin-fzf-macchiato.fish
+!.config/oh-my-posh
+!.config/oh-my-posh/config.json
+{{- end }}

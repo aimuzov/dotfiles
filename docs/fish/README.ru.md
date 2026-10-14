@@ -19,6 +19,7 @@
 - [Сокращения и псевдонимы](#сокращения-и-псевдонимы)
 - [Пользовательские функции](#пользовательские-функции)
 - [Управление секретами](#управление-секретами)
+- [Linux-сервер](#linux-сервер)
 
 ## Базовые директории XDG
 
@@ -338,6 +339,18 @@ end
 - `GITHUB_TOKEN`: Токен доступа GitHub
 
 Секреты автоматически загружаются из [KeePassXC](https://keepassxc.org/) с использованием функций шаблонов [Chezmoi](https://www.chezmoi.io/).
+
+## Linux-сервер
+
+На Linux-сервере (сервер проектов) chezmoi раскладывает только fish с промптом: `.chezmoiignore` там игнорирует остальной репо, а приватные сабмодули не клонируются вовсе. `config.fish` берётся из [`server.config.fish`](../../home/dot_config/fish/server.config.fish): тема catppuccin-macchiato, Oh My Posh с тем же конфигом, vi-режим, [fzf.fish](https://github.com/PatrickF1/fzf.fish), zoxide. Скрипт только для Linux ставит fish, fzf, zoxide, fd и bat из Debian и Oh My Posh из его релиза. `.bashrc` оставляет bash login shell и переключает интерактивный вход по SSH в fish, поэтому скрипты и принудительные команды ключей деплоя остаются в bash.
+
+Первая установка, под root на сервере:
+
+```bash
+chezmoi init --apply --recurse-submodules=false https://github.com/aimuzov/dotfiles.git
+```
+
+Дальше изменения подтягивает `chezmoi update --recurse-submodules=false`.
 
 ## Дополнительные возможности
 

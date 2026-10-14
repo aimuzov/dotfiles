@@ -1,0 +1,29 @@
+{{ if eq .chezmoi.os "linux" -}}
+#!/usr/bin/env bash
+# vi: ft=sh
+
+# Packages for fish on a Linux server. chezmoi runs it as root before laying
+# out the files and again whenever it changes; on the Mac the template is
+# empty and never runs.
+set -euo pipefail
+
+export DEBIAN_FRONTEND=noninteractive
+apt-get update -qq
+apt-get install -y -qq --no-install-recommends fish fzf zoxide fd-find bat
+
+# fzf.fish calls fd and bat, Debian names them fdfind and batcat.
+ln -sf /usr/bin/fdfind /usr/local/bin/fd
+ln -sf /usr/bin/batcat /usr/local/bin/bat
+
+# oh-my-posh isn't in Debian: the release binary, the same version as on the
+# Mac, checked against the sum from the release's checksums.txt.
+omp_version=31.4.1
+omp_sha256=bfd0ccab85dc031c848b09b68226f1be942d2ce18978f94c9659b6e7e1b259af
+if [[ $(oh-my-posh --version 2>/dev/null) != "$omp_version" ]]; then
+	tmp=$(mktemp)
+	curl -fsSL -o "$tmp" "https://github.com/JanDeDobbeleer/oh-my-posh/releases/download/v$omp_version/posh-linux-amd64"
+	echo "$omp_sha256  $tmp" | sha256sum -c --quiet
+	install -m 755 "$tmp" /usr/local/bin/oh-my-posh
+	rm "$tmp"
+fi
+{{ end -}}

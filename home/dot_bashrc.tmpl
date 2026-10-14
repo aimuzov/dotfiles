@@ -1,0 +1,17 @@
+{{- if ne .chezmoi.os "darwin" -}}
+# vi: ft=sh
+
+# Linux server: the Debian defaults for root, and fish for an interactive
+# SSH login. Scripts, `ssh host cmd` and the forced commands of the deploy
+# keys aren't interactive and stay in bash.
+[ -f /etc/skel/.bashrc ] && . /etc/skel/.bashrc
+
+if [[ $- == *i* && -n ${SSH_TTY:-} && ${SHLVL:-1} -le 1 ]] && command -v fish >/dev/null; then
+	exec fish
+fi
+{{ else -}}
+# vi: ft=sh
+
+export SHELL="/bin/zsh"
+export HISTFILE="${XDG_STATE_HOME}"/bash/history
+{{ end -}}

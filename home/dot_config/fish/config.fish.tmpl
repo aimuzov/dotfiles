@@ -1,3 +1,6 @@
+{{- if ne .chezmoi.os "darwin" -}}
+{{ include "dot_config/fish/server.config.fish" }}
+{{- else -}}
 # vi: ft=fish
 
 # -- HELPERS -----------------------------------------------------------------------------------------------------------
@@ -384,3 +387,4 @@ set -gx _GIT_PATHSPEC ":!package-lock.json" # https://git-quick-stats.sh/#docs
 
 functions -e cache_and_source
 functions -e add_completion
+{{ end -}}
