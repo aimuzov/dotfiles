@@ -6,6 +6,12 @@
       "type": "prompt",
       "segments": [
         {
+          "foreground": "yellow",
+          "style": "plain",
+          "template": "{{ if .SSHSession }}<white>󰒋</> {{ if .Root }}<red>{{ .UserName }}</>{{ else }}{{ .UserName }}{{ end }}@{{ .HostName }} {{ end }}",
+          "type": "session"
+        },
+        {
           "foreground": "cyan",
           "properties": { "style": "folder" },
           "style": "plain",
