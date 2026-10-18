@@ -68,6 +68,7 @@
 "npm:@modelcontextprotocol/server-filesystem" = "latest"
 "npm:@modelcontextprotocol/server-memory" = "latest"
 "npm:@modelcontextprotocol/server-sequential-thinking" = "latest"
+"npm:@nanobanana/mcp" = { version = "0.1.2", allow_low_downloads = true }
 "npm:@upstash/context7-mcp" = "latest"
 "npm:ccstatusline" = "latest"
 "npm:ccusage" = "latest"
