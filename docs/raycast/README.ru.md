@@ -10,7 +10,7 @@
   - [Выбор Tailscale Exit Node](#выбор-tailscale-exit-node)
   - [Статус Tailscale](#статус-tailscale)
   - [Загрузка видео с YouTube](#загрузка-видео-с-youtube)
-  - [Перезапуск сервисов VM](#перезапуск-сервисов-vm)
+  - [Перезапуск оконного менеджера](#перезапуск-оконного-менеджера)
   - [Запуск Dota 2](#запуск-dota-2)
 - [Добавление новых скриптов](#добавление-новых-скриптов)
 - [Интеграция с функциями Fish](#интеграция-с-функциями-fish)
@@ -113,7 +113,6 @@ Raycast использует комментарии в начале скрипт
 
 **Связанные файлы:**
 - Fish реализация: [`executable_tailscale_pick_node.fish`](../../home/dot_bin/raycast/executable_tailscale_pick_node.fish)
-Со SketchyBar скрипт больше не связан: элемент Tailscale убран из панели вместе с триггером, который скрипт ему посылал.
 
 ---
 
@@ -161,43 +160,31 @@ Raycast использует комментарии в начале скрипт
 **Связанные файлы:**
 - Fish реализация: [`executable_youtube-download.fish`](../../home/dot_bin/raycast/executable_youtube-download.fish)
 
-### Перезапуск сервисов VM
+### Перезапуск оконного менеджера
 
 **Файл:** [`home/dot_bin/raycast/executable_restart-vm.sh`](../../home/dot_bin/raycast/executable_restart-vm.sh)
 
-**Назначение:** Перезапускает все сервисы оконного менеджера и связанных компонентов (Yabai, skhd, Borders, SketchyVim, SketchyBar).
+**Назначение:** Перезапускает [kumiko](../kumiko/README.ru.md), оконный менеджер, который также рисует бар и рамки и обрабатывает горячие клавиши.
 
 **Функциональность:**
 
-Вызывает Fish функцию `restart_vm`, которая последовательно перезапускает:
-1. Yabai (тайловый оконный менеджер)
-2. skhd (демон горячих клавиш)
-3. Borders (визуальные границы окон)
-4. SketchyVim (системная навигация в стиле Vim)
-5. SketchyBar (статус-бар)
+1. Находит `Kumiko.app` по bundle id `online.aimuzov.kumiko`: постоянного места установки у приложения пока нет
+2. Вызывает `kumiko quit` из бандла, и скрытые окна возвращаются на экран
+3. Ждёт, пока процесс `KumikoApp` завершится, и снова открывает приложение
 
 **Использование:**
 1. Вызовите Raycast (⌘Space)
-2. Введите "restart vm"
+2. Введите "restart wm"
 3. Нажмите Enter
 
 **Когда использовать:**
-- После изменения конфигурации Yabai/skhd
-- При зависании оконного менеджера
-- После обновления компонентов
+- Когда оконный менеджер завис
+- После пересборки kumiko
+
+После правки конфига перезапуск не нужен: kumiko сам перечитывает `kumiko.toml`.
 
 **Связанные файлы:**
-- Fish функция: [`home/dot_config/fish/functions/core/restart_vm.fish`](../../home/dot_config/fish/functions/core/restart_vm.fish)
-- Конфигурации:
-  - [Yabai](../../home/dot_config/yabai/executable_yabairc)
-  - [skhd](../../home/dot_config/skhd/skhdrc)
-  - [SketchyBar](../../home/dot_config/sketchybar/)
-  - [SketchyVim](../../home/dot_config/svim/)
-
-**См. также:**
-- [Документация Yabai](../yabai/README.ru.md)
-- [Документация skhd](../skhd/README.ru.md)
-- [Документация SketchyBar](../sketchybar/README.ru.md)
+- Конфигурация: [`home/dot_config/kumiko/kumiko.toml`](../../home/dot_config/kumiko/kumiko.toml)
 
 ### Запуск Dota 2
 
@@ -386,29 +373,6 @@ Raycast скрипты пишутся на bash, но можно вызыват�
 # @raycast.argument1 { "type": "text", "placeholder": "Value" }
 
 /opt/homebrew/bin/fish -c "fish_function_name \"$1\""
-```
-
-### Пример: restart_vm
-
-**Raycast скрипт** ([`executable_restart-vm.sh`](../../dot_bin/raycast/executable_restart-vm.sh)):
-
-```bash
-#!/bin/bash
-# ... метаданные ...
-/opt/homebrew/bin/fish -c "restart_vm"
-```
-
-**Fish функция** ([`restart_vm.fish`](../../dot_config/fish/functions/core/restart_vm.fish)):
-
-```fish
-function restart_vm
-    yabai --restart-service
-    skhd --restart-service
-    brew services restart borders
-    brew services restart svim
-    brew services restart sketchybar
-    echo "vm is restarted"
-end
 ```
 
 ### Создание Fish функции для Raycast

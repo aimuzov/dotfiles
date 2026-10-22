@@ -47,18 +47,14 @@ $(mise where ubi:twpayne/chezmoi)/bin/chezmoi init --apply aimuzov
 
 ### System Tools
 
-- [Yabai](https://github.com/koekeishiya/yabai) - tiling window manager for macOS
-- [skhd](https://github.com/koekeishiya/skhd) - hotkey daemon for Yabai
+- [kumiko](docs/kumiko/README.md) - own tiling window manager: workspaces, hotkeys, status bar, window borders and vim modes in one app
 - [Karabiner](https://karabiner-elements.pqrs.org) - keyboard customization and complex rules
-- [SketchyBar](https://github.com/FelixKratz/SketchyBar) - customizable status bar
-- [JankyBorders](https://github.com/FelixKratz/JankyBorders) - visual window borders
 
 ### Terminal and Editors
 
 - [WezTerm](https://wezfurlong.org/wezterm) - modern terminal emulator
 - [Ghostty](https://github.com/mitchellh/ghostty) - minimal terminal emulator
 - [neovim](https://github.com/neovim/neovim) - enhanced Vim
-- [SketchyVim](https://github.com/FelixKratz/SketchyVim) - vim-like hotkeys for macOS
 - [LazyGit](https://github.com/jesseduffield/lazygit) - Git TUI
 - [Visual Studio Code](https://code.visualstudio.com/) - popular code editor
 - [Cursor](https://cursor.sh/) - modern code editor with AI assistant
@@ -79,12 +75,12 @@ $(mise where ubi:twpayne/chezmoi)/bin/chezmoi init --apply aimuzov
 ├── dot_config/             # Configuration files
 │   ├── asdf/               # Version manager (legacy)
 │   ├── bat/                # Enhanced cat
-│   ├── borders/            # Window borders
 │   ├── fish/               # Fish shell configuration
 │   ├── git/                # Git settings
 │   ├── ghostty/            # Terminal emulator
 │   ├── homebrew/           # Package manager (Brewfile)
 │   ├── karabiner/          # Key remapping
+│   ├── kumiko/             # Window manager
 │   ├── lazygit/            # Git TUI
 │   ├── matterhorn/         # Mattermost client
 │   ├── mise/               # Version manager
@@ -92,13 +88,9 @@ $(mise where ubi:twpayne/chezmoi)/bin/chezmoi init --apply aimuzov
 │   ├── nvim/               # Neovim editor
 │   ├── oh-my-posh/         # Prompt customization
 │   ├── raycast/            # Launcher
-│   ├── sketchybar/         # Status bar
-│   ├── skhd/               # Hotkeys
 │   ├── stylus/             # Browser styles
-│   ├── svim/               # Vim-like keys
 │   ├── vim/                # Vim editor
 │   ├── wezterm/            # Terminal emulator
-│   ├── yabai/              # Window manager
 │   ├── yazi/               # File manager
 │   ├── zed/                # Code editor
 │   └── zsh/                # Zsh shell configuration
@@ -124,22 +116,17 @@ Detailed documentation is available in the [docs/](docs/) directory with both En
 - [Chezmoi Scripts](docs/chezmoiscripts/README.md) - Setup automation
 - [Fish Shell](docs/fish/README.md) ([RU](docs/fish/README.ru.md)) - Shell configuration
 - [Git](docs/git/README.md) ([RU](docs/git/README.ru.md)) - Git settings and KeePassXC integration
+- [kumiko](docs/kumiko/README.md) ([RU](docs/kumiko/README.ru.md)) - Window manager, hotkeys, bar and borders
 - [LazyGit](docs/lazygit/README.md) ([RU](docs/lazygit/README.ru.md)) - Git TUI configuration
 - [Mise](docs/mise/README.md) ([RU](docs/mise/README.ru.md)) - Tool version manager
 - [Neovim](docs/nvim/README.md) - Editor configuration
 - [Oh My Posh](docs/oh-my-posh/README.md) ([RU](docs/oh-my-posh/README.ru.md)) - Prompt customization
-- [SketchyBar](docs/sketchybar/README.md) ([RU](docs/sketchybar/README.ru.md)) - Status bar
-- [skhd](docs/skhd/README.md) ([RU](docs/skhd/README.ru.md)) - Hotkey daemon
-- [SketchyVim](docs/svim/README.md) ([RU](docs/svim/README.ru.md)) - Vim-like navigation
-- [Yabai](docs/yabai/README.md) ([RU](docs/yabai/README.ru.md)) - Window manager
 - [Yazi](docs/yazi/README.md) ([RU](docs/yazi/README.ru.md)) - File manager
 
 ## Useful Links
 
 - [macos-defaults.com](https://macos-defaults.com/) - macOS settings reference
 - [chezmoi.io](https://www.chezmoi.io/) - chezmoi documentation
-- [Yabai Wiki](https://github.com/koekeishiya/yabai/wiki) - Yabai documentation
-- [SketchyBar Wiki](https://github.com/FelixKratz/SketchyBar/wiki) - SketchyBar documentation
 
 ## Repository Activity
 

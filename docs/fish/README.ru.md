@@ -297,14 +297,6 @@ end
 - `git.branch_current`: Вспомогательная функция для получения имени текущей ветки Git
 - `git.branch_prune`: Утилита удаления веток Git для управления удаленными ветками (включая squashed коммиты)
 
-### Функции, связанные с Yabai
-
-Расположены в `functions/core/yabai/`:
-
-- `yabai.restart`: обёртка над `~/.bin/yabai-restart.sh`; перераспределение окон переехало в `~/.bin/yabai-rearrange.sh`
-- `yabai.restart`: Чистый перезапуск сервиса Yabai
-- `yabai.sudoers`: Управление конфигурацией sudoers для scripting addition Yabai
-
 ### Функции для GlobalProtect
 
 Расположены в `functions/core/gp/`:
@@ -317,7 +309,6 @@ end
 
 Расположены в `functions/core/`:
 
-- `restart_vm`: Утилита для перезапуска сервисов оконного менеджера (Yabai, skhd, SketchyBar и т.д.)
 - `clear_and_reinit`: Очистить экран и переинициализировать fish
 
 ### Обертки команд

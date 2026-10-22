@@ -88,20 +88,6 @@ mise install -y
 **Запускается:** Раз в неделю, синхронно с `refreshPeriod` у external
 **Назначение:** Слать `SIGUSR1` каждому запущенному nvim при смене внешнего вида системы
 
-### 4. Настройка SketchyBar
-
-**`run_once_after_4_setup-sketchybar.fish.tmpl`**
-
-Настраивает строку состояния SketchyBar:
-
-- Устанавливает систему плагинов SbarLua
-- Настраивает плагины SketchyBar
-- Настраивает элементы строки
-- Запускает службу SketchyBar
-
-**Запускается:** Один раз после chezmoi apply
-**Назначение:** Инициализировать пользовательскую строку состояния
-
 ### 5. Установка Workflow
 
 **`run_once_after_5_install-workflows.fish.tmpl`**

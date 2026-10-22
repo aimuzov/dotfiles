@@ -2,7 +2,7 @@
 
 > [🇷🇺 Русская версия](OVERVIEW.ru.md)
 
-This is a personal macOS dotfiles repository managed with [chezmoi](https://www.chezmoi.io/). The configuration includes a complete desktop environment with Yabai (tiling window manager), SketchyBar (status bar), Neovim, Fish shell, and various development tools.
+This is a personal macOS dotfiles repository managed with [chezmoi](https://www.chezmoi.io/). The configuration includes a complete desktop environment with kumiko (tiling, hotkeys, status bar and window borders in one app), Neovim, Fish shell, and various development tools.
 
 ## Repository Structure
 
@@ -62,12 +62,8 @@ All paths below are relative to `home/` (the chezmoi source root):
 - **Neovim** (`dot_config/nvim/`) - Uses [LazyVimx](https://github.com/aimuzov/LazyVimx) configuration, supports stable and nightly versions
 - **Fish Shell** (`dot_config/fish/`) - Comprehensive shell with custom functions, XDG compliance, theme switching
 - **Zsh** (`dot_config/zsh/`) - Zsh shell configuration
-- **Yabai** (`dot_config/yabai/`) - Tiling window manager written in Fish shell with automatic space creation and application assignment
-- **SketchyBar** (`dot_config/sketchybar/`) - Status bar written in Lua with modular item system
-- **skhd** (`dot_config/skhd/`) - Hotkey daemon for window management keybindings
-- **SketchyVim** (`dot_config/svim/`) - System-wide Vim-like navigation with Russian keyboard layout support
+- **kumiko** (`dot_config/kumiko/`) - Own tiling window manager: workspaces, hotkeys, status bar, window borders and vim modes in text fields, configured by one `kumiko.toml`
 - **Karabiner** (`dot_config/private_karabiner/`) - Keyboard customization and complex modifications
-- **JankyBorders** (`dot_config/borders/`) - Visual window borders for Yabai
 - **Git** (`dot_config/git/`) - Git configuration with KeePassXC integration for secrets
 - **Yazi** (`dot_config/yazi/`) - File manager with Catppuccin theme and custom plugins
 - **LazyGit** (`dot_config/lazygit/`) - Git TUI with dark/light theme support
@@ -79,7 +75,7 @@ All paths below are relative to `home/` (the chezmoi source root):
 - **Raycast** (`dot_bin/raycast/`) - Script commands for productivity launcher
   - Tailscale VPN management (exit-node selection, status display)
   - YouTube video download
-  - VM services restart (Yabai, skhd, SketchyBar, etc.)
+  - Window manager restart (kumiko)
   - Application launchers
   - See [Raycast documentation](raycast/README.md) for details
 - **Zed** (`dot_config/zed/`) - Code editor configuration
@@ -164,53 +160,25 @@ All development tools are managed via mise (configured in `dot_config/mise/confi
 
 - `asdf:` - Traditional asdf plugins
 - `cargo:` - Rust packages (eza, yazi, bottom, tokei, vivid, genact)
-- `npm:` - Node packages (Claude Code, SketchyBar App Font)
+- `npm:` - Node packages (Claude Code, MCP servers)
 - `pipx:` - Python CLI tools (httpie, neovim-remote)
 - `ubi:` - Direct GitHub releases (ripgrep, fd, bat, fzf, lazygit, chezmoi, etc.)
 
 ### Window Management & Desktop Environment
 
-**Yabai & skhd keybindings:**
-
-- `Alt + 1-9,0,-,=` - Switch to workspace 1-12
-- `Alt + h/j/k/l` - Focus window (vim-like)
-- `Alt + Shift + h/j/k/l` - Move window
-- `Alt + Ctrl + arrows` - Resize window
-- `Alt + Shift + f` - Toggle float
-- `Alt + Shift + m` - Toggle fullscreen
-- `Alt + Shift + e` - Balance windows
-
-**SketchyBar:**
+kumiko replaces yabai, skhd, JankyBorders, SketchyBar and SketchyVim with a single app. See [kumiko](kumiko/README.md) for the config layout and keybindings.
 
 ```bash
-# Reload SketchyBar
-sketchybar --reload
-
-# Trigger specific event
-sketchybar --trigger window_focus
-```
-
-**Services:**
-
-```bash
-# Start/stop Yabai
-yabai --start-service
-yabai --stop-service
-
-# Start/stop skhd
-skhd --start-service
-skhd --stop-service
-
-# Start/stop SketchyBar
-brew services start sketchybar
-brew services stop sketchybar
+kumiko status    # modules, permissions, config path and the last config error
+kumiko reload    # reread kumiko.toml (also happens on its own when the file changes)
+kumiko query workspaces
 ```
 
 ## Commit Conventions
 
 This repository uses commitlint with conventional commits. Valid scopes are defined in `.commitlintrc.js`:
 
-- Component scopes: `asdf`, `bat`, `borders`, `brew`, `claude`, `chezmoi`, `fish`, `ghostty`, `git`, `gitconfig`, `karabiner`, `lazygit`, `mise`, `nvim`, `oh-my-posh`, `raycast`, `sketchybar`, `skhd`, `ssh`, `svim`, `termscp`, `them-switcher`, `time`, `vscode`, `wezterm`, `yabai`, `yazi`, `zed`, `zrok`, `zsh`
+- Component scopes: `asdf`, `bat`, `borders`, `brew`, `claude`, `chezmoi`, `fish`, `ghostty`, `git`, `gitconfig`, `karabiner`, `kumiko`, `lazygit`, `mise`, `nvim`, `oh-my-posh`, `raycast`, `sketchybar`, `skhd`, `ssh`, `svim`, `termscp`, `them-switcher`, `time`, `vscode`, `wezterm`, `yabai`, `yazi`, `zed`, `zrok`, `zsh`
 - Generic scopes: `other`, `shell`, `install-script`
 
 Commits must follow the format: `type(scope): description`
@@ -300,41 +268,6 @@ The entire environment supports automatic dark/light theme switching based on ma
 - Environment variables `MACOS_IS_DARK` and `CATPPUCCIN_FLAVOR` are set by `reload_theme` function
 - Color schemes for fzf, bat, eza, and fish shell are reloaded automatically across all open sessions
 
-### SketchyBar Architecture
-
-SketchyBar is configured entirely in Lua with a modular structure:
-
-**Core files:**
-
-- `init.lua` - Entry point, requires all modules
-- `bar.lua` - Bar appearance (position, height, colors)
-- `config.lua` - Shared configuration (fonts, padding, colors)
-- `default.lua` - Default item properties
-- `executable_sketchybarrc` - Shell script that installs SbarLua and starts event loop
-
-**Item structure:**
-
-```text
-exact_items/
-└── init.lua           # Requires every item, in bar order — the only file kept here
-
-vendor/                # aimuzov/sketchybar-items, pulled by chezmoi
-└── items/
-    ├── yabai_spaces.lua  # Yabai workspace indicators
-    ├── yabai_window.lua  # Window layout status
-    ├── skhd_mode.lua     # Active skhd mode
-    ├── input.lua         # Keyboard layout and SketchyVim mode
-    ├── caffeinate.lua    # Keeps the display awake
-    ├── battery.lua       # Battery status
-    └── datetime.lua      # Date and time
-```
-
-**Event system:**
-
-- Items subscribe to system events (window_focus, space_change, etc.)
-- External triggers via `sketchybar --trigger event_name`
-- Integration with Yabai signals for window management updates
-
 ### Fish Shell Architecture
 
 **Directory structure:**
@@ -347,7 +280,6 @@ home/dot_config/fish/
 └── functions/                # Custom functions
     └── core/                 # Core functions
         ├── git/              # Git-related functions
-        ├── yabai/            # Yabai helper functions
         ├── wrappers/         # Command wrappers
         └── *.fish            # Individual functions
 ```
@@ -366,39 +298,6 @@ home/dot_config/fish/
 - Cached initializations for performance (Homebrew, mise, zoxide)
 - Vi mode with custom keybindings
 - Automatic theme switching
-
-### Yabai Window Management
-
-The Yabai configuration is written entirely in **Fish shell** (`executable_yabairc`), leveraging Fish's clean syntax and integration with other Fish functions.
-
-**Configuration flow:**
-
-1. Load scripting addition (requires SIP disabled)
-2. Set up SketchyBar signals
-3. Configure global settings (layout, padding, gaps, mouse)
-4. Create/rename spaces dynamically using Fish functions
-5. Assign applications to specific spaces
-6. Set per-app layout exceptions
-
-**Helper functions** (located in `dot_config/fish/functions/core/yabai/`):
-
-- `~/.bin/yabai-rearrange.sh` - Rearranges windows when new ones are created (POSIX sh, kept out of fish for speed)
-- `yabai.restart.fish` - Restarts Yabai service
-- `yabai.sudoers.fish` - Manages sudoers configuration for scripting addition
-
-**Space management:**
-
-- Spaces created automatically on startup
-- Custom names for workspaces (Code, Serf, Org, Graph, Explr, Fun, Sys, Ai, Any, Social, Calls, Media)
-- Application-to-space assignments (including Claude, Zed, Perplexity, Cursor, Dia)
-- Per-space layout rules
-
-**Integration points:**
-
-- skhd for keybindings
-- SketchyBar for visual feedback (via signals)
-- Fish functions for helper scripts
-- Signal triggers `~/.bin/yabai-rearrange.sh` on window creation
 
 ### Git Configuration
 
@@ -430,24 +329,17 @@ The chezmoi scripts in `.chezmoiscripts/` automatically handle:
 1. `run_once_after_1_install-packages.fish.tmpl` - Install Homebrew packages and mise tools
 2. `run_once_after_2_configure-system.fish.tmpl` - Configure macOS system settings
 3. `run_onchange_after_3_setup-dark-signal.fish.tmpl` - Build and install the dark/light theme watcher
-4. `run_once_after_4_setup-sketchybar.fish.tmpl` - Configure SketchyBar
-5. `run_once_after_5_install-workflows.fish.tmpl` - Install custom workflows
-6. `run_once_after_7_download-cht.fish.tmpl` - Download cheatsheets
-7. `run_once_weekly_1_rebuild_cache.fish.tmpl` - Rebuild caches weekly
+4. `run_once_after_5_install-workflows.fish.tmpl` - Install custom workflows
+5. `run_once_after_7_download-cht.fish.tmpl` - Download cheatsheets
+6. `run_once_weekly_1_rebuild_cache.fish.tmpl` - Rebuild caches weekly
 
 ## Troubleshooting
 
-### Yabai Not Working
+### kumiko Not Working
 
-- Check if Accessibility permissions are granted
-- Verify scripting addition is loaded: `yabai -m query --windows`
-- If using scripting addition, ensure SIP is disabled (see [Yabai wiki](https://github.com/koekeishiya/yabai/wiki/Disabling-System-Integrity-Protection))
-
-### SketchyBar Not Showing
-
-- Ensure SbarLua is installed: `brew install FelixKratz/formulae/sbarlua`
-- Check service status: `brew services list | grep sketchybar`
-- Reload manually: `sketchybar --reload`
+- Check that the app is running: `kumiko ping`
+- `kumiko status` shows missing permissions (Accessibility, Input Monitoring) and the last config error
+- A broken `kumiko.toml` keeps the previous config in force, so fix the error and save again
 
 ### Fish Shell Not Loading Config
 
@@ -485,17 +377,11 @@ The chezmoi scripts in `.chezmoiscripts/` automatically handle:
 3. Test with `chezmoi diff` before `chezmoi apply`
 4. Commit with appropriate scope from `.commitlintrc.js`
 
-### Modifying SketchyBar Items
+### Changing kumiko Config
 
-1. Edit item file in `home/dot_config/sketchybar/items/`
-2. Reload SketchyBar: `sketchybar --reload`
-3. Check logs if not working: `log show --predicate 'process == "sketchybar"' --last 5m`
-
-### Testing Yabai Changes
-
-1. Edit `home/dot_config/yabai/executable_yabairc`
-2. Reload config: `yabai --restart-service`
-3. Check current layout: `yabai -m query --spaces --space`
+1. Edit `home/dot_config/kumiko/kumiko.toml`
+2. Run `chezmoi apply`: kumiko rereads the file on its own
+3. Check the result: `kumiko status`
 
 ## Related Documentation
 
@@ -506,12 +392,9 @@ Component-specific documentation (Russian and English versions available):
 - [Fish Shell Configuration](fish/README.md)
 - [Ghostty Terminal](ghostty/README.md)
 - [Git Configuration](git/README.md)
+- [kumiko Configuration](kumiko/README.md)
 - [LazyGit Configuration](lazygit/README.md)
 - [Mise Configuration](mise/README.md)
 - [Oh My Posh Configuration](oh-my-posh/README.md)
 - [Raycast Scripts](raycast/README.md)
-- [SketchyBar Configuration](sketchybar/README.md)
-- [skhd Configuration](skhd/README.md)
-- [SketchyVim Configuration](svim/README.md)
-- [Yabai Configuration](yabai/README.md)
 - [Yazi Configuration](yazi/README.md)

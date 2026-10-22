@@ -1,5 +1,5 @@
 # Проверка форматирования Lua-файлов с помощью StyLua.
-# Покрывает: SketchyBar, Neovim, WezTerm, Yazi.
+# Покрывает: Neovim, WezTerm, Yazi.
 #
 # StyLua — форматтер для Lua, аналог Prettier для JS.
 # Использует конфиг из home/dot_config/nvim/stylua.toml:

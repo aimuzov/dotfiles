@@ -88,20 +88,6 @@ running programs when macOS switches between light and dark:
 **Runs:** Weekly, in step with the `refreshPeriod` of the external
 **Purpose:** Send `SIGUSR1` to every running nvim when the system appearance changes
 
-### 4. SketchyBar Setup
-
-**`run_once_after_4_setup-sketchybar.fish.tmpl`**
-
-Configures SketchyBar status bar:
-
-- Installs SbarLua plugin system
-- Sets up SketchyBar plugins
-- Configures bar items
-- Starts SketchyBar service
-
-**Runs:** Once after chezmoi apply
-**Purpose:** Initialize custom status bar
-
 ### 5. Workflow Installation
 
 **`run_once_after_5_install-workflows.fish.tmpl`**

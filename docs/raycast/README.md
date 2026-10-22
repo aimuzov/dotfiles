@@ -10,7 +10,7 @@
   - [Tailscale Exit Node Selection](#tailscale-exit-node-selection)
   - [Tailscale Status](#tailscale-status)
   - [YouTube Video Download](#youtube-video-download)
-  - [VM Services Restart](#vm-services-restart)
+  - [Window Manager Restart](#window-manager-restart)
   - [Dota 2 Launcher](#dota-2-launcher)
 - [Adding New Scripts](#adding-new-scripts)
 - [Integration with Fish Functions](#integration-with-fish-functions)
@@ -113,7 +113,6 @@ Arguments are available as positional parameters: `$1`, `$2`, `$3`
 
 **Related Files:**
 - Fish implementation: [`executable_tailscale_pick_node.fish`](../../home/dot_bin/raycast/executable_tailscale_pick_node.fish)
-There is no SketchyBar side any more: the bar had a Tailscale item, and it was dropped along with the trigger the script used to send it.
 
 ---
 
@@ -161,43 +160,31 @@ There is no SketchyBar side any more: the bar had a Tailscale item, and it was d
 **Related Files:**
 - Fish implementation: [`executable_youtube-download.fish`](../../home/dot_bin/raycast/executable_youtube-download.fish)
 
-### VM Services Restart
+### Window Manager Restart
 
 **File:** [`home/dot_bin/raycast/executable_restart-vm.sh`](../../home/dot_bin/raycast/executable_restart-vm.sh)
 
-**Purpose:** Restarts all window manager services and related components (Yabai, skhd, Borders, SketchyVim, SketchyBar).
+**Purpose:** Restarts [kumiko](../kumiko/README.md), the window manager that also draws the bar and borders and handles hotkeys.
 
 **Functionality:**
 
-Calls the Fish function `restart_vm`, which sequentially restarts:
-1. Yabai (tiling window manager)
-2. skhd (hotkey daemon)
-3. Borders (visual window borders)
-4. SketchyVim (system-wide Vim-like navigation)
-5. SketchyBar (status bar)
+1. Finds `Kumiko.app` by its bundle id `online.aimuzov.kumiko`: the app has no fixed install path yet
+2. Calls `kumiko quit` from inside the bundle, which puts hidden windows back on screen
+3. Waits for the `KumikoApp` process to exit and opens the app again
 
 **Usage:**
 1. Invoke Raycast (⌘Space)
-2. Type "restart vm"
+2. Type "restart wm"
 3. Press Enter
 
 **When to Use:**
-- After changing Yabai/skhd configuration
-- When window manager hangs
-- After updating components
+- When the window manager hangs
+- After rebuilding kumiko
+
+A config change does not need a restart: kumiko rereads `kumiko.toml` on its own.
 
 **Related Files:**
-- Fish function: [`home/dot_config/fish/functions/core/restart_vm.fish`](../../home/dot_config/fish/functions/core/restart_vm.fish)
-- Configurations:
-  - [Yabai](../../home/dot_config/yabai/executable_yabairc)
-  - [skhd](../../home/dot_config/skhd/skhdrc)
-  - [SketchyBar](../../home/dot_config/sketchybar/)
-  - [SketchyVim](../../home/dot_config/svim/)
-
-**See Also:**
-- [Yabai documentation](../yabai/README.md)
-- [skhd documentation](../skhd/README.md)
-- [SketchyBar documentation](../sketchybar/README.md)
+- Configuration: [`home/dot_config/kumiko/kumiko.toml`](../../home/dot_config/kumiko/kumiko.toml)
 
 ### Dota 2 Launcher
 
@@ -386,29 +373,6 @@ Raycast scripts are written in bash, but you can call Fish functions to:
 # @raycast.argument1 { "type": "text", "placeholder": "Value" }
 
 /opt/homebrew/bin/fish -c "fish_function_name \"$1\""
-```
-
-### Example: restart_vm
-
-**Raycast script** ([`executable_restart-vm.sh`](../../dot_bin/raycast/executable_restart-vm.sh)):
-
-```bash
-#!/bin/bash
-# ... metadata ...
-/opt/homebrew/bin/fish -c "restart_vm"
-```
-
-**Fish function** ([`restart_vm.fish`](../../dot_config/fish/functions/core/restart_vm.fish)):
-
-```fish
-function restart_vm
-    yabai --restart-service
-    skhd --restart-service
-    brew services restart borders
-    brew services restart svim
-    brew services restart sketchybar
-    echo "vm is restarted"
-end
 ```
 
 ### Creating Fish Function for Raycast
