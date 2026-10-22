@@ -62,7 +62,6 @@
 
 "http:yc" = { version = "latest", url = "https://storage.yandexcloud.net/yandexcloud-yc/release/{{ version }}/darwin/arm64/yc", bin = "yc", version_list_url = "https://storage.yandexcloud.net/yandexcloud-yc/release/stable", version_regex = '(\d+\.\d+\.\d+)' }
 
-"npm:@aimuzov/sketchybar-app-font" = "latest"
 "npm:@aimuzov/thinks-mcp" = "latest"
 "npm:@modelcontextprotocol/server-everything" = "latest"
 "npm:@modelcontextprotocol/server-filesystem" = "latest"

@@ -1,0 +1,271 @@
+# Mirrors yabairc and yabai-rearrange.sh from the dotfiles.
+
+[wm]
+manage = false
+gap = 6
+padding = 4
+
+[[wm.rule]]
+app = "Google Chrome|Arc|Claude|Code|Cyberduck|Figma|Ghostty|Miro|Perplexity|Telegram|Time|WezTerm|WhatsApp|Yandex|Толк"
+manage = true
+
+[[wm.rule]]
+app = "Calendar"
+manage = true
+
+[[wm.rule]]
+app = "Calendar"
+title = "General|Accounts|Alerts|Advanced"
+manage = false
+
+[[wm.rule]]
+app = "Dia"
+manage = true
+
+[[wm.rule]]
+app = "Dia"
+title = "Settings"
+manage = false
+
+[[wm.rule]]
+app = "Finder"
+manage = true
+
+[[wm.rule]]
+app = "Finder"
+title = "Copy|Connect|Move|Info|Pref|Finder Settings"
+manage = false
+
+[[wm.rule]]
+app = "Mail"
+manage = true
+
+[[wm.rule]]
+app = "Mail"
+title = "General|Accounts|Junk Mail|Fonts & Colors|Viewing|Composing|Signatures|Rules|Extensions|Privacy"
+manage = false
+
+[[wm.rule]]
+app = "Things"
+manage = true
+
+[[wm.rule]]
+app = "Things"
+title = "General|Things Cloud|Quick Entry|Reminders|Calendar"
+manage = false
+
+# Numbers follow alt-1 ... alt-=, so the order here is the order of the hotkeys.
+
+[[workspace]]
+name = "Code"
+display = "external"
+apps = ["Ghostty", "WezTerm", "Code", "Zed"]
+
+[[workspace]]
+name = "Web"
+display = "external"
+apps = ["Arc", "Dia"]
+
+[[workspace]]
+name = "AI"
+display = "external"
+apps = ["ChatGPT", "Claude", "Google Chrome", "Perplexity"]
+
+[[workspace]]
+name = "Design"
+display = "external"
+apps = ["Figma", "Miro"]
+
+[[workspace]]
+name = "Files"
+display = "external"
+apps = ["Finder", "Cyberduck"]
+
+[[workspace]]
+name = "Games"
+display = "external"
+apps = ["Steam Helper", "Dota 2"]
+
+[[workspace]]
+name = "System"
+display = "builtin"
+apps = ["App Store", "System Settings", "Happ", "MacPass"]
+
+[[workspace]]
+name = "Plan"
+display = "builtin"
+apps = ["Things", "Calendar", "Mail"]
+stack = ["Things", "Calendar", "Mail"]
+
+[[workspace]]
+name = "Other"
+display = "builtin"
+default = true
+
+[[workspace]]
+name = "Chat"
+display = "builtin"
+apps = ["Time", "Telegram", "WhatsApp"]
+last = ["Telegram"]
+share = { Time = 0.7 }
+
+[[workspace]]
+name = "Calls"
+display = "builtin"
+apps = ["Толк"]
+
+[[workspace]]
+name = "Media"
+display = "builtin"
+apps = ["Spotify", "Photos"]
+
+# Ported from skhdrc.
+
+[hotkeys]
+blacklist = ["LayerX", "loginwindow", "screensaver"]
+
+[hotkeys.bind]
+"0xa" = { send = "0x32" }
+"cmd + shift - 0x35" = { send = "shift - 0x32" }
+"shift - 0xa" = { send = "shift - 0x32" }
+"rcmd - escape" = { send = "0x32" }
+
+"cmd + ctrl - space" = { block = true }
+"cmd - h" = { block = true }
+"cmd + ctrl - w" = { block = true }
+"cmd + ctrl - q" = { block = true }
+
+"cmd + ctrl - j" = { send = "down" }
+"cmd + ctrl - k" = { send = "up" }
+"cmd + ctrl - h" = { send = "left" }
+"cmd + ctrl - l" = { send = "right" }
+
+"cmd + ctrl - 1" = { send = "f1" }
+"cmd + ctrl - 2" = { send = "f2" }
+"cmd + ctrl - 3" = { send = "f3" }
+"cmd + ctrl - 4" = { send = "f4" }
+"cmd + ctrl - 5" = { send = "f5" }
+"cmd + ctrl - 6" = { send = "f6" }
+"cmd + ctrl - 7" = { send = "f7" }
+"cmd + ctrl - 8" = { send = "f8" }
+"cmd + ctrl - 9" = { send = "f9" }
+"cmd + ctrl - 0" = { send = "f10" }
+"cmd + ctrl - 0x1b" = { send = "f11" }
+"cmd + ctrl - 0x18" = { send = "f12" }
+
+"rcmd - 1" = { send = "f1" }
+"rcmd - 2" = { send = "f2" }
+"rcmd - 3" = { send = "f3" }
+"rcmd - 4" = { send = "f4" }
+"rcmd - 5" = { send = "f5" }
+"rcmd - 6" = { send = "f6" }
+"rcmd - 7" = { send = "f7" }
+"rcmd - 8" = { send = "f8" }
+"rcmd - 9" = { send = "f9" }
+"rcmd - 0" = { send = "f10" }
+"rcmd - 0x1b" = { send = "f11" }
+"rcmd - 0x18" = { send = "f12" }
+
+"alt - 1" = "workspace focus 1"
+"alt - 2" = "workspace focus 2"
+"alt - 3" = "workspace focus 3"
+"alt - 4" = "workspace focus 4"
+"alt - 5" = "workspace focus 5"
+"alt - 6" = "workspace focus 6"
+"alt - 7" = "workspace focus 7"
+"alt - 8" = "workspace focus 8"
+"alt - 9" = "workspace focus 9"
+"alt - 0" = "workspace focus 10"
+"alt - 0x1b" = "workspace focus 11"
+"alt - 0x18" = "workspace focus 12"
+
+"alt - h" = "window focus west"
+"alt - j" = "window focus south"
+"alt - k" = "window focus north"
+"alt - l" = "window focus east"
+
+# Entering a mode works from any mode, the way skhdrc listed every pair.
+[hotkeys.global]
+"cmd + ctrl - m" = { mode = "move" }
+"cmd + ctrl - 0x29" = { mode = "command" }
+"cmd + ctrl - n" = { mode = "resize" }
+"cmd + ctrl - o" = { mode = "stack" }
+"cmd + ctrl - i" = { mode = "window" }
+
+[hotkeys.mode.command]
+"escape" = { mode = "default" }
+"ctrl - 0x21" = { mode = "default" }
+"w" = { run = "reload", mode = "default" }
+"l" = { shell = "pmset displaysleepnow", mode = "default" }
+
+[hotkeys.mode.window]
+"escape" = { mode = "default" }
+"ctrl - 0x21" = { mode = "default" }
+"e" = "workspace balance"
+"r" = "reload"
+"f" = "window float --grid 10:10:1:1:8:8"
+"h" = "window focus west"
+"j" = "window focus south"
+"k" = "window focus north"
+"l" = "window focus east"
+"m" = "window zoom fullscreen"
+"p" = "window zoom parent"
+"q" = "window close"
+"shift - h" = "window stack west"
+"shift - j" = "window stack south"
+"shift - k" = "window stack north"
+"shift - l" = "window stack east"
+"shift - n" = "window focus stack-next"
+"shift - p" = "window focus stack-prev"
+"shift - r" = "window unstack"
+"ctrl - h" = "window resize right -20 || window resize left -20"
+"ctrl - j" = "window resize bottom 20 || window resize top 20"
+"ctrl - k" = "window resize bottom -20 || window resize top -20"
+"ctrl - l" = "window resize right 20 || window resize left 20"
+
+[hotkeys.mode.resize]
+"escape" = { mode = "default" }
+"ctrl - 0x21" = { mode = "default" }
+"h" = "window resize right -20 || window resize left -20"
+"j" = "window resize bottom 20 || window resize top 20"
+"k" = "window resize bottom -20 || window resize top -20"
+"l" = "window resize right 20 || window resize left 20"
+
+[hotkeys.mode.move]
+"escape" = { mode = "default" }
+"ctrl - 0x21" = { mode = "default" }
+"h" = "window warp west || window move prev --focus"
+"j" = "window warp south"
+"k" = "window warp north"
+"l" = "window warp east || window move next --focus"
+"r" = "workspace rotate 270"
+"x" = "workspace mirror vertical"
+"y" = "workspace mirror horizontal"
+
+[hotkeys.mode.stack]
+"escape" = { mode = "default" }
+"ctrl - 0x21" = { mode = "default" }
+"h" = "window stack west"
+"j" = "window stack south"
+"k" = "window stack north"
+"l" = "window stack east"
+"n" = "window focus stack-next"
+"p" = "window focus stack-prev"
+"r" = "window unstack"
+
+# Ported from bordersrc.
+
+[borders]
+width = 4
+radius = 16
+color = "0xff8aadf4"
+blacklist = ["Steam Helper", "dota2", "iPhone Mirroring"]
+
+# Ported from svimrc and the svim blacklist.
+
+[vim]
+enabled = true
+blacklist = ["Code", "Dota 2", "Ghostty", "Notes", "Obsidian", "Telegram"]
+commands = [
+	"set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz",
+]

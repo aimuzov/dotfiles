@@ -11,6 +11,7 @@ const scopes = [
   "gitconfig",
   "install-script",
   "karabiner",
+  "kumiko",
   "lazygit",
   "mise",
   "nvim",

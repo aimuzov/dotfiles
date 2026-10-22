@@ -1,9 +1,5 @@
-tap "asmvik/formulae"
 tap "daipeihust/tap"
-tap "felixkratz/formulae", trusted: true
-tap "jackielii/tap"
 tap "jdx/tap"
-tap "koekeishiya/formulae", "https://github.com/asmvik/homebrew-formulae.git"
 tap "lukechilds/tap"
 tap "macos-fuse-t/cask", trusted: true
 tap "nikitabobko/tap"
@@ -73,19 +69,8 @@ brew "vhs"
 brew "zlib"
 # UNIX shell (command interpreter)
 brew "zsh"
-# A tiling window manager for macOS based on binary space partitioning
-brew "asmvik/formulae/yabai", args: ["HEAD"]
 # Switch your input method through terminal
 brew "daipeihust/tap/im-select"
-# A window border system for macOS
-brew "felixkratz/formulae/borders"
-# Custom macOS statusbar with shell plugin, interaction and graph support
-brew "felixkratz/formulae/sketchybar"
-# Turns macOS input fields into real vim buffers
-# (release 1.0.11 leaks zombie children, SIGCHLD fix lives only in master)
-brew "felixkratz/formulae/svim", args: ["HEAD"]
-# Simple hotkey daemon for macOS, written in Zig
-brew "jackielii/tap/skhd-zig"
 # Android SDK command-line tools: sdkmanager, NDK, emulator (packages/android)
 cask "android-commandlinetools"
 # Application uninstaller
