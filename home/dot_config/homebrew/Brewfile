@@ -94,8 +94,6 @@ cask "ghostty"
 cask "gitup-app"
 # Web browser
 cask "google-chrome"
-# Menu bar manager
-cask "jordanbaird-ice"
 # Password manager app
 cask "keepassxc"
 # Software for Logitech devices
