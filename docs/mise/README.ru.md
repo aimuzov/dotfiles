@@ -48,7 +48,7 @@ Rust пакеты из crates.io:
 Node.js пакеты с опциональным отображением exe:
 
 ```toml
-"npm:@aimuzov/sketchybar-app-font" = { version = "latest", exe = "sketchybar-app-font" }
+"npm:@aimuzov/thinks-mcp" = { version = "latest" }
 "npm:@anthropic-ai/claude-code" = { version = "latest" }
 ```
 
@@ -126,7 +126,6 @@ rust = "latest"                   # Язык Rust
 **Специализированные:**
 - `nowplaying-cli` - Информация о воспроизводимом в macOS
 - `oh-my-posh` - Движок тем приглашения
-- `sketchybar-app-font` - Генератор шрифта иконок для SketchyBar
 
 ## Использование
 

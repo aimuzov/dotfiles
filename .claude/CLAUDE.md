@@ -26,13 +26,13 @@
 1. Редактируй файлы напрямую в репозитории dotfiles (`/Users/aimuzov/Projects/aimuzov/dotfiles/home/`)
 2. Файлы в `home/dot_config/` уже находятся в исходном репозитории
 3. Попроси пользователя запустить `chezmoi apply`
-4. После редактирования конфигов запусти `restart_vm`
+4. После правки `kumiko.toml` ничего перезапускать не нужно: kumiko перечитывает конфиг сам
 
 ### Основная информация
 
 **Тип репозитория:** Dotfiles, управляемые через chezmoi
 **Целевая ОС:** macOS
-**Основные технологии:** Fish shell, Yabai, SketchyBar, Neovim, mise
+**Основные технологии:** Fish shell, kumiko, Neovim, mise
 
 ### Соглашения об именовании в Chezmoi
 
@@ -53,17 +53,15 @@ chezmoi apply
 # Проверить статус (что изменено)
 chezmoi status
 
-# Перезапустить сервисы после изменения конфигов
-yabai --restart-service    # после правок dot_config/yabai/
-sketchybar --reload        # после правок dot_config/sketchybar/
-skhd --restart-service     # после правок dot_config/skhd/
+# Проверить kumiko после правок dot_config/kumiko/ (конфиг перечитывается сам)
+kumiko status
 ```
 
 ### Соглашения о коммитах
 
 Используются conventional commits со scope из `.commitlintrc.js`:
 
-**Component scopes:** `asdf`, `bat`, `borders`, `brew`, `claude`, `chezmoi`, `fish`, `ghostty`, `git`, `gitconfig`, `karabiner`, `lazygit`, `mise`, `nvim`, `oh-my-posh`, `raycast`, `sketchybar`, `skhd`, `ssh`, `svim`, `termscp`, `them-switcher`, `time`, `vscode`, `warp`, `wezterm`, `yabai`, `yazi`, `zed`, `zrok`, `zsh`
+**Component scopes:** `asdf`, `bat`, `borders`, `brew`, `claude`, `chezmoi`, `fish`, `ghostty`, `git`, `gitconfig`, `karabiner`, `kumiko`, `lazygit`, `mise`, `nvim`, `oh-my-posh`, `projects`, `raycast`, `sketchybar`, `skhd`, `ssh`, `svim`, `termscp`, `them-switcher`, `time`, `vscode`, `warp`, `wezterm`, `yabai`, `yazi`, `zed`, `zrok`, `zsh`
 
 **Generic scopes:** `other`, `shell`, `install-script`
 
@@ -90,21 +88,17 @@ skhd --restart-service     # после правок dot_config/skhd/
 
 - **Neovim** - Конфигурация LazyVimx, стабильная и nightly версии
 - **Fish Shell** - Пользовательские функции, соблюдение XDG, переключение тем
-- **Yabai** - Тайловый менеджер окон с автоматическим созданием рабочих областей
-- **SketchyBar** - Статус-бар на основе Lua с модульными элементами
-- **skhd** - Демон горячих клавиш для управления окнами
-- **SketchyVim** - Системная навигация в стиле Vim с поддержкой русской раскладки
+- **kumiko** - Собственный тайловый менеджер окон (`~/Projects/aimuzov/kumiko`): рабочие области, горячие клавиши, бар, рамки и vim-режимы в одном приложении, конфиг `dot_config/kumiko/kumiko.toml`. Заменил yabai, skhd, JankyBorders, SketchyBar и SketchyVim
 - **Git** - Интеграция с KeePassXC для секретов, подпись GPG
 - **mise** - Менеджер инструментов разработки (замена asdf)
-- **Raycast Scripts** - Команды для Raycast (управление Tailscale, перезапуск сервисов, лаунчеры)
+- **Raycast Scripts** - Команды для Raycast (управление Tailscale, перезапуск kumiko, лаунчеры)
 
 ### Рабочий процесс разработки
 
 1. **Добавить новый инструмент:** Обновить `home/dot_config/mise/config.toml` → `mise install` → коммит со scope `mise`
 2. **Добавить новую конфигурацию:** Добавить в `home/dot_config/` → проверить через `chezmoi diff` → `chezmoi apply` → коммит с соответствующим scope
-3. **Изменить SketchyBar:** Отредактировать `home/dot_config/sketchybar/items/` → `sketchybar --reload`. Общие элементы (`caffeinate`, `tailscale`, ...) живут в отдельном репозитории [sketchybar-items](https://github.com/aimuzov/sketchybar-items) и приезжают в `~/.config/sketchybar/vendor/` через `home/.chezmoiexternals/sketchybar-items.toml` — править их надо там, а не здесь
-4. **Протестировать Yabai:** Отредактировать `home/dot_config/yabai/executable_yabairc` → `yabai --restart-service`
-5. **Добавить MCP сервер:** Правится в ДВУХ файлах — `home/dot_config/mise/config.toml` (`[tools]`, установка пакета) и `home/dot_claude/mcp.json.tmpl` (определение сервера)
+3. **Изменить kumiko:** Отредактировать `home/dot_config/kumiko/kumiko.toml` → `chezmoi apply` → `kumiko status`. Описание: [docs/kumiko](docs/kumiko/README.ru.md)
+4. **Добавить MCP сервер:** Правится в ДВУХ файлах — `home/dot_config/mise/config.toml` (`[tools]`, установка пакета) и `home/dot_claude/mcp.json.tmpl` (определение сервера)
 
 ### Структура документации
 
@@ -113,13 +107,10 @@ skhd --restart-service     # после правок dot_config/skhd/
 - Документация компонентов (русский и английский):
   - [Fish Shell](docs/fish/README.md) ([RU](docs/fish/README.ru.md))
   - [Git](docs/git/README.md) ([RU](docs/git/README.ru.md))
+  - [kumiko](docs/kumiko/README.md) ([RU](docs/kumiko/README.ru.md))
   - [LazyGit](docs/lazygit/README.md) ([RU](docs/lazygit/README.ru.md))
   - [Mise](docs/mise/README.md) ([RU](docs/mise/README.ru.md))
   - [Neovim](docs/nvim/README.md)
   - [Oh My Posh](docs/oh-my-posh/README.md) ([RU](docs/oh-my-posh/README.ru.md))
   - [Raycast](docs/raycast/README.md) ([RU](docs/raycast/README.ru.md))
-  - [SketchyBar](docs/sketchybar/README.md) ([RU](docs/sketchybar/README.ru.md))
-  - [skhd](docs/skhd/README.md) ([RU](docs/skhd/README.ru.md))
-  - [SketchyVim](docs/svim/README.md) ([RU](docs/svim/README.ru.md))
-  - [Yabai](docs/yabai/README.md) ([RU](docs/yabai/README.ru.md))
   - [Yazi](docs/yazi/README.md) ([RU](docs/yazi/README.ru.md))

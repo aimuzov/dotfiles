@@ -297,13 +297,11 @@ end
 - `git.branch_current`: Вспомогательная функция для получения имени текущей ветки Git
 - `git.branch_prune`: Утилита удаления веток Git для управления удаленными ветками (включая squashed коммиты)
 
-### Функции, связанные с Yabai
+### Функции для kumiko
 
-Расположены в `functions/core/yabai/`:
+Расположены в `functions/core/kumiko/`:
 
-- `yabai.restart`: обёртка над `~/.bin/yabai-restart.sh`; перераспределение окон переехало в `~/.bin/yabai-rearrange.sh`
-- `yabai.restart`: Чистый перезапуск сервиса Yabai
-- `yabai.sudoers`: Управление конфигурацией sudoers для scripting addition Yabai
+- `kumiko.sudoers`: Записывает строку из `kumiko sa sudoers` в `/private/etc/sudoers.d/kumiko` после проверки `visudo`, чтобы приложение загружало scripting addition без пароля; запускать заново после каждой пересборки kumiko
 
 ### Функции для GlobalProtect
 
@@ -317,7 +315,6 @@ end
 
 Расположены в `functions/core/`:
 
-- `restart_vm`: Утилита для перезапуска сервисов оконного менеджера (Yabai, skhd, SketchyBar и т.д.)
 - `clear_and_reinit`: Очистить экран и переинициализировать fish
 
 ### Обертки команд

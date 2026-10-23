@@ -6,17 +6,9 @@ fish:
   - changed-files:
       - any-glob-to-any-file: "home/dot_config/fish/**"
 
-sketchybar:
+kumiko:
   - changed-files:
-      - any-glob-to-any-file: "home/dot_config/sketchybar/**"
-
-yabai:
-  - changed-files:
-      - any-glob-to-any-file: "home/dot_config/yabai/**"
-
-skhd:
-  - changed-files:
-      - any-glob-to-any-file: "home/dot_config/skhd/**"
+      - any-glob-to-any-file: "home/dot_config/kumiko/**"
 
 nvim:
   - changed-files:

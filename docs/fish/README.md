@@ -295,13 +295,11 @@ Located in `functions/core/git/`:
 - `git.branch_current`: Helper function to get the current Git branch name
 - `git.branch_prune`: Git branch deletion utility for managing merged branches (including squashed commits)
 
-### Yabai Related Functions
+### kumiko Functions
 
-Located in `functions/core/yabai/`:
+Located in `functions/core/kumiko/`:
 
-- `yabai.restart`: wrapper over `~/.bin/yabai-restart.sh`; window rearranging moved to `~/.bin/yabai-rearrange.sh`
-- `yabai.restart`: Restarts Yabai service cleanly
-- `yabai.sudoers`: Manages sudoers configuration for Yabai scripting addition
+- `kumiko.sudoers`: Writes the line from `kumiko sa sudoers` to `/private/etc/sudoers.d/kumiko` after a `visudo` check, so the app loads its scripting addition without a password; run it again after every kumiko rebuild
 
 ### GlobalProtect Functions
 
@@ -315,7 +313,6 @@ Located in `functions/core/gp/`:
 
 Located in `functions/core/`:
 
-- `restart_vm`: Utility for restarting window manager services (Yabai, skhd, SketchyBar, etc.)
 - `clear_and_reinit`: Clears screen and reinitializes fish
 
 ### Command Wrappers

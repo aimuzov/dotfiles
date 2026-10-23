@@ -48,7 +48,7 @@ Rust packages from crates.io:
 Node.js packages with optional exe mapping:
 
 ```toml
-"npm:@aimuzov/sketchybar-app-font" = { version = "latest", exe = "sketchybar-app-font" }
+"npm:@aimuzov/thinks-mcp" = { version = "latest" }
 "npm:@anthropic-ai/claude-code" = { version = "latest" }
 ```
 
@@ -126,7 +126,6 @@ rust = "latest"                   # Rust language
 **Specialized:**
 - `nowplaying-cli` - macOS now playing info
 - `oh-my-posh` - Prompt theme engine
-- `sketchybar-app-font` - SketchyBar icon font generator
 
 ## Usage
 

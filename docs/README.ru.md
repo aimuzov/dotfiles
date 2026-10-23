@@ -47,18 +47,14 @@ $(mise where ubi:twpayne/chezmoi)/bin/chezmoi init --apply aimuzov
 
 ### Системные инструменты
 
-- [Yabai](https://github.com/koekeishiya/yabai) - тайловый оконный менеджер для macOS
-- [skhd](https://github.com/koekeishiya/skhd) - горячие клавиши для Yabai
+- [kumiko](kumiko/README.ru.md) - собственный тайловый оконный менеджер: рабочие пространства, горячие клавиши, статус-бар, рамки окон и vim-режимы в одном приложении
 - [Karabiner](https://karabiner-elements.pqrs.org) - переназначение клавиш и создание сложных правил
-- [SketchyBar](https://github.com/FelixKratz/SketchyBar) - кастомизируемый статус-бар
-- [JankyBorders](https://github.com/FelixKratz/JankyBorders) - визуальные границы окон
 
 ### Терминал и редакторы
 
 - [WezTerm](https://wezfurlong.org/wezterm) - современный терминальный эмулятор
 - [Ghostty](https://github.com/mitchellh/ghostty) - минималистичный терминальный эмулятор
 - [neovim](https://github.com/neovim/neovim) - улучшенная версия Vim
-- [SketchyVim](https://github.com/FelixKratz/SketchyVim) - vim-подобные горячие клавиши для macOS
 - [LazyGit](https://github.com/jesseduffield/lazygit) - TUI для работы с Git
 - [Visual Studio Code](https://code.visualstudio.com/) - популярный редактор кода
 - [Cursor](https://cursor.sh/) - современный редактор кода с AI-ассистентом
@@ -79,24 +75,20 @@ $(mise where ubi:twpayne/chezmoi)/bin/chezmoi init --apply aimuzov
 ├── dot_config/             # Конфигурационные файлы
 │   ├── asdf/               # Менеджер версий
 │   ├── bat/                # Улучшенный cat
-│   ├── borders/            # Границы окон
 │   ├── fish/               # Конфигурация shell
 │   ├── git/                # Настройки git
 │   ├── ghostty/            # Терминальный эмулятор
 │   ├── homebrew/           # Менеджер пакетов
 │   ├── karabiner/          # Переназначение клавиш
+│   ├── kumiko/             # Оконный менеджер
 │   ├── lazygit/            # tui для git
 │   ├── matterhorn/         # Терминальный эмулятор
 │   ├── mise/               # Менеджер версий
 │   ├── nvim/               # Редактор
 │   ├── oh-my-posh/         # Кастомизация промпта
 │   ├── raycast/            # Лаунчер
-│   ├── sketchybar/         # Статус бар
-│   ├── skhd/               # Горячие клавиши
 │   ├── stylus/             # Стилизация
-│   ├── svim/               # Vim-подобные клавиши
 │   ├── wezterm/            # Терминальный эмулятор
-│   ├── yabai/              # Оконный менеджер
 │   ├── yazi/               # Файловый менеджер
 │   └── zed/                # Еще один редактор
 ├── dot_default-gems        # Ruby gems
@@ -116,16 +108,13 @@ $(mise where ubi:twpayne/chezmoi)/bin/chezmoi init --apply aimuzov
 ### Документация по конфигурации
 
 - [Fish Shell](dot_config/fish/README.md) - Настройка и кастомизация shell
-- [SketchyBar](dot_config/sketchybar/README.ru.md) - Конфигурация и модули статус-бара
-- [Yabai](dot_config/yabai/README.ru.md) - Конфигурация оконного менеджера и тайлинг
+- [kumiko](kumiko/README.ru.md) - Оконный менеджер, горячие клавиши, бар и рамки
 - [Yazi](dot_config/yazi/README.ru.md) — Настройки и плагины файлового менеджера
 
 ## Полезные ссылки
 
 - [macos-defaults.com](https://macos-defaults.com/) - справочник по настройкам macOS
 - [chezmoi.io](https://www.chezmoi.io/) - документация по chezmoi
-- [Yabai Wiki](https://github.com/koekeishiya/yabai/wiki) - документация по Yabai
-- [SketchyBar Wiki](https://github.com/FelixKratz/SketchyBar/wiki) - документация по SketchyBar
 
 ## Активность репозитория
 
