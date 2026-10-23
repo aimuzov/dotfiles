@@ -23,12 +23,28 @@ file keeps the previous config in force and shows the error in the status menu a
 
 ## Config Sections
 
-- `[wm]` and `[[wm.rule]]` - gaps, padding and which apps are tiled (ported from yabairc)
+- `[wm]` and `[[wm.rule]]` - gaps, padding, which apps are tiled and whether their windows cast
+  shadows (ported from yabairc)
 - `[[workspace]]` - named workspaces, their display (`external` or `builtin`) and app assignments;
   their order is the order of the `alt - 1` … `alt - =` hotkeys
 - `[hotkeys]` - bindings and modes (ported from skhdrc)
 - `[borders]` - border width, radius, color and blacklist (ported from bordersrc)
 - `[vim]` - vim modes in text fields with the Russian `langmap` (ported from svimrc)
+- `[menubar]` - hides menu bar status items behind a chevron, the way Ice does; it replaced Ice here
+
+## Window Shadows
+
+`shadows = false` works through a scripting addition that kumiko loads into Dock, the way yabai did,
+and it needs root:
+
+```bash
+sudo kumiko sa install   # copies the payload from Kumiko.app
+kumiko sa status         # installed / loaded and its version
+```
+
+To let the app load it again after Dock restarts without a password, put the line from
+`kumiko sa sudoers` into `/private/etc/sudoers.d/kumiko`. The line is pinned to the binary's hash,
+so it goes stale after every rebuild.
 
 ## Keybindings
 
@@ -51,8 +67,10 @@ The full list is in `kumiko.toml` itself.
 kumiko ping                  # is the app running
 kumiko status                # modules, permissions, config path, last config error
 kumiko reload                # reread kumiko.toml
+kumiko settings              # open the read-only settings window
 kumiko query workspaces      # state as JSON: windows | focused | workspaces | displays
 kumiko workspace focus Code  # by name or number
+kumiko menubar toggle        # show or hide the status items left of the divider
 kumiko quit                  # quit, putting hidden windows back on screen
 ```
 

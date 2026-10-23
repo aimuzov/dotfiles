@@ -2,6 +2,7 @@
 
 [wm]
 manage = false
+shadows = false
 gap = 6
 padding = 4
 
@@ -17,6 +18,7 @@ manage = true
 app = "Calendar"
 title = "General|Accounts|Alerts|Advanced"
 manage = false
+shadows = false
 
 [[wm.rule]]
 app = "Dia"
@@ -26,6 +28,7 @@ manage = true
 app = "Dia"
 title = "Settings"
 manage = false
+shadows = false
 
 [[wm.rule]]
 app = "Finder"
@@ -35,6 +38,7 @@ manage = true
 app = "Finder"
 title = "Copy|Connect|Move|Info|Pref|Finder Settings"
 manage = false
+shadows = false
 
 [[wm.rule]]
 app = "Mail"
@@ -44,6 +48,7 @@ manage = true
 app = "Mail"
 title = "General|Accounts|Junk Mail|Fonts & Colors|Viewing|Composing|Signatures|Rules|Extensions|Privacy"
 manage = false
+shadows = false
 
 [[wm.rule]]
 app = "Things"
@@ -53,6 +58,7 @@ manage = true
 app = "Things"
 title = "General|Things Cloud|Quick Entry|Reminders|Calendar"
 manage = false
+shadows = false
 
 # Numbers follow alt-1 ... alt-=, so the order here is the order of the hotkeys.
 
