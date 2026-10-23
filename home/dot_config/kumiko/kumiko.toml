@@ -269,3 +269,6 @@ blacklist = ["Code", "Dota 2", "Ghostty", "Notes", "Obsidian", "Telegram"]
 commands = [
 	"set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz",
 ]
+
+[menubar]
+enabled = true
