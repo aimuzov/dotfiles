@@ -17,6 +17,7 @@ const scopes = [
   "nvim",
   "oh-my-posh",
   "other",
+  "projects",
   "raycast",
   "shell",
   "sketchybar",
