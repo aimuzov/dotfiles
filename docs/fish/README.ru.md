@@ -297,6 +297,12 @@ end
 - `git.branch_current`: Вспомогательная функция для получения имени текущей ветки Git
 - `git.branch_prune`: Утилита удаления веток Git для управления удаленными ветками (включая squashed коммиты)
 
+### Функции для kumiko
+
+Расположены в `functions/core/kumiko/`:
+
+- `kumiko.sudoers`: Записывает строку из `kumiko sa sudoers` в `/private/etc/sudoers.d/kumiko` после проверки `visudo`, чтобы приложение загружало scripting addition без пароля; запускать заново после каждой пересборки kumiko
+
 ### Функции для GlobalProtect
 
 Расположены в `functions/core/gp/`:

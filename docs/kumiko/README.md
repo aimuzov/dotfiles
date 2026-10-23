@@ -42,9 +42,9 @@ sudo kumiko sa install   # copies the payload from Kumiko.app
 kumiko sa status         # installed / loaded and its version
 ```
 
-To let the app load it again after Dock restarts without a password, put the line from
-`kumiko sa sudoers` into `/private/etc/sudoers.d/kumiko`. The line is pinned to the binary's hash,
-so it goes stale after every rebuild.
+To let the app load it again after Dock restarts without a password, the fish function
+`kumiko.sudoers` puts the line from `kumiko sa sudoers` into `/private/etc/sudoers.d/kumiko`, checking
+it with `visudo` first. The line is pinned to the binary's hash, so run it again after every rebuild.
 
 ## Keybindings
 

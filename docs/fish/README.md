@@ -295,6 +295,12 @@ Located in `functions/core/git/`:
 - `git.branch_current`: Helper function to get the current Git branch name
 - `git.branch_prune`: Git branch deletion utility for managing merged branches (including squashed commits)
 
+### kumiko Functions
+
+Located in `functions/core/kumiko/`:
+
+- `kumiko.sudoers`: Writes the line from `kumiko sa sudoers` to `/private/etc/sudoers.d/kumiko` after a `visudo` check, so the app loads its scripting addition without a password; run it again after every kumiko rebuild
+
 ### GlobalProtect Functions
 
 Located in `functions/core/gp/`:
