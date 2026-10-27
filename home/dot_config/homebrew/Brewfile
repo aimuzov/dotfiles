@@ -1,3 +1,4 @@
+tap "aimuzov/tap", trusted: true
 tap "daipeihust/tap"
 tap "jdx/tap"
 tap "lukechilds/tap"
@@ -96,6 +97,8 @@ cask "gitup-app"
 cask "google-chrome"
 # Password manager app
 cask "keepassxc"
+# Tiling window manager with workspaces, hotkeys and a status bar
+cask "aimuzov/tap/kumiko"
 # Software for Logitech devices
 cask "logi-options+"
 # Open-source, KeePass-client and password manager
