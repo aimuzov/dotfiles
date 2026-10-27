@@ -75,8 +75,6 @@ dotfiles/
 - **Raycast** (`dot_bin/raycast/`) - Скриптовые команды для лаунчера продуктивности
   - Управление Tailscale VPN (выбор exit-node, отображение статуса)
   - Загрузка видео с YouTube
-  - Перезапуск менеджера окон (kumiko)
-  - Лаунчеры приложений
   - Подробнее в [документации Raycast](raycast/README.md)
 - **Zed** (`dot_config/zed/`) - Конфигурация редактора кода
 - **Bat** (`dot_config/bat/`) - Клон cat с подсветкой синтаксиса
@@ -165,7 +163,7 @@ kumiko query workspaces
 
 Этот репозиторий использует commitlint с conventional commits. Допустимые scope определены в `.commitlintrc.js`:
 
-- Scope компонентов: `asdf`, `bat`, `borders`, `brew`, `claude`, `chezmoi`, `fish`, `ghostty`, `git`, `gitconfig`, `karabiner`, `kumiko`, `lazygit`, `mise`, `nvim`, `oh-my-posh`, `projects`, `raycast`, `sketchybar`, `skhd`, `ssh`, `svim`, `termscp`, `them-switcher`, `time`, `vscode`, `wezterm`, `yabai`, `yazi`, `zed`, `zrok`, `zsh`
+- Scope компонентов: `asdf`, `bat`, `brew`, `claude`, `chezmoi`, `fish`, `ghostty`, `git`, `gitconfig`, `karabiner`, `kumiko`, `lazygit`, `mise`, `nvim`, `oh-my-posh`, `projects`, `raycast`, `ssh`, `termscp`, `them-switcher`, `time`, `vscode`, `wezterm`, `yazi`, `zed`, `zrok`, `zsh`
 - Общие scope: `other`, `shell`, `install-script`
 
 Коммиты должны следовать формату: `type(scope): description`

@@ -11,18 +11,14 @@
   },
   "keywords": [
     "zsh",
-    "borders",
     "brew",
     "chezmoi",
     "dotfiles",
     "karabiner",
+    "kumiko",
     "lazygit",
     "nvim",
-    "sketchybar",
-    "skhd",
-    "svim",
-    "wezterm",
-    "yabai"
+    "wezterm"
   ],
   "author": "",
   "private": true,

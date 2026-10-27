@@ -75,8 +75,6 @@ All paths below are relative to `home/` (the chezmoi source root):
 - **Raycast** (`dot_bin/raycast/`) - Script commands for productivity launcher
   - Tailscale VPN management (exit-node selection, status display)
   - YouTube video download
-  - Window manager restart (kumiko)
-  - Application launchers
   - See [Raycast documentation](raycast/README.md) for details
 - **Zed** (`dot_config/zed/`) - Code editor configuration
 - **Bat** (`dot_config/bat/`) - Cat clone with syntax highlighting
@@ -178,7 +176,7 @@ kumiko query workspaces
 
 This repository uses commitlint with conventional commits. Valid scopes are defined in `.commitlintrc.js`:
 
-- Component scopes: `asdf`, `bat`, `borders`, `brew`, `claude`, `chezmoi`, `fish`, `ghostty`, `git`, `gitconfig`, `karabiner`, `kumiko`, `lazygit`, `mise`, `nvim`, `oh-my-posh`, `projects`, `raycast`, `sketchybar`, `skhd`, `ssh`, `svim`, `termscp`, `them-switcher`, `time`, `vscode`, `wezterm`, `yabai`, `yazi`, `zed`, `zrok`, `zsh`
+- Component scopes: `asdf`, `bat`, `brew`, `claude`, `chezmoi`, `fish`, `ghostty`, `git`, `gitconfig`, `karabiner`, `kumiko`, `lazygit`, `mise`, `nvim`, `oh-my-posh`, `projects`, `raycast`, `ssh`, `termscp`, `them-switcher`, `time`, `vscode`, `wezterm`, `yazi`, `zed`, `zrok`, `zsh`
 - Generic scopes: `other`, `shell`, `install-script`
 
 Commits must follow the format: `type(scope): description`
