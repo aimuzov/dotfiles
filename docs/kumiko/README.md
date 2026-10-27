@@ -52,11 +52,8 @@ it with `visudo` first. The line is pinned to the binary's hash, so run it again
 | --- | --- |
 | `alt - 1` … `alt - =` | Focus workspace 1–12 |
 | `alt - h/j/k/l` | Focus window west/south/north/east |
-| `cmd + ctrl - i` | Window mode: focus, stack, float, zoom, resize, close, balance |
-| `cmd + ctrl - m` | Move mode: warp windows, rotate and mirror the workspace |
-| `cmd + ctrl - n` | Resize mode |
-| `cmd + ctrl - o` | Stack mode |
-| `cmd + ctrl - ;` | Command mode: `w` reloads the config, `l` sleeps the display |
+| `cmd + ctrl - i` | Window mode until Esc: `hjkl` focuses, `shift` moves, `ctrl` resizes, `alt` stacks; `n`/`p`/`u` stack, `f` float, `m`/`z` zoom, `e` balance, `r`/`x`/`y` rotate and mirror, `q` close |
+| `cmd + ctrl - ;` | Command mode, one action and back: `w` reloads the config, `l` sleeps the display, `t` toggles light/dark |
 | `escape` or `ctrl - [` | Back to the default mode |
 
 The full list is in `kumiko.toml` itself.
