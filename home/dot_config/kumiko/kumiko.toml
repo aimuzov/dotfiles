@@ -1,124 +1,96 @@
 # Mirrors yabairc and yabai-rearrange.sh from the dotfiles.
 
 [wm]
-manage = false
+gap = 8
+hide_apps = true
+workspaces = true
 shadows = false
-gap = 6
-padding = 4
-
-[[wm.rule]]
-app = "Google Chrome|Arc|Claude|Code|Cyberduck|Figma|Ghostty|Miro|Perplexity|Telegram|Time|WezTerm|WhatsApp|Yandex|Толк"
 manage = true
+float_fixed_size = true
+keep_on_screen = true
 
 [[wm.rule]]
 app = "Calendar"
 manage = true
 
 [[wm.rule]]
-app = "Calendar"
-title = "General|Accounts|Alerts|Advanced"
-manage = false
-
-[[wm.rule]]
-app = "Dia"
-manage = true
-
-[[wm.rule]]
-app = "Dia"
-title = "Settings"
-manage = false
-
-[[wm.rule]]
-app = "Finder"
-manage = true
-
-[[wm.rule]]
-app = "Finder"
-title = "Copy|Connect|Move|Info|Pref|Finder Settings"
-manage = false
-
-[[wm.rule]]
 app = "Mail"
 manage = true
 
 [[wm.rule]]
-app = "Mail"
-title = "General|Accounts|Junk Mail|Fonts & Colors|Viewing|Composing|Signatures|Rules|Extensions|Privacy"
+app = "Happ"
 manage = false
 
 [[wm.rule]]
-app = "Things"
+app = "Steam"
 manage = true
-
-[[wm.rule]]
-app = "Things"
-title = "General|Things Cloud|Quick Entry|Reminders|Calendar"
-manage = false
 
 # Numbers follow alt-1 ... alt-=, so the order here is the order of the hotkeys.
 
 [[workspace]]
 name = "Code"
-display = "external"
-apps = ["Ghostty", "WezTerm", "Code", "Zed"]
+display = "main"
+apps = ["WezTerm", "Ghostty", "Code", "Zed", "GitUp"]
 
 [[workspace]]
 name = "Web"
-display = "external"
-apps = ["Arc", "Dia"]
+display = "main"
+apps = ["Dia", "Safari"]
 
 [[workspace]]
 name = "AI"
-display = "external"
-apps = ["ChatGPT", "Claude", "Google Chrome", "Perplexity"]
+display = "main"
+apps = ["ChatGPT", "Claude", "Google Chrome", "Perplexity", "OpenCode"]
 
 [[workspace]]
 name = "Design"
-display = "external"
-apps = ["Figma", "Miro"]
+display = "main"
+apps = ["Figma", "Blender", "SF Symbols", "Holst"]
 
 [[workspace]]
 name = "Files"
-display = "external"
-apps = ["Finder", "Cyberduck"]
+display = "main"
+apps = ["Finder", "Cyberduck", "Preview", "Transmission"]
 
 [[workspace]]
-name = "Games"
-display = "external"
-apps = ["Steam Helper", "Dota 2"]
+name = "Inbox"
+display = "main"
+apps = ["Mail"]
 
 [[workspace]]
 name = "System"
-display = "builtin"
-apps = ["App Store", "System Settings", "Happ", "MacPass"]
+display = "external"
+apps = ["App Store", "System Settings", "Happ", "MacPass", "KeePassXC", "Kumiko", "Steam", "OrbStack", "AppCleaner", "Pearcleaner", "Kaspersky Anti-Virus For Mac", "logioptionsplus"]
+stack = ["Steam"]
 
 [[workspace]]
-name = "Plan"
-display = "builtin"
-apps = ["Things", "Calendar", "Mail"]
+name = "Agenda"
+display = "external"
+apps = ["Things", "Calendar"]
 stack = ["Things", "Calendar", "Mail"]
 
 [[workspace]]
-name = "Other"
-display = "builtin"
+name = "Misc"
+display = "external"
 default = true
 
 [[workspace]]
-name = "Chat"
-display = "builtin"
-apps = ["Time", "Telegram", "WhatsApp"]
+name = "Chats"
+display = "external"
+apps = ["Telegram", "Time"]
+share = { Time = 0.6 }
+stack = ["Telegram"]
 last = ["Telegram"]
-share = { Time = 0.7 }
 
 [[workspace]]
 name = "Calls"
-display = "builtin"
-apps = ["Толк"]
+display = "external"
+apps = ["Толк", "zoom.us", "Citrix Workspace"]
 
 [[workspace]]
 name = "Media"
-display = "builtin"
-apps = ["Spotify", "Photos"]
+display = "external"
+apps = ["Spotify", "Photos", "VLC"]
 
 # Ported from skhdrc.
 
@@ -259,17 +231,25 @@ blacklist = ["LayerX", "loginwindow", "screensaver"]
 [borders]
 width = 4
 radius = 16
-color = "0xff8aadf4"
-blacklist = ["Steam Helper", "dota2", "iPhone Mirroring"]
+color = "#8aadf4"
+blacklist = ["iPhone Mirroring"]
 
 # Ported from svimrc and the svim blacklist.
 
 [vim]
 enabled = true
-blacklist = ["Code", "Dota 2", "Ghostty", "Notes", "Obsidian", "Telegram"]
+blacklist = ["Ghostty", "Notes", "Claude", "Telegram"]
 commands = [
 	"set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz",
 ]
 
 [menubar]
 enabled = true
+
+[bar]
+position = "bottom"
+enabled = true
+height = 36
+scale = 1
+magnification = "dock"
+take_from_menu_bar = true
