@@ -163,7 +163,7 @@ kumiko query workspaces
 
 Этот репозиторий использует commitlint с conventional commits. Допустимые scope определены в `.commitlintrc.js`:
 
-- Scope компонентов: `asdf`, `bat`, `brew`, `claude`, `chezmoi`, `fish`, `ghostty`, `git`, `gitconfig`, `karabiner`, `kumiko`, `lazygit`, `mise`, `nvim`, `oh-my-posh`, `projects`, `raycast`, `ssh`, `termscp`, `them-switcher`, `time`, `vscode`, `wezterm`, `yazi`, `zed`, `zrok`, `zsh`
+- Scope компонентов: `asdf`, `bat`, `brew`, `claude`, `chezmoi`, `fish`, `ghostty`, `git`, `gitconfig`, `karabiner`, `kumiko`, `lazygit`, `mise`, `nvim`, `oh-my-posh`, `projects`, `raycast`, `spicetify`, `ssh`, `termscp`, `them-switcher`, `time`, `vscode`, `warp`, `wezterm`, `yazi`, `zed`, `zrok`, `zsh`
 - Общие scope: `other`, `shell`, `install-script`
 
 Коммиты должны следовать формату: `type(scope): description`

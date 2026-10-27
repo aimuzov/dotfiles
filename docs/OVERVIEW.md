@@ -176,7 +176,7 @@ kumiko query workspaces
 
 This repository uses commitlint with conventional commits. Valid scopes are defined in `.commitlintrc.js`:
 
-- Component scopes: `asdf`, `bat`, `brew`, `claude`, `chezmoi`, `fish`, `ghostty`, `git`, `gitconfig`, `karabiner`, `kumiko`, `lazygit`, `mise`, `nvim`, `oh-my-posh`, `projects`, `raycast`, `ssh`, `termscp`, `them-switcher`, `time`, `vscode`, `wezterm`, `yazi`, `zed`, `zrok`, `zsh`
+- Component scopes: `asdf`, `bat`, `brew`, `claude`, `chezmoi`, `fish`, `ghostty`, `git`, `gitconfig`, `karabiner`, `kumiko`, `lazygit`, `mise`, `nvim`, `oh-my-posh`, `projects`, `raycast`, `spicetify`, `ssh`, `termscp`, `them-switcher`, `time`, `vscode`, `warp`, `wezterm`, `yazi`, `zed`, `zrok`, `zsh`
 - Generic scopes: `other`, `shell`, `install-script`
 
 Commits must follow the format: `type(scope): description`
