@@ -88,6 +88,21 @@ running programs when macOS switches between light and dark:
 **Runs:** Weekly, in step with the `refreshPeriod` of the external
 **Purpose:** Send `SIGUSR1` to every running nvim when the system appearance changes
 
+### 4. Sentry Plugin for Personal Projects
+
+**`run_after_4_enable-sentry-plugin.fish.tmpl`**
+
+Enables the `sentry@claude-plugins-official` Claude Code plugin only in personal repositories. The plugin
+is disabled globally in `dot_claude/modify_settings.json.tmpl`:
+
+- Installs the plugin into the cache if `claude plugin list` does not have it yet
+- For every git repository in `~/Projects/{aimuzov,lazyvimx,aleshavpnov}/*`, sets
+  `enabledPlugins["sentry@claude-plugins-official"] = true` in `.claude/settings.local.json`
+- Keeps the other keys of the file and skips files that are not valid JSON
+
+**Runs:** On every apply, to pick up new repositories; rewrites a file only when it changes
+**Purpose:** Sentry skills and MCP in personal projects, none in work ones
+
 ### 5. Workflow Installation
 
 **`run_once_after_5_install-workflows.fish.tmpl`**

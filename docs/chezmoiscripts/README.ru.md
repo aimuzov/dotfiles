@@ -88,6 +88,21 @@ mise install -y
 **Запускается:** Раз в неделю, синхронно с `refreshPeriod` у external
 **Назначение:** Слать `SIGUSR1` каждому запущенному nvim при смене внешнего вида системы
 
+### 4. Плагин Sentry в личных проектах
+
+**`run_after_4_enable-sentry-plugin.fish.tmpl`**
+
+Включает плагин Claude Code `sentry@claude-plugins-official` только в личных репозиториях. Глобально
+он выключен в `dot_claude/modify_settings.json.tmpl`:
+
+- Ставит плагин в кэш, если `claude plugin list` его ещё не знает
+- Каждому git-репозиторию из `~/Projects/{aimuzov,lazyvimx,aleshavpnov}/*` пишет
+  `enabledPlugins["sentry@claude-plugins-official"] = true` в `.claude/settings.local.json`
+- Остальные ключи файла сохраняет, невалидный JSON пропускает
+
+**Запускается:** На каждый apply, чтобы подхватывать новые репозитории; файл переписывает, только если он меняется
+**Назначение:** Скиллы и MCP Sentry в личных проектах, в рабочих их нет
+
 ### 5. Установка Workflow
 
 **`run_once_after_5_install-workflows.fish.tmpl`**
