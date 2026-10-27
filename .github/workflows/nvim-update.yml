@@ -29,6 +29,8 @@ env:
 
 jobs:
   update:
+    # Коммит идёт в main, так что и запуск только с main
+    if: github.ref == 'refs/heads/main'
     name: Bump lazy.nvim plugins
     runs-on: ubuntu-latest
 
