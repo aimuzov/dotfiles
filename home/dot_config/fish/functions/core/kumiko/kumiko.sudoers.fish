@@ -3,7 +3,7 @@ function kumiko.sudoers
 
     set kumiko_path (command -v kumiko)
 
-    # Not on the PATH until kumiko gets a fixed install path, so ask LaunchServices for the bundle.
+    # The cask links kumiko onto the PATH, a build from the repository does not: ask LaunchServices for the bundle.
     if test -z "$kumiko_path"
         set app_path (osascript -e 'POSIX path of (path to application id "online.aimuzov.kumiko")' 2>/dev/null)
         and set kumiko_path (string trim -r -c / $app_path)/Contents/MacOS/kumiko
