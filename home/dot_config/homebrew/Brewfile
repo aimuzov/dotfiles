@@ -3,7 +3,6 @@ tap "daipeihust/tap"
 tap "jdx/tap"
 tap "lukechilds/tap"
 tap "macos-fuse-t/cask", trusted: true
-tap "nikitabobko/tap"
 tap "whatpulse/whatpulse"
 tap "yqrashawn/goku"
 # Extendable version manager with support for Ruby, Node.js, Erlang & more

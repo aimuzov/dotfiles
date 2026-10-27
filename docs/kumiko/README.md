@@ -15,7 +15,6 @@ The app is not published yet and is built from its own repository: `scripts/bund
 | Source | Target |
 | --- | --- |
 | `home/dot_config/kumiko/kumiko.toml` | `~/.config/kumiko/kumiko.toml` |
-| `home/dot_bin/raycast/executable_restart-vm.sh` | Raycast command `Restart WM` |
 
 kumiko watches the config file and rereads it on change, so `chezmoi apply` is enough. A broken
 file keeps the previous config in force and shows the error in the status menu and in
@@ -23,19 +22,19 @@ file keeps the previous config in force and shows the error in the status menu a
 
 ## Config Sections
 
-- `[wm]` and `[[wm.rule]]` - gaps, padding, which apps are tiled and whether their windows cast
-  shadows (ported from yabairc)
+- `[wm]` and `[[wm.rule]]` - gaps, padding, which apps are tiled and
+  whether their windows cast shadows
 - `[[workspace]]` - named workspaces, their display (`external` or `builtin`) and app assignments;
   their order is the order of the `alt - 1` … `alt - =` hotkeys
-- `[hotkeys]` - bindings and modes (ported from skhdrc)
-- `[borders]` - border width, radius, color and blacklist (ported from bordersrc)
-- `[vim]` - vim modes in text fields with the Russian `langmap` (ported from svimrc)
+- `[hotkeys]` - bindings and modes
+- `[borders]` - border width, radius, color and blacklist
+- `[vim]` - vim modes in text fields with the Russian `langmap`
 - `[menubar]` - hides menu bar status items behind a chevron, the way Ice does; it replaced Ice here
 
 ## Window Shadows
 
-`shadows = false` works through a scripting addition that kumiko loads into Dock, the way yabai did,
-and it needs root:
+`shadows = false` works through a scripting addition that kumiko loads into Dock, and it
+needs root:
 
 ```bash
 sudo kumiko sa install   # copies the payload from Kumiko.app
@@ -70,8 +69,3 @@ kumiko workspace focus Code  # by name or number
 kumiko menubar toggle        # show or hide the status items left of the divider
 kumiko quit                  # quit, putting hidden windows back on screen
 ```
-
-## Restarting
-
-The Raycast command `Restart WM` finds `Kumiko.app` by its bundle id `online.aimuzov.kumiko`, calls
-`kumiko quit` and opens the app again.

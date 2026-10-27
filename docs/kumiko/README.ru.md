@@ -16,7 +16,6 @@ SketchyBar и SketchyVim.
 | Исходник | Куда попадает |
 | --- | --- |
 | `home/dot_config/kumiko/kumiko.toml` | `~/.config/kumiko/kumiko.toml` |
-| `home/dot_bin/raycast/executable_restart-vm.sh` | Команда Raycast `Restart WM` |
 
 kumiko следит за файлом конфига и перечитывает его при изменении, так что хватает
 `chezmoi apply`. Со сломанным файлом остаётся в силе прежний конфиг, а ошибка видна в меню
@@ -24,19 +23,19 @@ kumiko следит за файлом конфига и перечитывает
 
 ## Секции конфига
 
-- `[wm]` и `[[wm.rule]]`: отступы, какие приложения раскладываются тайлами и есть ли у их окон
-  тени (перенесено из yabairc)
+- `[wm]` и `[[wm.rule]]`: отступы, какие приложения раскладываются тайлами
+  и есть ли у их окон тени
 - `[[workspace]]`: именованные рабочие пространства, их дисплей (`external` или `builtin`)
   и приложения; порядок совпадает с порядком хоткеев `alt - 1` … `alt - =`
-- `[hotkeys]`: привязки и режимы (перенесено из skhdrc)
-- `[borders]`: толщина, скругление, цвет рамок и исключения (перенесено из bordersrc)
-- `[vim]`: vim-режимы в текстовых полях с русским `langmap` (перенесено из svimrc)
+- `[hotkeys]`: привязки и режимы
+- `[borders]`: толщина, скругление, цвет рамок и исключения
+- `[vim]`: vim-режимы в текстовых полях с русским `langmap`
 - `[menubar]`: прячет статус-иконки меню-бара за шеврон, как Ice; здесь он заменил Ice
 
 ## Тени окон
 
-`shadows = false` работает через scripting addition, который kumiko загружает в Dock, как это
-делал yabai. Для него нужен root:
+`shadows = false` работает через scripting addition, который kumiko загружает в Dock. Для него
+нужен root:
 
 ```bash
 sudo kumiko sa install   # копирует payload из Kumiko.app
@@ -72,8 +71,3 @@ kumiko workspace focus Code  # по имени или номеру
 kumiko menubar toggle        # показать или спрятать иконки левее разделителя
 kumiko quit                  # выйти, вернув скрытые окна на экран
 ```
-
-## Перезапуск
-
-Команда Raycast `Restart WM` находит `Kumiko.app` по bundle id `online.aimuzov.kumiko`, вызывает
-`kumiko quit` и снова открывает приложение.

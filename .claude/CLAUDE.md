@@ -61,7 +61,7 @@ kumiko status
 
 Используются conventional commits со scope из `.commitlintrc.js`:
 
-**Component scopes:** `asdf`, `bat`, `borders`, `brew`, `claude`, `chezmoi`, `fish`, `ghostty`, `git`, `gitconfig`, `karabiner`, `kumiko`, `lazygit`, `mise`, `nvim`, `oh-my-posh`, `projects`, `raycast`, `sketchybar`, `skhd`, `ssh`, `svim`, `termscp`, `them-switcher`, `time`, `vscode`, `warp`, `wezterm`, `yabai`, `yazi`, `zed`, `zrok`, `zsh`
+**Component scopes:** `asdf`, `bat`, `brew`, `claude`, `chezmoi`, `fish`, `ghostty`, `git`, `gitconfig`, `karabiner`, `kumiko`, `lazygit`, `mise`, `nvim`, `oh-my-posh`, `projects`, `raycast`, `spicetify`, `ssh`, `termscp`, `them-switcher`, `time`, `vscode`, `warp`, `wezterm`, `yazi`, `zed`, `zrok`, `zsh`
 
 **Generic scopes:** `other`, `shell`, `install-script`
 
@@ -91,7 +91,7 @@ kumiko status
 - **kumiko** - Собственный тайловый менеджер окон (`~/Projects/aimuzov/kumiko`): рабочие области, горячие клавиши, бар, рамки и vim-режимы в одном приложении, конфиг `dot_config/kumiko/kumiko.toml`. Заменил yabai, skhd, JankyBorders, SketchyBar и SketchyVim
 - **Git** - Интеграция с KeePassXC для секретов, подпись GPG
 - **mise** - Менеджер инструментов разработки (замена asdf)
-- **Raycast Scripts** - Команды для Raycast (управление Tailscale, перезапуск kumiko, лаунчеры)
+- **Raycast Scripts** - Команды для Raycast (управление Tailscale, загрузка видео с YouTube)
 
 ### Рабочий процесс разработки
 
