@@ -10,8 +10,6 @@
   - [Tailscale Exit Node Selection](#tailscale-exit-node-selection)
   - [Tailscale Status](#tailscale-status)
   - [YouTube Video Download](#youtube-video-download)
-  - [Window Manager Restart](#window-manager-restart)
-  - [Dota 2 Launcher](#dota-2-launcher)
 - [Adding New Scripts](#adding-new-scripts)
 - [Integration with Fish Functions](#integration-with-fish-functions)
 - [Troubleshooting](#troubleshooting)
@@ -159,54 +157,6 @@ Arguments are available as positional parameters: `$1`, `$2`, `$3`
 
 **Related Files:**
 - Fish implementation: [`executable_youtube-download.fish`](../../home/dot_bin/raycast/executable_youtube-download.fish)
-
-### Window Manager Restart
-
-**File:** [`home/dot_bin/raycast/executable_restart-vm.sh`](../../home/dot_bin/raycast/executable_restart-vm.sh)
-
-**Purpose:** Restarts [kumiko](../kumiko/README.md), the window manager that also draws the bar and borders and handles hotkeys.
-
-**Functionality:**
-
-1. Finds `Kumiko.app` by its bundle id `online.aimuzov.kumiko`: the app has no fixed install path yet
-2. Calls `kumiko quit` from inside the bundle, which puts hidden windows back on screen
-3. Waits for the `KumikoApp` process to exit and opens the app again
-
-**Usage:**
-1. Invoke Raycast (⌘Space)
-2. Type "restart wm"
-3. Press Enter
-
-**When to Use:**
-- When the window manager hangs
-- After rebuilding kumiko
-
-A config change does not need a restart: kumiko rereads `kumiko.toml` on its own.
-
-**Related Files:**
-- Configuration: [`home/dot_config/kumiko/kumiko.toml`](../../home/dot_config/kumiko/kumiko.toml)
-
-### Dota 2 Launcher
-
-**File:** [`home/dot_bin/raycast/executable_dota2.sh`](../../home/dot_bin/raycast/executable_dota2.sh)
-
-**Purpose:** Quick launch of Dota 2 through Steam.
-
-**Functionality:**
-- Launches Dota 2 directly via Steam's shell script
-- Bypasses the need to open Steam UI
-
-**Usage:**
-1. Invoke Raycast (⌘Space)
-2. Type "Dota 2"
-3. Press Enter
-
-**Requirements:**
-- Installed Steam
-- Installed Dota 2
-- Path: `~/Library/Application Support/Steam/steamapps/common/dota 2 beta/game/dota.sh`
-
-**Note:** The path is hardcoded for a specific user. Using on another system will require updating the path.
 
 ## Adding New Scripts
 
