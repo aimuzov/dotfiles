@@ -1,0 +1,91 @@
+# Ежедневное обновление плагинов Neovim (lazy-lock.json).
+#
+# Запускает nvim headless с конфигом из репозитория, делает `:Lazy! update`
+# и, если lock изменился, коммитит его прямо в main. Утром остаётся:
+# git pull → chezmoi apply → `:Lazy restore` в nvim.
+#
+# Коммит создаётся через GraphQL-мутацию createCommitOnBranch, а не git push:
+# такие коммиты GitHub подписывает своим ключом и помечает Verified,
+# поэтому GPG-ключ в секретах не нужен.
+
+name: Nvim Update
+
+on:
+  schedule:
+    # Каждый день в 02:00 UTC (05:00 МСК)
+    - cron: "0 2 * * *"
+
+  # Позволяет запустить вручную из вкладки Actions
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: nvim-update
+
+env:
+  LOCK_PATH: home/dot_config/nvim/lazy-lock.json
+
+jobs:
+  update:
+    name: Bump lazy.nvim plugins
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: rhysd/action-setup-vim@v1
+        with:
+          neovim: true
+          version: stable
+
+      # lazy.nvim пишет lock в stdpath("config"): через симлинк он попадёт в репо.
+      # lazyvimx берётся с GitHub, локального ~/Projects/lazyvimx/nvim тут нет.
+      - name: Link nvim config
+        run: |
+          mkdir -p ~/.config
+          ln -s "$GITHUB_WORKSPACE/home/dot_config/nvim" ~/.config/nvim
+
+      # `Lazy!` синхронный: lock записан до выхода. Падения build-хуков
+      # (luarocks, парсеры treesitter) lock не портят, timeout страхует от зависаний.
+      - name: Update plugins
+        run: timeout 20m nvim --headless "+Lazy! update" +qa
+
+      # Не коммитим битый или обрезанный lock
+      - name: Validate lock file
+        run: jq -e 'has("lazy.nvim") and has("LazyVim")' "$LOCK_PATH" > /dev/null
+
+      - name: Detect changes
+        id: diff
+        run: |
+          if git diff --quiet -- "$LOCK_PATH"; then
+            echo "No plugin updates"
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            git diff --stat -- "$LOCK_PATH"
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      # expectedHeadOid: если main ушёл вперёд за время прогона, мутация упадёт,
+      # а не перезапишет чужие коммиты
+      - name: Commit lock file
+        if: steps.diff.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          jq -n \
+            --arg repo "$GITHUB_REPOSITORY" \
+            --arg head "$GITHUB_SHA" \
+            --arg path "$LOCK_PATH" \
+            --arg contents "$(base64 -w0 "$LOCK_PATH")" \
+            '{
+              query: "mutation($input: CreateCommitOnBranchInput!) { createCommitOnBranch(input: $input) { commit { url } } }",
+              variables: { input: {
+                branch: { repositoryNameWithOwner: $repo, branchName: "main" },
+                expectedHeadOid: $head,
+                message: { headline: "chore(nvim): bump deps" },
+                fileChanges: { additions: [{ path: $path, contents: $contents }] }
+              } }
+            }' \
+            | gh api graphql --input - --jq '.data.createCommitOnBranch.commit.url'
