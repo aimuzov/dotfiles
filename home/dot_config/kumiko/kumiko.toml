@@ -105,7 +105,6 @@ blacklist = ["LayerX", "loginwindow", "screensaver"]
 
 "cmd + ctrl - space" = { block = true }
 "cmd - h" = { block = true }
-"cmd + ctrl - w" = { block = true }
 "cmd + ctrl - q" = { block = true }
 
 "cmd + ctrl - j" = { send = "down" }
@@ -159,7 +158,7 @@ blacklist = ["LayerX", "loginwindow", "screensaver"]
 
 # Entering a mode works from any mode, the way skhdrc listed every pair.
 [hotkeys.global]
-"cmd + ctrl - i" = { mode = "window" }
+"cmd + ctrl - w" = { mode = "window" }
 "cmd + ctrl - 0x29" = { mode = "command" }
 
 # Stays on until Esc. hjkl is the direction, the modifier the verb: none focuses, shift moves,
