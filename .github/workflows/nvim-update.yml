@@ -58,6 +58,13 @@ jobs:
       - name: Update plugins
         run: timeout 20m nvim --headless "+Lazy! update" +qa
 
+      # Записи есть только в CI: локально lazyvimx -- dev-плагин без записи в lock,
+      # а skhdrc тянет лишь его версия с GitHub. Строки режем sed, а не jq,
+      # чтобы lock остался в формате lazy и дифф не расползся
+      - name: Drop CI-only entries
+        run: |
+          sed -i -E '/^  "(lazyvimx|tree-sitter-skhdrc)": /d' "$LOCK_PATH"
+
       # Не коммитим битый или обрезанный lock
       - name: Validate lock file
         run: jq -e 'has("lazy.nvim") and has("LazyVim")' "$LOCK_PATH" > /dev/null
