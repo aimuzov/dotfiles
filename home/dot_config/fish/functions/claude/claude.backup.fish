@@ -1,11 +1,11 @@
 function claude.backup
-    argparse 'f/from=+' -- $argv; or return 1
+    argparse 'f/from=+' 't/timeout=!_validate_int --min 1' -- $argv; or return 1
 
     set -l manifest $argv[1]
     set -l dest_root $argv[2]
 
     if test -z "$manifest"
-        echo "claude.backup: usage: claude.backup [-f dir]... <manifest.json> [dest_root]" >&2
+        echo "claude.backup: usage: claude.backup [-f dir]... [-t seconds] <manifest.json> [dest_root]" >&2
         return 1
     end
 
@@ -14,7 +14,7 @@ function claude.backup
         return 1
     end
 
-    for cmd in jq curl unzip
+    for cmd in jq unzip
         if not type -q $cmd
             echo "claude.backup: $cmd not found" >&2
             return 1
@@ -27,6 +27,9 @@ function claude.backup
     end
 
     test -n "$dest_root"; or set dest_root $HOME/temp/claude-backup
+
+    set -l timeout $_flag_timeout
+    test -n "$timeout"; or set timeout 300
 
     # Where the browser saved the zips, the manifest usually lands next to them
     set -l sources $_flag_from
@@ -60,39 +63,37 @@ function claude.backup
             set -l local $sources/$filename $sources/"$base ("*").zip"
             set local (path filter -f $local)
 
-            if test -n "$local"
-                set local (ls -t $local)[1]
-                echo "claude.backup: $filename ← $local"
-                cp $local $zip.part
-            else
-                echo "claude.backup: $filename ← $url"
-                set -l code (curl -sSL --retry 3 -D $zip.headers -o $zip.part -w '%{http_code}' $url)
+            # claude.ai hides the links behind a Cloudflare challenge that curl
+            # can't pass, so the browser downloads them. It gives the file its
+            # final name only once the download completes
+            if test -z "$local"
+                echo "claude.backup: $filename ← browser, waiting up to $timeout"s
+                open $url
 
-                if string match -qir '^cf-mitigated: *challenge' <$zip.headers
-                    echo "claude.backup: Cloudflare blocks curl, open the link in a browser and rerun: $url" >&2
-                    rm -f $zip.part $zip.headers
-                    set -a failed $filename
-                    continue
-                end
-
-                rm -f $zip.headers
-
-                if test "$code" != 200
-                    echo "claude.backup: download failed with HTTP $code: $filename" >&2
-                    rm -f $zip.part
-                    set -a failed $filename
-                    continue
+                for i in (seq $timeout)
+                    sleep 1
+                    set local $sources/$filename $sources/"$base ("*").zip"
+                    set local (path filter -f $local)
+                    test -n "$local"; and break
                 end
             end
 
-            if not unzip -tq $zip.part >/dev/null 2>&1
-                echo "claude.backup: $filename is not a zip, the link has expired or needs a login, request a new export" >&2
-                rm -f $zip.part
+            if test -z "$local"
+                echo "claude.backup: $filename did not show up in $sources, download it and rerun" >&2
                 set -a failed $filename
                 continue
             end
 
-            mv $zip.part $zip
+            set local (ls -t $local)[1]
+            echo "claude.backup: $filename ← $local"
+
+            if not unzip -tq $local >/dev/null 2>&1
+                echo "claude.backup: $local is not a valid zip, the link has expired, request a new export" >&2
+                set -a failed $filename
+                continue
+            end
+
+            cp $local $zip
         end
 
         if not unzip -oq $zip -d $dest/$category
