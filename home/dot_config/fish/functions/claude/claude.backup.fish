@@ -68,20 +68,38 @@ function claude.backup
             # final name only once the download completes
             if test -z "$local"
                 echo "claude.backup: $filename ← browser, waiting up to $timeout"s
+                set -l marker $dest/.opened
+                touch $marker
                 open $url
 
+                # A used link opens an error page instead of a download, so no
+                # partial file shows up: .crdownload (Chromium), .download
+                # (Safari), .part (Firefox)
+                set -l started
                 for i in (seq $timeout)
                     sleep 1
                     set local $sources/$filename $sources/"$base ("*").zip"
                     set local (path filter -f $local)
                     test -n "$local"; and break
-                end
-            end
 
-            if test -z "$local"
-                echo "claude.backup: $filename did not show up in $sources, download it and rerun" >&2
-                set -a failed $filename
-                continue
+                    if test -z "$started"
+                        set started (find $sources -maxdepth 1 -newer $marker \
+                            \( -name '*.crdownload' -o -name '*.download' -o -name '*.part' \) 2>/dev/null)
+                        test -z "$started" -a $i -ge 30; and break
+                    end
+                end
+
+                rm -f $marker
+
+                if test -z "$local"
+                    if test -z "$started"
+                        echo "claude.backup: $filename download did not start, the link was used or has expired, request a new export" >&2
+                    else
+                        echo "claude.backup: $filename did not finish in $timeout"s", download it and rerun" >&2
+                    end
+                    set -a failed $filename
+                    continue
+                end
             end
 
             # Plain ls, the interactive one is an eza wrapper with its own -t
@@ -89,7 +107,7 @@ function claude.backup
             echo "claude.backup: $filename ← $local"
 
             if not unzip -tq $local >/dev/null 2>&1
-                echo "claude.backup: $local is not a valid zip, the link has expired, request a new export" >&2
+                echo "claude.backup: $local is not a valid zip" >&2
                 set -a failed $filename
                 continue
             end
