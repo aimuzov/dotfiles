@@ -21,6 +21,11 @@ function claude.backup
         end
     end
 
+    if not jq -e '.data_files | type == "array" and length > 0' $manifest >/dev/null 2>&1
+        echo "claude.backup: $manifest is not valid JSON or lists no data_files" >&2
+        return 1
+    end
+
     set -l manifest_version (jq -r '.version // empty' $manifest)
     if test "$manifest_version" != "1.0"
         echo "claude.backup: unexpected manifest version '$manifest_version', continuing anyway" >&2
@@ -36,8 +41,20 @@ function claude.backup
     test -n "$sources"; or set sources (path dirname $manifest) $HOME/Downloads
 
     # 2026-10-29T06:16:42.951205+00:00 → 2026-10-29T06-16-42
-    set -l stamp (jq -r '.created_at // empty' $manifest | string sub -l 19 | string replace -a : -)
-    test -n "$stamp"; or set stamp (date -u +%Y-%m-%dT%H-%M-%S)
+    set -l created (jq -r '.created_at // empty' $manifest | string sub -l 19)
+    set -l since
+    set -l stamp
+
+    if test -n "$created"
+        # jq, not date: the interactive PATH has GNU date without BSD -j
+        set since (jq -nr --arg t $created '$t + "Z" | fromdateiso8601' 2>/dev/null)
+        set stamp (string replace -a : - $created)
+    end
+
+    if test -z "$since"
+        echo "claude.backup: no created_at in manifest, any zip with a matching name will do" >&2
+        set stamp (date -u +%Y-%m-%dT%H-%M-%S)
+    end
 
     set -l dest $dest_root/$stamp
 
@@ -58,10 +75,7 @@ function claude.backup
         if test -f $zip
             echo "claude.backup: $filename already in backup"
         else
-            # A browser renames a repeated download to "name (1).zip", take the newest
-            set -l base (path change-extension '' $filename)
-            set -l local $sources/$filename $sources/"$base ("*").zip"
-            set local (path filter -f $local)
+            set -l local (claude.backup.pick "$since" $filename $sources)
 
             # claude.ai hides the links behind a Cloudflare challenge that curl
             # can't pass, so the browser downloads them. It gives the file its
@@ -78,8 +92,7 @@ function claude.backup
                 set -l started
                 for i in (seq $timeout)
                     sleep 1
-                    set local $sources/$filename $sources/"$base ("*").zip"
-                    set local (path filter -f $local)
+                    set local (claude.backup.pick "$since" $filename $sources)
                     test -n "$local"; and break
 
                     if test -z "$started"
@@ -102,8 +115,6 @@ function claude.backup
                 end
             end
 
-            # Plain ls, the interactive one is an eza wrapper with its own -t
-            set local (command ls -t $local)[1]
             echo "claude.backup: $filename ← $local"
 
             if not unzip -tq $local >/dev/null 2>&1
