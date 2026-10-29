@@ -1,4 +1,6 @@
-# Fish-функция claude.backup выросла в github.com/aimuzov/claude-export
-# (см. .chezmoiexternals/claude-export.toml), её прежнюю копию убираем
+# claude.backup вырос в github.com/aimuzov/claude-export, а вместо его sh-версии
+# в ~/.local/bin теперь ставится fish-функция claude.export (.chezmoiexternals)
 .config/fish/functions/claude
 .config/fish/functions/claude/**
+.local/bin/claude-export
+.config/fish/completions/claude-export.fish

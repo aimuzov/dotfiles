@@ -1,12 +1,18 @@
-# Выгрузка экспорта данных claude.ai по манифесту: свой репозиторий
-# github.com/aimuzov/claude-export. Куда класть бэкапы -- CLAUDE_EXPORT_DEST в config.fish
-[".local/bin/claude-export"]
-type = "file"
-url = "https://raw.githubusercontent.com/aimuzov/claude-export/main/bin/claude-export"
-executable = true
+# claude.export: выгрузка экспорта данных claude.ai по манифесту, свой репозиторий
+# github.com/aimuzov/claude-export. Ставим fish-версию, каталоги подхватывает
+# conf.d/recursive_paths.fish. Куда класть бэкапы -- CLAUDE_EXPORT_DEST в config.fish
+[".config/fish/functions/claude-export"]
+type = "archive"
+url = "https://github.com/aimuzov/claude-export/archive/main.tar.gz"
+exact = true
+stripComponents = 2
 refreshPeriod = "168h"
+include = ["*/functions/**"]
 
-[".config/fish/completions/claude-export.fish"]
-type = "file"
-url = "https://raw.githubusercontent.com/aimuzov/claude-export/main/completions/claude-export.fish"
+[".config/fish/completions/claude-export"]
+type = "archive"
+url = "https://github.com/aimuzov/claude-export/archive/main.tar.gz"
+exact = true
+stripComponents = 2
 refreshPeriod = "168h"
+include = ["*/completions/claude.export.fish"]
