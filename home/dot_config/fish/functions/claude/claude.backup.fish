@@ -84,7 +84,8 @@ function claude.backup
                 continue
             end
 
-            set local (ls -t $local)[1]
+            # Plain ls, the interactive one is an eza wrapper with its own -t
+            set local (command ls -t $local)[1]
             echo "claude.backup: $filename ← $local"
 
             if not unzip -tq $local >/dev/null 2>&1
