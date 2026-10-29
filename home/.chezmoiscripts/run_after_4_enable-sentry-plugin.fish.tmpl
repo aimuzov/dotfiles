@@ -3,9 +3,10 @@
 
 # Включает плагин Sentry для Claude Code только в личных репо. Глобально он
 # выключен в dot_claude/modify_settings.json.tmpl, а здесь каждому репо из
-# ~/Projects/{aimuzov,lazyvimx,aleshavpnov} дописывается enabledPlugins в
-# .claude/settings.local.json: локальный скоуп перекрывает user. Идёт на каждый
-# apply, чтобы подхватывать новые репо; остальные ключи файла не трогаются.
+# ~/Projects/{aimuzov,lazyvimx,aleshavpnov} и самим этим папкам дописывается
+# enabledPlugins в .claude/settings.local.json: локальный скоуп перекрывает
+# user. Идёт на каждый apply, чтобы подхватывать новые репо; остальные ключи
+# файла не трогаются.
 
 {{ if (eq .chezmoi.os "darwin") -}}
 
@@ -21,9 +22,17 @@ if not $mise exec -- claude plugin list --json 2>/dev/null | $mise exec -- jq -e
     end
 end
 
-for repo in $HOME/Projects/{aimuzov,lazyvimx,aleshavpnov}/*
-    test -e $repo/.git; or continue
+# Сами корни тоже: в них открываются общие сессии сразу по всем проектам
+set -l roots $HOME/Projects/{aimuzov,lazyvimx,aleshavpnov}
+set -l targets
+for root in $roots
+    test -d $root; and set -a targets $root
+end
+for repo in $roots/*
+    test -e $repo/.git; and set -a targets $repo
+end
 
+for repo in $targets
     set -l file $repo/.claude/settings.local.json
     set -l current '{}'
     if test -s $file
