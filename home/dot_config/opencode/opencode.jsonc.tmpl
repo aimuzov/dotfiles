@@ -1,0 +1,51 @@
+{{- /* MCP-серверы общие с Claude Code: источник правды -- dot_claude/mcp.json.tmpl, здесь
+       только перевод в формат opencode. serena получает контекст ide вместо claude-code. */ -}}
+{{- $mcp := dict -}}
+{{- range $name, $server := includeTemplate "dot_claude/mcp.json.tmpl" . | fromJson -}}
+{{-   $command := list $server.command -}}
+{{-   range get $server "args" | default list -}}
+{{-     $command = append $command (eq . "claude-code" | ternary "ide" .) -}}
+{{-   end -}}
+{{-   $entry := dict "type" "local" "command" $command -}}
+{{-   $env := get $server "env" | default dict -}}
+{{-   if hasKey $env "MCP_TIMEOUT" -}}
+{{-     $_ := set $entry "timeout" (atoi $env.MCP_TIMEOUT) -}}
+{{-     $env = omit $env "MCP_TIMEOUT" -}}
+{{-   end -}}
+{{-   if $env -}}
+{{-     $_ := set $entry "environment" $env -}}
+{{-   end -}}
+{{-   $_ := set $mcp $name $entry -}}
+{{- end -}}
+{{- /* Промпты агентов и команд живут в ~/.claude, frontmatter Claude Code уходит в промпт
+       как текст. Описание берётся из того же frontmatter. */ -}}
+{{- $descriptionRe := "(?m)^description: .*$" -}}
+{{- $agents := dict -}}
+{{- range list "code-reviewer" "code-commenter" "typographer" "site-bootstrapper" -}}
+{{-   $source := include (printf "dot_claude/agents/%s.md" .) -}}
+{{-   $agent := dict "mode" "subagent" "prompt" (printf "{file:~/.claude/agents/%s.md}" .) -}}
+{{-   $_ := set $agent "description" ($source | regexFind $descriptionRe | trimPrefix "description: ") -}}
+{{-   $_ := set $agents . $agent -}}
+{{- end -}}
+{{- $_ := set (index $agents "code-reviewer") "permission" (dict "edit" "deny") -}}
+{{- /* nested не переносится: она про сессии десктопного приложения Claude */ -}}
+{{- $commands := dict -}}
+{{- range list "commit" "cr" "comments" "typo" "release" "new-site" -}}
+{{-   $source := include (printf "dot_claude/commands/%s.md" .) -}}
+{{-   $command := dict "template" (printf "{file:~/.claude/commands/%s.md}" .) -}}
+{{-   $_ := set $command "description" ($source | regexFind $descriptionRe | trimPrefix "description: " | default ($source | splitList "\n" | first | trimSuffix ".")) -}}
+{{-   $_ := set $commands . $command -}}
+{{- end -}}
+{
+  "$schema": "https://opencode.ai/config.json",
+  // Версией рулит mise
+  "autoupdate": false,
+  "model": "anthropic/claude-opus-5-5",
+  // Как defaultMode в Claude Code
+  "default_agent": "plan",
+  // Корневой CLAUDE.md проекта и ~/.claude/CLAUDE.md opencode подхватывает сам, а этот -- нет
+  "instructions": [".claude/CLAUDE.md"],
+  "mcp": {{ $mcp | toPrettyJson | trim | replace "\n" "\n  " }},
+  "agent": {{ $agents | toPrettyJson | trim | replace "\n" "\n  " }},
+  "command": {{ $commands | toPrettyJson | trim | replace "\n" "\n  " }}
+}

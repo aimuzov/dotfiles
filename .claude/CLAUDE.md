@@ -61,7 +61,7 @@ kumiko status
 
 Используются conventional commits со scope из `.commitlintrc.js`:
 
-**Component scopes:** `asdf`, `bat`, `brew`, `claude`, `chezmoi`, `fish`, `ghostty`, `git`, `gitconfig`, `karabiner`, `kumiko`, `lazygit`, `mise`, `nvim`, `oh-my-posh`, `projects`, `raycast`, `spicetify`, `ssh`, `termscp`, `them-switcher`, `time`, `vscode`, `warp`, `wezterm`, `yazi`, `zed`, `zrok`, `zsh`
+**Component scopes:** `asdf`, `bat`, `brew`, `claude`, `chezmoi`, `fish`, `ghostty`, `git`, `gitconfig`, `karabiner`, `kumiko`, `lazygit`, `mise`, `nvim`, `oh-my-posh`, `opencode`, `projects`, `raycast`, `spicetify`, `ssh`, `termscp`, `them-switcher`, `time`, `vscode`, `warp`, `wezterm`, `yazi`, `zed`, `zrok`, `zsh`
 
 **Generic scopes:** `other`, `shell`, `install-script`
 
@@ -80,6 +80,7 @@ kumiko status
 - `home/dot_bin/raycast/` - Raycast script commands (становится `~/.bin/raycast/`)
 - `home/dot_claude/` - Конфигурация Claude Code (становится `~/.claude/`)
 - `home/dot_claude/mcp.json.tmpl` - Определения MCP серверов (единый источник правды)
+- `home/dot_config/opencode/` - Конфигурация opencode: MCP из `mcp.json.tmpl`, агенты, команды и хуки из `dot_claude/` ([docs/opencode](docs/opencode/README.ru.md))
 - `home/dot_mcp.json.tmpl` - Тонкая обёртка `{"mcpServers": ...}`, подключает список выше через `includeTemplate`
 - `docs/` - Документация (вне home/, не управляется chezmoi)
 - `assets/` - Статические файлы для документации

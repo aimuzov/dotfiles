@@ -70,6 +70,7 @@ All paths below are relative to `home/` (the chezmoi source root):
 - **WezTerm** (`dot_config/wezterm/`) - Terminal emulator configuration
 - **Ghostty** (`dot_config/ghostty/`) - Fast terminal emulator with quick terminal, Display P3 colorspace, Catppuccin theme
 - **Claude Code** (`dot_claude/`) - AI assistant configuration with MCP servers
+- **opencode** (`dot_config/opencode/`) - AI coding agent that reuses the Claude Code MCP servers, rules, agents, commands and hooks
 - **Matterhorn** (`dot_config/matterhorn/`) - Terminal-based Mattermost client
 - **Oh My Posh** (`dot_config/oh-my-posh/`) - Prompt theme engine
 - **Raycast** (`dot_bin/raycast/`) - Script commands for productivity launcher
@@ -176,7 +177,7 @@ kumiko query workspaces
 
 This repository uses commitlint with conventional commits. Valid scopes are defined in `.commitlintrc.js`:
 
-- Component scopes: `asdf`, `bat`, `brew`, `claude`, `chezmoi`, `fish`, `ghostty`, `git`, `gitconfig`, `karabiner`, `kumiko`, `lazygit`, `mise`, `nvim`, `oh-my-posh`, `projects`, `raycast`, `spicetify`, `ssh`, `termscp`, `them-switcher`, `time`, `vscode`, `warp`, `wezterm`, `yazi`, `zed`, `zrok`, `zsh`
+- Component scopes: `asdf`, `bat`, `brew`, `claude`, `chezmoi`, `fish`, `ghostty`, `git`, `gitconfig`, `karabiner`, `kumiko`, `lazygit`, `mise`, `nvim`, `oh-my-posh`, `opencode`, `projects`, `raycast`, `spicetify`, `ssh`, `termscp`, `them-switcher`, `time`, `vscode`, `warp`, `wezterm`, `yazi`, `zed`, `zrok`, `zsh`
 - Generic scopes: `other`, `shell`, `install-script`
 
 Commits must follow the format: `type(scope): description`
@@ -387,6 +388,7 @@ Component-specific documentation (Russian and English versions available):
 
 - [Chezmoi Scripts](chezmoiscripts/README.md)
 - [Claude Code Configuration](claude/README.md)
+- [opencode Configuration](opencode/README.md)
 - [Fish Shell Configuration](fish/README.md)
 - [Ghostty Terminal](ghostty/README.md)
 - [Git Configuration](git/README.md)
