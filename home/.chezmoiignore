@@ -54,6 +54,12 @@ Projects/README.md
 # Submodule home/dot_claude (приватный репо): мета-файлы не разворачиваем в ~/.claude
 .claude/README.md
 
+# Codex: тесты и описание приватного submodule не разворачиваются в домашний каталог.
+.codex/README.md
+.codex/tests/**
+.codex/.gitignore
+.codex/**/__pycache__/**
+
 # Linux server (the projects server): only fish with its prompt. The rest of this repo is for
 # the Mac, and nothing private (ssh, gnupg) may reach a server. Excludes win over ignores.
 {{- if ne .chezmoi.os "darwin" }}

@@ -63,6 +63,7 @@
 "http:yc" = { version = "latest", url = "https://storage.yandexcloud.net/yandexcloud-yc/release/{{ version }}/darwin/arm64/yc", bin = "yc", version_list_url = "https://storage.yandexcloud.net/yandexcloud-yc/release/stable", version_regex = '(\d+\.\d+\.\d+)' }
 
 "npm:@aimuzov/thinks-mcp" = "latest"
+"npm:@openai/codex" = "latest"
 "npm:@modelcontextprotocol/server-everything" = "latest"
 "npm:@modelcontextprotocol/server-filesystem" = "latest"
 "npm:@modelcontextprotocol/server-memory" = "latest"

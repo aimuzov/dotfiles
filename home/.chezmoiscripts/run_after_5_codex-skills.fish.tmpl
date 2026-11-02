@@ -1,0 +1,5 @@
+#!/usr/bin/env fish
+{{ if eq .chezmoi.os "darwin" -}}
+{{ .miseBinPath | quote }} exec -- python3 {{ printf "%s/.codex/scripts/install-skills.py" .chezmoi.homeDir | quote }}; or exit $status
+{{ .miseBinPath | quote }} exec -- python3 {{ printf "%s/.codex/scripts/repair-imported-skills.py" .chezmoi.homeDir | quote }}
+{{ end -}}
