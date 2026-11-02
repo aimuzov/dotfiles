@@ -1,0 +1,4 @@
+#!/usr/bin/env fish
+{{ if eq .chezmoi.os "darwin" -}}
+{{ .miseBinPath | quote }} exec -- python3 {{ printf "%s/.codex/scripts/install-plugins.py" .chezmoi.homeDir | quote }}
+{{ end -}}

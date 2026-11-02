@@ -3,6 +3,7 @@ const scopes = [
   "bat",
   "brew",
   "claude",
+  "codex",
   "chezmoi",
   "fish",
   "ghostty",

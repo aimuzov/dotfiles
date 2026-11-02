@@ -70,6 +70,7 @@ dotfiles/
 - **WezTerm** (`dot_config/wezterm/`) - Конфигурация эмулятора терминала
 - **Ghostty** (`dot_config/ghostty/`) - Быстрый эмулятор терминала с quick terminal, Display P3 colorspace, темой Catppuccin
 - **Claude Code** (`dot_claude/`) - Конфигурация AI ассистента с MCP серверами
+- **Codex** (`dot_codex/`, приватный submodule) - Инструкции, агенты, skills, хуки и общий MCP-конфиг
 - **Matterhorn** (`dot_config/matterhorn/`) - Терминальный клиент Mattermost
 - **Oh My Posh** (`dot_config/oh-my-posh/`) - Движок тем для prompt
 - **Raycast** (`dot_bin/raycast/`) - Скриптовые команды для лаунчера продуктивности
@@ -374,6 +375,7 @@ home/dot_config/fish/
 
 - [Скрипты Chezmoi](chezmoiscripts/README.md)
 - [Конфигурация Claude Code](claude/README.md)
+- [Конфигурация Codex](codex/README.ru.md)
 - [Конфигурация Fish Shell](fish/README.md)
 - [Терминал Ghostty](ghostty/README.md)
 - [Конфигурация Git](git/README.md)
