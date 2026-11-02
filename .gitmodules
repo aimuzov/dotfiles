@@ -12,4 +12,4 @@
 	url = git@github.com:aimuzov/dotfiles-claude.git
 [submodule "home/dot_codex"]
 	path = home/dot_codex
-	url = https://github.com/aimuzov/dotfiles-codex.git
+	url = git@github.com:aimuzov/dotfiles-codex.git
