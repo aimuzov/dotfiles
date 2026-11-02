@@ -90,5 +90,5 @@
   "volt": { "branch": "main", "commit": "4351c5cd790a0d39491c4d5c75dd62d7db3d3414" },
   "which-key.nvim": { "branch": "main", "commit": "3aab2147e74890957785941f0c1ad87d0a44c15a" },
   "yanky.nvim": { "branch": "main", "commit": "adcabd8512bead30184916fa9277e73c021ef099" },
-  "yazi.nvim": { "branch": "main", "commit": "2603c6dbf128ca3c7586d099aa245142c44069b5" }
+  "yazi.nvim": { "branch": "main", "commit": "ed9e6f795bee8fb1bcaa86873707798ffb2b3db9" }
 }
