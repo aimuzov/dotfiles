@@ -70,6 +70,11 @@ All paths below are relative to `home/` (the chezmoi source root):
 - **WezTerm** (`dot_config/wezterm/`) - Terminal emulator configuration
 - **Ghostty** (`dot_config/ghostty/`) - Fast terminal emulator with quick terminal, Display P3 colorspace, Catppuccin theme
 - **Claude Code** (`dot_claude/`) - AI assistant configuration with MCP servers
+<<<<<<< HEAD
+=======
+- **Codex** (`dot_codex/`, private submodule) - Instructions, agents, skills, hooks and shared MCP configuration
+- **opencode** (`dot_config/opencode/`) - AI coding agent that reuses the Claude Code MCP servers, rules, agents, commands and hooks
+>>>>>>> 63d73ac (feat(codex): manage migrated configuration with chezmoi)
 - **Matterhorn** (`dot_config/matterhorn/`) - Terminal-based Mattermost client
 - **Oh My Posh** (`dot_config/oh-my-posh/`) - Prompt theme engine
 - **Raycast** (`dot_bin/raycast/`) - Script commands for productivity launcher
@@ -387,6 +392,11 @@ Component-specific documentation (Russian and English versions available):
 
 - [Chezmoi Scripts](chezmoiscripts/README.md)
 - [Claude Code Configuration](claude/README.md)
+<<<<<<< HEAD
+=======
+- [Codex Configuration](codex/README.md)
+- [opencode Configuration](opencode/README.md)
+>>>>>>> 63d73ac (feat(codex): manage migrated configuration with chezmoi)
 - [Fish Shell Configuration](fish/README.md)
 - [Ghostty Terminal](ghostty/README.md)
 - [Git Configuration](git/README.md)

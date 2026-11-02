@@ -1,3 +1,6 @@
+AGENTS.md
+**/.agents
+**/.codex
 **/.claude
 **/.mcp.json
 .mise.toml
