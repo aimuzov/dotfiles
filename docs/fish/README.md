@@ -337,15 +337,9 @@ Secrets are automatically loaded from [KeePassXC](https://keepassxc.org/) using 
 
 ## Linux Server
 
-On a Linux server (the projects server) chezmoi lays out only fish with its prompt: `.chezmoiignore` ignores the rest of the repo there, and the private submodules never get cloned. `config.fish` comes from [`server.config.fish`](../../home/dot_config/fish/server.config.fish): the catppuccin-macchiato theme, Oh My Posh with the same config, vi mode, [fzf.fish](https://github.com/PatrickF1/fzf.fish), zoxide. A Linux-only script installs fish, fzf, zoxide, fd and bat from Debian and Oh My Posh from its release. `.bashrc` keeps bash as the login shell and switches an interactive SSH login to fish, so scripts and the forced commands of deploy keys stay in bash.
-
-First setup, as root on the server:
-
-```bash
-chezmoi init --apply --recurse-submodules=false https://github.com/aimuzov/dotfiles.git
-```
-
-After that `chezmoi update --recurse-submodules=false` pulls changes.
+The Linux server profile now lives in [infra-server](https://github.com/aimuzov/infra-server#server-shell).
+It is installed and updated with the infrastructure deployment, without chezmoi or private
+dotfiles submodules. This repository only manages the macOS profile; Linux targets are ignored.
 
 ## Additional Features
 
