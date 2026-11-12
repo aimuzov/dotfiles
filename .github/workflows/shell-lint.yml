@@ -24,6 +24,8 @@ on:
 permissions:
   contents: read
   pull-requests: write
+  actions: read
+  id-token: write
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -35,7 +37,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Reuse verified CI
+        id: verified
+        uses: aimuzov/infra-ci/reuse-check@v1
+        continue-on-error: true
+        with:
+          workflow: .github/workflows/shell-lint.yml
       - uses: actions/checkout@v6
+        if: steps.verified.outputs.reused != 'true'
 
       # Fish shell доступен через PPA
       - name: Install Fish shell
@@ -43,6 +52,7 @@ jobs:
           sudo apt-add-repository -y ppa:fish-shell/release-4
           sudo apt-get update
           sudo apt-get install -y fish
+        if: steps.verified.outputs.reused != 'true'
 
       # Найти все .fish файлы (но НЕ .fish.tmpl) и проверить синтаксис.
       # --no-execute: только парсинг, без выполнения.
@@ -50,13 +60,27 @@ jobs:
         run: |
           find home/ -name '*.fish' -not -name '*.fish.tmpl' -print0 | \
             xargs -0 -I{} fish --no-execute {}
+        if: steps.verified.outputs.reused != 'true'
+      - name: Record verified CI
+        if: github.event_name == 'pull_request' && steps.verified.outputs.reused != 'true'
+        uses: aimuzov/infra-ci/record-check@v1
+        continue-on-error: true
+        with:
+          workflow: .github/workflows/shell-lint.yml
 
   shellcheck:
     name: ShellCheck
     runs-on: ubuntu-latest
 
     steps:
+      - name: Reuse verified CI
+        id: verified
+        uses: aimuzov/infra-ci/reuse-check@v1
+        continue-on-error: true
+        with:
+          workflow: .github/workflows/shell-lint.yml
       - uses: actions/checkout@v6
+        if: steps.verified.outputs.reused != 'true'
 
       # reviewdog/action-shellcheck:
       # - На PR: оставляет inline-комментарии прямо в diff
@@ -70,3 +94,10 @@ jobs:
           path: home/
           pattern: "*.sh"
           shellcheck_flags: "--severity=warning"
+        if: steps.verified.outputs.reused != 'true'
+      - name: Record verified CI
+        if: github.event_name == 'pull_request' && steps.verified.outputs.reused != 'true'
+        uses: aimuzov/infra-ci/record-check@v1
+        continue-on-error: true
+        with:
+          workflow: .github/workflows/shell-lint.yml
