@@ -32,7 +32,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Reuse verified CI
+        id: verified
+        uses: aimuzov/infra-ci/reuse-check@v1
+        continue-on-error: true
+        with:
+          workflow: .github/workflows/lua-lint.yml
       - uses: actions/checkout@v6
+        if: steps.verified.outputs.reused != 'true'
 
       # Скачать StyLua из GitHub Releases и добавить в PATH.
       # Кешируется между запусками по версии.
@@ -42,9 +49,10 @@ jobs:
         with:
           path: ~/.local/bin/stylua
           key: stylua-${{ env.STYLUA_VERSION }}
+        if: steps.verified.outputs.reused != 'true'
 
       - name: Install StyLua
-        if: steps.cache-stylua.outputs.cache-hit != 'true'
+        if: steps.verified.outputs.reused != 'true' && (steps.cache-stylua.outputs.cache-hit != 'true')
         run: |
           mkdir -p ~/.local/bin
           curl -fsSL "https://github.com/JohnnyMorganz/StyLua/releases/download/v${STYLUA_VERSION}/stylua-linux-x86_64.zip" -o stylua.zip
@@ -53,9 +61,21 @@ jobs:
 
       - name: Add StyLua to PATH
         run: echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+        if: steps.verified.outputs.reused != 'true'
 
       # --check: не модифицирует файлы, только проверяет.
       # Если форматирование не соответствует — exit code 1.
       # --config-path: путь к stylua.toml (он лежит в nvim/, но применим ко всем Lua)
       - name: Check Lua formatting
         run: stylua --check --config-path home/dot_config/nvim/stylua.toml home/
+        if: steps.verified.outputs.reused != 'true'
+      - name: Record verified CI
+        if: github.event_name == 'pull_request' && steps.verified.outputs.reused != 'true'
+        uses: aimuzov/infra-ci/record-check@v1
+        continue-on-error: true
+        with:
+          workflow: .github/workflows/lua-lint.yml
+permissions:
+  contents: read
+  actions: read
+  id-token: write

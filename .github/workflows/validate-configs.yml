@@ -65,7 +65,14 @@ jobs:
     if: needs.changes.outputs.json == 'true'
 
     steps:
+      - name: Reuse verified CI
+        id: verified
+        uses: aimuzov/infra-ci/reuse-check@v1
+        continue-on-error: true
+        with:
+          workflow: .github/workflows/validate-configs.yml
       - uses: actions/checkout@v6
+        if: steps.verified.outputs.reused != 'true'
 
       # python3 -m json.tool — встроенный JSON-валидатор Python.
       # Пропускаем .json.tmpl (содержат Go-шаблоны).
@@ -93,6 +100,13 @@ jobs:
             exit 1
           fi
           echo "All JSON files are valid"
+        if: steps.verified.outputs.reused != 'true'
+      - name: Record verified CI
+        if: github.event_name == 'pull_request' && steps.verified.outputs.reused != 'true'
+        uses: aimuzov/infra-ci/record-check@v1
+        continue-on-error: true
+        with:
+          workflow: .github/workflows/validate-configs.yml
 
   yaml:
     name: Validate YAML
@@ -101,12 +115,20 @@ jobs:
     if: needs.changes.outputs.yaml == 'true'
 
     steps:
+      - name: Reuse verified CI
+        id: verified
+        uses: aimuzov/infra-ci/reuse-check@v1
+        continue-on-error: true
+        with:
+          workflow: .github/workflows/validate-configs.yml
       - uses: actions/checkout@v6
+        if: steps.verified.outputs.reused != 'true'
 
       # yamllint — линтер для YAML, проверяет синтаксис и стиль.
       # -d relaxed: менее строгие правила (допускает длинные строки и т.п.)
       - name: Install yamllint
         run: pip install yamllint
+        if: steps.verified.outputs.reused != 'true'
 
       - name: Validate YAML files
         run: |
@@ -116,6 +138,13 @@ jobs:
           else
             echo "No YAML files to validate"
           fi
+        if: steps.verified.outputs.reused != 'true'
+      - name: Record verified CI
+        if: github.event_name == 'pull_request' && steps.verified.outputs.reused != 'true'
+        uses: aimuzov/infra-ci/record-check@v1
+        continue-on-error: true
+        with:
+          workflow: .github/workflows/validate-configs.yml
 
   toml:
     name: Validate TOML
@@ -124,7 +153,14 @@ jobs:
     if: needs.changes.outputs.toml == 'true'
 
     steps:
+      - name: Reuse verified CI
+        id: verified
+        uses: aimuzov/infra-ci/reuse-check@v1
+        continue-on-error: true
+        with:
+          workflow: .github/workflows/validate-configs.yml
       - uses: actions/checkout@v6
+        if: steps.verified.outputs.reused != 'true'
 
       # Python 3.11+ имеет встроенный модуль tomllib.
       # Используем его для валидации без внешних зависимостей.
@@ -142,3 +178,14 @@ jobs:
             exit 1
           fi
           echo "All TOML files are valid"
+        if: steps.verified.outputs.reused != 'true'
+      - name: Record verified CI
+        if: github.event_name == 'pull_request' && steps.verified.outputs.reused != 'true'
+        uses: aimuzov/infra-ci/record-check@v1
+        continue-on-error: true
+        with:
+          workflow: .github/workflows/validate-configs.yml
+permissions:
+  contents: read
+  actions: read
+  id-token: write
