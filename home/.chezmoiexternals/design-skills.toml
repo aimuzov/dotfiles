@@ -1,0 +1,28 @@
+[".local/share/design-skills/ux-ui-agent-skills"]
+type = "archive"
+url = "https://github.com/plugin87/ux-ui-agent-skills/archive/f823acedc3ef4e9b2ba944a28fd86fe2abdde427.tar.gz"
+stripComponents = 1
+
+[".agents/skills/canvas-design"]
+type = "archive"
+url = "https://github.com/anthropics/skills/archive/2c5958ecac7cee2b583967a2c4981d0f4a75c579.tar.gz"
+stripComponents = 3
+include = ["*/skills/canvas-design/**"]
+
+[".agents/skills/app-store-screenshots"]
+type = "archive"
+url = "https://github.com/ParthJadhav/app-store-screenshots/archive/e889033b68f418952cc65ba897fe2b1ec63d1564.tar.gz"
+stripComponents = 3
+include = ["*/skills/app-store-screenshots/**"]
+
+[".agents/skills/design-taste-frontend"]
+type = "archive"
+url = "https://github.com/Leonxlnx/taste-skill/archive/f6b76575f949707b4e3c37cd86cb44b0b98643e8.tar.gz"
+stripComponents = 3
+include = ["*/skills/taste-skill/**"]
+
+[".agents/skills/transitions-dev"]
+type = "archive"
+url = "https://github.com/Jakubantalik/transitions.dev/archive/20d70c1262bf721c0300c2946cbe1fc7605a555c.tar.gz"
+stripComponents = 3
+include = ["*/skills/transitions-dev/**"]

@@ -1,0 +1,40 @@
+---
+name: figma-integration
+description: Keep Figma and code in sync. Map the 3-tier DTCG tokens to Figma Variables (collections + modes), sync in either direction, use the Figma MCP when connected, and verify component parity (variants/states). Use when the user wants to push tokens/components to Figma, pull a design into code, set up token↔Variable sync, or check design-code drift.
+---
+
+# Skill: Figma Integration
+
+## Requirements
+
+This skill needs the full UX/UI Agent Skills kit: the gates, the references and
+the design-system library. Install it with `npx ux-ui-agent-skills@3.1.0 init`
+or as the Claude Code plugin. `npx skills@1.7.6 add` copies the skill folder and
+nothing else. Installed that way, this skill runs in **guidance-only mode**: no gate
+runs, so it gives no verdict.
+
+> **Step 0: is the kit here?** Check once:
+> `ls {{ .chezmoi.homeDir }}/.local/share/design-skills/ux-ui-agent-skills/tokens >/dev/null 2>&1 && echo KIT_OK || echo KIT_MISSING`
+> On `KIT_MISSING`, open your reply with: "Guidance-only mode: the UX/UI Agent
+> Skills kit is not installed here, so no gate ran and nothing below is
+> measured." Then work from this file and general practice, under three rules.
+> Do not guess or cite the contents of a kit file you could not open. State no
+> measured number (no contrast ratio, no N/N, no "passes WCAG"): write "not
+> verified" where one would go. End with a line `Skipped (kit not installed):`
+> that names every gate script this file tells you to run, then the install
+> command above.
+
+Bridge design (Figma) and code (this repo) in both directions. The token JSON stays the source of truth; Figma Variables mirror it.
+
+## Steps
+1. Read `{{ .chezmoi.homeDir }}/.local/share/design-skills/ux-ui-agent-skills/workflows/figma-integration.md` (token↔Variable mapping, sync directions, MCP usage, parity).
+2. Map the 3-tier hierarchy → three Figma collections (Primitives → Semantic → Component) with aliasing; dark/brand/density → Figma **Modes** (`{{ .chezmoi.homeDir }}/.local/share/design-skills/ux-ui-agent-skills/tokens/theming.json`).
+3. Choose ONE authoritative sync direction (code→Figma publish, or Figma→code extract via Tokens Studio / Variables REST API). The other side is generated. Never hand-edit both.
+4. **If a Figma MCP server is connected:** prefer its tools/skills (load its mandatory prerequisite skill first). Use it to read frames/variables/screenshots into code, build Variables/components from our tokens, or wire Code Connect to `{{ .chezmoi.homeDir }}/.local/share/design-skills/ux-ui-agent-skills/components/*`.
+5. Check component parity: Figma variants/properties must cover our variants + sizes + the 8 states; flag gaps.
+
+## Verification (definition of done)
+- Every Figma Variable resolves to a token in `{{ .chezmoi.homeDir }}/.local/share/design-skills/ux-ui-agent-skills/tokens/*.json` (no orphan hex in designs).
+- One authoritative direction; the generated side has zero hand edits.
+- Variant sets cover all 8 states; Code Connect points to the right `{{ .chezmoi.homeDir }}/.local/share/design-skills/ux-ui-agent-skills/components/*` file.
+- After any token import: `python3 {{ .chezmoi.homeDir }}/.local/share/design-skills/ux-ui-agent-skills/scripts/validate_tokens.py` passes.
