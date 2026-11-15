@@ -25,9 +25,11 @@ commands, require thinks scoring, silently run oxlint or inject edit reminders.
 Serena and thinks are disabled by default. Context7, Things, Nanobanana, Veo and
 Peeshet remain available. Claude marketplace plugins, imported synced skills and
 30 third-party design skills are disabled without deleting their files.
-Enable selected capabilities in a trusted project's `.codex/config.toml`, using
-`mcp_servers.<name>.enabled = true` or a `[[skills.config]]` entry with the absolute
-SKILL.md path and `enabled = true`.
+Enable selected MCP servers in a trusted project's `.codex/config.toml` with
+`mcp_servers.<name>.enabled = true`. To enable a disabled skill, change its entry
+in the user-level `~/.codex/config.toml` to `enabled = true`.
+Codex ignores `skills.config` entries in project layers. Update the managed
+disabling rules in the source configuration to keep this choice across chezmoi apply.
 
 Run `python3 -m unittest discover -s home/dot_codex/tests -v` from dotfiles.
 Template tests use an isolated source and fake secrets, never the live config.
