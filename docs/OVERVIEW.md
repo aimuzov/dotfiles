@@ -70,7 +70,7 @@ All paths below are relative to `home/` (the chezmoi source root):
 - **WezTerm** (`dot_config/wezterm/`) - Terminal emulator configuration
 - **Ghostty** (`dot_config/ghostty/`) - Fast terminal emulator with quick terminal, Display P3 colorspace, Catppuccin theme
 - **Claude Code** (`dot_claude/`) - AI assistant configuration with MCP servers
-- **Codex** (`dot_codex/`, private submodule) - Instructions, agents, skills, hooks and shared MCP configuration
+- **Codex** (`dot_codex/`, private submodule) - Native instructions, agents, skills, hooks and MCP configuration
 - **Matterhorn** (`dot_config/matterhorn/`) - Terminal-based Mattermost client
 - **Oh My Posh** (`dot_config/oh-my-posh/`) - Prompt theme engine
 - **Raycast** (`dot_bin/raycast/`) - Script commands for productivity launcher
