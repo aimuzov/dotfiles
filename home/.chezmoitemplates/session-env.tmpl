@@ -8,6 +8,7 @@
     "posix"     → export K="V"            (zsh/bash, в т.ч. .zshenv → Bash-инструмент Claude)
     "fish"      → set -gx K "V"           (fish, через conf.d)
     "launchctl" → launchctl setenv K "V"  (launchd, GUI-приложения)
+    "toml"      → K = "V"                (Codex shell_environment_policy.set)
 
   Значения — абсолютные пути (chezmoi-резолв во время apply), а не shell-ссылки $XDG_*:
   launchctl не разворачивает $VAR, плюс нет зависимости от порядка установки внутри файла.
@@ -35,6 +36,8 @@
 {{- range $v := $vars }}
 {{- if eq $.syntax "fish" }}
 set -gx {{ $v.k }} "{{ $v.v }}"
+{{- else if eq $.syntax "toml" }}
+{{ $v.k }} = {{ $v.v | toJson }}
 {{- else if eq $.syntax "launchctl" }}
 launchctl setenv {{ $v.k }} "{{ $v.v }}"
 {{- else }}

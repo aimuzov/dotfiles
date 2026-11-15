@@ -70,7 +70,7 @@ dotfiles/
 - **WezTerm** (`dot_config/wezterm/`) - Конфигурация эмулятора терминала
 - **Ghostty** (`dot_config/ghostty/`) - Быстрый эмулятор терминала с quick terminal, Display P3 colorspace, темой Catppuccin
 - **Claude Code** (`dot_claude/`) - Конфигурация AI ассистента с MCP серверами
-- **Codex** (`dot_codex/`, приватный submodule) - Инструкции, агенты, skills, хуки и общий MCP-конфиг
+- **Codex** (`dot_codex/`, приватный submodule) - Нативные инструкции, агенты, skills, хуки и MCP-конфиг
 - **Matterhorn** (`dot_config/matterhorn/`) - Терминальный клиент Mattermost
 - **Oh My Posh** (`dot_config/oh-my-posh/`) - Движок тем для prompt
 - **Raycast** (`dot_bin/raycast/`) - Скриптовые команды для лаунчера продуктивности
