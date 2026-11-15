@@ -1,0 +1,42 @@
+---
+name: ship
+description: Pre-release gate. Run the full gate, responsive + render checks, then produce the release checklist (README badge/current/changelog). Use before tagging a release.
+# A command the user runs. Converted from .claude/commands/ so it has a
+# CLAUDE_SKILL_DIR of its own and its paths resolve on every install route.
+# disable-model-invocation keeps the behaviour a command had: the user
+# starts it, the model never does, and its description stays out of the
+# listing budget the model's skill choice is drawn from.
+disable-model-invocation: true
+---
+## Requirements
+
+This skill needs the full UX/UI Agent Skills kit: the gates, the references and
+the design-system library. Install it with `npx ux-ui-agent-skills@3.1.0 init`
+or as the Claude Code plugin. `npx skills@1.7.6 add` copies the skill folder and
+nothing else, and this skill has no guidance-only mode: its whole job is to
+run the release bar, which is the gates, so without the kit there is nothing for it to do.
+
+> **Step 0: is the kit here?** Check once:
+> `ls {{ .chezmoi.homeDir }}/.local/share/design-skills/ux-ui-agent-skills/tokens >/dev/null 2>&1 && echo KIT_OK || echo KIT_MISSING`
+> On `KIT_MISSING`, say plainly that only the skill folder was installed, name
+> the install command above, and stop. Do not guess the contents of a file you
+> could not open, and do not report a result you did not produce.
+
+Gate first, then prepare the release. Do nothing destructive without explicit
+confirmation (no tag, no publish). This command verifies and drafts only.
+
+1. Quality gate (must be fully green before continuing):
+   - `node {{ .chezmoi.homeDir }}/.local/share/design-skills/ux-ui-agent-skills/scripts/accuracy_report.mjs`: report the real N/N.
+   - `node {{ .chezmoi.homeDir }}/.local/share/design-skills/ux-ui-agent-skills/scripts/verify_responsive.mjs examples`: no overflow from 280 to 951px, hinge clear when folded.
+   - `python3 {{ .chezmoi.homeDir }}/.local/share/design-skills/ux-ui-agent-skills/scripts/check_no_emoji.py`: UI + taste + instruction surface.
+   If anything fails, stop and fix; do not proceed to the checklist.
+
+2. Release checklist (per the project release rule):
+   - Update `README.md`: version badge, "current" line, and changelog entry.
+   - Confirm the bump level (major/minor/patch) with the user. It is their call.
+   - Confirm `examples/apple-home` stays gitignored (local IP).
+   - List the commits since the last tag so the changelog is accurate.
+
+3. Output a ready-to-review summary: the green N/N line, the proposed version,
+   and the drafted changelog entry. Wait for the user to approve before any
+   `git tag` / publish step.

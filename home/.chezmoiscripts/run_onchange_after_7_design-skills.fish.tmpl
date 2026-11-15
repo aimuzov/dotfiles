@@ -1,0 +1,9 @@
+#!/usr/bin/env fish
+{{ if eq .chezmoi.os "darwin" -}}
+set -l kit {{ printf "%s/.local/share/design-skills/ux-ui-agent-skills" .chezmoi.homeDir | quote }}
+# Смена SHA заставляет run_onchange повторить установку: f823acedc3ef4e9b2ba944a28fd86fe2abdde427
+{{ .miseBinPath | quote }} exec -- npm ci --ignore-scripts --no-audit --no-fund --prefix $kit; or exit $status
+set -l canvas_python {{ printf "%s/.local/share/design-skills/canvas-python" .chezmoi.homeDir | quote }}
+{{ .miseBinPath | quote }} exec -- uv venv --allow-existing $canvas_python; or exit $status
+{{ .miseBinPath | quote }} exec -- uv pip install --python $canvas_python/bin/python pillow==11.3.0 reportlab==4.4.3
+{{ end -}}

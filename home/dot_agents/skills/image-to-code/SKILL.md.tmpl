@@ -1,0 +1,50 @@
+---
+name: image-to-code
+description: Turn a reference image, screenshot, or mockup into token-driven, accessible code. Infer the design system from the reference (palette, type scale, spacing, radius, layout archetype), map it to the 3-tier tokens, rebuild it, then verify with the kit's gates. Use when the user provides a design/screenshot and wants matching UI code.
+# `invocation:` was not a field Claude Code reads - unknown frontmatter keys are
+# ignored without an error, so these six were auto-invocable the whole time they
+# were marked user-only. This is the field that actually does it.
+disable-model-invocation: true
+---
+
+# Skill: Image to Code
+
+## Requirements
+
+This skill needs the full UX/UI Agent Skills kit: the gates, the references and
+the design-system library. Install it with `npx ux-ui-agent-skills@3.1.0 init`
+or as the Claude Code plugin. `npx skills@1.7.6 add` copies the skill folder and
+nothing else. Installed that way, this skill runs in **guidance-only mode**: no gate
+runs, so it gives no verdict.
+
+> **Step 0: is the kit here?** Check once:
+> `ls {{ .chezmoi.homeDir }}/.local/share/design-skills/ux-ui-agent-skills/tokens >/dev/null 2>&1 && echo KIT_OK || echo KIT_MISSING`
+> On `KIT_MISSING`, open your reply with: "Guidance-only mode: the UX/UI Agent
+> Skills kit is not installed here, so no gate ran and nothing below is
+> measured." Then work from this file and general practice, under three rules.
+> Do not guess or cite the contents of a kit file you could not open. State no
+> measured number (no contrast ratio, no N/N, no "passes WCAG"): write "not
+> verified" where one would go. End with a line `Skipped (kit not installed):`
+> that names every gate script this file tells you to run, then the install
+> command above.
+
+Reconstruct a design from a visual reference as a real design system, not a one-off copy. Match the *system* (color/type/spacing language), never lift copyrighted imagery or brand assets.
+
+## Steps
+1. **Read the reference like a designer.** Infer and write down:
+   - **Palette**: 1 dominant surface family, text colors, 1 primary action + at most 1 accent (sample the hues; don't guess random hex).
+   - **Type**: family feel (geometric/grotesk/serif), the scale jumps, display vs. body contrast, weights.
+   - **Spacing & density**: base unit, section rhythm, card padding; airy vs. compact.
+   - **Radius & depth**: radius language (sharp/soft/pill), shadow vs. hairline separation.
+   - **Layout archetype + sequence**: bounded hero / asymmetric split / dense bento / editorial stack (`{{ .chezmoi.homeDir }}/.local/share/design-skills/ux-ui-agent-skills/taste/design-taste.md` → Variance Mandate).
+2. **Anchor to a known system** if it's close: browse `{{ .chezmoi.homeDir }}/.local/share/design-skills/ux-ui-agent-skills/taste/aesthetic-systems.md` / `python3 {{ .chezmoi.homeDir }}/.local/share/design-skills/ux-ui-agent-skills/scripts/design_systems.py search <term>` and adopt that recipe to stabilize decisions.
+3. **Build the token theme** from the inferred values → 3-tier DTCG (`design-tokens` skill); generate a single `theme.css`. Verify every color pair with `{{ .chezmoi.homeDir }}/.local/share/design-skills/ux-ui-agent-skills/scripts/contrast.py` / `{{ .chezmoi.homeDir }}/.local/share/design-skills/ux-ui-agent-skills/scripts/validate_contrast.py` (light + dark). A sampled brand color that fails AA gets adjusted; taste never overrides POUR.
+4. **Rebuild layout + components** token-driven via `{{ .chezmoi.homeDir }}/.local/share/design-skills/ux-ui-agent-skills/frameworks/adapter-protocol.md` + `{{ .chezmoi.homeDir }}/.local/share/design-skills/ux-ui-agent-skills/components/*`: one shared primitive layer, all 8 states, a11y wired, no emoji (lucide), single theme. Apply taste (`design-taste.md`) so it doesn't regress to generic.
+5. **Verify against the reference**: render and screenshot it, compare side-by-side to the reference; run `node {{ .chezmoi.homeDir }}/.local/share/design-skills/ux-ui-agent-skills/scripts/gate.mjs measure_render.mjs`, `lint_hardcodes.py`, `taste_audit.mjs`, and `npm run verify`.
+
+## Verification (definition of done)
+- `npm run verify` is 100% (tokens resolve, contrast AA light+dark, no hardcodes/emoji, real-render WCAG).
+- The rebuilt UI uses ONE inferred token theme; no per-section palettes.
+- A screenshot of the result visibly matches the reference's design language.
+
+> Honest limit: this matches the design **system**, not a pixel-perfect copy. Do not reproduce the reference's photographs, logos, or copyrighted copy. Substitute your own or generic placeholders.
