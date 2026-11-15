@@ -58,7 +58,7 @@ apps = ["Mail"]
 [[workspace]]
 name = "System"
 display = "external"
-apps = ["App Store", "System Settings", "Happ", "MacPass", "KeePassXC", "Kumiko", "Steam", "OrbStack", "AppCleaner", "Pearcleaner", "Kaspersky Anti-Virus For Mac", "logioptionsplus"]
+apps = ["App Store", "System Settings", "Happ", "MacPass", "KeePassXC", "Kumiko", "OrbStack", "AppCleaner", "Pearcleaner", "Kaspersky Anti-Virus For Mac", "logioptionsplus"]
 stack = ["Steam"]
 
 [[workspace]]
@@ -71,6 +71,7 @@ stack = ["Things", "Calendar", "Mail"]
 name = "Misc"
 display = "external"
 default = true
+layout = "float"
 
 [[workspace]]
 name = "Chats"
@@ -206,7 +207,7 @@ blacklist = ["iPhone Mirroring"]
 
 [vim]
 enabled = true
-blacklist = ["Ghostty", "Notes", "Claude", "Telegram"]
+blacklist = ["Ghostty", "Notes", "Claude", "Telegram", "Xcode"]
 commands = [
 	"set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz",
 ]
