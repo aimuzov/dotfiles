@@ -1,0 +1,4 @@
+#!/usr/bin/env fish
+{{ if eq .chezmoi.os "darwin" -}}
+{{ .miseBinPath | quote }} install -y npm:@sveltejs/mcp npm:chrome-devtools-mcp
+{{ end -}}

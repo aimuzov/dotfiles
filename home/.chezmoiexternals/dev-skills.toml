@@ -1,0 +1,11 @@
+[".agents/skills/supabase-postgres-best-practices"]
+type = "archive"
+url = "https://github.com/supabase/agent-skills/archive/c9be0e931b7930f7d02126d04774d904c381e7d7.tar.gz"
+stripComponents = 3
+include = ["*/skills/supabase-postgres-best-practices/**"]
+
+[".agents/skills/web-design-guidelines"]
+type = "archive"
+url = "https://github.com/vercel-labs/agent-skills/archive/5a37a6329fbad3666c3207392a6a7c0110e92efb.tar.gz"
+stripComponents = 3
+include = ["*/skills/web-design-guidelines/**"]

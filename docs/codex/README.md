@@ -2,39 +2,10 @@
 
 [Русский](README.ru.md)
 
-The private `home/dot_codex` submodule supplies native configuration in `~/.codex`:
-a concise AGENTS.md, seven skills, four agent roles, MCP settings and local hooks.
-Model selection, reasoning, application settings, unrelated MCP servers and hook
-trust state survive updates.
+The user configuration lives in `home/dot_codex/modify_private_config.toml`. Chezmoi renders it directly into `~/.codex/config.toml`, preserving application settings, trusted projects, additional MCP servers and skill preferences. The private configuration gets environment variables from the shared `session-env.tmpl` and secrets from KeePassXC.
 
-`config.base.toml.tmpl` is the native configuration source; chezmoi does not deploy
-it as a separate profile. The modifier merges it into the private config.toml.
-Codex no longer imports Claude configuration, installs Claude plugins or repairs
-imported skills. OpenAI application plugins and system skills remain enabled.
+Superpowers is enabled through `[plugins."superpowers@openai-curated"]`. On a new machine, install it once with `codex plugin add superpowers@openai-curated`. Check its status with `codex plugin list --json`.
 
-The shared `home/.chezmoitemplates/session-env.tmpl` supplies
-`shell_environment_policy.set`, including OPENROUTER_API_KEY. KeePassXC resolves
-secrets during apply. The generated config is private and never committed.
-Commands retain their chosen shell. Use `mise exec -- <command>` for project tool versions.
+The submodule also provides personal instructions, seven skills, four agent roles and shell hooks. Serena and thinks are disabled globally. The webapp-next project config supplies Kaiten in that project. The user template controls the disabled design skills.
 
-Hooks retain deterministic checks for exact npm/pnpm dependencies, broad process
-termination, AI attribution footers and Kaiten tags. They no longer rewrite shell
-commands, require thinks scoring, silently run oxlint or inject edit reminders.
-`Bash` is Codex's documented canonical shell hook event name.
-
-Serena and thinks are disabled by default. Context7, Things, Nanobanana, Veo and
-Peeshet remain available. Claude marketplace plugins, imported synced skills and
-30 third-party design skills are disabled without deleting their files.
-Enable selected MCP servers in a trusted project's `.codex/config.toml` with
-`mcp_servers.<name>.enabled = true`. To enable a disabled skill, change its entry
-in the user-level `~/.codex/config.toml` to `enabled = true`.
-Codex ignores `skills.config` entries in project layers. Update the managed
-disabling rules in the source configuration to keep this choice across chezmoi apply.
-
-Run `python3 -m unittest discover -s home/dot_codex/tests -v` from dotfiles.
-Template tests use an isolated source and fake secrets, never the live config.
-The user runs `chezmoi apply`, opens a new chat and reviews changed hook trust.
-Old installer files or skill symlinks may remain at the destination, but the new
-configuration no longer invokes the installers.
-
-See the [audit](audit-2026-11-15.md) for findings and measurement limits.
+Run `mise exec -- python3 -m unittest discover -s home/dot_codex/tests -v` from dotfiles. Template tests render isolated fixtures with dummy secrets. The user runs `chezmoi apply` and opens a new chat.
