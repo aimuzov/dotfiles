@@ -69,9 +69,11 @@
 "npm:@modelcontextprotocol/server-memory" = "latest"
 "npm:@modelcontextprotocol/server-sequential-thinking" = "latest"
 "npm:@nanobanana/mcp" = { version = "0.1.2", allow_low_downloads = true }
+"npm:@sveltejs/mcp" = "latest"
 "npm:@upstash/context7-mcp" = "latest"
 "npm:ccstatusline" = "latest"
 "npm:ccusage" = "latest"
+"npm:chrome-devtools-mcp" = "latest"
 
 "pipx:awscli" = "latest"
 "pipx:twc-cli" = "latest"
