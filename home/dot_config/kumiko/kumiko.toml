@@ -19,10 +19,6 @@ manage = true
 app = "Happ"
 manage = false
 
-[[wm.rule]]
-app = "Steam"
-manage = true
-
 # Numbers follow alt-1 ... alt-=, so the order here is the order of the hotkeys.
 
 [[workspace]]
@@ -84,7 +80,7 @@ last = ["Telegram"]
 [[workspace]]
 name = "Calls"
 display = "external"
-apps = ["Толк", "zoom.us", "Citrix Workspace"]
+apps = ["zoom.us", "Citrix Workspace"]
 
 [[workspace]]
 name = "Media"
