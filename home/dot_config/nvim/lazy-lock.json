@@ -1,6 +1,6 @@
 {
   "LazyVim": { "branch": "main", "commit": "0fa4a847929fc6beae40a3063615a58115678c34" },
-  "SchemaStore.nvim": { "branch": "main", "commit": "6ea42941864e28f59368480e071a84b16ae95bb4" },
+  "SchemaStore.nvim": { "branch": "main", "commit": "5926c7899b2e36cd0f944ef3a933abd68c0fcdb8" },
   "baleia.nvim": { "branch": "main", "commit": "14c279cc7241d97585f8000dfd7dcdbca9fb4458" },
   "blink.cmp": { "branch": "main", "commit": "78336bc89ee5365633bcf754d93df01678b5c08f" },
   "bufferline.nvim": { "branch": "main", "commit": "655133c3b4c3e5e05ec549b9f8cc2894ac6f51b3" },
@@ -18,7 +18,7 @@
   "git-conflict.nvim": { "branch": "main", "commit": "a1badcd070d176172940eb55d9d59029dad1c5a6" },
   "git-dev.nvim": { "branch": "master", "commit": "727c9526a7fcbf980aa1bb2caf2383c74a543093" },
   "gitlab.nvim": { "branch": "develop", "commit": "0228b3b9aad2bf091fc72534c23a2751e7d649de" },
-  "gitsigns.nvim": { "branch": "main", "commit": "b15de90f4b71ff684372a7e16cfd00bc2d917a94" },
+  "gitsigns.nvim": { "branch": "main", "commit": "ea38d317af34f8ffcfbaf0f0dcc1471736661a4c" },
   "glance.nvim": { "branch": "master", "commit": "5a8eab1c1c48bfa19a33b556328a3c553138366e" },
   "grug-far.nvim": { "branch": "main", "commit": "91b7e58b6ffc6ddad5acb7a7c1df21257724449e" },
   "langmapper.nvim": { "branch": "main", "commit": "a7b3e66d1ed624c7ebda6b652993a37797830298" },
@@ -75,7 +75,7 @@
   "snacks.nvim": { "branch": "main", "commit": "882c996cf28183f4d63640de0b4c02ec886d01f2" },
   "stay-in-place.nvim": { "branch": "main", "commit": "0628b6db8970fc731abf9608d6f80659b58932c9" },
   "symbol-usage.nvim": { "branch": "main", "commit": "6a449e6b37be61a110606e9a67a7a308774f120f" },
-  "tiny-inline-diagnostic.nvim": { "branch": "main", "commit": "46ae9b3c8f3039e96ff4497d190ad0aee091f30d" },
+  "tiny-inline-diagnostic.nvim": { "branch": "main", "commit": "43ff39303869f3aa0fcdeb625872ba89eab68e69" },
   "todo-comments.nvim": { "branch": "main", "commit": "31e3c38ce9b29781e4422fc0322eb0a21f4e8668" },
   "tokyonight.nvim": { "branch": "main", "commit": "cdc07ac78467a233fd62c493de29a17e0cf2b2b6" },
   "treesj": { "branch": "main", "commit": "9f349ba62c524f065d6f43254d731ddf8319b9bf" },
@@ -90,5 +90,5 @@
   "volt": { "branch": "main", "commit": "4351c5cd790a0d39491c4d5c75dd62d7db3d3414" },
   "which-key.nvim": { "branch": "main", "commit": "3aab2147e74890957785941f0c1ad87d0a44c15a" },
   "yanky.nvim": { "branch": "main", "commit": "edcbe0f6d693b9e7860626094f886a2d79cfe63b" },
-  "yazi.nvim": { "branch": "main", "commit": "299f3e4ea2855613b18b9b3495b93b96a1abd9b7" }
+  "yazi.nvim": { "branch": "main", "commit": "691555eeeafc960203a3fd02c17c0b0d01102726" }
 }
