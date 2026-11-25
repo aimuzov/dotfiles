@@ -203,7 +203,7 @@ blacklist = ["iPhone Mirroring"]
 
 [vim]
 enabled = true
-blacklist = ["Ghostty", "Notes", "Claude", "Telegram", "Xcode"]
+blacklist = ["Ghostty", "Notes", "Claude", "Telegram", "Xcode", "Code"]
 commands = [
 	"set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz",
 ]
