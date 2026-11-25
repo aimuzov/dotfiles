@@ -1,0 +1,36 @@
+#!/usr/bin/env fish
+{{ if eq .chezmoi.os "darwin" -}}
+set -l mise {{ .miseBinPath | quote }}
+set -l codex_dir "$HOME/.codex"
+if set -q CODEX_HOME; and test -n "$CODEX_HOME"
+    set codex_dir "$CODEX_HOME"
+end
+
+# The standalone CLI reads the built-in snapshot and its revision before Codex's first startup.
+set -l curated "$codex_dir/.tmp/plugins"
+if not test -e "$curated"
+    git clone --depth 1 https://github.com/openai/plugins.git "$curated"
+    or exit 1
+end
+if not test -s "$curated.sha"
+    set -l revision (git -C "$curated" rev-parse --verify HEAD)
+    or exit 1
+    printf '%s\n' "$revision" > "$curated.sha"
+    or exit 1
+end
+
+# Codex exposes a different official marketplace before login or when using an API key.
+set -l marketplaces ($mise exec -- codex plugin marketplace list --json)
+or exit 1
+set -l marketplace (printf '%s\n' $marketplaces | $mise exec -- jq -er 'first(.marketplaces[].name | select(. == "openai-curated" or . == "openai-api-curated"))')
+or exit 1
+
+set -l plugin "superpowers@$marketplace"
+set -l plugins ($mise exec -- codex plugin list --marketplace "$marketplace" --json)
+or exit 1
+set -l enabled (printf '%s\n' $plugins | $mise exec -- jq --arg id "$plugin" 'any(.installed[]; .pluginId == $id and .installed and .enabled)')
+or exit 1
+if test "$enabled" = false
+    $mise exec -- codex plugin add "$plugin"
+end
+{{ end -}}
