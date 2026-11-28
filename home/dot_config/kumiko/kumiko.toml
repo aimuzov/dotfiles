@@ -199,7 +199,7 @@ blacklist = ["LayerX", "loginwindow", "screensaver"]
 width = 4
 radius = 16
 color = "#8aadf4"
-blacklist = ["iPhone Mirroring"]
+blacklist = ["iPhone Mirroring", "Steam", "ChatGPT"]
 
 [vim]
 enabled = true
